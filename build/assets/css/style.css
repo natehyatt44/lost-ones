@@ -38,8 +38,10 @@ padding: 3% 0 0 0;
     font-family: 'Poppins';
     font-weight: 700;
 font-size: 40px;
-line-height: 30px;
-color: #fff;
+line-height: 40px;
+color: rgb(0, 0, 0);
+position: relative;
+top: -6em;
 }
 .seicon{
     height: 50px;
@@ -52,8 +54,8 @@ width: 100%;
 .first_sec{
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url('image_first_1.png') !important;
-    padding: 22% 15%;
+    background-image: url('bar logo.png') !important;
+    padding: 15% 15%;
     position: relative;
     z-index: -99;
 }.second_sec{
@@ -63,7 +65,7 @@ width: 100%;
     padding:12% 15% 24% 15%;
     z-index: 99;
     position: relative;
-    top: -6em;
+    top: -1em;
 }
 .btn_cion{
     margin-left: 24px;
@@ -346,7 +348,8 @@ top: 0;
     }
     .first_sec, .second_sec, .third_sec {
         padding: 6% 2%; 
-        background-image: linear-gradient(108.98deg, rgba(255, 255, 255, 0.37) -9.68%, rgba(255, 255, 255, 0.26) -9.67%, rgba(217, 217, 217, 0) 99.34%) !important;
+        /*background-image: linear-gradient(108.98deg, rgba(255, 255, 255, 0.37) -9.68%, rgba(255, 255, 255, 0.26) -9.67%, rgba(217, 217, 217, 0) 99.34%) !important;*/
+        background-color: #000422;
 backdrop-filter: blur(40px) !important;
 /* Note: backdrop-filter has minimal browser support */
 
@@ -441,7 +444,8 @@ font-size: 17px;
         }
         .first_sec, .second_sec, .third_sec {
             padding: 6% 2%; 
-            background-image: linear-gradient(108.98deg, rgba(255, 255, 255, 0.37) -9.68%, rgba(255, 255, 255, 0.26) -9.67%, rgba(217, 217, 217, 0) 99.34%) !important;
+           /* background-image: linear-gradient(108.98deg, rgba(255, 255, 255, 0.37) -9.68%, rgba(255, 255, 255, 0.26) -9.67%, rgba(217, 217, 217, 0) 99.34%) !important;*/
+           background-color: #000422;
 backdrop-filter: blur(40px) !important;
 /* Note: backdrop-filter has minimal browser support */
 
@@ -841,13 +845,13 @@ font-weight: bold;
         display: block;
     }
     .bg-nav{
-background: #070B26;
+background: #000000;
     }
     .blink_me{
         margin-top: 20%;
     }
     #navbarText{
-        background: #070B26;
+        background: #000000;
         z-index: 99;
             }
     .navbar-nav{
