@@ -6,7 +6,7 @@ function Home() {
    <> 
    <div className="container-fluid bg-nav">
             <nav className="navbar navbar-expand-lg navbar-light ">
-            <a className="navbar-brand " href="/"><img className="logo_s" src="assets/images/logo.png"/></a>
+            <a className="navbar-brand " href="/"><img className="logo_s" src="assets/images/biLogo.png"/></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -15,28 +15,28 @@ function Home() {
                     <ul className="navbar-nav m-auto">
                     <li className="nav-item"> <a className="navbar-brand hd_m" href="/"><img className="logo_s logo_m" src="assets/images/logo.png"/></a>
                     </li>
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#home">Home</a>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#tokenmics">Roadmap</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#tokenmics">Tokenomics</a>
+                            <a className="nav-link" href="#tokenmics">Holder Benefits</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#buy">How To Buy</a>
+                            <a className="nav-link" href="#buy">LitePaper</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="https://docs.nebulanodes.finance">Docs</a>
+                            <a className="nav-link" href="https://docs.nebulanodes.finance">Gallery</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/Dapp">Dapp</a>
+                            <a className="nav-link" href="/Dapp">Founders</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/Dapp">FAQ</a>
                         </li>
                          
                     </ul>
                     
                     <span className="navbar-text" >
-                            <a href="https://medium.com/@wearenebulan" target={{target:"_blank"}}>
-                            <img className="seicon" src="assets/images/icon/medium_icon.png"/>
-                            </a>
                             <a href="https://twitter.com/NebulaNodes" target={{target:"_blank"}}>
                             <img className="seicon" src="assets/images/icon/icon_twitter.svg"/>
                             </a>
@@ -54,10 +54,11 @@ function Home() {
 	<div id="home" className="container  nebula_sec">
 		<div className="row">
 			<div className="col-sm-12 col-md-12 col-lg-12">
-            <h1 className="h1_head_sml">Welcome to</h1>
-            <h1 className="h1_heading">Nebula </h1>
-            <p className="para_p  ">Nebula is not just another node protocol, we are striving to <br/>
-             have utility not just with our nodes, but by creating an entire<br/> ecosystem you can write home about!
+            <h1 className="h1_head_sml">Barbarian Inc </h1>
+            <div className="col-lg">
+            <img className="image_ad" src="assets/images/barbs.png" />
+            </div>
+            <p className="para_p  ">Bussin fr fr
             </p>
                           
 				</div>
@@ -175,9 +176,6 @@ Our protocol is watched meticulously by our Overseer System day <br/>and night. 
 <div className="row icons_footer"> 
 <div className="col-sm-12 text-right">
 <span className="navbar-text" >
-                            <a href="https://medium.com/@wearenebulan" target={{target:"_blank"}}>
-                            <img className="seicon" src="assets/images/icon/medium_icon.png"/>
-                            </a>
                             <a href="https://twitter.com/NebulaNodes" target={{target:"_blank"}}>
                             <img className="seicon" src="assets/images/icon/icon_twitter.svg"/>
                             </a>
