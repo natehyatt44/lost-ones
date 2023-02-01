@@ -51,6 +51,17 @@
      position: relative;
      z-index: -99;
 }
+.lore_sec{
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-color: #000000;
+    background-image: url('book.png') !important;
+    padding:25% 10%;
+    left:5%;
+    right:5%;
+    position: relative;
+    z-index: -99;
+}
 .info_sec {
     background-image: linear-gradient(108.98deg, rgba(255, 255, 255, 0.37) -9.68%, rgba(255, 255, 255, 0.26) -9.67%, rgba(217, 217, 217, 0) 99.34%) !important;
     backdrop-filter: blur(40px) !important;

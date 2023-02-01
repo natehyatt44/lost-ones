@@ -14,22 +14,22 @@ function Navigation() {
                         <li className="nav-item"> <a className="navbar-brand hd_m" href="/"><img className="logo_s logo_m" src="assets/images/logo.png"/></a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="#about">About</a>
-                        </li>
-                        <li className="nav-item">
                         <a className="nav-link" href="/gallery">Gallery</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="#team">Team</a>
+                        <a className="nav-link" href="/team">Team</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="https://docs.nebulanodes.finance">LitePaper</a>
+                        <a className="nav-link" href="/lore">Lore</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="#roadmap">RoadMap</a>
+                        <a className="nav-link" href="/whitepaper">Whitepaper</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="#faq">FAQ</a>
+                        <a className="nav-link" href="/roadmap">RoadMap</a>
+                        </li>
+                        <li className="nav-item">
+                        <a className="nav-link" href="/faq">FAQ</a>
                         </li>
                     </ul>
                     <span className="navbar-text" >
