@@ -6,13 +6,13 @@ function Home() {
    <> 
    <div className="container-fluid bg-nav">
    <nav className="navbar navbar-expand-lg navbar-light ">
-      <a className="navbar-brand " href="/"><img className="logo_s" src="assets/css/logo.png"/></a>
+      <a className="navbar-brand " href="/"><img className="logo_s" src="assets/images/logo.png"/></a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarText">
          <ul className="navbar-nav m-auto">
-            <li className="nav-item"> <a className="navbar-brand hd_m" href="/"><img className="logo_s logo_m" src="assets/css/logo.png"/></a>
+            <li className="nav-item"> <a className="navbar-brand hd_m" href="/"><img className="logo_s logo_m" src="assets/images/logo.png"/></a>
             </li>
             <li className="nav-item">
                <a className="nav-link" href="#about">About</a>
@@ -35,10 +35,10 @@ function Home() {
          </ul>
          <span className="navbar-text" >
          <a href="https://twitter.com/barbarianinc" target={{target:"_blank"}}>
-         <img className="seicon" src="assets/css/icon_twitter.svg"/>
+         <img className="seicon" src="assets/images/icon/icon_twitter.svg"/>
          </a>
          <a href="https://twitter.com/barbarianinc" target={{target:"_blank"}}>
-         <img className="seicon" src="assets/css/icon_discord.svg"/>
+         <img className="seicon" src="assets/images/icon/icon_discord.svg"/>
          </a>
          </span>
       </div>
@@ -62,7 +62,7 @@ function Home() {
       <div className="row">
          <div className="col-sm-12 col-md-12 col-lg-10">
             <h1 className="h1_heading set_font"> Gallery</h1>
-            <div className="col-sm-12 col-md-12 col-lg-10"><img className="gallery_img" src="assets/css/8.png"/></div>
+            <div className="col-sm-12 col-md-12 col-lg-10"><img className="gallery_img" src="assets/images/gallery/8.png"/></div>
          </div>
          
       </div>
@@ -75,7 +75,7 @@ function Home() {
             <h1 className="h1_heading set_font"> Team</h1>
          </div>
          <div className="col-sm-12 col-md-12 col-lg-2"> 
-            <img className="image_dev" src="assets/css/nbreezay.png" />
+            <img className="image_dev" src="assets/images/team/nbreezay.png" />
          </div>
          <div className="row">
          <p className="desc_dev">
@@ -110,15 +110,15 @@ function Home() {
       <div className="container-fluid ">
          <div className="row icons_footer">
             <div className="col-sm-12 text-left">
-               <a className="navbar-brand navbar-footer" href="/"><img className="logo_s" src="assets/css/logo.png"/></a>                 
+               <a className="navbar-brand navbar-footer" href="/"><img className="logo_s" src="assets/images/logo.png"/></a>                 
             </div>
             <div className="col-sm-12 text-right">
                <span className="navbar-text" >
                <a href="https://twitter.com/BarbarianInc" target={{target:"_blank"}}>
-               <img className="seicon" src="assets/css/icon_twitter.svg"/>
+               <img className="seicon" src="assets/images/icon/icon_twitter.svg"/>
                </a>
                <a href="https://twitter.com/BarbarianInc" target={{target:"_blank"}}>
-               <img className="seicon" src="assets/css/icon_discord.svg"/>
+               <img className="seicon" src="assets/images/icon/icon_discord.svg"/>
                </a>
                </span>
             </div>
