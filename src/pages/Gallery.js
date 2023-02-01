@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react';
+import Navigation from '../components/Navigation';
+import GalleryItem from '../components/GalleryItem'
+
+
+
 function Home() {
     
   return (
       <>
+      
+      <Navigation />
       <div class="container gallery-container">
           <div class="row">
               <div class="col-xl-4 col-sm-12 filters">
