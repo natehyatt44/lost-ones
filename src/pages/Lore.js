@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 
 function Lore() {
     
@@ -7,7 +8,7 @@ function Lore() {
    <> 
    <Navigation />
    <section id="banner " className="lore_sec "></section>
-   <Navigation />
+   <Footer />
 	</>
   );
 }

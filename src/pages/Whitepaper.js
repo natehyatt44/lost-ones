@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 
 function Whitepaper() {
     
@@ -15,7 +16,7 @@ function Whitepaper() {
          </div>
       </div>
    </section>
-   <Navigation />
+   <Footer />
 	</>
   );
 }

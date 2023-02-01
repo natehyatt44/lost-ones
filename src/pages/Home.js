@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 
 function Home() {
     
@@ -21,8 +22,7 @@ function Home() {
          </div>
       </div>
    </section>
-
-   <Navigation />
+   <Footer />
 	</>
   );
 }
