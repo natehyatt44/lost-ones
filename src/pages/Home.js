@@ -18,7 +18,7 @@ function Home() {
                <a className="nav-link" href="#about">About</a>
             </li>
             <li className="nav-item">
-               <a className="nav-link" href="#gallery">Gallery</a>
+               <a className="nav-link" href="/gallery">Gallery</a>
             </li>
             <li className="nav-item">
                <a className="nav-link" href="#team">Team</a>

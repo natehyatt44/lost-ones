@@ -877,3 +877,48 @@
      display: none;
 }
  
+.gallery-container{
+    margin: 15px auto;
+}
+
+.gallery-container h1{
+    color: #cecece;
+}
+
+.gallery-container .search-input{
+    width: 100%;
+    margin: 15px 0;
+}
+
+.filters ul{
+    list-style: none;
+    padding: 0
+}
+
+.filters ul li{
+    padding: 15px;
+    border: 1px solid #cecece;
+    margin-bottom: 5px;
+}
+
+.filters ul li label{
+    color: #cecece;
+    padding-left: 7px;
+}
+
+.gallery-item{
+    float: left;
+    border: 1px solid #cecece;
+    padding: 7px;
+    margin-bottom: 5px;
+}
+
+.gallery-item img{
+    width: 100%;
+}
+
+.gallery-item title{
+    display: block;
+    color: #cecece;
+    padding: 5px 0;
+}
