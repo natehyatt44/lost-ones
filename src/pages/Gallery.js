@@ -22,37 +22,37 @@ function Home() {
                         <div class="row">
                             <div class="col-sm-12 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\css\images\gallery\4.png"></img>
+                                    <img src="assets\images\gallery\4.png"></img>
                                     <title>Item 1</title>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\css\images\gallery\8.png"></img>
+                                    <img src="assets\images\gallery\8.png"></img>
                                     <title>Item 2</title>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\css\images\gallery\16.png"></img>
+                                    <img src="assets\images\gallery\16.png"></img>
                                     <title>Item 3</title>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\css\images\gallery\17.png"></img>
+                                    <img src="assets\images\gallery\17.png"></img>
                                     <title>Item 4</title>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\css\images\gallery\18.png"></img>
+                                    <img src="assets\images\gallery\18.png"></img>
                                     <title>Item 5</title>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\css\images\gallery\27.png"></img>
+                                    <img src="assets\images\gallery\27.png"></img>
                                     <title>Item 6</title>
                                 </div>
                             </div>
