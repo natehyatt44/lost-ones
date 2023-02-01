@@ -9,9 +9,6 @@ html, body{
      overflow-x: hidden;
      position: relative;
 }
-.icons_footer{
-     padding: 3% 0 0 0;
-}
 .h1_heading{
      font-family: 'Poppins';
      font-weight: 900;
@@ -28,15 +25,15 @@ html, body{
 .footer_seicon{
     height: 30px;
     width: 30px;
-    margin: 0px 15px !important;
+    margin: 0px 15px;
 }
 .footerParent{
     position: relative;
+    padding: 0% 0%;
 }
 .footer{
-    position: absolute;
-    bottom:0;
-    right:6em;
+    position: relative;
+    text-align: center;
 }   
 .banner_sec{
      background-repeat: no-repeat;
@@ -71,34 +68,6 @@ html, body{
 }
 .set_font{
      text-transform: capitalize !important;
-}
-.gallery_img{
-    border-radius: 50%;
-    margin: auto;
-    display: block;
-    position: relative;
-
-    width: 250px;
-}
- .image_dev{
-     border-radius: 50%;
-     margin: auto;
-     display: block;
-     position: absolute;
-     bottom: -5em;
-     width: 250px;
-     right: 1em;
-}
-.desc_dev{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 275;
-    font-size: 24px;
-    line-height: 36px;
-    position: absolute;
-    color: #FFFFFF;
-    bottom: 8em;
-    right: 11.5em;
 }
 .bg-nav{
      margin-top: 25px;
@@ -428,3 +397,36 @@ html, body{
 .gallery-item img{
     width: 100%;
 }
+
+/* Team */
+.team-container{
+     margin: 15px auto;
+}
+.team-item{
+     float: left;
+     border: 1px hidden #cecece;
+     padding: 10px;
+     margin-bottom: 20px;
+}
+.team-item img{
+     border-radius: 50%;
+     width: 80%;
+     text-align: center;
+}
+.team-item title{
+     display: block;
+     text-align: left;
+
+     color: #cecece;
+     padding: 0px 0;
+     font-size: 40px;
+ }
+ .team-item p{
+     display: block;
+     color: #cecece;
+     padding: 0px 0;
+     text-align: left;
+     font-size: 20px;
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ }
+

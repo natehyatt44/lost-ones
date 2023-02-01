@@ -7,24 +7,44 @@ function Team() {
   return (
    <> 
    <Navigation />
-   <section id="team " className="info_sec ">
-   <div id="team" className="container  barb_sec">
-      <div className="row">
-         <div className="col-sm-12 col-md-12 col-lg-10">
-            <h1 className="h1_heading set_font"> Team</h1>
-         </div>
-         <div className="col-sm-12 col-md-12 col-lg-2"> 
-            <img className="image_dev" src="assets/images/team/nbreezay.png" />
-         </div>
-         <div className="row">
-         <p className="desc_dev">
-               nbreezay - dev
-            </p>
-         </div>
+      <div class="container team-container">
+          <div class="row">
+              <div class="col-xl-12 col-sm-12">
+                <div class="row">
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="team-item">
+                                    <title>Jman</title>
+                                    <p>CEO / Project Coordinator</p>
+                                    <img src="assets\images\team\jman.png"></img>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="team-item">
+                                    <title>Head Poncho</title>
+                                    <p>Community Manager / Story & Lore Writer</p>
+                                    <img src="assets\images\team\poncho.png"></img>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="team-item">
+                                    <title>Alixon</title>
+                                    <p>Artist</p>
+                                    <img src="assets\images\team\alixon.png"></img>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="team-item">
+                                    <title>nbreezay</title>
+                                    <p>Lead Developer</p>
+                                    <img src="assets\images\team\nbreezay.png"></img>
+                                </div>
+                            </div>
+                  
+                </div>
+              </div>
+          </div>
       </div>
-   </div>
-   </section>
-   <Footer />
+      <Footer />
 	</>
   );
 }

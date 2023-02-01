@@ -36,7 +36,7 @@ function Navigation() {
                     <a href="https://twitter.com/barbarianinc" target={{target:"_blank"}}>
                         <img className="seicon" src="assets/images/icon/icon_twitter.svg"/>
                     </a>
-                    <a href="https://twitter.com/barbarianinc" target={{target:"_blank"}}>
+                    <a href="https://discord.gg/vBuf9M4U" target={{target:"_blank"}}>
                         <img className="seicon" src="assets/images/icon/icon_discord.svg"/>
                     </a>
                     </span>
