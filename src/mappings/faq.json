@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "question": "What are we doing here?",
+        "answers": "Only the Unicorns know"
+    },
+    {
+        "id": 2,
+        "question": "How do i see things on this site?",
+        "answers": "You have to click on Gallery and hope the dev actually loaded images"
+    },
+    {
+        "id": 3,
+        "question": "Are you cool?",
+        "answers": "Time will tell this answer but for now..... uncertain"
+    },
+    {
+        "id": 4,
+        "question": "How Barbaric are we?",
+        "answers": "Very..... just Very..."
+    }
+]
