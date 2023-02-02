@@ -15,28 +15,28 @@ function Team() {
                                 <div class="team-item">
                                     <title>Jman</title>
                                     <p>CEO / Project Coordinator</p>
-                                    <img src="assets\images\team\jman.png"></img>
+                                    <img src="assets\images\team\jman1.png"></img>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-6">
                                 <div class="team-item">
                                     <title>Head Poncho</title>
                                     <p>Community Manager / Story & Lore Writer</p>
-                                    <img src="assets\images\team\poncho.png"></img>
+                                    <img src="assets\images\team\poncho1.png"></img>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-6">
                                 <div class="team-item">
                                     <title>Alixon</title>
                                     <p>Artist</p>
-                                    <img src="assets\images\team\alixon.png"></img>
+                                    <img src="assets\images\team\alixon1.png"></img>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-6">
                                 <div class="team-item">
                                     <title>nbreezay</title>
                                     <p>Lead Developer</p>
-                                    <img src="assets\images\team\nbreezay.png"></img>
+                                    <img src="assets\images\team\nbreezay1.png"></img>
                                 </div>
                             </div>
                   
