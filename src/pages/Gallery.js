@@ -1,6 +1,6 @@
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-const { Fade } = require("react-awesome-reveal");
+const { Zoom } = require("react-awesome-reveal");
 
 
 function Gallery() {
@@ -9,13 +9,11 @@ function Gallery() {
       <>
       <Navigation />
       <div class="container gallery-container">
+      <Zoom>
           <div class="row">
               <div class="col-xl-12 col-sm-12">
-              <Fade cascade damping={0.1}>
                 <div class="row">
-                
                         <div class="row">
-                        
                             <div class="col-sm-4 col-xl-4">
             
                                 <div class="gallery-item">
@@ -113,9 +111,10 @@ function Gallery() {
                         </div>
                        
                 </div>
-                </Fade>
+                
               </div>
           </div>
+          </Zoom>
       </div>
       
       <Footer />

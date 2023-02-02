@@ -11,7 +11,7 @@ function FAQ() {
    <> 
    <Navigation />
    <Banner>
-    <Slide left>
+    <Slide>
       <Banner.Header>Frequently Asked Questions</Banner.Header>
       {questions.map((question) => (
         <Banner.Entity key={question.id}>

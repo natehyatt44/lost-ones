@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-const { Fade } = require("react-awesome-reveal");
+const { Slide } = require("react-awesome-reveal");
 
 function Team() {
     
@@ -9,7 +9,7 @@ function Team() {
    <> 
    <Navigation />
       <div class="container team-container">
-        <Fade>
+        <Slide Left>
           <div class="row">
               <div class="col-xl-12 col-sm-12">
                 <div class="row">
@@ -45,7 +45,7 @@ function Team() {
                 </div>
               </div>
           </div>
-          </Fade>
+          </Slide>
       </div>
       <Footer />
 	</>
