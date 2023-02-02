@@ -1,6 +1,6 @@
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-const { Zoom } = require("react-awesome-reveal");
+const { Bounce } = require("react-awesome-reveal");
 
 
 function Gallery() {
@@ -9,7 +9,7 @@ function Gallery() {
       <>
       <Navigation />
       <div class="container gallery-container">
-      <Zoom>
+      <Bounce>
           <div class="row">
               <div class="col-xl-12 col-sm-12">
                 <div class="row">
@@ -114,7 +114,7 @@ function Gallery() {
                 
               </div>
           </div>
-          </Zoom>
+          </Bounce>
       </div>
       
       <Footer />

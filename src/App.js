@@ -1,3 +1,6 @@
+import { Amplify } from 'aws-amplify';
+import awsconfig from './aws-exports';
+
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
 import Team from "./pages/Team";
@@ -9,6 +12,7 @@ import FAQ from "./pages/FAQ";
 
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 function App() {
+  Amplify.configure(awsconfig);
   return (
     <Router>
   
