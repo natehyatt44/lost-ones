@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import GalleryItem from '../components/GalleryItem'
 import Footer from '../components/Footer';
-
+import Fade from 'react-reveal/Fade';
 
 
 function Gallery() {
     
   return (
       <>
-      
       <Navigation />
       <div class="container gallery-container">
+      <Fade>
           <div class="row">
               <div class="col-xl-12 col-sm-12">
                 <div class="row">
@@ -23,6 +23,7 @@ function Gallery() {
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
+
                                     <img src="assets\images\gallery\2.png"></img>
                                 </div>
                             </div>
@@ -110,6 +111,7 @@ function Gallery() {
                 </div>
               </div>
           </div>
+          </Fade>
       </div>
       <Footer />
       </>

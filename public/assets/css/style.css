@@ -30,6 +30,8 @@ html, body{
 .footerParent{
     position: relative;
     padding: 0% 0%;
+    padding-top: 1%;
+    border-top: 1px solid #cecece;
 }
 .footer{
     position: relative;
@@ -178,6 +180,7 @@ html, body{
         width: 60%;
     }
 }
+
 /* tabs */
 
  .tabs-section .nav-link {
@@ -308,7 +311,7 @@ html, body{
     }
     .logo_m{
          margin: 0 auto;
-         width: 50% !important;
+         width: 20% !important;
          display: block;
     }
     .bg-nav{
@@ -331,8 +334,8 @@ html, body{
          padding-left: 15px;
          padding-right: 15px;
          padding-bottom: 15px;
-         width: 30%;
-         height: 55%;
+         width: 70%;
+         height: 100%;
     }
     .navbar-collapses{
          position: relative;

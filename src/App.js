@@ -3,6 +3,7 @@ import Gallery from "./pages/Gallery";
 import Team from "./pages/Team";
 import Lore from "./pages/Lore";
 import Whitepaper from "./pages/Whitepaper";
+import Litepaper from "./pages/Litepaper";
 import Roadmap from "./pages/Roadmap";
 import FAQ from "./pages/FAQ";
 
@@ -17,6 +18,7 @@ function App() {
         <Route exact path='/team' exact element={<Team />} />
         <Route exact path='/lore' exact element={<Lore />} />
         <Route exact path='/whitepaper' exact element={<Whitepaper />} />
+        <Route exact path='/litepaper' exact element={<Litepaper />} />
         <Route exact path='/roadmap' exact element={<Roadmap />} />
         <Route exact path='/faq' exact element={<FAQ />} />
        

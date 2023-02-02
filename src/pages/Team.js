@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import Pulse from 'react-reveal/Pulse';
 
 function Team() {
     
@@ -8,6 +9,7 @@ function Team() {
    <> 
    <Navigation />
       <div class="container team-container">
+        <Pulse>
           <div class="row">
               <div class="col-xl-12 col-sm-12">
                 <div class="row">
@@ -43,6 +45,7 @@ function Team() {
                 </div>
               </div>
           </div>
+          </Pulse>
       </div>
       <Footer />
 	</>

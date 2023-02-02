@@ -1,12 +1,11 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
-  border-bottom: 9px solid #DEB887;
   display: flex;
 `;
 export const Entity = styled.div`
   color: #DEB887;
-  border: 1px solid #DEB887;
+  border: 1px solid #cecece;
   max-width: 690px;
   width: 99%;
   margin-bottom: 10px;
@@ -61,5 +60,5 @@ export const Header = styled.h1`
     font-size: 33px;
   }
 
-  color: #DEB887;
+  color: #cecece;
 `;

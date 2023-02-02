@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import Zoom from 'react-reveal/Zoom';
 
 function Home() {
     
@@ -8,8 +9,9 @@ function Home() {
    <> 
    
    <Navigation />
-   
+   <Zoom>
    <section id="banner " className="banner_sec "></section>
+   </Zoom>
    <section id="about" className="info_sec ">
       <div className="container  barb_sec">
          <div className="row">
