@@ -8,14 +8,14 @@ export const Entity = styled.div`
   border: 1px solid #cecece;
   max-width: 690px;
   width: 99%;
-  margin-bottom: 10px;
+  margin-bottom: 1px;
   margin: auto;
   &:first-of-type {
-    margin-top: 1.5em;
+    margin-top: 0.1em;
   }
 `;
 export const Inner = styled.div`
-  padding: 75px 40px;
+  padding: 40px 10px;
   max-width: 800px;
   margin: auto;
   flex-direction: column;
@@ -50,7 +50,7 @@ export const Text = styled.p`
 `;
 export const Header = styled.h1`
   color: #070707;
-  line-height: 7;
+  line-height: 2;
   margin-top: 0 !important;
   font-size: 45px;
   margin-bottom: 9px;

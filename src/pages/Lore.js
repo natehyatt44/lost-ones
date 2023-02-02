@@ -1,18 +1,16 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import Spin from 'react-reveal/Spin';
-
-
+const { Flip } = require("react-awesome-reveal");
 
 function Lore() {
     
   return (
    <> 
    <Navigation />
-   <Spin>
+   <Flip>
    <section id="banner " className="lore_sec "></section>
-   </Spin>
+   </Flip>
    <Footer />
 	</>
   );

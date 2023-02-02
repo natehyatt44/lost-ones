@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import Pulse from 'react-reveal/Pulse';
+const { Fade } = require("react-awesome-reveal");
 
 function Team() {
     
@@ -9,7 +9,7 @@ function Team() {
    <> 
    <Navigation />
       <div class="container team-container">
-        <Pulse>
+        <Fade>
           <div class="row">
               <div class="col-xl-12 col-sm-12">
                 <div class="row">
@@ -17,35 +17,35 @@ function Team() {
                                 <div class="team-item">
                                     <title>Jman</title>
                                     <p>CEO / Project Coordinator</p>
-                                    <img src="assets\images\team\jman1.png"></img>
+                                    <img src="assets\images\team\jman1.png" alt="teamimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-6">
                                 <div class="team-item">
                                     <title>Head Poncho</title>
                                     <p>Community Manager / Story & Lore Writer</p>
-                                    <img src="assets\images\team\poncho1.png"></img>
+                                    <img src="assets\images\team\poncho1.png" alt="teamimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-6">
                                 <div class="team-item">
                                     <title>Alixon</title>
                                     <p>Artist</p>
-                                    <img src="assets\images\team\alixon1.png"></img>
+                                    <img src="assets\images\team\alixon1.png" alt="teamimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-6">
                                 <div class="team-item">
                                     <title>nbreezay</title>
                                     <p>Lead Developer</p>
-                                    <img src="assets\images\team\nbreezay1.png"></img>
+                                    <img src="assets\images\team\nbreezay1.png" alt="teamimg"></img>
                                 </div>
                             </div>
                   
                 </div>
               </div>
           </div>
-          </Pulse>
+          </Fade>
       </div>
       <Footer />
 	</>

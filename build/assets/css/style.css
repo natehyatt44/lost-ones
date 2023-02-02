@@ -1,21 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
- body{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+body{
      background: #000000;
      font-family: 'Poppins';
 }
- html, body{
+html, body{
      overflow-x: hidden;
      position: relative;
 }
- .footer_sec{
-     padding: 5% 3% 2% 3%;
-}
- .icons_footer{
-     padding: 3% 0 0 0;
-}
- .h1_heading{
+.h1_heading{
      font-family: 'Poppins';
      font-weight: 900;
      font-size: 64px;
@@ -23,33 +17,47 @@
      color: #fff;
      text-transform: uppercase;
 }
- .h1_head_sml{
-     font-family: 'Poppins';
-     font-weight: 700;
-     font-size: 40px;
-     line-height: 40px;
-     color: rgb(0, 0, 0);
-     position: relative;
-     top: -6em;
-}
- .seicon{
+.seicon{
      height: 50px;
      width: 50px;
      margin: 0px 15px;
 }
- img{
-     width: 100%;
+.footer_seicon{
+    height: 30px;
+    width: 30px;
+    margin: 0px 15px;
 }
- .banner_sec{
+.footerParent{
+    position: relative;
+    padding: 0% 0%;
+    padding-top: 1%;
+    border-top: 1px solid #cecece;
+}
+.footer{
+    position: relative;
+    text-align: center;
+}   
+.banner_sec{
      background-repeat: no-repeat;
      background-size: 90%;
      background-color: #000000;
-     background-image: url('5barbs.png') !important;
+     background-image: url('banner_barbs.png') !important;
      padding:15% 10%;
      left:5%;
      right:5%;
      position: relative;
      z-index: -99;
+}
+.lore_sec{
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-color: #000000;
+    background-image: url('book.png') !important;
+    padding:25% 10%;
+    left:5%;
+    right:5%;
+    position: relative;
+    z-index: -99;
 }
 .info_sec {
     background-image: linear-gradient(108.98deg, rgba(255, 255, 255, 0.37) -9.68%, rgba(255, 255, 255, 0.26) -9.67%, rgba(217, 217, 217, 0) 99.34%) !important;
@@ -60,85 +68,14 @@
     margin: 5% 8%;
     padding: 5% 5% 5% 5%;
 }
- .btn_cion{
-     margin-left: 24px;
-     margin-top: 10px;
-}
- .seicon{
-     height: 30px;
-     width: 30px;
-     margin: 0px 5px;
-}
- .text_icn{
-     font-family: 'Poppins';
-     font-weight: 300;
-     font-size: 24px;
-     line-height: 30px;
-     color: #FFFFFF;
-     margin-bottom: 10px;
-}
- .map_sec{
-     position: relative;
-     top: 1em;
-}
- .set_font{
+.set_font{
      text-transform: capitalize !important;
 }
-.gallery_img{
-    border-radius: 50%;
-    margin: auto;
-    display: block;
-    position: relative;
-
-    width: 250px;
-}
- .image_dev{
-     border-radius: 50%;
-     margin: auto;
-     display: block;
-     position: absolute;
-     bottom: -5em;
-     width: 250px;
-     right: 1em;
-}
-.desc_dev{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 275;
-    font-size: 24px;
-    line-height: 36px;
-    position: absolute;
-    color: #FFFFFF;
-    bottom: 8em;
-    right: 11.5em;
-}
- .btn_ion{
-     background: #FFFFFF;
-     border-radius: 9px;
-     font-family: 'Poppins';
-     font-style: normal;
-     font-weight: 900;
-     font-size: 32px;
-     line-height: 48px;
-     padding: 10px 50px;
-     border: none;
-     color: #2C2C2C;
-}
- .btn_soc{
-     margin-top: 7%;
-}
- .btn_ion:hover{
-     text-decoration: none;
-     color: white;
-     background: #2196f3;
-     box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
-     transition-delay: 0.3s;
-}
- .bg-nav{
+.bg-nav{
      margin-top: 25px;
      padding: 0 6%;
 }
- .nav-link{
+.nav-link{
      margin: 10px;
      color: white !important;
      margin: 6px 24px;
@@ -149,13 +86,10 @@
      font-size: 20px;
      line-height: 30px;
 }
- .nav-link:hover{
+.nav-link:hover{
      color: #50cf5a !important;
 }
- .navbar-nav li:last-child{
-     margin-right: 10px;
-}
- .para_p {
+.para_p {
      font-family: 'Poppins';
      font-style: normal;
      font-weight: 275;
@@ -163,142 +97,31 @@
      line-height: 36px;
      color: #FFFFFF;
 }
- .banner_div{
-     position: relative;
-}
- .img_banner{
-     position: absolute;
-     bottom: 0;
-     left: 0;
-}
- .button_buy{
-     font-size: 26px;
-     color: white;
-     border: 2px solid #50cf5a;
-     padding: 5px 30px 8px 30px;
-     border-radius: 10px;
-     box-shadow: -1px 0px 22px 0px rgb(80 207 90);
-     -webkit-box-shadow: -1px 0px 22px 0px rgb(80 207 90);
-     -moz-box-shadow: -1px 0px 22px 0px rgb(80 207 90);
-}
- .btn:focus {
-     box-shadow: none;
-}
- .col_text{
-     margin-bottom: 14%;
-}
- .button_buy:hover{
-     color: black;
-     background: #50cf5a;
-     text-decoration: none;
-}
- .first_section{
-     padding-top: 40px;
-}
- #footer_nebula{
-     background: #000422;
-}
- .footer_links a{
-     margin: 1px 14px !important;
-}
- @media screen and (max-width: 1024px) and (min-width: 991px) {
-     .first_sec{
-         padding: 19% 10%;
-    }
-     .second_sec{
-         padding: 7% 5% 27% 9%;
-         top: -2em;
-    }
-     .token_nomics{
-         position: relative !important;
-         top: -9em;
-    }
-     .third_sec{
-         padding: 8% 5% 8% 9%;
-    }
-     .hwtby{
-         position: relative !important;
-         top: -5em;
-    }
+
+/* Phones */
+
+@media screen and (max-width: 1024px) and (min-width: 991px) {
      .para_p{
          font-size: 16px;
          line-height: 26px;
     }
-     .image_ad{
-        border-radius: 50%;
-         bottom: 1em;
-         width: 200px;
-         right: 4em;
-    }
-     .btn_soc {
-         margin-top: 3%;
-    }
-     .map_sec {
-         position: relative;
-         top: -2em;
-    }
 }
- @media screen and (max-width: 1440px) and (min-width: 1025px) {
-     .first_sec{
-         padding: 18% 12% 24% 12%;
-    }
+
+@media screen and (max-width: 1440px) and (min-width: 1025px) {
      .para_p{
          font-size: 23px;
     }
-     .second_sec{
-         padding: 7% 12% 32% 12%;
-         top: -2em;
-    }
-     .third_sec{
-         padding: 7% 5% 10% 7%;
-         top: -11em;
-         position: relative !important;
-    }
-     .hwtby{
-         top: -7em !important;
-    }
-     .image_ad{
-         bottom: -7em;
-         width: 200px;
-         right: -1em;
-    }
-     .btn_soc {
-         margin-top: 3%;
-    }
-     .map_sec {
-         position: relative;
-         top: -5em;
-    }
 }
- @media screen and (max-width: 1780px) and (min-width: 1441px) {
-     .first_sec{
-         padding: 18% 10% 28% 10%;
-    }
-     .second_sec{
-         padding: 7% 5% 30% 9%;
-         top: -7em;
-    }
-     .third_sec{
-        /* padding: 3% 5% 3% 5%;
-         */
-         top: -18em;
-         position: relative !important;
-    }
-     .hwtby {
-         top: -13em;
-         position: relative !important;
-    }
-     .map_sec {
-         position: relative;
-         top: -8em;
-    }
+
+@media screen and (max-width: 1780px) and (min-width: 1441px) {
+
 }
- @media only screen and (min-width: 1781px) {
-     .third_sec{
-         padding:14% 15%;
-    }
+
+@media only screen and (min-width: 1781px) {
+
 }
- @media screen and (max-width: 1320px) and (min-width: 991px) {
+
+@media screen and (max-width: 1320px) and (min-width: 991px) {
      .bg-nav{
          padding: 0 3%;
     }
@@ -311,192 +134,55 @@
          margin: 0px 7px;
     }
 }
- @media screen and (max-width: 1499px) and (min-width: 1200px) {
+
+@media screen and (max-width: 1499px) and (min-width: 1200px) {
+
 }
- @media only screen and (max-width: 991px) and (min-width: 768px) {
-     .navbar-toggler{
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+    .navbar-toggler{
          background: #fff;
     }
-    /* .first_sec{
-         padding: 10% 5%;
-    }
-     */
-     .map_sec {
-         top: 0;
-    }
-     .first_sec, .second_sec, .third_sec {
-         padding: 6% 2%;
-        /*background-image: linear-gradient(108.98deg, rgba(255, 255, 255, 0.37) -9.68%, rgba(255, 255, 255, 0.26) -9.67%, rgba(217, 217, 217, 0) 99.34%) !important;
-        */
-         background-color: #000422;
-         backdrop-filter: blur(40px) !important;
-        /* Note: backdrop-filter has minimal browser support */
-         border-radius: 64px;
-         position: unset !important;
-         margin: 30px 20px;
-    }
-     br{
-         display: none;
-    }
-     .circledot {
-         height: 300px;
-         width: 400px;
-         background-color: #bbb;
-         border-radius: 50%;
-         display: inline-block;
-         position: absolute;
-         top: 22em;
-         left: -6em;
-         z-index: -99;
-         background: linear-gradient(150.38deg, #D96704 18.11%, #005343 99.67%);
-    }
-     .dimonds{
-         background: linear-gradient(72deg, #0D5046 0.66%, rgba(3, 60, 53, 0) 154.34%);
-         border-radius: 14px;
-         transform: rotate(168deg);
-         height: 300px;
-         width: 300px;
-         background-color: #bbb;
-         display: inline-block;
-         position: absolute;
-         top: 53em;
-         left: 33em;
-         z-index: -99;
-    }
 }
- @media only screen and (max-width: 767px) {
-     .logo_s{
-         width: 100%;
+
+@media only screen and (max-width: 767px) {
+    .logo_s{
+         width: 70%;
          padding-bottom: 0;
     }
      .navbar-brand{
          display: block;
          margin: 0 auto;
     }
-     .bg-nav{
+    .bg-nav{
          padding-left: 2% !important;
          padding-right: 2% !important;
     }
-     .btn_ion{
-         text-align: center;
-         font-size: 15px;
-    }
-     .navbar-toggler{
+    .navbar-toggler{
          margin: 0 auto;
     }
-     .navbar-light .navbar-toggler{
+    .navbar-light .navbar-toggler{
          background: #fff;
          border-color: #000000;
          margin-top: 3%;
          margin-bottom: 3%;
     }
-     .h1_heading{
+    .h1_heading{
          font-size: 38px;
     }
-     .col_text br{
-         display: none;
-    }
-     .h1_head_sml{
+    .h1_head_sml{
          font-size: 32px;
     }
-     .para_p {
+    .para_p {
          font-size: 17px;
     }
-     br{
-         display: none;
-    }
-     .token_nomics br{
-         display: block;
-    }
-     .image_ad{
-         position: unset;
-         width: 100%;
-         padding-top: 8%;
-    }
-     .map_sec{
-         position: unset;
-    }
-     .first_sec, .second_sec, .third_sec {
-         padding: 6% 2%;
-        /* background-image: linear-gradient(108.98deg, rgba(255, 255, 255, 0.37) -9.68%, rgba(255, 255, 255, 0.26) -9.67%, rgba(217, 217, 217, 0) 99.34%) !important;
-        */
-         background-color: #000000;
-         backdrop-filter: blur(40px) !important;
-        /* Note: backdrop-filter has minimal browser support */
-         border-radius: 40px;
-         position: unset !important;
-         margin: 30px 20px;
-    }
-     .circledot {
-         height: 250px;
-         width: 250px;
-         background-color: #bbb;
-         border-radius: 50%;
-         display: inline-block;
-         position: absolute;
-         top: 31em;
-         left: -6em;
-         z-index: -99;
-         background: linear-gradient(150.38deg, #D96704 18.11%, #005343 99.67%);
-    }
-     .dimonds{
-         background: linear-gradient(72deg, #0D5046 0.66%, rgba(3, 60, 53, 0) 154.34%);
-         border-radius: 14px;
-         transform: rotate(168deg);
-         height: 250px;
-         width: 250px;
-         background-color: #bbb;
-         display: inline-block;
-         position: absolute;
-         top: 67em;
-         left: 15em;
-         z-index: -99;
-    }
-     .navbar-footer .logo_s{
-         width: 60%;
-    }
-     .footer_sec {
-         padding: 20% 10%;
+    .navbar-footer .logo_s{
+        width: 60%;
     }
 }
+
 /* tabs */
- .col_side{
-     border-right: 1px solid #FFFFFF;
-}
- .cont_dash{
-     margin: 12px 50px;
-}
- .tabs-section {
-     overflow: hidden;
-}
- .elem_span{
-     font-family: 'Poppins';
-     font-style: normal;
-     font-weight: 275;
-     font-size: 20px;
-     line-height: 30px;
-     display: block;
-    /* identical to box height */
-     color: #FFFFFF;
-     margin-bottom: 10px;
-}
- .content_div{
-     background: #000000;
-     border-radius: 22px;
-     padding: 21px 12px 21px 21px;
-}
- .elem_bold{
-     font-size: 24px !important;
-     line-height: 36px !important;
-     font-weight: 700 !important;
-}
- .elem_sub{
-     font-size: 15px !important;
-     line-height: 22px !important;
-}
- .tabs-section .nav-tabs {
-     border: 0;
-}
+
  .tabs-section .nav-link {
      font-family: 'Poppins';
      font-style: normal;
@@ -506,11 +192,6 @@
     /* identical to box height */
      text-align: center;
      color: #FFFFFF;
-}
- .footer_links .nav-link {
-     display: block;
-     padding: 0.5rem 1rem !important;
-     margin: 0 auto !important;
 }
  .tabs-section .nav-link:hover {
      color: #cddc39;
@@ -548,137 +229,7 @@
  .tabs-section .details p {
      color: #aaaaaa;
 }
- .marset{
-     margin-top: 12px;
-}
- .marsets{
-     margin-bottom: 12px;
-}
- .main_node{
-     padding: 31px 23px;
-     background: #000000;
-     border-radius: 32px;
-     max-width: 500px;
-     width: 100%;
-     margin: 0 auto;
-}
- .main_swap{
-     padding: 39px;
-     background: #000000;
-     border-radius: 32px;
-     max-width: 756px;
-     width: 100%;
-     margin: 0 auto;
-}
- .main_swap h3{
-     text-align: left !important;
-}
- .main_node h3, .main_swap h3{
-     font-family: 'Poppins';
-     font-style: normal;
-     font-weight: 900;
-     font-size: 32px;
-     line-height: 48px;
-     color: #008F79;
-     text-align: center;
-}
- .instruct h3{
-     font-family: 'Poppins';
-     font-style: normal;
-     font-weight: 900;
-     font-size: 20px;
-     line-height: 30px;
-     color: #FFFFFF;
-     text-align: left;
-}
- input::placeholder{
-     font-family: 'Poppins';
-     font-style: normal;
-     font-weight: 275;
-     font-size: 16px;
-     line-height: 24px;
-     color: #898989;
-}
- .instruct h4{
-     font-family: 'Poppins';
-     font-style: normal;
-     font-weight: 250;
-     font-size: 16px;
-     line-height: 24px;
-     color: #FFFFFF;
-}
- .instruct{
-     margin-top: 26px;
-}
- .txts_feild{
-     background: #D9D9D9;
-     border-radius: 4px;
-     float: right;
-     width: 200px;
-     padding-left: 10px;
-}
- .txtss_feild{
-     background: #D9D9D9;
-     border-radius: 49px;
-     width: 100%;
-     padding: 0 10px;
-     height: 60px;
-}
- .txts_feild:focus-visible,.txtss_feild:focus-visible {
-     outline: none;
-}
- .lab_span{
-     font-family: 'Poppins';
-     font-style: normal;
-     font-weight: 900;
-     font-size: 22px;
-     line-height: 48px;
-     color: #008F79;
-     float: right;
-}
- .dib{
-     display: inline-block;
-}
- .dcl{
-     position: relative;
-     bottom: 2.5em;
-     padding: 0 15px;
-}
- .fasic{
-     text-align: center;
-     background: #D9D9D9;
-     border-radius: 50px;
-     padding: 10px;
-     transform: rotate(90deg);
-     color: #5C5C5C;
-}
- .icon-exchnnage{
-     position: relative;
-     left: 50%;
-}
- .price_table{
-     width: 100%;
-}
- .righrspan{
-     float: right;
-}
- .btn_swap{
-     font-family: 'Poppins';
-     font-style: normal;
-     font-weight: 900;
-     font-size: 32px;
-     line-height: 48px;
-     color: #008F79;
-     width: 100%;
-     background: #D9D9D9;
-     border-radius: 49px;
-}
- .cont_tabs{
-     margin: 2% 5% 5% 5%;
-}
- .header-dapp{
-     margin: 54px 78px 0 78px;
-}
+ 
  @media only screen and (max-width: 1140px) and (min-width: 768px) {
      .tabs-section .nav-link{
          font-size: 18px;
@@ -730,107 +281,63 @@
          font-size: 18px;
     }
 }
- .buttonStyle{
-     background: #FFFFFF;
-     border-radius: 9px;
-     font-family: 'Poppins';
-     font-style: normal;
-     font-weight: 900;
-     font-size: 16px;
-     line-height: 30px;
-     padding: 10px 10px;
-     border: none;
-     color: #2C2C2C;
-     margin: 20px 7px 10px 7px;
-}
- .buttonStyle:hover{
-     text-decoration: none;
-     color: white;
-     background: #2196f3;
-     box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
-     transition-delay: 0.3s;
-}
- .tokenSpan{
-     font-weight: bold;
-}
- .blink_me {
-     animation: blinker 1s linear infinite;
-     color: white;
-     background: #2196f3;
-     box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
-     transition-delay: 0.3s;
-     width: fit-content;
-     margin: 0 auto;
-     padding: 10px 40px;
-     border-radius: 9px;
-     font-family: 'Poppins';
-     font-style: normal;
-     font-weight: 600;
-}
- @keyframes blinker {
+ 
+@keyframes blinker {
      5% {
          opacity: 0;
     }
 }
- .hd_m{
+
+.hd_m{
      display: none;
 }
- .logo_m{
+.logo_m{
      width: 55% !important;
      padding-left: 5%;
 }
- @media (max-width: 767px) {
-     .navtbass{
+
+@media (max-width: 767px) {
+    .navtbass{
          display: none;
     }
-     .hd_m, .navs_hyd{
+    .hd_m, .navs_hyd{
          display: block !important;
     }
 }
- @media (max-width: 768px) {
-     .header-dapp{
-         margin: 30px 0 5px 0;
-    }
-     .btn_cion {
-         margin-left: 10px;
-    }
-     .text_icn{
-         font-size: 20px;
-    }
-     .icons_footer .text-right{
-         text-align: center !important;
-    }
-     .tabs_g{
+
+@media (max-width: 768px) {
+    .tabs_g{
          margin-top: 0 !important;
     }
-     .logo_m{
+    .logo_m{
          margin: 0 auto;
+         width: 20% !important;
          display: block;
     }
-     .bg-nav{
+    .bg-nav{
          background: #000000;
     }
-     .blink_me{
+    .blink_me{
          margin-top: 20%;
     }
-     #navbarText{
+    #navbarText{
          background: #000000;
          z-index: 99;
     }
-     .navbar-nav{
+    .navbar-nav{
          padding-top: 7%;
     }
-     .navbar-collapse {
+    .navbar-collapse {
          position: fixed;
          top: 0;
          left: 0;
          padding-left: 15px;
          padding-right: 15px;
          padding-bottom: 15px;
-         width: 75%;
+         width: 70%;
          height: 100%;
     }
-     .navbar-collapses{
+    .navbar-collapses{
          position: relative;
          padding-left: 15px;
          padding-right: 15px;
@@ -838,42 +345,91 @@
          width: 100%;
          height: 100%;
     }
-     .navbar-collapse.collapsing {
+    .navbar-collapse.collapsing {
          left: -75%;
          transition: height 0s ease;
     }
-     .navbar-collapse.show {
+    .navbar-collapse.show {
          left: 0;
          transition: left 500ms ease-in-out;
     }
-     .navbar-toggler.collapsed ~ .navbar-collapse {
+    .navbar-toggler.collapsed ~ .navbar-collapse {
          transition: left 500ms ease-in-out;
     }
-     .hyd_navs {
+    .hyd_navs {
          padding-top: 5%;
     }
-     .btn_dash{
+    .btn_dash{
          margin-top: 20px;
     }
-     .navbar_btnss{
+    .navbar_btnss{
          margin-left: 80%;
     }
-     .tabs_g .nav-link{
+    .tabs_g .nav-link{
          font-size: 20px;
     }
-     .tabs_g .nav-link::before{
+    .tabs_g .nav-link::before{
          width: 22px !important;
          top: 1.2em;
          left: 1.5em;
     }
-     .tabs_g .nav-link{
+    .tabs_g .nav-link{
          margin: 6px 10px;
     }
-     .blink_me{
+    .blink_me{
          font-size: 28px;
     }
 }
  .navs_hyd{
      display: none;
 }
+
+/* Gallery */
  
+.gallery-container{
+    margin: 15px auto;
+}
+
+.gallery-item{
+    float: left;
+    border: 1px solid #cecece;
+    padding: 7px;
+    margin-bottom: 5px;
+}
+
+.gallery-item img{
+    width: 100%;
+}
+
+/* Team */
+.team-container{
+     margin: 15px auto;
+}
+.team-item{
+     float: left;
+     border: 1px hidden #cecece;
+     padding: 10px;
+     margin-bottom: 20px;
+}
+.team-item img{
+     border-radius: 50%;
+     width: 80%;
+     text-align: center;
+}
+.team-item title{
+     display: block;
+     text-align: left;
+
+     color: #cecece;
+     padding: 0px 0;
+     font-size: 40px;
+ }
+ .team-item p{
+     display: block;
+     color: #cecece;
+     padding: 0px 0;
+     text-align: left;
+     font-size: 20px;
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ }
+

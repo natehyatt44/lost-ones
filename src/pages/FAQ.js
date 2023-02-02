@@ -3,7 +3,7 @@ import questions from "../mappings/faq.json";
 import Banner from "../components/FaqInfo"
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import LightSpeed from 'react-reveal/LightSpeed';
+const { Slide } = require("react-awesome-reveal");
 
 function FAQ() {
     
@@ -11,7 +11,7 @@ function FAQ() {
    <> 
    <Navigation />
    <Banner>
-    <LightSpeed left>
+    <Slide left>
       <Banner.Header>Frequently Asked Questions</Banner.Header>
       {questions.map((question) => (
         <Banner.Entity key={question.id}>
@@ -19,7 +19,7 @@ function FAQ() {
           <Banner.Text>{question.answers}</Banner.Text>
         </Banner.Entity>
       ))}
-      </LightSpeed>
+      </Slide>
     </Banner>
    {}
    <Footer />

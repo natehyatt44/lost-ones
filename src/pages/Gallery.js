@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
-import GalleryItem from '../components/GalleryItem'
 import Footer from '../components/Footer';
-import Fade from 'react-reveal/Fade';
+const { Fade } = require("react-awesome-reveal");
 
 
 function Gallery() {
@@ -11,108 +9,115 @@ function Gallery() {
       <>
       <Navigation />
       <div class="container gallery-container">
-      <Fade>
           <div class="row">
               <div class="col-xl-12 col-sm-12">
+              <Fade cascade damping={0.1}>
                 <div class="row">
+                
                         <div class="row">
+                        
                             <div class="col-sm-4 col-xl-4">
+            
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\1.png"></img>
+                                    <img src="assets\images\gallery\1.png" alt="galleryimg"></img>
                                 </div>
+                            
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
 
-                                    <img src="assets\images\gallery\2.png"></img>
+                                    <img src="assets\images\gallery\2.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\3.png"></img>
+                                    <img src="assets\images\gallery\3.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\4.png"></img>
+                                    <img src="assets\images\gallery\4.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\5.png"></img>
+                                    <img src="assets\images\gallery\5.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\6.png"></img>
+                                    <img src="assets\images\gallery\6.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\7.png"></img>
+                                    <img src="assets\images\gallery\7.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\8.png"></img>
+                                    <img src="assets\images\gallery\8.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\9.png"></img>
+                                    <img src="assets\images\gallery\9.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\10.png"></img>
+                                    <img src="assets\images\gallery\10.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\11.png"></img>
+                                    <img src="assets\images\gallery\11.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\12.png"></img>
+                                    <img src="assets\images\gallery\12.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\13.png"></img>
+                                    <img src="assets\images\gallery\13.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\14.png"></img>
+                                    <img src="assets\images\gallery\14.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\15.png"></img>
+                                    <img src="assets\images\gallery\15.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\16.png"></img>
+                                    <img src="assets\images\gallery\16.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\17.png"></img>
+                                    <img src="assets\images\gallery\17.png" alt="galleryimg"></img>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xl-4">
                                 <div class="gallery-item">
-                                    <img src="assets\images\gallery\18.png"></img>
+                                    <img src="assets\images\gallery\18.png" alt="galleryimg"></img>
                                 </div>
                             </div>
+                           
                         </div>
+                       
                 </div>
+                </Fade>
               </div>
           </div>
-          </Fade>
       </div>
+      
       <Footer />
       </>
   );
