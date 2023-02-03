@@ -6,13 +6,12 @@ import Footer from '../components/Footer';
 const { Slide } = require("react-awesome-reveal");
 
 function FAQ() {
-    
   return (
    <> 
    <Navigation />
    <Banner>
     <Slide>
-      <Banner.Header>Frequently Asked Questions</Banner.Header>
+    <Banner.Header>Frequently Asked Questions</Banner.Header>
       {questions.map((question) => (
         <Banner.Entity key={question.id}>
           <Banner.Question>{question.question}</Banner.Question>
