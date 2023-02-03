@@ -1,6 +1,6 @@
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-const { Bounce } = require("react-awesome-reveal");
+const { Slide } = require("react-awesome-reveal");
 
 
 function Gallery() {
@@ -9,7 +9,7 @@ function Gallery() {
       <>
       <Navigation />
       <div class="container gallery-container">
-      <Bounce>
+      <Slide>
           <div class="row">
               <div class="col-xl-12 col-sm-12">
                 <div class="row">
@@ -107,14 +107,28 @@ function Gallery() {
                                     <img src="assets\images\gallery\18.png" alt="galleryimg"></img>
                                 </div>
                             </div>
-                           
+                            <div class="col-sm-4 col-xl-4">
+                                <div class="gallery-item">
+                                    <img src="assets\images\gallery\19.png" alt="galleryimg"></img>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xl-4">
+                                <div class="gallery-item">
+                                    <img src="assets\images\gallery\20.png" alt="galleryimg"></img>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xl-4">
+                                <div class="gallery-item">
+                                    <img src="assets\images\gallery\21.png" alt="galleryimg"></img>
+                                </div>
+                            </div>
                         </div>
                        
                 </div>
                 
               </div>
           </div>
-          </Bounce>
+          </Slide>
       </div>
       
       <Footer />

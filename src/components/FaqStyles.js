@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
 `;
 export const Entity = styled.div`
-  color: #DEB887;
+  color: #cecece;
   border: 1px solid #cecece;
   max-width: 690px;
   width: 99%;
@@ -29,8 +29,8 @@ export const Question = styled.div`
   display: flex;
   font-weight: normal;
   background: #1a1919;
-  padding: 0.75em 1.12em;
-  align-items: center;
+  padding: 0.75em 2.12em;
+  align-items: left;
 `;
 export const Text = styled.p`
   max-height: 1190px;

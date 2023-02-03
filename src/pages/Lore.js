@@ -1,16 +1,16 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-const { Flip } = require("react-awesome-reveal");
+const { Zoom } = require("react-awesome-reveal");
 
 function Lore() {
     
   return (
    <> 
    <Navigation />
-   <Flip>
+   <Zoom>
    <section id="banner " className="lore_sec "></section>
-   </Flip>
+   </Zoom>
    <Footer />
 	</>
   );
