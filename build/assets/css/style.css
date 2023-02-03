@@ -37,26 +37,7 @@ html, body{
     position: relative;
     text-align: center;
 }   
-
-/* Home */
-.home-container{
-     margin: 15px auto;
- }
- 
-.home-item{
-     float:left;
-     border: 1px solid #cecece;
-     padding: 7px;
-     margin-bottom: 5px;
- }
- 
- .home-item img{
-     width: 50%;
-     position: relative;
-     left:5%;
- }
-
- .banner_sec{
+.banner_sec{
      background-repeat: no-repeat;
      background-size: 90%;
      background-color: #000000;
@@ -443,7 +424,7 @@ html, body{
      padding: 0px 0;
      font-size: 40px;
  }
-.team-item p{
+ .team-item p{
      display: block;
      color: #cecece;
      padding: 0px 0;

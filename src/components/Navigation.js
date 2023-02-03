@@ -23,10 +23,10 @@ function Navigation() {
                         <a className="nav-link" href="/lore">Lore</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="/whitepaper">Whitepaper</a>
+                        <a className="nav-link" href="/litepaper">Litepaper</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="/litepaper">Litepaper</a>
+                        <a className="nav-link" href="/whitepaper">Whitepaper</a>
                         </li>
                         <li className="nav-item">
                         <a className="nav-link" href="/roadmap">RoadMap</a>
