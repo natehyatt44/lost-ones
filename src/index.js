@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 //import 'semantic-ui-css/semantic.min.css'
 import { Amplify } from 'aws-amplify'
-import awsconfig from './aws-exports'
-Amplify.configure(awsconfig)
+import awsmobile from './aws-exports'
+Amplify.configure(awsmobile)
 
 ReactDOM.render(
   <React.StrictMode> 

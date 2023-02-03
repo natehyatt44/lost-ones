@@ -13,7 +13,7 @@ function Whitepaper() {
             <div className="col-sm-12 col-md-12 col-lg-12 text-left p-0">
                <h1 className="h1_heading set_font"> Whitepaper</h1>
                <br/>
-               <p className="para_p  ">MISSION STATEMENT <br/>
+               <p className="para_p  ">MISSION STATEMENT <br/><br/>
                   To create a community driven ecosystem of nft collections under the umbrella of BarbarianInc, 
                   which is a special and unique NFT company catering to the larger crypto space as a whole. 
                   Our main goal is to establish ourselves as a brand upon which trust and value can come to be expected. 
@@ -21,19 +21,19 @@ function Whitepaper() {
                   attention of collectors not just within Hedera, but also with collectors from many other ecosystems outside of Hedera as well, 
                   acting as a catalyst to help grow the user base of Hedera itself.
                   <br/><br/>
-                  THE PROBLEM AS WE SEE IT <br/>
+                  THE PROBLEM AS WE SEE IT <br/><br/>
                   Abuse of the term “Community Founders Passes”, a lack of transparency surrounding what is being built and/or worked on, 
                   the absence of a fully doxed team, and an overall lack of depth and utility surrounding certain collections are all issues that are not unique to 
                   the Hedera NFT space. In fact, it could be argued that these problems are far more common with-in other NFT ecosystems outside of Hedera, 
                   however they are still very much present to a certain extent on our own home turf.
                   <br/><br/>
-                  THE SOLUTION AS WE SEE IT <br/>
+                  THE SOLUTION AS WE SEE IT <br/><br/>
                   Provide outstanding real-world utility to all our collections. Anything released under the umbrella of BarbarianInc will have its own unique purpose and 
                   place with-in our ecosystem. Everything we build will be of the highest quality in terms of art, with extreme attention to detail being paid at every turn. 
                   Finally, dispelling the unfavorable views people have in regards to Community Founders Passes will be accomplished through tethering maximum 
                   functionality to our own CFPs, while simultaneously providing fully transparent and on-going updates as new use cases arise for these.
                   <br/><br/>
-                  VALUE PROP FOR THE COLLECTIONS WITHIN THE BARBARIANINC ECOSYSTEM <br/>
+                  VALUE PROP FOR THE COLLECTIONS WITHIN THE BARBARIANINC ECOSYSTEM <br/><br/>
                   At BarbarianInc we aim to build value from the ground up, one collection at a time. By coupling timeless art and a plethora of announced holder 
                   benefits in conjunction with the release of our “Hbarbarians” Community Founders Passes, this will very much set the stage for what 
                   comes next, our Alternate Reality Game (ARG). We will then launch and roll out our 5 subsequent NFT collections associate with our ARG, 
@@ -43,7 +43,7 @@ function Whitepaper() {
                   Keeping up and maintaining this momentum will be of our utmost priority. It is in this way that we will build and maintain value 
                   within our company, through actually delivering.
                   <br/><br/>
-                  FUNDING <br/>
+                  FUNDING <br/><br/>
                   Here at BarbarianInc we are fostering an attitude of “If you build it, they will come”. Every mint we hold will have 20% 
                   (post launchpad fees, of course) placed into a company treasury to help fund all company related needs and sub-contract work, 
                   and to build up the underlying valuation of BarbarianInc as a whole. We also plan on approaching VCs for funding once we have 

@@ -13,7 +13,7 @@ function Litepaper() {
             <div className="col-sm-12 col-md-12 col-lg-12 text-left p-0">
                <h1 className="h1_heading set_font"> Litepaper </h1>
                <br/>
-               <p className="para_p bolded">MISSION STATEMENT <br/> 
+               <p className="para_p bolded">MISSION STATEMENT <br/><br/> 
                   To create a community driven ecosystem of nft collections under the umbrella of BarbarianInc, 
                   which is a special and unique NFT company catering to the larger crypto space as a whole. 
                   Our main goal is to establish ourselves as a brand upon which trust and value can come to be expected. 
