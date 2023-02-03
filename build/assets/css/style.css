@@ -89,6 +89,15 @@ html, body{
 .nav-link:hover{
      color: #50cf5a !important;
 }
+.bolded_p {
+     font-family: 'Poppins' !important;
+     font-size: 36px !important;
+     line-height: 40px !important;
+     color: #ac2525 !important;
+     text-align: left !important;
+     font-style: italic !important;
+     font-weight: 275 !important;
+}
 .para_p {
      font-family: 'Poppins';
      font-style: normal;
@@ -96,7 +105,9 @@ html, body{
      font-size: 24px;
      line-height: 36px;
      color: #FFFFFF;
+     text-align: left;
 }
+
 
 /* Phones */
 

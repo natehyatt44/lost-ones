@@ -9,9 +9,10 @@ function FAQ() {
   return (
    <> 
    <Navigation />
+   <section id="faq " className="info_sec ">
    <Banner>
     <Slide>
-    <Banner.Header>Frequently Asked Questions</Banner.Header>
+    <Banner.Header><h1 className="h1_heading set_font"> FAQ? We got you.. </h1></Banner.Header>
       {questions.map((question) => (
         <Banner.Entity key={question.id}>
           <Banner.Question>{question.question}</Banner.Question>
@@ -21,6 +22,7 @@ function FAQ() {
       </Slide>
     </Banner>
    {}
+   </section>
    <Footer />
 	</>
   );
