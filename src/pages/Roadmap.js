@@ -11,9 +11,9 @@ function Roadmap() {
       <div class="container roadmap-container">
       <Slide>
       <div class="row">
-              <div class="col-xl-12 col-sm-12">
+              <div class="col-xl-12 col-sm-4">
                 <div class="row">
-                            <div class="col-sm-12 col-xl-12">
+                            <div class="col-sm-4 col-xl-12">
                                 <div class="roadmap-item">
         
                      <img src="assets\images\roadmap.png" alt="roadmap"></img>
