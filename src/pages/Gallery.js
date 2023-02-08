@@ -9,7 +9,7 @@ function Gallery() {
   return (
       <>
       <Navigation />
-      <section id="Lore " className="info_sec ">
+      <section id="Gallery " className="info_sec ">
       <div class="container gallery-container">
       <Slide>
           <div class="row">
