@@ -11,7 +11,7 @@ function Home() {
    <Navigation />
    <Slide>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-item">
-      <h1 className="h1_heading set_font"> Barbarian Inc </h1>
+    <h1 className="h1_heading set_font"> Barbarian Inc </h1>
     </div>
     <section id="banner " className="banner_sec ">
     </section>
@@ -24,10 +24,10 @@ function Home() {
           </div>
           <div class="row">
             <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left p-0 lore-item">
-                <img src="assets\images\gallery\24.png" alt="loreimg"></img>
+                <img src="assets/images/gallery/24.png" alt="loreimg"></img>
             </div>
             <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left p-0 lore-item">
-                <img src="assets\images\gallery\23.png" alt="loreimg"></img>
+                <img src="assets/images/gallery/23.png" alt="loreimg"></img>
             </div>
             <div class="row">
                 <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left p-0 lore-item">
@@ -40,56 +40,55 @@ function Home() {
           </div>
       </div>
     </section>
-    <div id="Prologue " className="lore_sec ">
+    <section id="Prologue " className="lore_sec ">
       <div class="container prologue-container">
-        <div class="row">
-          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
-            <h1 className="h1_heading set_font"> Prologue </h1>
-            
-          </div>
-        </div>
-        <div class="row">
-          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left p-0 lore-item">
-            <p className="para_p">
-                Warning: The world around you is not real. It’s not even close. Your senses are not a limited window into reality, they are an abstraction of each individual's objective fiction known as reality, which is separate from the true nature of existence. At all times and in all places, there are atoms, particles, and physical laws that remain not yet fully understood beneath the surface. To most of us, what is tangible to our senses is generally what is accepted as real. The experience is real, and your perceptions are real – as perceptions. However, there is also a hidden dimension beyond what can be perceived by the senses. Venture further if you dare Lost One, but beware, questioning the fabric of reality can lead one to madness or enlightenment. I must warn you, it may be hard to tell the difference.
-                If you've made it this far then welcome, Lost One. The journey out of the ignorant abyss is difficult, but guidance awaits the courageous. Can you recall how long your soul has been wandering? Probably not, but you are lucky to find this path, as some have been wandering aimlessly for eons. The ancients claimed that evolution hasn't given living beings the innate ability to perceive reality's truth, as their senses are restricted. As a result, the inhabitants of this galaxy have evolved to focus on surviving in their environment, not to grasp reality’s true essence. Aristotle, the ancient philosopher, was the first to recognize these five senses: touch, hearing, sight, smell, and taste. He theorized that these five portals to the external world were the means by which each soul came to know the world. In his search for divine truth, he also theorized about certain elusive sensory perceptions– color, sound, and temperature.  He also stressed the unreliable nature of these instincts – emphasizing the importance of the mind's role in deciphering this sensory information. Aristotle also noted that our thoughts and ideas exist beyond the realm of what can be perceived through our faculties. This is the path to a deeper understanding. The vastness of time is infinite, but our lifespans are limited. Use your time wisely, only a select few, brave explorers will be able to uncover the secrets of reality in their lifetime. Best of luck on your journey. In time you may find that your perceptions are there to hide true reality because the truth is too complicated.
-            </p>
-          </div>
-         </div>
-      </div>
-    </div>
-    <section id="Prologue " className="info_sec ">
-      <div class="container team-container">
-          <h1 className="h1_heading set_font"> The Team </h1>
           <div class="row">
-            <div class="col-xl-12 col-sm-12">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+                <h1 className="h1_heading set_font"> Prologue - The Lost Ones </h1> <br/><br/>
                 <div class="row">
-                  <div class="col-sm-12 col-xl-6">
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left p-0 lore-item">
+                      <p className="para_p">
+                        Warning: The world around you is not real. It’s not even close. Your senses are not a limited window into reality, they are an abstraction of each individual's objective fiction known as reality, which is separate from the true nature of existence. At all times and in all places, there are atoms, particles, and physical laws that remain not yet fully understood beneath the surface. To most of us, what is tangible to our senses is generally what is accepted as real. The experience is real, and your perceptions are real – as perceptions. However, there is also a hidden dimension beyond what can be perceived by the senses. Venture further if you dare Lost One, but beware, questioning the fabric of reality can lead one to madness or enlightenment. I must warn you, it may be hard to tell the difference. <br/><br/>
+                        If you've made it this far then welcome, Lost One. The journey out of the ignorant abyss is difficult, but guidance awaits the courageous. Can you recall how long your soul has been wandering? Probably not, but you are lucky to find this path, as some have been wandering aimlessly for eons. The ancients claimed that evolution hasn't given living beings the innate ability to perceive reality's truth, as their senses are restricted. As a result, the inhabitants of this galaxy have evolved to focus on surviving in their environment, not to grasp reality’s true essence. Aristotle, the ancient philosopher, was the first to recognize these five senses: touch, hearing, sight, smell, and taste. He theorized that these five portals to the external world were the means by which each soul came to know the world. In his search for divine truth, he also theorized about certain elusive sensory perceptions– color, sound, and temperature.  He also stressed the unreliable nature of these instincts – emphasizing the importance of the mind's role in deciphering this sensory information. Aristotle also noted that our thoughts and ideas exist beyond the realm of what can be perceived through our faculties. This is the path to a deeper understanding. The vastness of time is infinite, but our lifespans are limited. Use your time wisely, only a select few, brave explorers will be able to uncover the secrets of reality in their lifetime. Best of luck on your journey. In time you may find that your perceptions are there to hide true reality because the truth is too complicated.
+                      </p>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </section>
+    <section id="Team " className="info_sec ">
+      <div class="container team-container">
+          <div class="row">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+                <h1 className="h1_heading set_font"> The Team </h1><br/><br/>
+                <div class="row">
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 lore-item">
                       <div class="team-item">
                         <title>Jman</title>
                         <p>CEO / Project Coordinator</p>
-                        <img src="assets\images\team\jman1.png" alt="teamimg"></img>
+                        <img src="assets/images/team/jman1.png" alt="teamimg"></img>
                       </div>
                   </div>
-                  <div class="col-sm-12 col-xl-6">
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 lore-item">
                       <div class="team-item">
                         <title>Head Poncho</title>
                         <p>Community Manager / Story & Lore Writer</p>
-                        <img src="assets\images\team\poncho1.png" alt="teamimg"></img>
+                        <img src="assets/images/team/poncho1.png" alt="teamimg"></img>
                       </div>
                   </div>
-                  <div class="col-sm-12 col-xl-6">
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 lore-item">
                       <div class="team-item">
                         <title>Alixon</title>
                         <p>Artist</p>
-                        <img src="assets\images\team\alixon1.png" alt="teamimg"></img>
+                        <img src="assets/images/team/alixon1.png" alt="teamimg"></img>
                       </div>
                   </div>
-                  <div class="col-sm-12 col-xl-6">
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 lore-item">
                       <div class="team-item">
                         <title>nbreezay</title>
                         <p>Lead Developer</p>
-                        <img src="assets\images\team\nbreezay1.png" alt="teamimg"></img>
+                        <img src="assets/images/team/nbreezay1.png" alt="teamimg"></img>
                       </div>
                   </div>
                 </div>
@@ -97,8 +96,8 @@ function Home() {
           </div>
       </div>
     </section>
-    </Slide>
-    <Footer />
+  </Slide>
+  <Footer />
 	</>
   );
 }

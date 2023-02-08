@@ -15,7 +15,7 @@ function Roadmap() {
             <div className="col-sm-4 col-md-12 col-lg-12 text-center p-0">
                <h1 className="h1_heading set_font"> Roadmap </h1>
                   <div class="roadmap-item">
-                     <img src="assets\images\roadmap.png" alt="roadmap"></img>
+                     <img src="assets/images/roadmap.png" alt="roadmap"></img>
                   </div>    
                </div>
          </div>

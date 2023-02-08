@@ -20,7 +20,16 @@ html, body{
 .h1_head_sml{
      font-family: 'Poppins';
      font-weight: 700;
-     font-size: 30px;
+     font-size: 25px;
+     line-height: 40px;
+     color: #fff;
+     text-transform: uppercase;
+     text-decoration: underline;
+}
+.h1_head_xs{
+     font-family: 'Poppins';
+     font-weight: 600;
+     font-size: 20px;
      line-height: 40px;
      color: #fff;
      text-transform: uppercase;
@@ -61,14 +70,13 @@ html, body{
 }
 
 .lore_sec{
-     background-image: url('background.png') !important;
+     background-image: url('background_transparent.png') !important;
      backdrop-filter: blur(40) !important;
      border: 2px solid #ffffff36;
      border-radius: 60px;
      position: unset !important;
      margin: 5% 7%;
      padding: 5% 5% 5% 5%;
-     opacity: 0.1;
 }
 .info_sec {
     background-image: linear-gradient(108.98deg, rgba(255, 255, 255, 0.37) -9.68%, rgba(255, 255, 255, 0.26) -9.67%, rgba(217, 217, 217, 0) 99.34%) !important;
@@ -184,6 +192,9 @@ html, body{
     .h1_head_sml{
          font-size: 20px;
     }
+    .h1_head_xs{
+     font-size: 18px;
+}
     .para_p {
          font-size: 15px;
     }
