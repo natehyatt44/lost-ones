@@ -17,12 +17,6 @@ function Navigation() {
                         <a className="nav-link" href="/gallery">Gallery</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="/team">Team</a>
-                        </li>
-                        <li className="nav-item">
-                        <a className="nav-link" href="/lore">Lore</a>
-                        </li>
-                        <li className="nav-item">
                         <a className="nav-link" href="/litepaper">Litepaper</a>
                         </li>
                         <li className="nav-item">
