@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/hellothere": {
+      "name": "/hellothere",
+      "lambdaFunction": "testlambda",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
