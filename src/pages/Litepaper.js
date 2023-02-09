@@ -44,20 +44,23 @@ function Litepaper() {
                <h1 className="h1_head_sml set_font"> What is an alternate reality game and how will the "The Lost Ones" Act as an ARG? </h1> 
                An ARG is a type of transmedia game that blurs the line between the game world and the real world. ARGs typically consist of a series of puzzles and 
                challenges that players must solve in order to progress through the game. These puzzles often involve real-world elements such as websites, history,
-                and real-life events. The goal of an ARG is to create a sense of immersion, and to allow players to experience a story in a unique and interactive way. 
-                ARGs can be played by a large number of people simultaneously, and they often involve elements of mystery, adventure, and suspense. In this text-based format, 
-                the team will commence the development of the NFT-powered ARG for the community, entitled "The Lost Ones."
+               and real-life events. The goal of an ARG is to create a sense of immersion, and to allow players to experience a story in a unique and interactive way. 
+               <br/><br/>
+               ARGs can be played by a large number of people simultaneously, and they often involve elements of mystery, adventure, and suspense. In this text-based format, 
+               the team will commence the development of the NFT-powered ARG for the community, entitled "The Lost Ones."
                For those without an “Hbarbarian” Community Founders Pass, access to “The Lost Ones” storyline and ARG will be granted to the individual through an 
                initial public mint of soul-bindable character NFTs. It should be noted that “Hbarbarian” Community Founders Passes do NOT need to be soul-bound.
-                If the right type of NFT from the character collection has been acquired by an individual, and they choose to have it soul-bound to a wallet in their possession, 
-                then this will provide an opportunity for them to complete the specific storyline associated with it. Determining which of these character 
-                NFTs will provide the possibility to participate will be based on word games, hints, and other scavenger hunt-style activities hosted by the team.
-                 This will be the first among many inquiries that players must answer to beat the game.
+               <br/><br/>
+               If the right type of NFT from the character collection has been acquired by an individual, and they choose to have it soul-bound to a wallet in their possession, 
+               then this will provide an opportunity for them to complete the specific storyline associated with it. Determining which of these character 
+               NFTs will provide the possibility to participate will be based on word games, hints, and other scavenger hunt-style activities hosted by the team.
+               This will be the first among many inquiries that players must answer to beat the game.
+               <br/><br/>
                Ultimately, the main twist on ARG gameplay is that it will be up to the participants to hunt down and hold within the same wallet, the right
-                combination of NFTs from each collection dropped in association with “The Lost Ones”. Without the perfect lineage (combination) of NFTs held in their wallet,
-                 their text-based adventure will not be complete. Many participants will be motivated to try to discover the true, fully completed ending to the 
-                 storyline by the potential of winning large prizes denoted in $HBAR. Rewards will be funded through 15% of all profits from all 5 mints associated with
-                  “The Lost Ones” being placed in a prize pool. This will genuinely motivate and potentially even reward those who chose to commit themselves to the game.
+               combination of NFTs from each collection dropped in association with “The Lost Ones”. Without the perfect lineage (combination) of NFTs held in their wallet,
+               their text-based adventure will not be complete. Many participants will be motivated to try to discover the true, fully completed ending to the 
+               storyline by the potential of winning large prizes denoted in $HBAR. Rewards will be funded through 15% of all profits from all 5 mints associated with
+               “The Lost Ones” being placed in a prize pool. This will genuinely motivate and potentially even reward those who chose to commit themselves to the game.
                <br/><br/>
                <h1 className="h1_head_sml set_font"> How do "HBarbarian" Community Founders Passes Relate To Our ARG? </h1> 
                Each "Hbarbarian" Community Founder Pass will function as a playable character in our ARG, "The Lost Ones". It is crucial to keep in mind that not 
