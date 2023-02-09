@@ -3,13 +3,6 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 const { Slide } = require("react-awesome-reveal");
 
-{/* <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-item">
-<br/><br/>
-<h1 className="h1_heading set_font"> Barbarian Inc </h1>
-</div> 
- <section id="banner " className="banner_sec ">
-    </section>
-*/}
 function Home() {
     
   return (
