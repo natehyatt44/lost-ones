@@ -3,6 +3,13 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 const { Slide } = require("react-awesome-reveal");
 
+{/* <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-item">
+<br/><br/>
+<h1 className="h1_heading set_font"> Barbarian Inc </h1>
+</div> 
+ <section id="banner " className="banner_sec ">
+    </section>
+*/}
 function Home() {
     
   return (
@@ -10,11 +17,16 @@ function Home() {
    
    <Navigation />
    <Slide>
-    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-item">
-    <h1 className="h1_heading set_font"> Barbarian Inc </h1>
+   <div class="container banner-container">
+    <div class="row">
+        <div className="col-0 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-desktop-item">
+          <img src="assets/css/barbinc_banner3.png" alt="bannerimg"></img>
+        </div>
+        <div className="col-12 col-sm-12  banner-mobile-item">
+          <img src="assets/css/barbmobile_banner1.png" alt="bannerimg"></img>
+        </div>
+      </div>
     </div>
-    <section id="banner " className="banner_sec ">
-    </section>
     <section id="Lore " className="info_sec ">
       <div class="container lore-container">
           <div class="row">
@@ -23,11 +35,8 @@ function Home() {
             </div>
           </div>
           <div class="row">
-            <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left p-0 lore-item">
-                <img src="assets/images/gallery/24.png" alt="loreimg"></img>
-            </div>
-            <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left p-0 lore-item">
-                <img src="assets/images/gallery/23.png" alt="loreimg"></img>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+                <img src="assets/css/banner_barbs.png" alt="loreimg"></img>
             </div>
             <div class="row">
                 <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left p-0 lore-item">
@@ -48,7 +57,7 @@ function Home() {
           </div>
       </div>
     </section>
-    <section id="Prologue " className="lore_sec ">
+    <section id="Prologue " className="info_sec ">
       <div class="container prologue-container">
           <div class="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
@@ -86,31 +95,31 @@ function Home() {
     <section id="Team " className="info_sec ">
       <div class="container team-container">
           <div class="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-item">
                 <h1 className="h1_heading set_font"> The Team </h1><br/><br/>
                 <div class="row">
-                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 lore-item">
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 team-item">
                       <div class="team-item">
                         <title>Jman</title>
                         <p>CEO / Project Coordinator</p>
                         <img src="assets/images/team/jman1.png" alt="teamimg"></img>
                       </div>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 lore-item">
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 team-item">
                       <div class="team-item">
                         <title>Head Poncho</title>
                         <p>Community Manager / Story & Lore Writer</p>
                         <img src="assets/images/team/poncho1.png" alt="teamimg"></img>
                       </div>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 lore-item">
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 team-item">
                       <div class="team-item">
                         <title>Alixon</title>
                         <p>Artist</p>
                         <img src="assets/images/team/alixon1.png" alt="teamimg"></img>
                       </div>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 lore-item">
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 team-item">
                       <div class="team-item">
                         <title>nbreezay</title>
                         <p>Lead Developer</p>

@@ -54,37 +54,13 @@ html, body{
     position: relative;
     text-align: center;
 }   
-.banner_sec{
-     background-repeat: no-repeat;
-     background-size: 90%;
-     background-color: #000000;
-     background-image: url('banner_barbs.png') !important;
-     padding:15% 10%;
-     left:5%;
-     right:5%;
-     position: relative;
-     z-index: -99;
-}
-.prologue-container{
-     opacity: 1 !important;
-}
-
-.lore_sec{
-     background-image: url('background_transparent.png') !important;
-     backdrop-filter: blur(40) !important;
-     border: 2px solid #ffffff36;
-     border-radius: 60px;
-     position: unset !important;
-     margin: 5% 7%;
-     padding: 5% 5% 5% 5%;
-}
 .info_sec {
-    background-image: linear-gradient(108.98deg, rgba(255, 255, 255, 0.37) -9.68%, rgba(255, 255, 255, 0.26) -9.67%, rgba(217, 217, 217, 0) 99.34%) !important;
+    background-image: url('background_transparent.png') !important;
     backdrop-filter: blur(40px) !important;
-    border: 2px solid #ffffff36;
+    border: 0.5px solid #ffffff36;
     border-radius: 60px;
     position: unset !important;
-    margin: 5% 7%;
+    margin: 5% 1%;
     padding: 5% 5% 5% 5%;
 }
 .set_font{
@@ -124,20 +100,30 @@ html, body{
          font-size: 16px;
          line-height: 26px;
     }
+    .banner-mobile-item img{
+     display: none;
+}
 }
 
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
      .para_p{
          font-size: 23px;
     }
+    .banner-mobile-item img{
+     display: none;
+}
 }
 
 @media screen and (max-width: 1780px) and (min-width: 1441px) {
-
+     .banner-mobile-item img{
+          display: none;
+     }
 }
 
 @media only screen and (min-width: 1781px) {
-
+     .banner-mobile-item img{
+          display: none;
+     }
 }
 
 @media screen and (max-width: 1320px) and (min-width: 991px) {
@@ -152,16 +138,24 @@ html, body{
          width: 35px;
          margin: 0px 7px;
     }
+    .banner-mobile-item img{
+          display: none;
+     }
 }
 
 @media screen and (max-width: 1499px) and (min-width: 1200px) {
-
+     .banner-mobile-item img{
+          display: none;
+     }
 }
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
     .navbar-toggler{
          background: #fff;
     }
+    .banner-mobile-item img{
+     display: none;
+     }
 }
 
 @media only screen and (max-width: 767px) {
@@ -288,6 +282,9 @@ html, body{
      .main_swap, .main_node{
          padding: 22px;
     }
+    .banner-mobile-item img{
+          display: none;
+     }
 }
  @media only screen and (max-width: 767px) {
      .cont_tabs{
@@ -401,6 +398,9 @@ html, body{
     .blink_me{
          font-size: 28px;
     }
+    .banner-desktop-item img{
+          display: none;
+     }
 }
  .navs_hyd{
      display: none;
@@ -415,7 +415,8 @@ html, body{
 .gallery-item{
     float: left;
     border: 1px solid #cecece;
-    padding: 7px;
+    padding: 5px;
+    margin: 45px;
     margin-bottom: 5px;
 }
 
@@ -435,12 +436,12 @@ html, body{
 }
 .team-item img{
      border-radius: 50%;
-     width: 80%;
+     width: 60%;
      text-align: center;
 }
 .team-item title{
      display: block;
-     text-align: left;
+     text-align: center;
 
      color: #cecece;
      padding: 0px 0;
@@ -450,7 +451,7 @@ html, body{
      display: block;
      color: #cecece;
      padding: 0px 0;
-     text-align: left;
+     text-align: center;
      font-size: 20px;
      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
  }
@@ -474,8 +475,8 @@ html, body{
 
  .lore-item img{
      max-width: 90%;
-     border: .5px solid #cecece;
-     border-radius: 80%;
+     border: 1px solid #cecece;
+     border-radius: 15%;
  }
 
  .lore-item{
@@ -488,10 +489,13 @@ html, body{
    /* Home */
 
 .banner-container{
-     margin: 15px auto;
+    margin: 15px auto;
  }
 
- .banner-item img{
+ .banner-desktop-item img{
+     max-width: 100%;
+ }
+ .banner-mobile-item img{
      max-width: 100%;
  }
 
