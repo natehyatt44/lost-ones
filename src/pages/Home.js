@@ -91,29 +91,29 @@ function Home() {
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-item">
                 <h1 className="h1_heading set_font"> The Team </h1><br/><br/>
                 <div class="row">
-                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 team-item">
-                      <div class="team-item">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                      <div className="team-item">
                         <title>Jman</title>
                         <p>CEO / Project Coordinator</p>
                         <img src="assets/images/team/jman1.png" alt="teamimg"></img>
                       </div>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 team-item">
-                      <div class="team-item">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                      <div className="team-item">
                         <title>Head Poncho</title>
                         <p>Community Manager / Story & Lore Writer</p>
                         <img src="assets/images/team/poncho1.png" alt="teamimg"></img>
                       </div>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 team-item">
-                      <div class="team-item">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                      <div className="team-item">
                         <title>Alixon</title>
                         <p>Artist</p>
                         <img src="assets/images/team/alixon1.png" alt="teamimg"></img>
                       </div>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center p-0 team-item">
-                      <div class="team-item">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                      <div className="team-item">
                         <title>nbreezay</title>
                         <p>Lead Developer</p>
                         <img src="assets/images/team/nbreezay1.png" alt="teamimg"></img>
