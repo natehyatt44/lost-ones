@@ -468,6 +468,7 @@ html, body{
  .roadmap-item img{
      max-width: 100%;
      border-radius: 20%;
+     margin-bottom: 30px;
  }
 
   /* Lore */
