@@ -14,9 +14,9 @@ function Litepaper() {
       <div id="Litepaper" className="container-fluid ">
          <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12 text-center p-0">
-               <h1 className="h1_heading set_font"> Litepaper </h1> <br/>
+               <h1 className="h1_heading set_font"> Litepaper </h1> 
             </div>
-            <div className="col-sm-12 col-md-12 col-lg-12 text-left p-0">
+            <div className="col-sm-12 col-md-12 col-lg-12 text-center p-0">
                <br/>
                <h1 className="h1_head_sml set_font"> Mission Statement </h1> 
                <p className="para_p">To unveil a batch of 2,000 PFP-style Community Founders Passes aimed at boosting funding for the project, 

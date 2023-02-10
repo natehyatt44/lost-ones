@@ -8,7 +8,7 @@ function Roadmap() {
   return (
    <> 
    <Navigation />
-   <section id="Roadmap " className="info_sec ">
+   <section id="Roadmap " className="background_sec ">
       <div class="container roadmap-container">
       <Slide>
          <div className="row">

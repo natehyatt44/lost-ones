@@ -11,7 +11,7 @@ function FAQ() {
   return (
    <> 
    <Navigation />
-   <section id="faq " className="info_sec ">
+   <section id="faq " className="background_sec ">
    <Banner>
     <Slide>
     <Banner.Header><h1 className="h1_heading set_font"> FAQ </h1></Banner.Header>
@@ -25,7 +25,6 @@ function FAQ() {
     </Banner>
    {}
    </section>
-   <Button text="yolo" onClick={lambdaCall}></Button>
    <Footer />
 	</>
   );
