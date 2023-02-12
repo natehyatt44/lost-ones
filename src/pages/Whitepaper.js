@@ -8,12 +8,12 @@ function Whitepaper() {
   return (
    <> 
    <Navigation />
-   <section id="Whitepaper " className="info_sec ">
+   <section id="Whitepaper " className="background_sec ">
       <Slide>
       <div id="Whitepaper" className="container-fluid ">
          <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12 text-center p-0">
-               <h1 className="h1_heading set_font"> Whitepaper </h1>
+            <br/> <br/>  <h1 className="h1_heading set_font"> Whitepaper </h1>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-12 text-center p-0">
                <br/>

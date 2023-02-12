@@ -13,15 +13,15 @@ function Home() {
    <div class="container banner-container">
    <div class="row">
       <div className="col-0 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-desktop-item">
-         <img src="assets/css/barbinc_banner3.png" alt="bannerimg"></img>
+         <img src="assets/images/banner/home_banner6.png" alt="bannerimg"></img>
       </div>
       <div className="col-12 col-sm-12  banner-mobile-item">
-         <img src="assets/css/barbmobile_banner1.png" alt="bannerimg"></img>
+         <img src="assets/images/banner/home_banner_mobile.png" alt="bannerimg"></img>
       </div>
    </div>
     </div>
     <section id="Lore " className="info_sec ">
-      <div id = "Lore " className="container-fluid ">
+      <div class ="container lore-container" className="container-fluid ">
           <div class="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
                 <br/>
@@ -30,7 +30,6 @@ function Home() {
           </div>
           <div class="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
-                <br/>
                 <h1 className="h1_head_sml set_font"> Mortals </h1>
             </div>
           </div>
@@ -52,21 +51,21 @@ function Home() {
           </div>
           <div class="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
-                <img src="assets/css/banner_barbs1.png" alt="loreimg"></img>
+                <img src="assets/images/banner/5barb_banner.png" alt="loreimg"></img>
             </div>
           </div>
       </div>
     </section>
-    <section id="Prologue " className="background_sec ">
-      <div id="container prologue-container" className="container-fluid ">
+    <section id="Prologue " className="traitbackground_sec ">
+      <div class="container prologue-container" className="container-fluid ">
           <div class="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
-                <br/><br/><br/><br/><br/><br/>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
+                <br/><br/><br/><br/><br/>
                 <h1 className="h1_heading set_font"> Prologue - The Lost Ones </h1>
             </div>
           </div>
           <div class="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
                 <br/><br/>
                 <p className="para_p">
                   Warning: The world around you is not real. It’s not even close. Your senses are not a limited window into reality, they are an abstraction of each 
@@ -90,7 +89,7 @@ function Home() {
                   brave explorers will be able to uncover the secrets of reality in their lifetime. Best of luck on your journey. 
                   In time you may find that your perceptions are there to hide true reality because the truth is too complicated.
                 </p>
-                <br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/>
             </div>
           </div>
       </div>

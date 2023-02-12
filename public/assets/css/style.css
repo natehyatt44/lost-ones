@@ -56,15 +56,16 @@ html, body{
 }   
 .info_sec {
     position: relative !important;
-    margin: 1% 1%;
-    padding: 1% 0% 0% 1%;
 }
 .background_sec {
-     background-image: url('background_transparent.png') !important;
+     background-image: url('../images/background/background_transparent.png') !important;
      backdrop-filter: blur(40px) !important;
      position: relative !important;
-     margin: 1% 1%;
-     padding: 1% 0% 0% 1%;
+ }
+ .traitbackground_sec {
+     background-image: url('../images/background/background_trait.png') !important;
+     backdrop-filter: blur(40px) !important;
+     position: relative !important;
  }
 .set_font{
      text-transform: capitalize !important;
@@ -429,23 +430,19 @@ html, body{
 /* Team */
 .team-container{
      margin: 15px auto;
-     margin-bottom: 100px;
+     margin-bottom: 20px;
 }
 .team-item{
      float: left;
-     margin-bottom: 15px;
+     margin-bottom: 5px;
 }
 .team-item img{
-     /*border-radius: 50%;*/
      width: 60%;
-     border: 3px solid #cecece;
      padding: 5px;
-     
 }
 .team-item title{
      display: block;
      text-align: center;
-
      color: #cecece;
      padding: 0px 0;
      font-size: 40px;
@@ -475,6 +472,23 @@ html, body{
  .lore-item img{
      max-width: 100%;
  }
+.lore-item {
+     float: center;
+     width: 90%;
+     padding-left: 50%;
+     padding-right: 50%;
+}
+.container-fluid {
+     float: center;
+     width: 90%;
+     padding-left: 5%;
+     padding-right: 5%;
+}
+
+ /* Prologue */
+ .prologue-container{
+     padding: 50px 50px;
+  }
 
    /* Home */
 
