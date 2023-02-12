@@ -6,31 +6,36 @@
     },
     {
         "id": 2,
-        "question": "What is your mint price going to be for the 'Hbarbarians' Community Founders Passes?",
-        "answers": "420 Hbar"
+        "question": "What is your mint price going to be for the 'Hbarbarians' Community Founders Passes? Is it the same for the WL versus the Public Mint?",
+        "answers": "Yes it is the same. 420 Hbar"
     },
     {
         "id": 3,
+        "question": "Wait, is my Hbarbarian playable in the ARG? I saw something about how not all character NFTs are playable...",
+        "answers": "Yes! All 'Hbarbarians' Community Founders Passes are in fact playable characters in our up and coming Alternate Reality text based Game (ARG). They will be valid playable characters as the Mortals race."
+    },
+    {
+        "id": 4,
         "question": "Is all of your art original? Do you use any AI Technology to produce art?",
         "answers": "All our art is completely original and done in-house by one of our founders Alixon Viloria. No AI tech is ever used at any stage. We are very proud of this, and remain committed to staying on this path."
     },
     {
-        "id": 4,
+        "id": 5,
         "question": "Is the company Barbarian Inc a legally established entity?",
         "answers": "No, not yet. Our plan is to establish ourselves as either an International LLC, or as some other form of business structure that is most appropriate for what we are building. We are holding off on proceeding with this until after our “Hbarbarians” Community Founders Passes have minted out. We want to ensure that we will be able to pay for proper legal counsel regarding this matter."
     },
     {
-        "id": 5,
+        "id": 6,
         "question": "How far does your outlook for the company extend?",
         "answers": "As of right now, we have a Long Term Roadmap that extends out for the next 5 years, with the POTENTIAL to have an open ended impact on the space that could be felt for another 5 to 10 years after that. We are waiting to release this version of the roadmap until we are almost completed with the Phase One portion of our planned journey."
     },
     {
-        "id": 6,
+        "id": 7,
         "question": "Why should we trust you?",
         "answers": "Trust is earned not given. We encourage each and everyone of you to do your own Due Diligence on the team and the project. Dig through our Twitter, go back and listen to the various spaces we’ve been on, scour through the website, wait for discord and then come hang out with the team in there. We are here to EARN your trust, not expect it."
     },
     {
-        "id": 7,
+        "id": 8,
         "question": "Are you going to Hedera Con?",
         "answers": "Yes. Whether on an official capacity (as we hope) or not, at the very least our Project Coordinator and CEO Justin will be in attendance."
     }
