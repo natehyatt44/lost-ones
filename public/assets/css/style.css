@@ -35,8 +35,8 @@ html, body{
      text-transform: uppercase;
 }
 .seicon{
-     height: 50px;
-     width: 50px;
+     height: 40px;
+     width: 40px;
      margin: 0px 15px;
 }
 .footer_seicon{
@@ -71,18 +71,22 @@ html, body{
      text-transform: capitalize !important;
 }
 .bg-nav{ 
-     padding: 0 6%;
+     padding: 0 1%;
+}
+.logo_s{
+     width: 70%;
+     padding-bottom: 0;
 }
 .nav-link{
      margin: 10px;
      color: white !important;
-     margin: 6px 24px;
+     margin: 3px 24px;
      text-align: left;
      font-family: 'Poppins';
      font-style: normal;
      font-weight: 275;
      font-size: 20px;
-     line-height: 30px;
+     line-height: 25px;
 }
 .nav-link:hover{
      color: #50cf5a !important;
@@ -131,7 +135,7 @@ html, body{
 
 @media screen and (max-width: 1320px) and (min-width: 991px) {
      .bg-nav{
-         padding: 0 3%;
+         padding: 0 2%;
     }
      .nav-link{
          margin: 6px 10px;
@@ -163,7 +167,7 @@ html, body{
 
 @media only screen and (max-width: 767px) {
     .logo_s{
-         width: 70%;
+         width: 40%;
          padding-bottom: 0;
     }
      .navbar-brand{
@@ -314,8 +318,8 @@ html, body{
      display: none;
 }
 .logo_m{
-     width: 55% !important;
-     padding-left: 5%;
+     width: 40% !important;
+     padding-left: 2%;
 }
 
 @media (max-width: 767px) {
@@ -478,6 +482,7 @@ html, body{
      padding-left: 50%;
      padding-right: 50%;
 }
+
 .container-fluid {
      float: center;
      width: 90%;

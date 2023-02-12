@@ -11,7 +11,7 @@ function Navigation() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav m-auto">
-                        <li className="nav-item"> <a className="navbar-brand hd_m" href="/"><img className="logo_s logo_m" src="assets/images/logo.png" alt="navimg"/></a>
+                        <li className="nav-item"> <a className="navbar-brand hd_m" href="/"><img className="logo_s logo_m" src="assets/images/barbarianinc_logo.png" alt="navimg"/></a>
                         </li>
                         <li className="nav-item">
                         <a className="nav-link" href="/gallery">Gallery</a>
