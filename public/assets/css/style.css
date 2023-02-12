@@ -167,7 +167,7 @@ html, body{
 
 @media only screen and (max-width: 767px) {
     .logo_s{
-         width: 40%;
+         width: 60%;
          padding-bottom: 0;
     }
      .navbar-brand{

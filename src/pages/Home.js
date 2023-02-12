@@ -13,7 +13,7 @@ function Home() {
    <div class="container banner-container">
    <div class="row">
       <div className="col-0 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-desktop-item">
-         <img src="assets/images/banner/home_banner6.png" alt="bannerimg"></img>
+         <img src="assets/images/banner/home_banner7.png" alt="bannerimg"></img>
       </div>
       <div className="col-12 col-sm-12  banner-mobile-item">
          <img src="assets/images/banner/home_banner_mobile.png" alt="bannerimg"></img>
