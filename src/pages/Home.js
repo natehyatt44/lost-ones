@@ -86,7 +86,6 @@ function Home() {
                 <br/><br/><br/>
                 <h1 className="h1_heading set_font"> The Founders </h1>
                 <br/><br/>
-                <br/><br/>
                 <div class="row">
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <img src="assets/images/team/jman1.png" alt="teamimg"></img>
@@ -101,7 +100,7 @@ function Home() {
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <img src="assets/images/team/alixon1.png" alt="teamimg"></img>
                       <title>Alixon</title>
-                      <p>Artist</p>
+                      <p>Artist & Creative Director</p>
                   </div>
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <img src="assets/images/team/nbreezay1.png" alt="teamimg"></img>

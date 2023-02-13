@@ -8,7 +8,7 @@ function Whitepaper() {
   return (
    <> 
    <Navigation />
-   <section id="Whitepaper " className="background_sec ">
+   <section id="Whitepaper " className="info_sec ">
       <Slide>
       <div id="Whitepaper" className="container-fluid ">
          <div className="row">

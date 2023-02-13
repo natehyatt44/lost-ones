@@ -109,7 +109,10 @@ html, body{
     }
     .banner-mobile-item img{
      display: none;
-}
+     }
+     .roadmap-mobile-item img{
+          display: none;
+     }
 }
 
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
@@ -119,16 +122,25 @@ html, body{
     .banner-mobile-item img{
      display: none;
 }
+.roadmap-mobile-item img{
+     display: none;
+}
 }
 
 @media screen and (max-width: 1780px) and (min-width: 1441px) {
      .banner-mobile-item img{
           display: none;
      }
+     .roadmap-mobile-item img{
+          display: none;
+     }
 }
 
 @media only screen and (min-width: 1781px) {
      .banner-mobile-item img{
+          display: none;
+     }
+     .roadmap-mobile-item img{
           display: none;
      }
 }
@@ -148,10 +160,16 @@ html, body{
     .banner-mobile-item img{
           display: none;
      }
+     .roadmap-mobile-item img{
+          display: none;
+     }
 }
 
 @media screen and (max-width: 1499px) and (min-width: 1200px) {
      .banner-mobile-item img{
+          display: none;
+     }
+     .roadmap-mobile-item img{
           display: none;
      }
 }
@@ -162,6 +180,9 @@ html, body{
     }
     .banner-mobile-item img{
      display: none;
+     }
+     .roadmap-mobile-item img{
+          display: none;
      }
 }
 
@@ -292,6 +313,9 @@ html, body{
     .banner-mobile-item img{
           display: none;
      }
+     .roadmap-mobile-item img{
+          display: none;
+     }
 }
  @media only screen and (max-width: 767px) {
      .cont_tabs{
@@ -408,6 +432,9 @@ html, body{
     .banner-desktop-item img{
           display: none;
      }
+     .roadmap-desktop-item img{
+          display:none;
+      }
 }
  .navs_hyd{
      display: none;
@@ -460,18 +487,6 @@ html, body{
      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
  }
 
- /* Roadmap */
-
- .roadmap-container{
-     margin: 15px auto;
- }
-
- .roadmap-item img{
-     max-width: 100%;
-     border-radius: 20%;
-     margin-bottom: 30px;
- }
-
   /* Lore */
  .lore-item img{
      max-width: 100%;
@@ -506,5 +521,22 @@ html, body{
  }
  .banner-mobile-item img{
      max-width: 100%;
+ }
+
+  /* Roadmap */
+
+.roadmap-container{
+     margin: 15px auto;
+     margin-bottom: 5px;
+ }
+ .roadmap-item{
+     margin-bottom: 30px;
+ }
+
+ .roadmap-desktop-item img{
+     max-width: 100%;
+ }
+ .roadmap-mobile-item img{
+     max-width: 95%;
  }
 

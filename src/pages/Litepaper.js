@@ -9,7 +9,7 @@ function Litepaper() {
    <> 
    <Navigation />
    
-   <section id="Litepaper " className="background_sec ">
+   <section id="Litepaper " className="info_sec ">
    <Slide>
       <div id="Litepaper" className="container-fluid ">
          <div className="row">
