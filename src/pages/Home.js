@@ -61,33 +61,18 @@ function Home() {
           <div class="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
                 <br/><br/><br/><br/><br/>
-                <h1 className="h1_heading set_font"> Prologue - The Lost Ones </h1>
+                <h1 className="h1_heading set_font"> Prologue - The Search for Absolute Truth </h1>
             </div>
           </div>
           <div class="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
                 <br/><br/>
                 <p className="para_p">
-                  Warning: The world around you is not real. It’s not even close. Your senses are not a limited window into reality, they are an abstraction of each 
-                  individual's objective fiction known as reality, which is separate from the true nature of existence. At all times and in all places, 
-                  there are atoms, particles, and physical laws that remain not yet fully understood beneath the surface. To most of us, what is tangible to our senses 
-                  is generally what is accepted as real. The experience is real, and your perceptions are real – as perceptions. However, 
-                  there is also a hidden dimension beyond what can be perceived by the senses. Venture further if you dare Lost One, but beware, 
-                  questioning the fabric of reality can lead one to madness or enlightenment. I must warn you, it may be hard to tell the difference. 
+                  Reality is an Illusion. Everything changes; All flows. Nothing stays the same... Nothing Lasts! We have yet to discover the true nature of reality, but we are ever persistent in our attempt to learn the true purpose of the universe and everything in it. What are we here to do? Why does anything exist at all, rather than not exist? 
                   <br/><br/>
-                  If you've made it this far then welcome, Lost One. The journey out of the ignorant abyss is difficult, but guidance awaits the courageous. 
-                  Can you recall how long your soul has been wandering? Probably not, but you are lucky to find this path, as some have been wandering aimlessly for eons. 
-                  The ancients claimed that evolution hasn't given living beings the innate ability to perceive reality's truth, as their senses are restricted. 
-                  As a result, the inhabitants of this galaxy have evolved to focus on surviving in their environment, not to grasp reality’s true essence. 
+                  Our collective human experiences are filtered through the five senses; Touch, Taste, Sight, Sound & Smell. The philosopher Aristotle theorized that these five vectors into experiencing the external world were the means by which the soul cultivates its insight and judgmentjudgement on life. Our understanding of reality is not just limited by the five primary senses; The mind plays a crucial role in interpreting and understanding the information received through these limited channels. To understand reality beyond what can be perceived by these senses, one must use their mind, as the true reality cannot be fully perceived through physical senses alone - If we are to grasp the foundation of existence itself, we must go beyond the body and into the mind. Only by realizing the imagination can we come to know our true purpose.  
                   <br/><br/>
-                  Aristotle, the ancient philosopher, was the first to recognize these five senses: touch, hearing, sight, smell, and taste. 
-                  He theorized that these five portals to the external world were the means by which each soul came to know the world. In his search for divine truth, 
-                  he also theorized about certain elusive sensory perceptions– color, sound, and temperature.  
-                  He also stressed the unreliable nature of these instincts – emphasizing the importance of the mind's role in deciphering this sensory information. 
-                  Aristotle also noted that our thoughts and ideas exist beyond the realm of what can be perceived through our faculties. 
-                  This is the path to a deeper understanding. The vastness of time is infinite, but our lifespans are limited. Use your time wisely, only a select few, 
-                  brave explorers will be able to uncover the secrets of reality in their lifetime. Best of luck on your journey. 
-                  In time you may find that your perceptions are there to hide true reality because the truth is too complicated.
+                  The vastness of time is infinite, but our lifespans are limited. Only a select few, brave explorers will be able to uncover the secrets of reality in their lifetime. In time you may find that your perceptions are there to hide true reality because the truth is too complicated. Do you consider yourself brave enough to go it alone, becoming lost in the chaos of discovery? Cast aside your understanding of reality, and your culturally defined notions as to what is or isn't real -- embrace your experience of life within the present moment, and follow your intuition. Be careful; be sincere; be true to yourself, and you just might survive the mind-bending trials & tribulations that soon lie before you. Those who survive will be rewarded with a treasure beyond what their imagination can conceive of, or believe to be real. This is a test for those willing to uncover the actual nature that lies beneath & beyond the universe itself.
                 </p>
                 <br/><br/><br/><br/>
             </div>
@@ -99,7 +84,7 @@ function Home() {
           <div class="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
                 <br/><br/><br/>
-                <h1 className="h1_heading set_font"> The Team </h1>
+                <h1 className="h1_heading set_font"> The Founders </h1>
                 <br/><br/>
                 <br/><br/>
                 <div class="row">
@@ -122,6 +107,16 @@ function Home() {
                       <img src="assets/images/team/nbreezay1.png" alt="teamimg"></img>
                       <title>nbreezay</title>
                       <p>Lead Developer</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-item">
+                      <br/><br/><br/>
+                      <h1 className="h1_heading set_font"> The Mods </h1>
+                      <title>Sasan</title>
+                      <title>Blueboy</title>
+                      <title>'BossinN</title>
+                      <title>Supernal</title>
                   </div>
                 </div>
             </div>
