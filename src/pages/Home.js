@@ -109,15 +109,30 @@ function Home() {
                   </div>
                 </div>
                 <div class="row">
-                  <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-item">
-                      <br/><br/><br/>
-                      <h1 className="h1_heading set_font"> The Mods </h1>
-                      <title>Sasan</title>
-                      <title>Blueboy</title>
-                      <title>'BossinN</title>
-                      <title>Supernal</title>
+                <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
+                  <br/><br/>
+                  <h1 className="h1_heading set_font"> The Mods </h1>
+                  <br/><br/>
+                  <div class="row">
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                        <img src="assets/images/team/sasan.png" alt="teamimg"></img>
+                        <title>Sasan</title>
+                    </div>
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                        <img src="assets/images/team/blueboy.png" alt="teamimg"></img>
+                        <title>Blueboy</title>
+                    </div>
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                        <img src="assets/images/team/boss.png" alt="teamimg"></img>
+                        <title>'BossinN</title>
+                    </div>
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                        <img src="assets/images/team/supernal.png" alt="teamimg"></img>
+                        <title>Supernal</title>
+                    </div> 
                   </div>
                 </div>
+              </div>
             </div>
           </div>
       </div>
