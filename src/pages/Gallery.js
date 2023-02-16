@@ -9,9 +9,10 @@ function Gallery() {
   return (
       <>
       <Navigation />
-      <section id="Gallery " className="info_sec ">
-      <div class="container gallery-container">
       <Slide>
+      <section id="Gallery " className="info_sec ">
+      <div className="container gallery-container">
+      
           <div class="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="row">
@@ -21,9 +22,9 @@ function Gallery() {
                 </div>
               </div>
           </div>
-      </Slide>
       </div>
       </section>
+      </Slide>
       <Footer />
       </>
   );

@@ -11,7 +11,7 @@ function GalleryImages() {
 
     const html = imagehtml.map(image =>               
         <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-            <div class="gallery-item">
+            <div className="gallery-item">
                 <img src={image} alt="galleryimg"/>
             </div>
         </div>

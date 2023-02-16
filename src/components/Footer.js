@@ -12,7 +12,7 @@ function Footer() {
             <a href="https://twitter.com/barbarianinc" target={{target:"_blank"}}>
                 <img className="footer_seicon" src="assets/images/icon/icon_twitter.svg" alt="footerimg"/>
             </a>
-            <a href="https://twitter.com/barbarianinc" target={{target:"_blank"}}>
+            <a href="https://discord.gg/BW2BJJKxxg" target={{target:"_blank"}}>
                 <img className="footer_seicon" src="assets/images/icon/icon_discord.svg" alt="footerimg"/>
             </a>
         </div>
