@@ -1,6 +1,6 @@
 {
   "api": {
-    "testapi": {
+    "lostones": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "testlambda"
+          "resourceName": "lostones"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -49,26 +49,26 @@
     }
   },
   "function": {
-    "testlambda": {
+    "lostones": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
   "parameters": {
-    "AMPLIFY_function_testlambda_deploymentBucketName": {
+    "AMPLIFY_function_lostones_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "testlambda"
+          "resourceName": "lostones"
         }
       ]
     },
-    "AMPLIFY_function_testlambda_s3Key": {
+    "AMPLIFY_function_lostones_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "testlambda"
+          "resourceName": "lostones"
         }
       ]
     }

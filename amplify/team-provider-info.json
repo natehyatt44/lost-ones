@@ -9,23 +9,24 @@
       "UnauthRoleName": "amplify-amplify56e37f91d1424-staging-32737-unauthRole",
       "StackName": "amplify-amplify56e37f91d1424-staging-32737",
       "StackId": "arn:aws:cloudformation:us-east-1:137530473134:stack/amplify-amplify56e37f91d1424-staging-32737/609afe30-a1e0-11ed-becd-12e819490f2d",
-      "AmplifyAppId": "d33q28vjs9w5s"
+      "AmplifyAppId": "d33q28vjs9w5s",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-amplify56e37f91d1424-staging-32737-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
         "lostones": {}
       },
-      "function": {
-        "testlambda": {
-          "deploymentBucketName": "amplify-amplify56e37f91d1424-staging-32737-deployment",
-          "s3Key": "amplify-builds/testlambda-3731302f343230772f73-build.zip"
-        }
-      },
       "storage": {
         "s3lostonesupload": {}
       },
+      "function": {
+        "lostones": {
+          "deploymentBucketName": "amplify-amplify56e37f91d1424-staging-32737-deployment",
+          "s3Key": "amplify-builds/lostones-51546f55557452424271-build.zip"
+        }
+      },
       "api": {
-        "testapi": {}
+        "lostones": {}
       }
     }
   }

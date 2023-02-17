@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "testlambda",
+            "lostones",
             {
               "Fn::Join": [
                 "",
                 [
-                  "testlambda",
+                  "lostones",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "lostonesLambdaRole7335eca6",
+            "lostonesLambdaRole0934f932",
             {
               "Fn::Join": [
                 "",
                 [
-                  "lostonesLambdaRole7335eca6",
+                  "lostonesLambdaRole0934f932",
                   "-",
                   {
                     "Ref": "env"

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "paths": {
+    "/connect": {
+      "name": "/connect",
+      "lambdaFunction": "lostones",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "guest": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}
