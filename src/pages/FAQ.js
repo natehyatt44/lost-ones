@@ -3,7 +3,6 @@ import questions from "../mappings/faq.json";
 import Banner from "../components/FaqInfo"
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import Button from '../components/lambdaButton';
 const { Slide } = require("react-awesome-reveal");
 
 
@@ -24,7 +23,6 @@ function FAQ() {
       ))}
       </Slide>
     </Banner>
-    <Button/>
    {}
    </section>
    <Footer />
