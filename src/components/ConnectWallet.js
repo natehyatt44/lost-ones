@@ -1,4 +1,4 @@
-import { Amplify, API } from 'aws-amplify';
+import { Amplify, API, Storage } from 'aws-amplify';
 import awsmobile from '../aws-exports';
 import React, {useEffect, useState} from 'react';
 
@@ -14,6 +14,23 @@ const init = {
         "Sexy Cat": "Treb"
     }
 };
+
+function putFile() {
+    Storage.put("test.txt", "Public Content", {
+    progressCallback(progress) {
+      console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
+    }
+  });
+}
+
+function getFile() {
+    Storage.get('test.txt', {
+    download: true,
+    progressCallback(progress) {
+        console.log(`Downloaded: ${progress.loaded}/${progress.total}`);
+    }
+    });
+}
 
 const ConnectWallet = () => {
     const [response, setResponse] = useState("")
@@ -33,34 +50,11 @@ const ConnectWallet = () => {
     return (
         <div>   
         <button onClick={getData} className="buttonStyle">Connect Wallet</button>
+        <button onClick={putFile} className="buttonStyle">UploaD</button>
+        <button onClick={getFile} className="buttonStyle">download</button>
         <h1>{response} </h1>
         </div>
     )
 }
 
 export default ConnectWallet
-
-
-// const ConnectWallet = () => {
-//     const metadata = []
-//     function getData(){
-//         API.post(apiName, path, init)
-//             .then(response => {
-//                 console.log(response)
-//                 const rjson = JSON.stringify(response)
-//                 metadata.push(rjson)
-//                 alert(metadata)
-//             })
-//             .catch(error => {
-//                 console.log(error)
-//             })        
-//     };
-    
-//     return (
-//         <div>   
-//         <button onClick={getData} className="buttonStyle">Connect Wallet</button>
-//         </div>
-//     )
-// }
-
-// export default ConnectWallet

@@ -395,6 +395,7 @@ html, body{
     border: 1px solid #cecece;
     padding: 7px;
     margin-bottom: 5px;
+    display: flex;
 }
 
 .gallery-item img{
