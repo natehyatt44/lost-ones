@@ -1,7 +1,7 @@
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import GalleryImages from '../components/GalleryImages';
-const { Slide } = require("react-awesome-reveal");
+import { Fade } from 'react-awesome-reveal';
 
 
 function Gallery() {
@@ -9,14 +9,14 @@ function Gallery() {
   return (
       <>
       <Navigation />
-      <Slide>
+      <Fade>
       <section id="Gallery " className="info_sec ">
       <div className="container gallery-container">
       
-          <div class="row">
+          <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="row">
-                    <div class="row">
+                <div className="row">
+                    <div className="row">
                         <GalleryImages></GalleryImages>
                     </div>
                 </div>
@@ -24,7 +24,7 @@ function Gallery() {
           </div>
       </div>
       </section>
-      </Slide>
+      </Fade>
       <Footer />
       </>
   );
