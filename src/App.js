@@ -4,7 +4,6 @@ import Whitepaper from "./pages/Whitepaper";
 import Litepaper from "./pages/Litepaper";
 import Roadmap from "./pages/Roadmap";
 import FAQ from "./pages/FAQ";
-import Play from "./pages/Play";
 import { Amplify } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -18,7 +17,6 @@ function App() {
   
     <Routes>
         <Route exact path='/' element={<Home />} />
-        <Route exact path='/play' element={<Play />} />
         <Route exact path='/gallery' element={<Gallery />} />
         <Route exact path='/whitepaper' element={<Whitepaper />} />
         <Route exact path='/litepaper' element={<Litepaper />} />
