@@ -9,7 +9,7 @@ function Footer() {
             <a href="/" target={{target:"_blank"}}>
                 <img className="footer_seicon" src="assets/images/logo.png" alt="footerimg"/>
             </a>
-            <a href="https://twitter.com/barbarianinc" target={{target:"_blank"}}>
+            <a href="https://twitter.com/barbarian_inc" target={{target:"_blank"}}>
                 <img className="footer_seicon" src="assets/images/icon/icon_twitter.svg" alt="footerimg"/>
             </a>
             <a href="https://discord.gg/BW2BJJKxxg" target={{target:"_blank"}}>

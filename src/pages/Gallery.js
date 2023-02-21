@@ -1,15 +1,12 @@
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import GalleryImages from '../components/GalleryImages';
-import { Fade } from 'react-awesome-reveal';
-
 
 function Gallery() {
     
   return (
       <>
       <Navigation />
-      <Fade>
       <section id="Gallery " className="info_sec ">
       <div className="container gallery-container">
       
@@ -24,7 +21,6 @@ function Gallery() {
           </div>
       </div>
       </section>
-      </Fade>
       <Footer />
       </>
   );

@@ -1,8 +1,8 @@
 import { Storage } from 'aws-amplify';
 import React, {useEffect, useState} from 'react';
-import { Fade } from 'react-awesome-reveal';
+import { JackInTheBox } from 'react-awesome-reveal';
 
-const numImages = 30;
+const numImages = 21;
 
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
@@ -28,20 +28,20 @@ function GalleryImages() {
       imageKeysUpdated = imageKeysUpdated.slice(0,numImages)
 
       imageKeysUpdated = await Promise.all(imageKeysUpdated.map(async k => {
-            const key = await Storage.get(k.key)  
-            return key
+          const key = await Storage.get(k.key)  
+          return key
       }))
       
       setImages(imageKeysUpdated)
     }
-
+    
     const html = images.map(image =>   
         <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+            <JackInTheBox>
             <div className="gallery-item">
-                <Fade>
                 <img src={image} alt="galleryimg"/>
-                </Fade>
             </div>
+            </JackInTheBox>
         </div>  
         )
     return (

@@ -16,7 +16,7 @@ const init = {
 };
 
 function putFile() {
-    Storage.put("test.txt", "Public Content", {
+    Storage.put("test.txt", "hamburger man", {
     progressCallback(progress) {
       console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
     }
