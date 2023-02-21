@@ -8,7 +8,7 @@ let appMetadata = {
   icon: "https://barbarianinc.club/assets/images/logo.png",
   url: "https://barbarianinc.club/"
 }
-
+ 
 export const pairHashPack = async () => {
 
   hashconnect.disconnect(hashconnect.hcData.topic)

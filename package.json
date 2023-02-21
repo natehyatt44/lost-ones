@@ -11,6 +11,7 @@
     "aws-amplify": "^5.0.12",
     "aws-sdk": "^2.1316.0",
     "chokidar": "^3.5.3",
+    "hashconnect": "^0.2.4",
     "react": "^17.0.2",
     "react-awesome-reveal": "^4.2.3",
     "react-dom": "^17.0.2",

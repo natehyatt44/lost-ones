@@ -1,6 +1,6 @@
 import { Amplify, API, Storage } from 'aws-amplify';
 import awsmobile from '../aws-exports';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 Amplify.configure(awsmobile);
 
