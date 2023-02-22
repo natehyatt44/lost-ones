@@ -443,19 +443,20 @@ html, body{
 /* Gallery */
  
 .gallery-container{
-    margin: 15px auto;
+    margin: 5px auto;
 }
 
 .gallery-item{
     float: left;
     border: 1px solid #cecece;
-    padding: 5px;
-    margin: 45px;
-    margin-bottom: 5px;
+    padding: 3px;
+    margin: 5px;
+    margin-bottom: 15px;
+
 }
 
 .gallery-item img{
-    width: 100%;
+    width: 100%; 
 }
 
 /* Team */
