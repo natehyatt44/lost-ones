@@ -1,7 +1,7 @@
 import { HashConnect } from "hashconnect";
 import { Storage } from 'aws-amplify';
 import React, {useEffect, useState} from 'react';
-import { Slide } from 'react-awesome-reveal';
+import { JackInTheBox } from 'react-awesome-reveal';
  
 export const pairHashPack = async () => {
   let hashconnect = new HashConnect();
@@ -41,7 +41,7 @@ export const pairHashPack = async () => {
 
 export const AccountNFTs = async (accountId) => {
   const FoundersPassTokenId = '0.0.823921'
-  let serialNumbers = []
+  let nftSerialNums = []
   let url = 'https://mainnet-public.mirrornode.hedera.com/'
   let path = `api/v1/accounts/${accountId}/nfts`
 
@@ -51,17 +51,17 @@ export const AccountNFTs = async (accountId) => {
 
   nfts.nfts.forEach(item => {
     if (item.token_id === FoundersPassTokenId) {
-      serialNumbers.push(item.serial_number)
+      nftSerialNums.push(item.serial_number)
     }
   });
 
-  console.log(serialNumbers)
+  console.log(nftSerialNums)
 
-  return serialNumbers
+  return nftSerialNums
 }
 
 
-export function NFTImages() {
+export function NFTImages(nftSerialNums) {
     const [images, setImages] = useState([])
     let nfts = ['777', '1111', '222', '343']
 
@@ -81,10 +81,10 @@ export function NFTImages() {
     const html = images.map(image =>   
         <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-3 text-center">
             <div className="team-item">
-            <Slide>
+            <JackInTheBox>
                 <img src={image} 
-                     alt="galleryimg"/>
-            </Slide>      
+                     alt="teamimg"/>
+            </JackInTheBox>      
             </div>
         </div>  
         )

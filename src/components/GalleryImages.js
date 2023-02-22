@@ -1,8 +1,8 @@
 import { Storage } from 'aws-amplify';
 import React, {useEffect, useState} from 'react';
-import { Fade } from 'react-awesome-reveal';
+import { Flip } from 'react-awesome-reveal';
 
-const numImages = 16;
+const numImages = 20;
 
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
@@ -36,18 +36,15 @@ function GalleryImages() {
     }
     
     const html = images.map(image =>   
-        <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-3">
-            
+        <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 text-center">
+          <Flip>
             <div className="gallery-item">
-            <Fade cascade>
                 <img src={image} 
-                     height='200'
-                     width='400' 
+                     height='250'
+                     width='350' 
                      alt="galleryimg"/>
-               </Fade>      
             </div>
-            
-            
+          </Flip>   
         </div>  
         )
     return (

@@ -435,6 +435,7 @@ html, body{
      .roadmap-desktop-item img{
           display:none;
       }
+       
 }
  .navs_hyd{
      display: none;
@@ -443,20 +444,19 @@ html, body{
 /* Gallery */
  
 .gallery-container{
-    margin: 5px auto;
+    margin: 15px auto;
 }
 
 .gallery-item{
-    float: left;
+    float: center;
     border: 1px solid #cecece;
     padding: 3px;
-    margin: 5px;
-    margin-bottom: 15px;
-
+    margin: 15px;
+    margin-bottom: 10px;
 }
 
 .gallery-item img{
-    width: 100%; 
+   width: 100%;
 }
 
 /* Team */
@@ -539,5 +539,19 @@ html, body{
  }
  .roadmap-mobile-item img{
      max-width: 95%;
+ }
+
+ /* Play */
+ .hashpack-modal{
+     background-color: #000000;
+ }
+ .hashpack-modal-footer{
+     background-color: #000000;
+     float:right;
+ }
+ .hashpack-modal-p{
+     float:right;
+     word-wrap:normal;
+     overflow-wrap: break-word;
  }
 
