@@ -10,62 +10,30 @@ let appMetadata = {
 }
  
 export const pairHashPack = async () => {
-
-  hashconnect.disconnect(hashconnect.hcData.topic)
-  let initData = await hashconnect.init(appMetadata, "mainnet", true)
-
-  hashconnect.foundExtensionEvent.once((walletMetadata) => {
-    console.log(walletMetadata)
-    hashconnect.connectToLocalWallet(initData.pairingString, walletMetadata)
-  })
-
-  hashconnect.pairingEvent.once((pairingData) => {
-    console.log("Wallet Paired")
-
-    const accountId = pairingData.accountIds[0]
-    console.log(`Account Id: ${accountId}`)
-  })
-  
-  return initData
-
-}
-
-export const authenticateUser = async () => {
-  const payload = {
-      url: window.location.hostname,
-      data: {
-          token: "fufhr9e84hf9w8fehw9e8fhwo9e8fw938fw3o98fhjw3of"
-      }
-  }
+  //hashconnect.disconnect(hashconnect.hcData.topic)
 
   const hashconnectData = JSON.parse(window.localStorage.hashconnectData)
-  console.log(hashconnectData)
-
-  const res = await fetch('http://localhost:8443/sendAuth')
-  const {signingData} = await res.json()
-
-  const serverSigAsArr = Object.values(signingData.serverSignature)
-  const serverSigAsBuffer = Buffer.from(serverSigAsArr)
-
-  let auth = await hashconnect
-      .authenticate(hashconnectData.topic, hashconnectData.pairingData[0].accountIds[0], signingData.serverSigningAccount, serverSigAsBuffer, payload);
-
-  const receiveAuthData = {
-      signingAccount: hashconnectData.pairingData[0].accountIds[0],
-      auth
+  let existingAccId = ''
+  if (hashconnectData.pairingData.length > 0){
+    existingAccId = hashconnectData.pairingData[0].accountIds[0]
+    console.log(`Existing Account Id: ${existingAccId}`)
   }
 
-  const res2 = await fetch('http://localhost:8443/getAuth', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(receiveAuthData),
-  })
+  let initData = await hashconnect.init(appMetadata, "mainnet", true)
 
-  const { authMessage } = await res2.json()
+  if (existingAccId === '') {
+    hashconnect.foundExtensionEvent.once((walletMetadata) => {
+      hashconnect.connectToLocalWallet(initData.pairingString, walletMetadata)
+    })
 
-  console.log(authMessage)
+    hashconnect.pairingEvent.once((pairingData) => {
+      console.log("Wallet Paired")
+  
+      const accountId = pairingData.accountIds[0]
+      console.log(`Account Id: ${accountId}`)
+    })
+  }
+  console.log(hashconnect.hcData)
 
+  return initData
 }
