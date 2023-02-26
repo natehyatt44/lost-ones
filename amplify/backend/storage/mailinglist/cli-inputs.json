@@ -1,0 +1,10 @@
+{
+  "resourceName": "mailinglist",
+  "tableName": "mailinglist",
+  "partitionKey": {
+    "fieldName": "Email",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

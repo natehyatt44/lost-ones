@@ -19,6 +19,13 @@
           "delete"
         ]
       }
+    },
+    "/mailing": {
+      "name": "/mailing",
+      "lambdaFunction": "mailinglambda",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

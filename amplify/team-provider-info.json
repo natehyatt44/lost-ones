@@ -17,12 +17,17 @@
         "lostones": {}
       },
       "storage": {
-        "s3lostonesupload": {}
+        "s3lostonesupload": {},
+        "mailinglist": {}
       },
       "function": {
         "lostones": {
           "deploymentBucketName": "amplify-amplify56e37f91d1424-staging-32737-deployment",
-          "s3Key": "amplify-builds/lostones-51546f55557452424271-build.zip"
+          "s3Key": "amplify-builds/lostones-796630454364654a4550-build.zip"
+        },
+        "mailinglambda": {
+          "deploymentBucketName": "amplify-amplify56e37f91d1424-staging-32737-deployment",
+          "s3Key": "amplify-builds/mailinglambda-2b394c43703044306650-build.zip"
         }
       },
       "api": {
