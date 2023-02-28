@@ -1,6 +1,7 @@
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import GalleryImages from '../components/GalleryImages';
+import { Fade } from 'react-awesome-reveal';
 
 function Gallery() {
     
@@ -14,7 +15,9 @@ function Gallery() {
           </div>
       </div>
       </section>
+      <Fade delay={1500}>
       <Footer />
+      </Fade>
       </>
   );
 }

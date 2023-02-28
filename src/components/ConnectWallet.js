@@ -2,44 +2,57 @@ import { HashConnect } from "hashconnect";
 import { Storage } from 'aws-amplify';
 import React, {useEffect, useState} from 'react';
 import { JackInTheBox } from 'react-awesome-reveal';
- 
-export const pairHashPack = async () => {
-  let hashconnect = new HashConnect();
 
-  let appMetadata = {
-    name: "BarbarianInc",
-    description: "Lost Ones Alternate Reality Game",
-    icon: "https://barbarianinc.club/assets/images/logo.png",
-    url: "https://barbarianinc.club/"
-  }
+let hashconnect = new HashConnect();
 
-  const hashconnectData = JSON.parse(window.localStorage.hashconnectData)
-  let accountId = ''
-  if (hashconnectData.pairingData.length > 0){
-    accountId = hashconnectData.pairingData[0].accountIds[0]
-    console.log(`Existing Account Id: ${accountId}`)
-  }
-  //hashconnect.disconnect(hashconnect.hcData.topic)
-  let initData = await hashconnect.init(appMetadata, "mainnet", true)
+let appMetadata = {
+  name: "BarbarianInc",
+  description: "Lost Ones Alternate Reality Game",
+  icon: "https://barbarianinc.club/assets/images/barbarianinc_logo.png",
+  url: "https://barbarianinc.club/"
+}
 
-  if (accountId === '') {
-    hashconnect.foundExtensionEvent.once((walletMetadata) => {
-      hashconnect.connectToLocalWallet(initData.pairingString, walletMetadata)
-    })
+let network = 'mainnet'
 
-    hashconnect.pairingEvent.once((pairingData) => {
-      console.log("Wallet Paired")
-  
-      accountId = pairingData.accountIds[0]
-      console.log(`Account Id: ${accountId}`)
-    })
-  }
-  console.log(hashconnect.hcData)
-  let nfts = await AccountNFTs(accountId)
-  return {initData, accountId, nfts}
+//hashconnect.disconnect(hashconnect.hcData.topic)
+console.log(hashconnect)
+
+export const ConnectHashPack = async () => {
+
+  let initData = await hashconnect.init(appMetadata, network, true)
+  let accountId = '0'
+
+  await hashconnect.pairingEvent.once((pairingData) => {
+    console.log("Wallet Paired")
+
+    accountId = pairingData.accountIds[0]
+    console.log(`Account Id: ${accountId}`)
+  })
+
+  return {initData, accountId}
+}
+
+export const ConnectHashPackExtension = async () => {
+
+  let initData = await hashconnect.init(appMetadata, network, true)
+  let accountId = '0'
+
+  hashconnect.foundExtensionEvent.once((walletMetadata) => {
+    hashconnect.connectToLocalWallet(initData.pairingString, walletMetadata)
+  })
+
+  await hashconnect.pairingEvent.once((pairingData) => {
+    console.log("Wallet Paired")
+
+    accountId = pairingData.accountIds[0]
+    console.log(`Account Id: ${accountId}`)
+  })
+
+  return {initData, accountId}
 }
 
 export const AccountNFTs = async (accountId) => {
+
   const FoundersPassTokenId = '0.0.823921'
   let nftSerialNums = []
   let url = 'https://mainnet-public.mirrornode.hedera.com/'
@@ -49,11 +62,13 @@ export const AccountNFTs = async (accountId) => {
   const response = await fetch(`${url}${path}`)
   const nfts = await response.json()
 
-  nfts.nfts.forEach(item => {
-    if (item.token_id === FoundersPassTokenId) {
-      nftSerialNums.push(item.serial_number)
-    }
-  });
+  if (nfts.length > 0) {
+    nfts.nfts.forEach(item => {
+      if (item.token_id === FoundersPassTokenId) {
+        nftSerialNums.push(item.serial_number)
+      }
+    });
+  }
 
   console.log(nftSerialNums)
 
@@ -61,7 +76,8 @@ export const AccountNFTs = async (accountId) => {
 }
 
 
-export function NFTImages(nftSerialNums) {
+export function NFTImages() {
+
     const [images, setImages] = useState([])
     let nfts = ['777', '1111', '222', '343']
 
@@ -79,17 +95,16 @@ export function NFTImages(nftSerialNums) {
     }
     
     const html = images.map(image =>   
-        <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-3 text-center">
-            <div className="team-item">
+      <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 text-center">
+            <div className="gallery-item">
             <JackInTheBox>
-                <img src={image} 
-                     alt="teamimg"/>
-            </JackInTheBox>      
+            <img src={image} 
+                  alt="teamimg"/>
+        </JackInTheBox>  
             </div>
-        </div>  
+        </div>    
         )
     return (
         html
     )
 }
-

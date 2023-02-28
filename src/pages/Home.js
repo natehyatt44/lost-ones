@@ -10,30 +10,30 @@ function Home() {
    
    <Navigation />
    <Slide>
-   <div class="container banner-container">
-   <div class="row">
+   
+   <div className="row">
       <div className="col-0 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-desktop-item">
          <img src="assets/images/banner/home_banner7.png" alt="bannerimg"></img>
       </div>
       <div className="col-12 col-sm-12  banner-mobile-item">
          <img src="assets/images/banner/home_banner_mobile.png" alt="bannerimg"></img>
       </div>
-   </div>
+ 
     </div>
     <section id="Lore " className="info_sec ">
-      <div class ="container lore-container" className="container-fluid ">
-          <div class="row">
+      <div className="container fluid-container">
+          <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
                 <br/>
                 <h1 className="h1_heading set_font"> Lore </h1>
             </div>
           </div>
-          <div class="row">
+          <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
                 <h1 className="h1_head_sml set_font"> Mortals </h1>
             </div>
           </div>
-          <div class="row">
+          <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
                 <br/>
                 <p className="para_p">
@@ -49,7 +49,7 @@ function Home() {
                 </p>
             </div>
           </div>
-          <div class="row">
+          <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
                 <img src="assets/images/banner/5barb_banner.png" alt="loreimg"></img>
             </div>
@@ -57,14 +57,14 @@ function Home() {
       </div>
     </section>
     <section id="Prologue " className="traitbackground_sec ">
-      <div class="container prologue-container" className="container-fluid ">
-          <div class="row">
+      <div className="container fluid-container">
+          <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
                 <br/><br/><br/><br/><br/>
                 <h1 className="h1_heading set_font"> Prologue - The Search for Absolute Truth </h1>
             </div>
           </div>
-          <div class="row">
+          <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
                 <br/><br/>
                 <p className="para_p">
@@ -80,13 +80,13 @@ function Home() {
       </div>
     </section>
     <section id="Team " className="info_sec ">
-      <div class="container team-container">
-          <div class="row">
+      <div className="container team-container">
+          <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
                 <br/><br/><br/>
                 <h1 className="h1_heading set_font"> The Founders </h1>
                 <br/><br/>
-                <div class="row">
+                <div className="row">
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <img src="assets/images/team/jman1.png" alt="teamimg"></img>
                       <title>Jman</title>
@@ -108,12 +108,12 @@ function Home() {
                       <p>Lead Developer</p>
                   </div>
                 </div>
-                <div class="row">
+                <div className="row">
                 <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
                   <br/><br/>
                   <h1 className="h1_heading set_font"> The Mods </h1>
                   <br/><br/>
-                  <div class="row">
+                  <div className="row">
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                         <img src="assets/images/team/sasan.png" alt="teamimg"></img>
                         <title>Sasan</title>

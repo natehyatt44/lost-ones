@@ -449,9 +449,7 @@ html, body{
 
 .gallery-item{
     float: center;
-    border: 1px solid #cecece;
-    padding: 3px;
-    margin: 15px;
+    margin: 35px;
     margin-bottom: 10px;
 }
 
@@ -489,15 +487,22 @@ html, body{
  }
 
   /* Lore */
+
+.lore-container{
+     float: center;
+     width: 90%;
+     padding-left: 5%;
+     padding-right: 5%;
+  }
  .lore-item img{
      max-width: 100%;
  }
-.lore-item {
+/* .lore-item {
      float: center;
      width: 90%;
      padding-left: 50%;
      padding-right: 50%;
-}
+} */
 
 .container-fluid {
      float: center;
@@ -508,14 +513,17 @@ html, body{
 
  /* Prologue */
  .prologue-container{
-     padding: 50px 50px;
+     float: center;
+     width: 90%;
+     padding-left: 5%;
+     padding-right: 5%;
   }
 
    /* Home */
 
-.banner-container{
+/* .banner-container{
     margin: 15px auto;
- }
+ } */
 
  .banner-desktop-item img{
      max-width: 100%;
