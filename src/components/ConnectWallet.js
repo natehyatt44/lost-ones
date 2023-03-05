@@ -12,57 +12,50 @@ let appMetadata = {
   url: "https://barbarianinc.club/"
 }
 
-let network = 'mainnet'
+let network = 'testnet'
 
-//hashconnect.disconnect(hashconnect.hcData.topic)
+hashconnect.disconnect(hashconnect.hcData.topic)
 console.log(hashconnect)
 
 export const ConnectHashPack = async () => {
-
   let initData = await hashconnect.init(appMetadata, network, true)
-  let accountId = '0'
-
-  await hashconnect.pairingEvent.once((pairingData) => {
-    console.log("Wallet Paired")
-
-    accountId = pairingData.accountIds[0]
-    console.log(`Account Id: ${accountId}`)
-  })
-
-  return {initData, accountId}
+  return {initData}
 }
 
 export const ConnectHashPackExtension = async () => {
-
   let initData = await hashconnect.init(appMetadata, network, true)
-  let accountId = '0'
 
   hashconnect.foundExtensionEvent.once((walletMetadata) => {
     hashconnect.connectToLocalWallet(initData.pairingString, walletMetadata)
   })
-
-  await hashconnect.pairingEvent.once((pairingData) => {
-    console.log("Wallet Paired")
-
-    accountId = pairingData.accountIds[0]
-    console.log(`Account Id: ${accountId}`)
-  })
-
-  return {initData, accountId}
+  return {initData}
 }
 
-export const AccountNFTs = async (accountId) => {
+export let PairHashPack = async () => {
+  return new Promise((resolve) => {
+    hashconnect.pairingEvent.once((pairingData) => {
+      console.log("Wallet Paired");
 
-  const FoundersPassTokenId = '0.0.823921'
-  let nftSerialNums = []
-  let url = 'https://mainnet-public.mirrornode.hedera.com/'
-  let path = `api/v1/accounts/${accountId}/nfts`
+      const accountId = pairingData.accountIds[0];
+      console.log(`Account Id: ${accountId}`);
+      resolve(accountId);
+    });
+  });
+};
 
-  //Create your local client
+export const AccountNFTs = async (accountId, nftSerialNums = [], nextUrl = null) => {
+  const FoundersPassTokenId = '0.0.3286550'
+
+  let url = 'https://testnet.mirrornode.hedera.com'
+  let path = nextUrl || `/api/v1/accounts/${accountId}/nfts?limit=100`
+
+  // Create your local client
   const response = await fetch(`${url}${path}`)
   const nfts = await response.json()
 
-  if (nfts.length > 0) {
+  console.log(nfts)
+
+  if (nfts.nfts.length > 0) {
     nfts.nfts.forEach(item => {
       if (item.token_id === FoundersPassTokenId) {
         nftSerialNums.push(item.serial_number)
@@ -72,39 +65,43 @@ export const AccountNFTs = async (accountId) => {
 
   console.log(nftSerialNums)
 
+  if (nfts.links && nfts.links.next) {
+    return await AccountNFTs(accountId, nftSerialNums, nfts.links.next)
+  }
+
   return nftSerialNums
 }
 
 
-export function NFTImages() {
+export function NFTImages ({accountNfts = [], onClickImage }) {
+  const [images, setImages] = useState([])
+  
+  useEffect(() => {
+    fetchImages()
+  }, [accountNfts])
 
-    const [images, setImages] = useState([])
-    let nfts = ['777', '1111', '222', '343']
+  async function fetchImages() {
+    const fetchedImages = await Promise.all(accountNfts.map(async k => {
+      const key = await Storage.get('nft-founders-pass/images/' + k + '.png')
+      return key
+    }))
 
-    useEffect(() => {
-      fetchImages()
-    }, [])
+    setImages(fetchedImages)
+  }
 
-    async function fetchImages() {
-      nfts = await Promise.all(nfts.map(async k => {
-          const key = await Storage.get('nft-founders-pass/images/'+k+'.png')  
-          return key
-      }))
-      
-      setImages(nfts)
-    }
-    
-    const html = images.map(image =>   
-      <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 text-center">
-            <div className="gallery-item">
-            <JackInTheBox>
-            <img src={image} 
-                  alt="teamimg"/>
-        </JackInTheBox>  
-            </div>
-        </div>    
-        )
-    return (
-        html
-    )
+  const handleClickImage = (index) => {
+    onClickImage(index);
+  };
+
+  const html = images.map((image, index) => (
+  <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-3 text-center" key={index} onClick={() => handleClickImage(image)}>
+      <div className="nft-item">
+        <JackInTheBox>
+          <img src={image} alt="nftimg" />
+        </JackInTheBox>
+      </div>
+  </div>
+  ))
+
+  return html
 }

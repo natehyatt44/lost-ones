@@ -3,17 +3,22 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { ConnectHashPack, ConnectHashPackExtension, AccountNFTs, NFTImages } from '../components/ConnectWallet';
+import { ConnectHashPack, ConnectHashPackExtension, AccountNFTs, NFTImages, PairHashPack } from '../components/ConnectWallet';
 const { Slide } = require("react-awesome-reveal");
+
+const regex = /^0\.0\..*/;
 
 function Play(props) {
   const handleClose = () => setShow(false);
   const [show, setShow] = useState(true);
-  const [hashpackdata, sethashpackdata] = useState('')
-  let accountId = '0'
-  useEffect(() => {
-    accountId = async () => hashpackdata.accountId
-  });
+  const [accountId, setAccountId] = useState('')
+  const [nfts, setNfts] = useState([])
+  const [showBarbarians, setShowBarbarians] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  function handleRaceButtonClick() {
+    setShowBarbarians(true);
+  }
 
   return (
    <> 
@@ -37,13 +42,22 @@ function Play(props) {
         <Modal.Footer className='hashpack-modal-footer'>
           <Button variant="dark" onClick={async () => {
             const hashpackdata = await ConnectHashPackExtension()
-            await sethashpackdata(hashpackdata)
+            const accountId = await PairHashPack()
+            let accid = accountId.toString()
+            setAccountId(accountId)
+            const nfts = await AccountNFTs(accid)
+            setNfts(nfts)
             }}>Connect HashPack Extension
           </Button>
           <Button variant="dark" onClick={async () => {
             const hashpackdata = await ConnectHashPack()
             navigator.clipboard.writeText(hashpackdata.initData.pairingString)
-            await sethashpackdata(hashpackdata)
+            const accountId = '0.0.18346' //await PairHashPack()
+            let accid = accountId.toString()
+            await setAccountId(accountId)
+            const nfts = await AccountNFTs(accid)
+            nfts.push(4,90,133)
+            setNfts(nfts)
           }}>
                 Copy Pairing String
           </Button>
@@ -51,21 +65,47 @@ function Play(props) {
       </Modal> 
     </div>
     {
-      accountId !== '0' && show === false &&
+      regex.test(accountId) && show === false &&
       <>
-        <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center gallery-item">
-          <h1>Select Your Hero</h1>
+      <div className="container nft-container">
+        <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center">
+        <h1 className="h1_heading set_font">Select Your Race</h1>
+        </div>
+        <div className='row'>
+        <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center btn-list">
+        <button type="button" className="btn btn-primary active" onClick={handleRaceButtonClick}>Mortal</button>
+        <button type="button" className="btn btn-secondary disabled">Race2</button>
+        <button type="button" className="btn btn-secondary disabled">Race3</button>
+        <button type="button" className="btn btn-secondary disabled">Race4</button>
+        <button type="button" className="btn btn-secondary disabled">Race5</button>
+        <button type="button" className="btn btn-secondary disabled">Race6</button>
+        </div>
+        </div>
+    
+        {showBarbarians && (
+      <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center">
+        <h1 className="h1_heading set_font">Select Your Barbarian</h1>
         <div className="row">
-        <NFTImages></NFTImages>
+          <NFTImages accountNfts={nfts} onClickImage={(index) => setSelectedImage(index)} />
         </div>
-        </div>
+      </div>
+    )}
+    {selectedImage !== null && (
+      <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center">
+      <div className="nft-item">
+        <img src={selectedImage} alt="selected-nft" />
+      </div>
+      </div>
+    )}
+      </div>
       </>
+      
     }
     {
-      accountId === '0' && show === false &&
+      !regex.test(accountId) && show === false &&
       <>
-        <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center gallery-item">
-        <h1>Please Connect Your Wallet In Order To Play</h1>
+        <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center wallet-fail">
+        <h1 className="h1_heading set_font">Please Connect Your Wallet In Order To Play</h1>
         </div>
 
       </>
