@@ -1,7 +1,7 @@
 import { HashConnect } from "hashconnect";
 import { Storage } from 'aws-amplify';
 import React, {useEffect, useState} from 'react';
-import { JackInTheBox } from 'react-awesome-reveal';
+import { Slide } from 'react-awesome-reveal';
 
 let hashconnect = new HashConnect();
 
@@ -77,7 +77,11 @@ export function NFTImages ({accountNfts = [], onClickImage }) {
   const [images, setImages] = useState([])
   
   useEffect(() => {
-    fetchImages()
+    const timeout = setTimeout(() => {
+      fetchImages()
+    }, 500)
+
+    return () => clearTimeout(timeout)
   }, [accountNfts])
 
   async function fetchImages() {
@@ -94,11 +98,18 @@ export function NFTImages ({accountNfts = [], onClickImage }) {
   };
 
   const html = images.map((image, index) => (
-  <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-3 text-center" key={index} onClick={() => handleClickImage(image)}>
+  <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-3 text-center mx-auto" key={index} onClick={() => handleClickImage(image)} 
+       onMouseEnter={(e) => {
+       // Change NFT image color on hover
+        e.target.style.filter = 'brightness(50%)';
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.filter = 'brightness(100%)';
+      }} >
       <div className="nft-item">
-        <JackInTheBox>
-          <img src={image} alt="nftimg" />
-        </JackInTheBox>
+        <Slide direction="down">
+          <img src={image} alt="nftimg" style={{borderRadius:"50%" }}/>
+        </Slide>
       </div>
   </div>
   ))

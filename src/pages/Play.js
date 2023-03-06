@@ -72,7 +72,7 @@ function Play(props) {
         <h1 className="h1_heading set_font">Select Your Race</h1>
         </div>
         <div className='row'>
-        <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center btn-list">
+        <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center mx-auto btn-list">
         <button type="button" className="btn btn-primary active" onClick={handleRaceButtonClick}>Mortal</button>
         <button type="button" className="btn btn-secondary disabled">Race2</button>
         <button type="button" className="btn btn-secondary disabled">Race3</button>
@@ -86,14 +86,15 @@ function Play(props) {
       <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center">
         <h1 className="h1_heading set_font">Select Your Barbarian</h1>
         <div className="row">
-          <NFTImages accountNfts={nfts} onClickImage={(index) => setSelectedImage(index)} />
+          <NFTImages accountNfts={nfts} onClickImage={(index) => setSelectedImage(index)}/>
         </div>
       </div>
     )}
     {selectedImage !== null && (
       <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center">
       <div className="nft-item">
-        <img src={selectedImage} alt="selected-nft" />
+      <h1 className="h1_heading set_font">Selected</h1>
+        <img src={selectedImage} alt="selected-nft" style={{borderRadius:"50%", width:"20%" }} />
       </div>
       </div>
     )}
