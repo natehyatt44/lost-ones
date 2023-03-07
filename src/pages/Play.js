@@ -133,7 +133,7 @@ function Play(props) {
               <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center story-container">
                   <br/>
                   <Scrollbar style={{ height: 500}}>
-                  <Fade cascade duration={5000}><p className="para_p">{text}</p></Fade>
+                  <Fade duration={20000}><p className="para_p">{text}{text}</p></Fade>
                   </Scrollbar>
               </div>
             </div>
