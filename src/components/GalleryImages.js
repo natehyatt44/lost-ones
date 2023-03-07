@@ -5,11 +5,6 @@ import { Fade } from 'react-awesome-reveal';
 // Define the number of images to display
 const numImages = 18;
 
-// Component for loading animation
-function Loading() {
-  return <div className="loading"></div>;
-}
-
 // Function to shuffle an array in place
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);

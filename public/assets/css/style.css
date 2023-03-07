@@ -17,6 +17,14 @@ html, body{
      color: #fff;
      text-transform: uppercase;
 }
+.h1_head_m{
+     font-family: 'Poppins';
+     font-weight: 700;
+     font-size: 35px;
+     line-height: 50px;
+     color: #fff;
+     text-transform: uppercase;
+}
 .h1_head_sml{
      font-family: 'Poppins';
      font-weight: 700;
@@ -459,6 +467,10 @@ html, body{
 
 /* Team */
 .team-container{
+     float: center;
+     width: 100%;
+     padding-left: 10%;
+     padding-right: 10%;
      margin: 15px auto;
      margin-bottom: 30px;
 }
@@ -490,23 +502,21 @@ html, body{
 
 .lore-container{
      float: center;
-     width: 90%;
-     padding-left: 5%;
-     padding-right: 5%;
+     width: 100%;
+     padding-left: 10%;
+     padding-right: 10%;
   }
  .lore-item img{
      max-width: 100%;
  }
-/* .lore-item {
+.lore-item {
      float: center;
-     width: 90%;
-     padding-left: 50%;
-     padding-right: 50%;
-} */
+     width: 100%;
+}
 
 .container-fluid {
      float: center;
-     width: 90%;
+     width: 100%;
      padding-left: 5%;
      padding-right: 5%;
 }
@@ -514,9 +524,9 @@ html, body{
  /* Prologue */
  .prologue-container{
      float: center;
-     width: 90%;
-     padding-left: 5%;
-     padding-right: 5%;
+     width: 100%;
+     padding-left: 10%;
+     padding-right: 10%;
   }
 
    /* Home */
@@ -582,27 +592,68 @@ html, body{
      }
    }
 
+   /* Play */
+
    .wallet-fail {
      display: flex;
      justify-content: center;
      align-items: center;
      height: 90vh;
-     background-color: #1c1c1c;
      color: #fff;
    }
 
    .nft-container {
-     margin: 15px auto;
+     float: center;
+     width: 100%;
+     padding-left: 10%;
+     padding-right: 10%;
+     margin: 10px auto;
    }
 
    .nft-item{
      float: center;
-     margin: 35px;
-     margin-bottom: 10px;
+     margin: 10px;
+     margin-bottom: 25px;
  }
  
  .nft-item img{
-    width: 100%;
+    width: 80%;
  }
+
+ .futuristic-btn {
+     border: none;
+     background: none;
+     color: #fff;
+     font-size: 16px;
+     font-weight: bold;
+     letter-spacing: 1px;
+     text-transform: uppercase;
+     margin: 10px;
+     padding: 10px 30px;
+     transition: all 0.3s ease-in-out;
+     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 2px 2px rgba(0, 0, 0, 0.15);
+   }
    
+   .futuristic-btn:hover {
+     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 4px 4px rgba(0, 0, 0, 0.15);
+     transform: translateY(-2px);
+   }
+   
+   .futuristic-btn:focus {
+     outline: none;
+     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 4px 4px rgba(0, 0, 0, 0.15);
+   }
+
+   .story-container {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 275;
+     font-size: 20px;
+     line-height: 30px;
+     color: #FFFFFF;
+   }
+   
+   .story-container .para_text {
+     display: block;
+   }
    

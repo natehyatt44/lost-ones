@@ -20,7 +20,7 @@ function Home() {
  
     </div>
     <section id="Lore " className="info_sec ">
-      <div className="container fluid-container">
+      <div className="lore-container ">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
                 <br/>
@@ -56,7 +56,7 @@ function Home() {
       </div>
     </section>
     <section id="Prologue " className="traitbackground_sec ">
-      <div className="container fluid-container">
+      <div className="prologue-container ">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
                 <br/><br/><br/><br/><br/>
@@ -79,7 +79,7 @@ function Home() {
       </div>
     </section>
     <section id="Team " className="info_sec ">
-      <div className="container team-container">
+      <div className="team-container ">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
                 <br/><br/><br/>
