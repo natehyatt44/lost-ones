@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
+import MailingListAdd from '../components/emailData';
 import Footer from '../components/Footer';
 const { Slide } = require("react-awesome-reveal");
 
@@ -136,6 +137,7 @@ function Home() {
           </div>
       </div>
     </section>
+      <MailingListAdd/>
   </Slide>
   <Footer />
 	</>
