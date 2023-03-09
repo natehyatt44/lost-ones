@@ -516,7 +516,7 @@ html, body{
 
 .container-fluid {
      float: center;
-     width: 100%;
+     width: 90%;
      padding-left: 5%;
      padding-right: 5%;
 }
@@ -598,13 +598,13 @@ html, body{
      display: flex;
      justify-content: center;
      align-items: center;
-     height: 90vh;
+     height: 80vh;
      color: #fff;
    }
 
    .nft-container {
      float: center;
-     width: 100%;
+     width: 90%;
      padding-left: 10%;
      padding-right: 10%;
      margin: 10px auto;
