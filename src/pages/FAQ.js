@@ -29,7 +29,6 @@ function FAQ() {
         </Banner.Entity>
       ))}
 
-     <MailingListAdd/>
       </Slide>
     </Banner>
    {}
