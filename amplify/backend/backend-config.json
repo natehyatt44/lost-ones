@@ -9,6 +9,14 @@
           ],
           "category": "function",
           "resourceName": "lostones"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "mailinglambda"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -53,6 +61,25 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "mailinglambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "mailinglist"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -71,9 +98,29 @@
           "resourceName": "lostones"
         }
       ]
+    },
+    "AMPLIFY_function_mailinglambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mailinglambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_mailinglambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "mailinglambda"
+        }
+      ]
     }
   },
   "storage": {
+    "mailinglist": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "s3lostonesupload": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",

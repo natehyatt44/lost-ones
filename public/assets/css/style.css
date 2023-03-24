@@ -17,6 +17,14 @@ html, body{
      color: #fff;
      text-transform: uppercase;
 }
+.h1_head_m{
+     font-family: 'Poppins';
+     font-weight: 700;
+     font-size: 35px;
+     line-height: 50px;
+     color: #fff;
+     text-transform: uppercase;
+}
 .h1_head_sml{
      font-family: 'Poppins';
      font-weight: 700;
@@ -435,6 +443,7 @@ html, body{
      .roadmap-desktop-item img{
           display:none;
       }
+       
 }
  .navs_hyd{
      display: none;
@@ -443,40 +452,25 @@ html, body{
 /* Gallery */
  
 .gallery-container{
-     margin: 15px auto;
- }
- 
- .gallery-item{
-     float: center;
-     margin: 35px;
-     margin-bottom: 10px;
- }
- 
- .gallery-item img{
-    width: 100%;
- }
+    margin: 15px auto;
+}
 
- .loading-animation {
-     border: 10px solid rgba(255, 255, 255, 0.2);
-     border-radius: 50%;
-     border-top: 10px solid #555;
-     width: 50px;
-     height: 50px;
-     animation: spin 2s linear infinite;
-     margin: auto;
-   }
-   
-   @keyframes spin {
-     0% {
-       transform: rotate(0deg);
-     }
-     100% {
-       transform: rotate(360deg);
-     }
-   }
+.gallery-item{
+    float: center;
+    margin: 35px;
+    margin-bottom: 10px;
+}
+
+.gallery-item img{
+   width: 100%;
+}
 
 /* Team */
 .team-container{
+     float: center;
+     width: 100%;
+     padding-left: 10%;
+     padding-right: 10%;
      margin: 15px auto;
      margin-bottom: 30px;
 }
@@ -505,14 +499,19 @@ html, body{
  }
 
   /* Lore */
+
+.lore-container{
+     float: center;
+     width: 100%;
+     padding-left: 10%;
+     padding-right: 10%;
+  }
  .lore-item img{
      max-width: 100%;
  }
 .lore-item {
      float: center;
-     width: 90%;
-     padding-left: 50%;
-     padding-right: 50%;
+     width: 100%;
 }
 
 .container-fluid {
@@ -524,14 +523,17 @@ html, body{
 
  /* Prologue */
  .prologue-container{
-     padding: 50px 50px;
+     float: center;
+     width: 100%;
+     padding-left: 10%;
+     padding-right: 10%;
   }
 
    /* Home */
 
-.banner-container{
+/* .banner-container{
     margin: 15px auto;
- }
+ } */
 
  .banner-desktop-item img{
      max-width: 100%;
@@ -544,10 +546,7 @@ html, body{
 
 .roadmap-container{
      margin: 15px auto;
-     margin-bottom: 5px;
- }
- .roadmap-item{
-     margin-bottom: 20px;
+     margin-bottom: 25px;
  }
 
  .roadmap-desktop-item img{
@@ -557,3 +556,121 @@ html, body{
      max-width: 95%;
  }
 
+ /* Play */
+ .hashpack-modal{
+     background-color: #000000;
+ }
+ .hashpack-modal-footer{
+     background-color: #000000;
+     float:right;
+ }
+ .hashpack-modal-p{
+     float:right;
+     word-wrap:normal;
+     overflow-wrap: break-word;
+ }
+
+ .loading-animation {
+     border: 10px solid rgba(255, 255, 255, 0.2);
+     border-radius: 50%;
+     border-top: 10px solid #555;
+     width: 50px;
+     height: 50px;
+     animation: spin 2s linear infinite;
+     margin: auto;
+   }
+   
+   @keyframes spin {
+     0% {
+       transform: rotate(0deg);
+     }
+     100% {
+       transform: rotate(360deg);
+     }
+   }
+
+   /* Play */
+
+   .wallet-fail {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 80vh;
+     color: #fff;
+   }
+
+   .nft-container {
+     float: center;
+     width: 90%;
+     padding-left: 10%;
+     padding-right: 10%;
+     margin: 10px auto;
+   }
+
+   .nft-item{
+     float: center;
+     margin: 10px;
+     margin-bottom: 25px;
+ }
+ 
+ .nft-item img{
+    width: 80%;
+ }
+
+ .futuristic-btn {
+     border: none;
+     background: none;
+     color: #fff;
+     font-size: 16px;
+     font-weight: bold;
+     letter-spacing: 1px;
+     text-transform: uppercase;
+     margin: 10px;
+     padding: 10px 30px;
+     transition: all 0.3s ease-in-out;
+     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 2px 2px rgba(0, 0, 0, 0.15);
+   }
+   
+   .futuristic-btn:hover {
+     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 4px 4px rgba(0, 0, 0, 0.15);
+     transform: translateY(-2px);
+   }
+   
+   .futuristic-btn:focus {
+     outline: none;
+     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 4px 4px rgba(0, 0, 0, 0.15);
+   }
+
+   .story-container {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 275;
+     font-size: 20px;
+     line-height: 30px;
+     color: #FFFFFF;
+   }
+   
+   .story-container .para_text {
+     display: block;
+   }
+   
+   .banner-desktop-item,
+     .banner-mobile-item,
+     .roadmap-desktop-item,
+     .roadmap-mobile-item {
+     opacity: 0; /* hide the image initially */
+     transition: opacity 5s ease-in-out; /* add a transition effect */
+     }
+
+     .banner-desktop-item.loaded,
+     .banner-mobile-item.loaded,
+     .roadmap-desktop-item.loaded,
+     .roadmap-mobile-item.loaded {
+     opacity: 1; /* show the image when it's loaded */
+     }
+
+     .hide {
+          display: none;
+        }
+
+   

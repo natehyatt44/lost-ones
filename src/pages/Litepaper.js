@@ -24,9 +24,10 @@ function Litepaper() {
                interconnected NFTs designed for the alternate reality game "The Lost Ones" and our future metaverse through 
                the acquisition of this collection. Our team is committed to providing outstanding art and practicality, 
                and we aim to showcase this in a big way. Our objective is to dispel the unfavorable views surrounding Community 
-               Founders Passes, and offer a thrilling and rewarding experience for our community.
+               Founders Passes, and offer a thrilling and rewarding experience for our community.</p>
                <br/><br/>
                <h1 className="h1_head_sml set_font"> What is the value proposition for the "HBarbarians" Community Founders Passes? </h1> 
+               <p className="para_p">
                We are structuring this first collection to provide maximum reward and utility for early adopters of the project. 
                With that said, here is what holding an “Hbarbarian” Community Founders Pass will provide you:
                <br/><br/>
@@ -40,8 +41,9 @@ function Litepaper() {
                <br/><br/>
                5) A permanent and ongoing commitment to providing perks and benefits to holders as the BarbarianInc ecosystem continues to evolve.
                <br/><br/>
-
+               </p>
                <h1 className="h1_head_sml set_font"> What is an alternate reality game and how will the "The Lost Ones" Act as an ARG? </h1> 
+               <p className="para_p">
                An ARG is a type of transmedia game that blurs the line between the game world and the real world. ARGs typically consist of a series of puzzles and 
                challenges that players must solve in order to progress through the game. These puzzles often involve real-world elements such as websites, history,
                and real-life events. The goal of an ARG is to create a sense of immersion, and to allow players to experience a story in a unique and interactive way. 
@@ -62,7 +64,9 @@ function Litepaper() {
                storyline by the potential of winning large prizes denoted in $HBAR. Rewards will be funded through 15% of all profits from all 5 mints associated with
                “The Lost Ones” being placed in a prize pool. This will genuinely motivate and potentially even reward those who chose to commit themselves to the game.
                <br/><br/>
+               </p>
                <h1 className="h1_head_sml set_font"> How do "HBarbarian" Community Founders Passes Relate To Our ARG? </h1> 
+               <p className="para_p">
                Each "Hbarbarian" Community Founder Pass will function as a playable character in our ARG, "The Lost Ones". It is crucial to keep in mind that not 
                all characters that will be released in the future will be fully playable, and it will be the responsibility of the minter and/or buyer of these 
                future characters to follow the clues to determine which are usable game pieces. However, holders of the "Hbarbarian" Community Founder Passes

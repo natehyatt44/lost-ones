@@ -92,7 +92,7 @@ export function NFTImages ({accountNfts = [], onClickImage }) {
       } else {
         clearInterval(intervalId);
       }
-    }, 500);
+    }, 600);
 
     // Clean up the interval on unmount
     return () => clearInterval(intervalId);
@@ -121,7 +121,7 @@ export function NFTImages ({accountNfts = [], onClickImage }) {
 
   const html = images.map((image, index) => (
     <div
-      className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 text-center mx-auto"
+      className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-3 text-center mx-auto"
       key={index}
       onClick={() => handleClickImage(image)}
       onMouseEnter={(e) => {
@@ -133,7 +133,7 @@ export function NFTImages ({accountNfts = [], onClickImage }) {
     >
       <div className="nft-item">
         {loadedImages[index] ? (
-          <Slide direction="down" duration={200} delay={index * 200} cascade>
+          <Slide direction="down" duration={500} delay={index * 200} cascade>
             <img
               src={image}
               alt="nftimg"
