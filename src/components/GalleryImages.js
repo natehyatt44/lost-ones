@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 
 // Define the number of images to display
-const numImages = 18;
+
+const numImages = 21;
 
 // Function to shuffle an array in place
 function shuffle(array) {
