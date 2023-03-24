@@ -13,9 +13,9 @@ function Navigation() {
                     <ul className="navbar-nav m-auto">
                         <li className="nav-item"> <a className="navbar-brand hd_m" href="/"><img className="logo_s logo_m" src="assets/images/barbarianinc_logo.png" alt="navimg"/></a>
                         </li>
-                        {/* <li className="nav-item">
+                        <li className="nav-item">
                         <a className="nav-link" href="/play">Play</a>
-                        </li>  */}
+                        </li> 
                         <li className="nav-item">
                         <a className="nav-link" href="/gallery">Gallery</a>
                         </li>

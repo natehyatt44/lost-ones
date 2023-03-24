@@ -48,9 +48,9 @@ html, body{
      margin: 0px 15px;
 }
 .footer_seicon{
-    height: 30px;
-    width: 30px;
-    margin: 0px 15px;
+    height: 35px;
+    width: 35px;
+    margin: 0px 10px;
 }
 .footerParent{
     position: relative;
@@ -601,9 +601,7 @@ html, body{
 
    .nft-container {
      float: center;
-     width: 90%;
-     padding-left: 10%;
-     padding-right: 10%;
+     width: 100%;
      margin: 10px auto;
    }
 
