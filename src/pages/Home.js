@@ -137,14 +137,18 @@ function Home() {
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                         <a href="https://twitter.com/supernalartss"><img src="assets/images/team/supernal.png" alt="teamimg"></img></a>
                         <title>Supernal</title>
-                    </div> 
+                    </div>    
+                  </div>
+                  <br/>
+                  <div className="row">
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-item">
+                      <MailingListAdd/>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <br/><br/>
-          <MailingListAdd/>
       </div>
       
     </section>

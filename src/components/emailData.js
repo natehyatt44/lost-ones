@@ -94,8 +94,8 @@ function MailingListAdd() {
     <div className="container">
       <form onSubmit={submitEmail}>
       <div className="input-wrapper">
-      <h1 style={{color: 'white' }}>Join the Tribe</h1>
-      <label style={{ color: 'white' }}>Keep up to date with the latest</label>
+      <h1 style={{color: '#FFFFFF' }}>Join the Tribe</h1>
+      <label style={{ color: '#FFFFFF' }}>Keep up to date with the latest</label>
               <div className="input-button-wrapper">
           <input
             type="email"
@@ -104,7 +104,7 @@ function MailingListAdd() {
             placeholder="Type your email..."
             required
           />
-        <button style={{ backgroundColor: 'blue', color: 'white',  }}>Subscribe</button>
+        <button style={{ backgroundColor: '#1E1E1E', color: '#FFFFFF', border: '2px solid #2B2B2B', borderRadius: '5px', padding: '5px 10px' }}>Subscribe</button>
         </div>
         <div className="response">{response}</div>
         </div>
@@ -129,7 +129,7 @@ function MailingListAdd() {
           margin-left: 10px;
         }
         .response {
-          color: red;
+          color: #FFFFFF;
           text-align: center;
           justify-content: center;
           align-items: center;
