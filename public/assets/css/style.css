@@ -546,10 +546,7 @@ html, body{
 
 .roadmap-container{
      margin: 15px auto;
-     margin-bottom: 5px;
- }
- .roadmap-item{
-     margin-bottom: 20px;
+     margin-bottom: 25px;
  }
 
  .roadmap-desktop-item img{
@@ -656,4 +653,24 @@ html, body{
    .story-container .para_text {
      display: block;
    }
+   
+   .banner-desktop-item,
+     .banner-mobile-item,
+     .roadmap-desktop-item,
+     .roadmap-mobile-item {
+     opacity: 0; /* hide the image initially */
+     transition: opacity 5s ease-in-out; /* add a transition effect */
+     }
+
+     .banner-desktop-item.loaded,
+     .banner-mobile-item.loaded,
+     .roadmap-desktop-item.loaded,
+     .roadmap-mobile-item.loaded {
+     opacity: 1; /* show the image when it's loaded */
+     }
+
+     .hide {
+          display: none;
+        }
+
    

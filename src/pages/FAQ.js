@@ -5,7 +5,7 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { Storage, API } from 'aws-amplify';
 import MailingListAdd from '../components/emailData';
-const { Slide } = require("react-awesome-reveal");
+const { JackInTheBox } = require("react-awesome-reveal");
 
 
 function testSomething()
@@ -20,7 +20,7 @@ function FAQ() {
    <Navigation />
    <section id="faq " className="background_sec ">
    <Banner>
-    <Slide>
+    <JackInTheBox>
     <Banner.Header><h1 className="h1_heading set_font"> FAQ </h1></Banner.Header>
       {questions.map((question) => (
         <Banner.Entity key={question.id}>
@@ -29,7 +29,7 @@ function FAQ() {
         </Banner.Entity>
       ))}
 
-      </Slide>
+      </JackInTheBox>
     </Banner>
    {}
    </section>

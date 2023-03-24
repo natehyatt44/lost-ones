@@ -52,7 +52,7 @@ function Whitepaper() {
                   <br/>Alixon Viloria aka <a href="https://twitter.com/alixonjviloria">@alixonjviloria</a> <br/>
                   Artist <br/>
                   With 10 years of experience in drawing, illustration, and visual storytelling, he is creative without limits and a lover of all things art. You don’t have to look for very long in order to see this type of attitude exuding from all of his work. He goes wholehearted. <br/><br/>
-                  <br/>Nate Hyatt aka <a href="https://twitter.com/nbreezay4">@nbreezay4</a> <br/>
+                  <br/>Nate Hyatt aka <a href="https://twitter.com/nbreezay_hbar">@nbreezay_hbar</a> <br/>
                   Lead Developer <br/>
                   Lives for soccer, football, rock climbing, and snowboarding. He has nearly 15 years of data engineering/cloud architect experience primarily at startups. Dipped his toes into web3 dev, and fell in love with developing against the hedera network. Although newer to the NFT scene, he is really enjoying the space and the community aspect it has to offer. Most importantly, he has been in $hbar since 57 cents and hasn’t lost a single ounce of belief. kek <br/><br/>
                   <br/>Justin Bratt aka <a href="https://twitter.com/jmjustinmyers">@jmjustinmyers</a> <br/>

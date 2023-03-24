@@ -1,27 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import MailingListAdd from '../components/emailData';
 import Footer from '../components/Footer';
-const { Slide } = require("react-awesome-reveal");
+const { Slide, Fade } = require("react-awesome-reveal");
 
 function Home() {
+  const [loading, setLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setLoading(false);
+  }
     
   return (
    <> 
    
    <Navigation />
-   <Slide>
    <div className="row">
-      <div className="col-0 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-desktop-item">
-         <img src="assets/images/banner/home_banner7.png" alt="bannerimg"></img>
+      <div className={`col-0 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-desktop-item ${!loading && 'loaded'}`}>
+        <img onLoad={handleImageLoad} src="assets/images/banner/home_banner7.png" alt="bannerimg"></img>
       </div>
-      <div className="col-12 col-sm-12  banner-mobile-item">
-         <img src="assets/images/banner/home_banner_mobile.png" alt="bannerimg"></img>
+      <div className={`col-12 col-sm-12 banner-mobile-item ${!loading && 'loaded'}`}>
+        <img onLoad={handleImageLoad} src="assets/images/banner/home_banner_mobile.png" alt="bannerimg"></img>
       </div>
- 
     </div>
+    <Slide direction='left' duration={3000}>
     <section id="Lore " className="info_sec ">
-      <div className="lore-container ">
+      <div className={`lore-container ${!loading ? 'loaded' : 'hide'}`}>
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
                 <br/>
@@ -56,8 +60,10 @@ function Home() {
           </div>
       </div>
     </section>
+    </Slide>
+    <Slide direction='right' duration={3000}>
     <section id="Prologue " className="traitbackground_sec ">
-      <div className="prologue-container ">
+      <div className={`prologue-container ${!loading ? 'loaded' : 'hide'}`}>
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
                 <br/><br/><br/><br/><br/>
@@ -79,8 +85,10 @@ function Home() {
           </div>
       </div>
     </section>
+    </Slide>
+    <Fade duration={10000}>
     <section id="Team " className="info_sec ">
-      <div className="team-container ">
+      <div className={`team-container ${!loading ? 'loaded' : 'hide'}`}>
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
                 <br/><br/><br/>
@@ -88,22 +96,22 @@ function Home() {
                 <br/><br/>
                 <div className="row">
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                      <img src="assets/images/team/jman1.png" alt="teamimg"></img>
+                      <a href="https://twitter.com/jmjustinmyers"><img src="assets/images/team/jman1.png" alt="teamimg"></img></a>
                       <title>Jman</title>
                       <p>CEO / Project Coordinator</p>
                   </div>
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                      <img src="assets/images/team/poncho1.png" alt="teamimg"></img>
+                      <a href="https://twitter.com/matadorvsmoose"><img src="assets/images/team/poncho1.png" alt="teamimg"></img></a>
                       <title>Head Poncho</title>
                       <p>Community Manager / Story & Lore Writer</p>
                   </div>
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                      <img src="assets/images/team/alixon1.png" alt="teamimg"></img>
+                      <a href="https://twitter.com/alixonjviloria"><img src="assets/images/team/alixon1.png" alt="teamimg"></img></a>
                       <title>Alixon</title>
                       <p>Artist & Creative Director</p>
                   </div>
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                      <img src="assets/images/team/nbreezay1.png" alt="teamimg"></img>
+                      <a href="https://twitter.com/nbreezay_hbar"><img src="assets/images/team/nbreezay1.png" alt="teamimg"></img></a>
                       <title>nbreezay</title>
                       <p>Lead Developer</p>
                   </div>
@@ -115,19 +123,19 @@ function Home() {
                   <br/><br/>
                   <div className="row">
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                        <img src="assets/images/team/sasan.png" alt="teamimg"></img>
+                        <a href="https://twitter.com/RadioactiveHABD"><img src="assets/images/team/sasan.png" alt="teamimg"></img></a>
                         <title>Sasan</title>
                     </div>
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                        <img src="assets/images/team/blueboy.png" alt="teamimg"></img>
+                        <a href="https://twitter.com/Bluekurtt"><img src="assets/images/team/blueboy.png" alt="teamimg"></img></a>
                         <title>Blueboy</title>
                     </div>
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                        <img src="assets/images/team/boss.png" alt="teamimg"></img>
+                        <a href="https://twitter.com/BossinN47"><img src="assets/images/team/boss.png" alt="teamimg"></img></a>
                         <title>'BossinN</title>
                     </div>
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                        <img src="assets/images/team/supernal.png" alt="teamimg"></img>
+                        <a href="https://twitter.com/supernalartss"><img src="assets/images/team/supernal.png" alt="teamimg"></img></a>
                         <title>Supernal</title>
                     </div> 
                   </div>
@@ -135,11 +143,16 @@ function Home() {
               </div>
             </div>
           </div>
+          <br/><br/>
+          <MailingListAdd/>
       </div>
+      
     </section>
-      <MailingListAdd/>
-  </Slide>
+      
+  </Fade>
+  <section className={`footer ${!loading ? 'loaded' : 'hide'}`}>
   <Footer />
+  </section>
 	</>
   );
 }
