@@ -15,7 +15,7 @@ function Navigation() {
                         </li>
                         {/* <li className="nav-item">
                         <a className="nav-link" href="/play">Play</a>
-                        </li> */}
+                        </li>  */}
                         <li className="nav-item">
                         <a className="nav-link" href="/gallery">Gallery</a>
                         </li>
