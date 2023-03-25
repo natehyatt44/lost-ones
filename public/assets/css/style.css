@@ -550,10 +550,10 @@ html, body{
  }
 
  .roadmap-desktop-item img{
-     max-width: 100%;
+     max-width: 90%;
  }
  .roadmap-mobile-item img{
-     max-width: 95%;
+     max-width: 85%;
  }
 
  /* Play */
@@ -671,4 +671,17 @@ html, body{
           display: none;
         }
 
-   
+        .connect-wallet-btn {
+          background-color: #4d4d4d;
+          color: #fff;
+          border: solid #4d4d4d;
+          box-shadow: none;
+          font-size: 16px;
+          padding: 12px 20px;
+        }
+        
+        .connect-wallet-btn:hover {
+          background-color: #222;
+        }
+        
+        

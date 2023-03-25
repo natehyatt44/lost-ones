@@ -1,8 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import Navigation from '../components/Navigation';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { ConnectHashPack, ConnectHashPackExtension, AccountNFTs, NFTImages, PairHashPack } from '../components/ConnectWallet';
 import { Scrollbar } from 'react-scrollbars-custom';
 import { useLocation } from 'react-router-dom';
 const { Slide, Fade } = require("react-awesome-reveal");
@@ -34,10 +30,15 @@ function Game(props) {
           <img src={selectedImage} alt="selected-nft" style={{ borderRadius:"50%", width:"100%", height:"100%" }} /> 
         </Fade>
       </div>
+      <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-right nft-item">
+        <Fade duration={15000} top>
+          <p>{accountId}</p>
+        </Fade>
+      </div>
     </div>
     <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center lore-item">
-            <Slide direction='down' duration={30000}><h1 className="h1_head_sml set_font"> Chapter 1 {accountId} </h1></Slide>
+            <Slide direction='down' duration={30000}><h1 className="h1_head_sml set_font"> Chapter 1 </h1></Slide>
         </div>
       </div>
       <div className="row">

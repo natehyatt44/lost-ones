@@ -25,12 +25,6 @@ function Navigation() {
                         <li className="nav-item">
                         <a className="nav-link" href="/whitepaper">Whitepaper</a>
                         </li>
-                        <li className="nav-item">
-                        <a className="nav-link" href="/roadmap">RoadMap</a>
-                        </li>
-                        <li className="nav-item">
-                        <a className="nav-link" href="/faq">FAQ</a>
-                        </li>
                     </ul>
                     <span className="navbar-text" >
                     <a href="https://twitter.com/barbarian_inc" target={{target:"_blank"}}>

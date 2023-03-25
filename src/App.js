@@ -2,8 +2,6 @@ import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
 import Whitepaper from "./pages/Whitepaper";
 import Litepaper from "./pages/Litepaper";
-import Roadmap from "./pages/Roadmap";
-import FAQ from "./pages/FAQ";
 import Play from "./pages/Play";
 import Game from "./pages/Game";
 import { Amplify } from 'aws-amplify';
@@ -22,8 +20,6 @@ function App() {
         <Route exact path='/gallery' element={<Gallery />} />
         <Route exact path='/whitepaper' element={<Whitepaper />} />
         <Route exact path='/litepaper' element={<Litepaper />} />
-        <Route exact path='/roadmap' element={<Roadmap />} />
-        <Route exact path='/faq' element={<FAQ />} />
         <Route exact path='/play' element={<Play />} />
         <Route exact path='/game' element={<Game />} />
     </Routes>

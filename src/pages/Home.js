@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import MailingListAdd from '../components/emailData';
 import Footer from '../components/Footer';
-const { Slide, Fade } = require("react-awesome-reveal");
+import questions from "../mappings/faq.json";
+import Banner from "../components/FaqInfo"
+const { Slide, Fade, Bounce } = require("react-awesome-reveal");
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -63,7 +65,7 @@ function Home() {
     </Slide>
     <Slide direction='right' duration={3000}>
     <section id="Prologue " className="traitbackground_sec ">
-      <div className={`prologue-container ${!loading ? 'loaded' : 'hide'}`}>
+      <div className="prologue-container">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
                 <br/><br/><br/><br/><br/>
@@ -86,14 +88,25 @@ function Home() {
       </div>
     </section>
     </Slide>
+    <section id="Roadmap " className="info_sec ">
+      <div className={`roadmap-container ${!loading ? 'loaded' : 'hide'}`}>
+         <div className="row">
+            <div className={`col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 roadmap-desktop-item ${!loading && 'loaded'}`}>
+                     <img onLoad={handleImageLoad} src="assets/images/banner/Roadmap-desktop.png" alt="roadmap"></img> 
+               </div>
+               <div className={`col-12 col-sm-12 col-md-12 col-lg-12 text-center p-0 roadmap-mobile-item ${!loading && 'loaded'}`}>
+                     <img onLoad={handleImageLoad} src="assets/images/banner/Roadmap-mobile.png" alt="roadmap"></img> 
+               </div>
+         </div>
+      </div>
+   </section>
     <Fade duration={10000}>
     <section id="Team " className="info_sec ">
       <div className={`team-container ${!loading ? 'loaded' : 'hide'}`}>
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
-                <br/><br/><br/>
                 <h1 className="h1_heading set_font"> The Founders </h1>
-                <br/><br/>
+                <br/>
                 <div className="row">
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <a href="https://twitter.com/jmjustinmyers"><img src="assets/images/team/jman1.png" alt="teamimg"></img></a>
@@ -118,9 +131,9 @@ function Home() {
                 </div>
                 <div className="row">
                 <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
-                  <br/><br/>
+                  <br/>
                   <h1 className="h1_heading set_font"> The Mods </h1>
-                  <br/><br/>
+                  <br/>
                   <div className="row">
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                         <a href="https://twitter.com/RadioactiveHABD"><img src="assets/images/team/sasan.png" alt="teamimg"></img></a>
@@ -154,6 +167,20 @@ function Home() {
     </section>
       
   </Fade>
+  <section id="faq " className={`background_sec ${!loading ? 'loaded' : 'hide'}`}>
+   <Banner>
+    <Bounce>
+    <Banner.Header><h1 className="h2_heading set_font"> Frequently Asked Questions </h1></Banner.Header>
+      {questions.map((question) => (
+        <Banner.Entity key={question.id}>
+          <Banner.Question>{question.question}</Banner.Question>
+          <Banner.Text>{question.answers}</Banner.Text>
+        </Banner.Entity>
+      ))}
+
+      </Bounce>
+    </Banner>
+  </section>
   <section className={`footer ${!loading ? 'loaded' : 'hide'}`}>
   <Footer />
   </section>
