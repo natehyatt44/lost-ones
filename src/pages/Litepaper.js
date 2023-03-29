@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-const { Slide } = require("react-awesome-reveal");
+const { Fade } = require("react-awesome-reveal");
 
 function Litepaper() {
     
@@ -10,7 +10,7 @@ function Litepaper() {
    <Navigation />
    
    <section id="Litepaper " className="info_sec ">
-   <Slide>
+   <Fade duration={3000}>
       <div id="Litepaper" className="container-fluid ">
          <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12 text-center p-0">
@@ -76,7 +76,7 @@ function Litepaper() {
             </div>
          </div>
       </div>
-      </Slide>
+      </Fade>
    </section>
    
    <Footer />

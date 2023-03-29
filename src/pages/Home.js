@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import MailingListAdd from '../components/emailData';
 import Footer from '../components/Footer';
-const { Slide, Fade } = require("react-awesome-reveal");
+import questions from "../mappings/faq.json";
+import Banner from "../components/FaqInfo";
+import { TypeWriter } from "../animations/TypeWriter";
+const { Slide, Fade, Bounce } = require("react-awesome-reveal");
+
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -10,7 +14,14 @@ function Home() {
   const handleImageLoad = () => {
     setLoading(false);
   }
-    
+
+  const companyText = `A NFT company dedicated to integrity, transparency, and trust as we build out an ecosystem of interconnected Digital Art Collectibles for Hedera and the greater NFT ecosystem as a whole. 
+                       \nA compelling storyline filled with lore and mystery, all while driving community engagement through an Alternate Reality Game entitled:
+                       \n"The Lost Ones"
+                       \n\nWelcome to the club.
+                         `;
+  const text = TypeWriter(companyText);
+
   return (
    <> 
    
@@ -23,77 +34,26 @@ function Home() {
         <img onLoad={handleImageLoad} src="assets/images/banner/home_banner_mobile.png" alt="bannerimg"></img>
       </div>
     </div>
-    <Slide direction='left' duration={3000}>
-    <section id="Lore " className="info_sec ">
-      <div className={`lore-container ${!loading ? 'loaded' : 'hide'}`}>
+    
+    <section id="About " className="info_sec ">
+      <div className={`about-container ${!loading ? 'loaded' : 'hide'}`}>
           <div className="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 about-item">
                 <br/>
-                <h1 className="h1_heading set_font"> Lore </h1>
+                <pre className="para_p">
+                  {text}
+                </pre>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
-                <h1 className="h1_head_sml set_font"> Mortals </h1>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
-                <br/>
-                <p className="para_p">
-                  Destroyed by their own hand, the Mortal's home planet of Earth died many eons ago. Unable to work together and live in peaceful harmony with the planet they once called home, the sustainability of life on earth slowly faded away. Some even surmise that an uncontrollable form of AI may have contributed to the gradual progression of the tragedy, but the specifics of these events are uncertain now. 
-                  The sands of time have slowly eroded away much of this ancient history. 
-                  <br/><br/>
-                  What IS known is that much interplanetary colonization occurred before this all came to pass, 
-                  which allowed for the technologies of the race to continue to grow and expand in a more purposeful and meaningful direction.
-                  Seeming to have learned from the mistakes of their past, friendship and family are the sole cornerstone for this race, with much emphasis being placed on community and 
-                  peaceful coexistence. In line with this new mindset is also a healthy dose of ultraviolent protectionism of what they now hold most dear... each other. 
-                  <br/><br/>
-                  Finally, intergalactic travel was accomplished, and over time, many members of this race have elected to migrate throughout the universe.
-                </p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
-                <img src="assets/images/banner/5barb_banner.png" alt="loreimg"></img>
-            </div>
-          </div>
+          </div> 
       </div>
     </section>
-    </Slide>
-    <Slide direction='right' duration={3000}>
-    <section id="Prologue " className="traitbackground_sec ">
-      <div className={`prologue-container ${!loading ? 'loaded' : 'hide'}`}>
-          <div className="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
-                <br/><br/><br/><br/><br/>
-                <h1 className="h1_heading set_font"> Prologue - The Search for Absolute Truth </h1>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
-                <br/><br/>
-                <p className="para_p">
-                  Reality is an Illusion. Everything changes; All flows. Nothing stays the same... Nothing Lasts! We have yet to discover the true nature of reality, but we are ever persistent in our attempt to learn the true purpose of the universe and everything in it. What are we here to do? Why does anything exist at all, rather than not exist? 
-                  <br/><br/>
-                  Our collective human experiences are filtered through the five senses; Touch, Taste, Sight, Sound & Smell. The philosopher Aristotle theorized that these five vectors into experiencing the external world were the means by which the soul cultivates its insight and judgmentjudgement on life. Our understanding of reality is not just limited by the five primary senses; The mind plays a crucial role in interpreting and understanding the information received through these limited channels. To understand reality beyond what can be perceived by these senses, one must use their mind, as the true reality cannot be fully perceived through physical senses alone - If we are to grasp the foundation of existence itself, we must go beyond the body and into the mind. Only by realizing the imagination can we come to know our true purpose.  
-                  <br/><br/>
-                  The vastness of time is infinite, but our lifespans are limited. Only a select few, brave explorers will be able to uncover the secrets of reality in their lifetime. In time you may find that your perceptions are there to hide true reality because the truth is too complicated. Do you consider yourself brave enough to go it alone, becoming lost in the chaos of discovery? Cast aside your understanding of reality, and your culturally defined notions as to what is or isn't real -- embrace your experience of life within the present moment, and follow your intuition. Be careful; be sincere; be true to yourself, and you just might survive the mind-bending trials & tribulations that soon lie before you. Those who survive will be rewarded with a treasure beyond what their imagination can conceive of, or believe to be real. This is a test for those willing to uncover the actual nature that lies beneath & beyond the universe itself.
-                </p>
-                <br/><br/><br/><br/>
-            </div>
-          </div>
-      </div>
-    </section>
-    </Slide>
-    <Fade duration={10000}>
+    <Fade duration={25000}>
     <section id="Team " className="info_sec ">
       <div className={`team-container ${!loading ? 'loaded' : 'hide'}`}>
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
-                <br/><br/><br/>
                 <h1 className="h1_heading set_font"> The Founders </h1>
-                <br/><br/>
+                <br/>
                 <div className="row">
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <a href="https://twitter.com/jmjustinmyers"><img src="assets/images/team/jman1.png" alt="teamimg"></img></a>
@@ -118,9 +78,9 @@ function Home() {
                 </div>
                 <div className="row">
                 <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
-                  <br/><br/>
+                  <br/>
                   <h1 className="h1_heading set_font"> The Mods </h1>
-                  <br/><br/>
+                  <br/>
                   <div className="row">
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                         <a href="https://twitter.com/RadioactiveHABD"><img src="assets/images/team/sasan.png" alt="teamimg"></img></a>
@@ -140,20 +100,48 @@ function Home() {
                     </div>    
                   </div>
                   <br/>
+                  <Slide direction="left" duration={2000}>
                   <div className="row">
                     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-item">
                       <MailingListAdd/>
                     </div>
                   </div>
+                  </Slide>
                 </div>
               </div>
             </div>
           </div>
       </div>
-      
     </section>
-      
-  </Fade>
+    </Fade> 
+    <Fade duration={10000}>
+  <section id="Roadmap " className="info_sec ">
+      <div className={`roadmap-container ${!loading ? 'loaded' : 'hide'}`}>
+         <div className="row">
+            <div className={`col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 roadmap-desktop-item ${!loading && 'loaded'}`}>
+                     <img src="assets/images/banner/Roadmap-desktop.png" alt="roadmap"></img> 
+               </div>
+               <div className={`col-12 col-sm-12 col-md-12 col-lg-12 text-center p-0 roadmap-mobile-item ${!loading && 'loaded'}`}>
+                     <img src="assets/images/banner/Roadmap-mobile.png" alt="roadmap"></img> 
+               </div>
+         </div>
+      </div>
+   </section>
+   </Fade>
+  <section id="faq " className={`background_sec ${!loading ? 'loaded' : 'hide'}`}>
+   <Banner>
+    <Bounce>
+    <Banner.Header><h1 className="h2_heading set_font"> Frequently Asked Questions </h1></Banner.Header>
+      {questions.map((question) => (
+        <Banner.Entity key={question.id}>
+          <Banner.Question>{question.question}</Banner.Question>
+          <Banner.Text>{question.answers}</Banner.Text>
+        </Banner.Entity>
+      ))}
+      </Bounce>
+    </Banner>
+  </section>
+  
   <section className={`footer ${!loading ? 'loaded' : 'hide'}`}>
   <Footer />
   </section>

@@ -1,55 +1,12 @@
-import { Amplify, API, Storage } from 'aws-amplify';
+import { Amplify, API } from 'aws-amplify';
 import awsmobile from '../aws-exports';
-import React, {useEffect, useState} from 'react';
-import { partition } from '@jest/expect-utils';
+import React, {useState} from 'react';
 
 
 Amplify.configure(awsmobile);
 
 const apiName = 'lostones';
 const path = '/mailing';
-const partitionKey = '/createDate'
-
-
-function Popup({ message, onClose }) {
-    return (
-      <div className="overlay">
-        <div className="popup">
-          <h2 style={{color: 'white' }}>{message}</h2>
-          <button onClick={onClose}>Close</button>
-        </div>
-        <style jsx>{`
-          .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-  
-          .popup {
-            background-color: black;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0);
-          }
-  
-          h2 {
-            margin-top: 0;
-          }
-  
-          button {
-            margin-top: 10px;
-          }
-        `}</style>
-      </div>
-    );
-  }
-
 
 function MailingListAdd() {
     const [email, setEmail] = useState('');

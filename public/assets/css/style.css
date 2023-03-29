@@ -17,6 +17,7 @@ html, body{
      color: #fff;
      text-transform: uppercase;
 }
+
 .h1_head_m{
      font-family: 'Poppins';
      font-weight: 700;
@@ -45,12 +46,12 @@ html, body{
 .seicon{
      height: 40px;
      width: 40px;
-     margin: 0px 15px;
+     margin: 0px 5px;
 }
 .footer_seicon{
-    height: 30px;
-    width: 30px;
-    margin: 0px 15px;
+    height: 35px;
+    width: 35px;
+    margin: 0px 10px;
 }
 .footerParent{
     position: relative;
@@ -106,6 +107,7 @@ html, body{
      font-size: 20px;
      line-height: 30px;
      color: #FFFFFF;
+     white-space: pre-wrap;
 }
 
 /* Phones */
@@ -161,9 +163,9 @@ html, body{
          margin: 6px 10px;
     }
      .seicon {
-         height: 35px;
-         width: 35px;
-         margin: 0px 7px;
+         height: 30px;
+         width: 30px;
+         margin: 0px 2px;
     }
     .banner-mobile-item img{
           display: none;
@@ -219,6 +221,9 @@ html, body{
     .h1_heading{
          font-size: 38px;
     }
+    .h1_headingbarb{
+     font-size: 38px;
+     }
     .h1_head_sml{
          font-size: 20px;
     }
@@ -530,6 +535,17 @@ html, body{
   }
 
    /* Home */
+   /* About */
+   .about-container{
+     float: center;
+     width: 100%;
+     padding-left: 10%;
+     padding-right: 10%;
+  }
+.about-item {
+     float: center;
+     width: 80%;
+}
 
 /* .banner-container{
     margin: 15px auto;
@@ -550,10 +566,10 @@ html, body{
  }
 
  .roadmap-desktop-item img{
-     max-width: 100%;
+     max-width: 90%;
  }
  .roadmap-mobile-item img{
-     max-width: 95%;
+     max-width: 85%;
  }
 
  /* Play */
@@ -601,9 +617,7 @@ html, body{
 
    .nft-container {
      float: center;
-     width: 90%;
-     padding-left: 10%;
-     padding-right: 10%;
+     width: 100%;
      margin: 10px auto;
    }
 
@@ -673,4 +687,16 @@ html, body{
           display: none;
         }
 
-   
+        .connect-wallet-btn {
+          background-color: #4d4d4d;
+          color: #fff;
+          border: solid #4d4d4d;
+          box-shadow: none;
+          font-size: 16px;
+          padding: 12px 20px;
+        }
+        
+        .connect-wallet-btn:hover {
+          background-color: #222;
+        }
+        
