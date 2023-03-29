@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
-import { ConnectHashPack, ConnectHashPackExtension, AccountNFTs, NFTImages, PairHashPack } from '../components/ConnectWallet';
+import { ConnectHashPack, ConnectHashPackExtension, AccountNFTs, PairHashPack } from '../components/ConnectWallet';
 
 
 function Hashpack(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-const { Slide } = require("react-awesome-reveal");
+const { Fade } = require("react-awesome-reveal");
 
 function Whitepaper() {
     
@@ -9,7 +9,7 @@ function Whitepaper() {
    <> 
    <Navigation />
    <section id="Whitepaper " className="info_sec ">
-      <Slide>
+      <Fade duration={3000}>
       <div id="Whitepaper" className="container-fluid ">
          <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12 text-center p-0">
@@ -62,7 +62,7 @@ function Whitepaper() {
             </div>
          </div>
       </div>
-      </Slide>
+      </Fade>
    </section>
    <Footer />
 	</>

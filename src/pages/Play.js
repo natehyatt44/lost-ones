@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Hashpack from '../modals/Hashpack';
@@ -7,12 +7,11 @@ const { Slide, Fade } = require("react-awesome-reveal");
 
 const regex = /^0\.0\..*/;
 
-function Play(props) {
+function Play() {
   const [accountId, setAccountId] = useState('')
   const [nfts, setNfts] = useState([])
   const [showBarbarians, setShowBarbarians] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const isImageSelected = selectedImage !== null;
   const navigate = useNavigate();
 
   function handleRaceButtonClick() {
@@ -36,14 +35,14 @@ function Play(props) {
    <div className="nft-container ">
    {!regex.test(accountId) &&
    <>
-    <div className="row">
+    {/* <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
           <Hashpack onConnect={handleHashpackConnect} />
         </div>
-    </div>
+    </div> */}
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet-fail">
       <Fade duration={5000}>
-      <h1 className="h1_heading set_font">Connect Wallet In Order To Play</h1>
+      <h1 className="h1_heading set_font">Coming soon...</h1>
       </Fade>
     </div>
   </>
@@ -82,7 +81,7 @@ function Play(props) {
     <>
       <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center wallet-fail">
         <Fade duration={5000}>
-        <h1 className="h1_heading set_font">serry no nfts sir</h1>
+        <h1 className="h1_heading set_font">You don't have the required Barbarian Inc NFT's to play</h1>
         </Fade>
       </div>
     </>
