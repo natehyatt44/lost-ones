@@ -8,7 +8,7 @@ function Lore() {
    <> 
    
    <Navigation />
-    <section id="Lore " className="info_sec ">
+    <section id="Lore " className="traitbackground_sec ">
       <div className="lore-container">
           <Slide direction='left' duration={3000}>
           <div className="row">
@@ -42,31 +42,6 @@ function Lore() {
           </Slide>
       </div>
     </section>
-   <Fade duration={3000}>
-    <section id="Prologue " className="traitbackground_sec ">
-      <div className="prologue-container">
-          <div className="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
-                <br/><br/><br/><br/><br/>
-                <h1 className="h1_heading set_font"> Prologue - The Search for Absolute Truth </h1>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
-                <br/><br/>
-                <p className="para_p">
-                  Reality is an Illusion. Everything changes; All flows. Nothing stays the same... Nothing Lasts! We have yet to discover the true nature of reality, but we are ever persistent in our attempt to learn the true purpose of the universe and everything in it. What are we here to do? Why does anything exist at all, rather than not exist? 
-                  <br/><br/>
-                  Our collective human experiences are filtered through the five senses; Touch, Taste, Sight, Sound & Smell. The philosopher Aristotle theorized that these five vectors into experiencing the external world were the means by which the soul cultivates its insight and judgmentjudgement on life. Our understanding of reality is not just limited by the five primary senses; The mind plays a crucial role in interpreting and understanding the information received through these limited channels. To understand reality beyond what can be perceived by these senses, one must use their mind, as the true reality cannot be fully perceived through physical senses alone - If we are to grasp the foundation of existence itself, we must go beyond the body and into the mind. Only by realizing the imagination can we come to know our true purpose.  
-                  <br/><br/>
-                  The vastness of time is infinite, but our lifespans are limited. Only a select few, brave explorers will be able to uncover the secrets of reality in their lifetime. In time you may find that your perceptions are there to hide true reality because the truth is too complicated. Do you consider yourself brave enough to go it alone, becoming lost in the chaos of discovery? Cast aside your understanding of reality, and your culturally defined notions as to what is or isn't real -- embrace your experience of life within the present moment, and follow your intuition. Be careful; be sincere; be true to yourself, and you just might survive the mind-bending trials & tribulations that soon lie before you. Those who survive will be rewarded with a treasure beyond what their imagination can conceive of, or believe to be real. This is a test for those willing to uncover the actual nature that lies beneath & beyond the universe itself.
-                </p>
-                <br/><br/><br/><br/>
-            </div>
-          </div>
-      </div>
-    </section>
-    </Fade>
     
   <section className="footer">
   <Footer />
