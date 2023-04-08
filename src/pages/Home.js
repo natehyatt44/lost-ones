@@ -52,35 +52,27 @@ function Home() {
       <div className={`team-container ${!loading ? 'loaded' : 'hide'}`}>
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
-                <h1 className="h1_heading set_font"> The Founders </h1>
+                <h1 className="h1_heading set_font"> The Team </h1>
                 <br/>
                 <div className="row">
-                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center p-0 team-item">
                       <a href="https://twitter.com/jmjustinmyers"><img src="assets/images/team/jman1.png" alt="teamimg"></img></a>
                       <title>Jman</title>
-                      <p>CEO / Project Coordinator</p>
+                      <p>CEO / Founder</p>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                      <a href="https://twitter.com/matadorvsmoose"><img src="assets/images/team/poncho1.png" alt="teamimg"></img></a>
-                      <title>Head Poncho</title>
-                      <p>Community Manager / Story & Lore Writer</p>
-                  </div>
-                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center p-0 team-item">
                       <a href="https://twitter.com/alixonjviloria"><img src="assets/images/team/alixon1.png" alt="teamimg"></img></a>
                       <title>Alixon</title>
                       <p>Artist & Creative Director</p>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center p-0 team-item">
                       <a href="https://twitter.com/nbreezay_hbar"><img src="assets/images/team/nbreezay1.png" alt="teamimg"></img></a>
                       <title>nbreezay</title>
-                      <p>Lead Developer</p>
+                      <p>Developer</p>
                   </div>
                 </div>
                 <div className="row">
                 <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
-                  <br/>
-                  <h1 className="h1_heading set_font"> The Mods </h1>
-                  <br/>
                   <div className="row">
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                         <a href="https://twitter.com/RadioactiveHABD"><img src="assets/images/team/sasan.png" alt="teamimg"></img></a>
@@ -130,7 +122,6 @@ function Home() {
    </Fade>
   <section id="faq " className={`background_sec ${!loading ? 'loaded' : 'hide'}`}>
    <Banner>
-    <Bounce>
     <Banner.Header><h1 className="h2_heading set_font"> Frequently Asked Questions </h1></Banner.Header>
       {questions.map((question) => (
         <Banner.Entity key={question.id}>
@@ -138,7 +129,6 @@ function Home() {
           <Banner.Text>{question.answers}</Banner.Text>
         </Banner.Entity>
       ))}
-      </Bounce>
     </Banner>
   </section>
   
