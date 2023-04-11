@@ -3,9 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Hashpack from '../modals/Hashpack';
 import { NFTImages } from '../components/ConnectWallet';
+import { Storage } from 'aws-amplify';
 const { Slide, Fade } = require("react-awesome-reveal");
 
 const regex = /^0\.0\..*/;
+
+async function uploadCsv(textData, fileName) {
+  const csvBlob = new Blob([textData], { type: 'text/csv' });
+  await Storage.put(fileName, csvBlob, {
+    contentType: 'text/csv'
+  });
+  console.log('File uploaded successfully!');
+}
+
 
 function Play() {
   const [accountId, setAccountId] = useState('')
@@ -26,6 +36,16 @@ function Play() {
   const handleHashpackConnect = (accountId, nfts) => {
     setAccountId(accountId);
     setNfts(nfts);
+    if (regex.test(accountId)){
+      const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Connect|${nfts}|${dateTimeString}`, `accountActivity/activity-${dateTimeString}.csv`)
+        .then(() => {
+          console.log('CSV file uploaded successfully!');
+        })
+        .catch((error) => {
+          console.error('Error uploading CSV file:', error);
+        });
+    }
   };
 
   return (
@@ -35,14 +55,14 @@ function Play() {
    <div className="nft-container ">
    {!regex.test(accountId) &&
    <>
-    {/* <div className="row">
+    <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
           <Hashpack onConnect={handleHashpackConnect} />
         </div>
-    </div> */}
+    </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet-fail">
       <Fade duration={5000}>
-      <h1 className="h1_heading set_font">Coming soon...</h1>
+      <h1 className="h1_heading set_font">Connect Wallet In Order To Play</h1>
       </Fade>
     </div>
   </>
@@ -70,7 +90,7 @@ function Play() {
               <h1 className="h1_head_m set_font">Select Barbarian</h1>
             </Slide>
             <div className="row">
-              <NFTImages accountNfts={nfts} onClickImage={(index) => handleStartGame(index)}/>
+              <NFTImages accountNfts={nfts["nftSerialNums"]} onClickImage={(index) => handleStartGame(index)}/>
             </div>
           </div>
         )}

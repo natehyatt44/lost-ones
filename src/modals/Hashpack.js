@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useNavigate } from 'react-router-dom';
 import { ConnectHashPack, ConnectHashPackExtension, AccountNFTs, PairHashPack } from '../components/ConnectWallet';
 
 
@@ -25,11 +24,11 @@ function Hashpack(props) {
     const copyPairingString = async () => {
         const hashpackdata = await ConnectHashPack()
         navigator.clipboard.writeText(hashpackdata.initData.pairingString)
-        const accountId = '0.0.1846' //await PairHashPack()
+        const accountId = await PairHashPack() // '0.0.1846'
         let accid = accountId.toString()
         await setAccountId(accountId)
         const nfts = await AccountNFTs(accid)
-        nfts.push(4,90,133, 149, 155, 961)
+        //nfts.push(4,90,133, 149, 155, 961)
         setNfts(nfts)
         props.onConnect(accid, nfts);
     };

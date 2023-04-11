@@ -53,8 +53,6 @@ export const AccountNFTs = async (accountId, nftSerialNums = [], nextUrl = null)
   const response = await fetch(`${url}${path}`)
   const nfts = await response.json()
 
-  console.log(nfts)
-
   if (nfts.nfts.length > 0) {
     nfts.nfts.forEach(item => {
       if (item.token_id === FoundersPassTokenId) {
@@ -63,13 +61,12 @@ export const AccountNFTs = async (accountId, nftSerialNums = [], nextUrl = null)
     });
   }
 
-  console.log(nftSerialNums)
-
   if (nfts.links && nfts.links.next) {
     return await AccountNFTs(accountId, nftSerialNums, nfts.links.next)
   }
 
-  return nftSerialNums
+  console.log({tokenId: FoundersPassTokenId, nftSerialNums: nftSerialNums.join(', ')})
+  return JSON.stringify({tokenId: FoundersPassTokenId, nftSerialNums: nftSerialNums.join(', ')})
 }
 
 

@@ -4,17 +4,14 @@ import { useLocation } from 'react-router-dom';
 import { TypeWriter } from "../animations/TypeWriter";
 const { Slide, Fade } = require("react-awesome-reveal");
 
-const text1 = `Destroyed by their own hand, the Mortal's home planet of Earth died many eons ago. 
-              Unable to work together and live in peaceful harmony with the planet they once called home, the 
-              sustainability of life on earth slowly faded away. Some even surmise that an uncontrollable form 
-              of AI may have contributed to the gradual progression of the tragedy, but the specifics of these 
-              events are uncertain now. The sands of time have slowly eroded away much of this ancient history.
-              What IS known is that much interplanetary colonization occurred before this all came to pass, which 
-              allowed for the technologies of the race to continue to grow and expand in a more purposeful and meaningful 
-              direction. Seeming to have learned from the mistakes of their past, friendship and family are the sole cornerstone for 
-              this race, with much emphasis being placed on community and peaceful coexistence. In line with this new mindset
-              is also a healthy dose of ultraviolent protectionism of what they now hold most dear... each other.
-              Finally, intergalactic travel was accomplished, and over time, many members of this race have elected to migrate throughout the universe.`;
+const chapter1 = `A NFT company dedicated to integrity, transparency, and trust as we build out an ecosystem of interconnected Digital Art Collectibles for Hedera and the greater NFT ecosystem as a whole. 
+                       \nA compelling storyline filled with lore and mystery, all while driving community engagement through an Alternate Reality Game entitled:
+                       \n"The Lost Ones"
+                       \n\nWelcome to the club.
+                       \n bilo
+                       \n bilo 
+                       \n bilo
+                         `;
 
 
 function Game(props) {
@@ -22,7 +19,7 @@ function Game(props) {
   const accountId = location.state.accountId;
   const selectedImage = location.state.selectedImage;
 
-  const text = TypeWriter(text1);
+  const text = TypeWriter(chapter1);
 
   return (
    <> 
