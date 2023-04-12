@@ -26,10 +26,26 @@ function Play() {
 
   function handleRaceButtonClick() {
     setShowBarbarians(true);
+    const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|SelectedRace|${nfts}|${dateTimeString}`, `accountActivity/activity-${dateTimeString}.csv`)
+      .then(() => {
+        console.log('CSV file uploaded successfully!');
+      })
+      .catch((error) => {
+        console.error('Error uploading CSV file:', error);
+      });
   }
 
   function handleStartGame(index) {
     setSelectedImage(index)
+    const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|SelectedNFT|${nfts}|${dateTimeString}`, `accountActivity/activity-${dateTimeString}.csv`)
+      .then(() => {
+        console.log('CSV file uploaded successfully!');
+      })
+      .catch((error) => {
+        console.error('Error uploading CSV file:', error);
+      });
     navigate('/game', {state:{selectedImage: index, accountId: accountId}});
   }
 
@@ -39,12 +55,12 @@ function Play() {
     if (regex.test(accountId)){
       const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
       uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Connect|${nfts}|${dateTimeString}`, `accountActivity/activity-${dateTimeString}.csv`)
-        .then(() => {
-          console.log('CSV file uploaded successfully!');
-        })
-        .catch((error) => {
-          console.error('Error uploading CSV file:', error);
-        });
+      .then(() => {
+        console.log('CSV file uploaded successfully!');
+      })
+      .catch((error) => {
+        console.error('Error uploading CSV file:', error);
+      });
     }
   };
 
@@ -90,7 +106,7 @@ function Play() {
               <h1 className="h1_head_m set_font">Select Barbarian</h1>
             </Slide>
             <div className="row">
-              <NFTImages accountNfts={nfts["nftSerialNums"]} onClickImage={(index) => handleStartGame(index)}/>
+              <NFTImages accountNfts={nfts} onClickImage={(index) => handleStartGame(index)}/>
             </div>
           </div>
         )}
