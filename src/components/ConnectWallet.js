@@ -2,6 +2,7 @@ import { HashConnect } from "hashconnect";
 import { Storage } from 'aws-amplify';
 import React, {useEffect, useState} from 'react';
 import { Slide } from 'react-awesome-reveal';
+import fetch from 'node-fetch';
 
 let hashconnect = new HashConnect();
 
@@ -43,45 +44,53 @@ export let PairHashPack = async () => {
   });
 };
 
-export const AccountNFTs = async (accountId, nftSerialNums = [], nextUrl = null) => {
-  const FoundersPassTokenId = '0.0.3286550'
+export const AccountNFTs = async (accountId, nftMetadata = [], nextUrl = null) => {
+  const FoundersPassTokenId = '0.0.3286550';
+  const ipfsGateway = 'https://ipfs.io/ipfs/';
+  const corsProxy = 'https://api.allorigins.win/raw?url=';
 
-  let url = 'https://testnet.mirrornode.hedera.com'
-  let path = nextUrl || `/api/v1/accounts/${accountId}/nfts?limit=100`
+  let url = 'https://testnet.mirrornode.hedera.com';
+  let path = nextUrl || `/api/v1/accounts/${accountId}/nfts?limit=100`;
 
   // Create your local client
-  const response = await fetch(`${url}${path}`)
-  const nfts = await response.json()
+  const response = await fetch(`${url}${path}`);
+  const nfts = await response.json();
 
   if (nfts.nfts.length > 0) {
-    nfts.nfts.forEach(item => {
+    for (const item of nfts.nfts) {
       if (item.token_id === FoundersPassTokenId) {
-        nftSerialNums.push(item.serial_number)
+        const metadataResponse = await fetch(`${url}/api/v1/tokens/${item.token_id}/nfts/${item.serial_number}/`);
+        const response = await metadataResponse.json();
+        const ipfsHash = response.metadata;
+        const metadata = Buffer.from(ipfsHash, 'base64')
+        const cid = metadata.toLocaleString();
+        const cidUse = cid.replace('ipfs://', '');
+
+        if (cidUse) {
+          const ipfsMetadataResponse = await fetch(`${corsProxy}${ipfsGateway}${cidUse}`);
+          const ipfsMetadata = await ipfsMetadataResponse.json();
+          nftMetadata.push({ id: ipfsMetadata.properties.id });
+        }
       }
-    });
+    }
   }
 
   if (nfts.links && nfts.links.next) {
-    return await AccountNFTs(accountId, nftSerialNums, nfts.links.next)
+    return await AccountNFTs(accountId, nftMetadata, nfts.links.next);
   }
 
-  console.log({tokenId: FoundersPassTokenId, nftSerialNums: nftSerialNums.join(', ')})
-  return JSON.stringify({tokenId: FoundersPassTokenId, nftSerialNums: nftSerialNums.join(', ')})
-}
+  console.log({ tokenId: FoundersPassTokenId, nftMetadata });
+  return JSON.stringify({ tokenId: FoundersPassTokenId, nftMetadata });
+};
 
-
-export function NFTImages ({accountNfts = [], onClickImage }) {
-  const [images, setImages] = useState([])
+export function NFTImages({ accountNfts, onClickImage }) {
+  const [images, setImages] = useState([]);
   const [loadedImages, setLoadedImages] = useState([]);
 
+  // Animate the images as they are loaded
   useEffect(() => {
-    fetchImages();
-  }, [accountNfts]);
-  
-   // Use another effect hook to update the loadedImages state as the images are loaded
-   useEffect(() => {
     const intervalId = setInterval(() => {
-      const index = loadedImages.findIndex(loaded => !loaded);
+      const index = loadedImages.findIndex((loaded) => !loaded);
       if (index !== -1) {
         const newLoadedImages = [...loadedImages];
         newLoadedImages[index] = true;
@@ -95,16 +104,34 @@ export function NFTImages ({accountNfts = [], onClickImage }) {
     return () => clearInterval(intervalId);
   }, [loadedImages]);
 
-  async function fetchImages() {
-    const fetchedImages = await Promise.all(accountNfts.map(async k => {
-      const key = await Storage.get('nft-founders-pass/images/' + k + '.png')
-      return key
-    }))
+  useEffect(() => {
+    // Parse the JSON string into a JavaScript object
+    const jsonObj = JSON.parse(accountNfts);
 
-    setLoadedImages(new Array(fetchedImages.length).fill(false));
-    setImages(fetchedImages)
-    
-  }
+    // Initialize an empty list to store the ids
+    const nftIdList = [];
+
+    // Loop through the nftMetadata array and add each id to the list
+    for (let i = 0; i < jsonObj.nftMetadata.length; i++) {
+      nftIdList.push(jsonObj.nftMetadata[i].id);
+    }
+    nftIdList.push(666,777,1000,1111)
+
+    async function fetchImages() {
+      const fetchedImages = [];
+
+      // Fetch images for each nftId in nftIdList
+      for (let i = 0; i < nftIdList.length; i++) {
+        const key = await Storage.get('nft-founders-pass/images/' + nftIdList[i] + '.png');
+        fetchedImages.push(key);
+      }
+
+      setLoadedImages(new Array(fetchedImages.length).fill(false));
+      setImages(fetchedImages);
+    }
+
+    fetchImages();
+  }, [accountNfts]);
 
   const handleClickImage = (index) => {
     onClickImage(index);
@@ -145,5 +172,6 @@ export function NFTImages ({accountNfts = [], onClickImage }) {
     </div>
   ));
 
-  return html
+  return html;
 }
+

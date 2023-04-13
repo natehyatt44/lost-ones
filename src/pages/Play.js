@@ -16,7 +16,6 @@ async function uploadCsv(textData, fileName) {
   console.log('File uploaded successfully!');
 }
 
-
 function Play() {
   const [accountId, setAccountId] = useState('')
   const [nfts, setNfts] = useState([])
@@ -103,7 +102,7 @@ function Play() {
         {showBarbarians && (
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
             <Slide direction='up' duration={1500}>
-              <h1 className="h1_head_m set_font">Select Barbarian</h1>
+              <h1 className="h1_head_m set_font">Select Character</h1>
             </Slide>
             <div className="row">
               <NFTImages accountNfts={nfts} onClickImage={(index) => handleStartGame(index)}/>
