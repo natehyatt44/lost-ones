@@ -26,7 +26,7 @@ function Play() {
   function handleRaceButtonClick() {
     setShowBarbarians(true);
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|SelectedRace|${nfts}|${dateTimeString}`, `accountActivity/activity-${dateTimeString}.csv`)
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|SelectedRace|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
       .then(() => {
         console.log('CSV file uploaded successfully!');
       })
@@ -38,7 +38,7 @@ function Play() {
   function handleStartGame(index) {
     setSelectedImage(index)
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|SelectedNFT|${nfts}|${dateTimeString}`, `accountActivity/activity-${dateTimeString}.csv`)
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|SelectedNFT|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
       .then(() => {
         console.log('CSV file uploaded successfully!');
       })
@@ -53,7 +53,7 @@ function Play() {
     setNfts(nfts);
     if (regex.test(accountId)){
       const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Connect|${nfts}|${dateTimeString}`, `accountActivity/activity-${dateTimeString}.csv`)
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Connect|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
       .then(() => {
         console.log('CSV file uploaded successfully!');
       })
@@ -61,6 +61,15 @@ function Play() {
         console.error('Error uploading CSV file:', error);
       });
     }
+  };
+
+  const checkRaceExists = (race) => {
+    const jsonObj = JSON.parse(nfts);
+    const { nftMetadata } = jsonObj;
+  
+    return nftMetadata.some(({ traits }) => {
+      return traits.some(({ trait_type, value }) => trait_type === "Race" && value === race);
+    });
   };
 
   return (
@@ -92,11 +101,11 @@ function Play() {
         <Slide direction='left' duration={1500}>
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
             <button type="button" variant="dark" className="btn btn-primary active futuristic-btn" onClick={handleRaceButtonClick}>Mortal</button>
-            <button type="button" className="btn btn-secondary disabled futuristic-btn">Alluvial</button>
-            <button type="button" className="btn btn-secondary disabled futuristic-btn">Elven</button>
-            <button type="button" className="btn btn-secondary disabled futuristic-btn">ArchAngel</button>
-            <button type="button" className="btn btn-secondary disabled futuristic-btn">Specter</button>
-            <button type="button" className="btn btn-secondary disabled futuristic-btn">Avem</button>
+            <button type="button" className={`btn ${checkRaceExists("Leshan") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Leshan</button>
+            <button type="button" className={`btn ${checkRaceExists("Elven") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Elven</button>
+            <button type="button" className={`btn ${checkRaceExists("ArchAngel") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>ArchAngel</button>
+            <button type="button" className={`btn ${checkRaceExists("Specter") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Specter</button>
+            <button type="button" className={`btn ${checkRaceExists("Avem") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Avem</button>
           </div>
         </Slide>
         {showBarbarians && (

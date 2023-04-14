@@ -6,15 +6,6 @@ import { useLocation } from 'react-router-dom';
 import { TypeWriter } from "../animations/TypeWriter";
 const { Slide, Fade } = require("react-awesome-reveal");
 
-const chapter1 = `ble blop blipto clop
-                       \nA aruba booba choot
-                       \n"otootototo
-                       \n\nWelcome to the club.
-                       \n bilo
-                       \n bilo 
-                       \n bilobilobilobilobilobilobilobilobilobilobilobilobilobilobilobilobilobilobilobilobilobilobil obilobilobilobilobilobilobilbilobilobilobilobilobilobi lobilobi lobilo biloobilobilob ilo bilobilo bilob ilobilob ilobilobilo bilobilobi lobilobilo
-                         `;
-
 async function uploadCsv(textData, fileName) {
   const csvBlob = new Blob([textData], { type: 'text/csv' });
   await Storage.put(fileName, csvBlob, {
@@ -26,13 +17,30 @@ async function uploadCsv(textData, fileName) {
 function Game(props) {
   const location = useLocation();
   const accountId = location.state.accountId;
+  const nfts = location.state.nfts;
   const selectedImage = location.state.selectedImage;
+  const [text, setText] = useState('');
 
-  const text = TypeWriter(chapter1);
+  async function fetchStory() {
+    try {
+      const signedUrl = await Storage.get("chapter1/story.txt", { level: "public" });
+      const response = await fetch(signedUrl);
+      const textContent = await response.text();
+      setText(textContent);
+    } catch (error) {
+      console.error("Error fetching story:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchStory();
+  }, []);
+
+  const story = TypeWriter(text);
 
   const handleExitGame = () => {
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Exit|putnftnumhere|${dateTimeString}`, `accountActivity/activity-${dateTimeString}.csv`)
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Exit|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
       .then(() => {
         console.log('CSV file uploaded successfully!');
       })
@@ -66,10 +74,9 @@ function Game(props) {
       </div>
       <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center story-container">
-            <br/>
             <Scrollbar style={{ height: 500}}>
               <pre className="para_p">
-                  {text}
+                  {story}
               </pre>
             </Scrollbar>
         </div>
