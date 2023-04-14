@@ -10,7 +10,7 @@ mirrorNode Options:
 
 */
 
-const barbIncNFTTokens = ['0.0.3286550', '0.0.3287486', '0.0.21294', '0.0.1459682', '0.0.2100901']
+const barbIncNFTTokens = ['0.0.2100901']
 const network = 'mainnet' 
 const mirrorNode = 'https://mainnet-public.mirrornode.hedera.com'
 
