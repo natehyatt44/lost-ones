@@ -69,7 +69,7 @@ function Game(props) {
     </div>
     <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center story-container">
-            <Slide direction='down' duration={30000}><h1 className="h1_head_sml set_font"> Chapter 1 </h1></Slide>
+            <Slide direction='down' duration={30000}><h1 className="h1_heading set_font"> Chapter 1 </h1></Slide>
         </div>
       </div>
       <div className="row">

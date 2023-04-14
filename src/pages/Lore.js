@@ -10,13 +10,14 @@ function Lore() {
    <Navigation />
     <section id="Lore " className="traitbackground_sec ">
       <div className="lore-container">
-          <Slide direction='left' duration={3000}>
+          <Slide direction='up' duration={7000}>
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
-                <h1 className="h1_head_sml set_font"> Mortals </h1>
+              <h1 className="h1_heading set_font"> Mortals </h1>
             </div>
           </div>
           </Slide>
+          <Fade duration={15000}>
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
                 <br/>
@@ -33,7 +34,8 @@ function Lore() {
                 </p>
             </div>
           </div>
-          <Slide direction='right' duration={3000}>
+          </Fade>
+          <Slide direction='down' duration={7000}>
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
                 <img src="assets/images/banner/5barb_banner.png" alt="loreimg"></img>
