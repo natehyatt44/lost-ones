@@ -7,6 +7,7 @@ import {
   AccountNFTs,
   PairHashPack,
 } from '../components/ConnectWallet';
+import { barbIncNFTTokens } from '../constants/Constants'
 
 function Hashpack(props) {
   const [show, setShow] = useState(false);
@@ -21,7 +22,7 @@ function Hashpack(props) {
     await ConnectHashPackExtension();
     const accountId = await PairHashPack();
     setAccountId(accountId);
-    const nfts = await AccountNFTs(accountId.toString());
+    const nfts = await AccountNFTs(accountId.toString(), barbIncNFTTokens);
     setNfts(nfts);
     props.onConnect(accountId, nfts);
   };
@@ -32,7 +33,7 @@ function Hashpack(props) {
     navigator.clipboard.writeText(hashpackdata.initData.pairingString);
     const accountId = await PairHashPack();
     setAccountId(accountId);
-    const nfts = await AccountNFTs(accountId.toString());
+    const nfts = await AccountNFTs(accountId.toString(), barbIncNFTTokens);
     setNfts(nfts);
     props.onConnect(accountId, nfts);
   };

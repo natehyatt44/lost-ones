@@ -1,8 +1,8 @@
 import { HashConnect } from "hashconnect";
-import { Storage } from 'aws-amplify';
 import React, {useEffect, useState} from 'react';
 import { Slide } from 'react-awesome-reveal';
 import fetch from 'node-fetch';
+import { network, mirrorNode } from '../constants/Constants';
 
 let hashconnect = new HashConnect();
 
@@ -12,8 +12,6 @@ let appMetadata = {
   icon: "https://barbarianinc.club/assets/images/barbarianinc_logo.png",
   url: "https://barbarianinc.club/"
 }
-
-let network = 'testnet'
 
 hashconnect.disconnect(hashconnect.hcData.topic)
 console.log(hashconnect)
@@ -44,21 +42,19 @@ export let PairHashPack = async () => {
   });
 };
 
-export const AccountNFTs = async (accountId, nftMetadata = [], nextUrl = null) => {
-  const FoundersPassTokenId = '0.0.3286550';
+export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], nextUrl = null) => {
   const ipfsGateway = 'https://ipfs.io/ipfs/';
   const corsProxy = 'https://api.allorigins.win/raw?url=';
 
-  let url = 'https://testnet.mirrornode.hedera.com';
+  let url = mirrorNode;
   let path = nextUrl || `/api/v1/accounts/${accountId}/nfts?limit=100`;
 
-  // Create your local client
   const response = await fetch(`${url}${path}`);
   const nfts = await response.json();
 
   if (nfts.nfts.length > 0) {
     for (const item of nfts.nfts) {
-      if (item.token_id === FoundersPassTokenId) {
+      if (tokenIds.includes(item.token_id)) {
         const metadataResponse = await fetch(`${url}/api/v1/tokens/${item.token_id}/nfts/${item.serial_number}/`);
         const response = await metadataResponse.json();
         const ipfsHash = response.metadata;
@@ -69,25 +65,25 @@ export const AccountNFTs = async (accountId, nftMetadata = [], nextUrl = null) =
         if (cidUse) {
           const ipfsMetadataResponse = await fetch(`${corsProxy}${ipfsGateway}${cidUse}`);
           const ipfsMetadata = await ipfsMetadataResponse.json();
-          nftMetadata.push({ id: ipfsMetadata.properties.id });
+          const ipfs = ipfsMetadata.image.replace('ipfs://', `${ipfsGateway}`);
+          nftMetadata.push({ tokenId: item.token_id, name: ipfsMetadata.name, ipfs: ipfs, traits: ipfsMetadata.attributes });
         }
       }
     }
   }
 
   if (nfts.links && nfts.links.next) {
-    return await AccountNFTs(accountId, nftMetadata, nfts.links.next);
+    return await AccountNFTs(accountId, tokenIds, nftMetadata, nfts.links.next);
   }
 
-  console.log({ tokenId: FoundersPassTokenId, nftMetadata });
-  return JSON.stringify({ tokenId: FoundersPassTokenId, nftMetadata });
+  console.log({ tokenIds, nftMetadata });
+  return JSON.stringify({ tokenIds, nftMetadata });
 };
 
 export function NFTImages({ accountNfts, onClickImage }) {
   const [images, setImages] = useState([]);
   const [loadedImages, setLoadedImages] = useState([]);
 
-  // Animate the images as they are loaded
   useEffect(() => {
     const intervalId = setInterval(() => {
       const index = loadedImages.findIndex((loaded) => !loaded);
@@ -100,30 +96,19 @@ export function NFTImages({ accountNfts, onClickImage }) {
       }
     }, 500);
 
-    // Clean up the interval on unmount
     return () => clearInterval(intervalId);
   }, [loadedImages]);
 
   useEffect(() => {
-    // Parse the JSON string into a JavaScript object
     const jsonObj = JSON.parse(accountNfts);
-
-    // Initialize an empty list to store the ids
-    const nftIdList = [];
-
-    // Loop through the nftMetadata array and add each id to the list
-    for (let i = 0; i < jsonObj.nftMetadata.length; i++) {
-      nftIdList.push(jsonObj.nftMetadata[i].id);
-    }
-    nftIdList.push(666,777,1000,1111)
 
     async function fetchImages() {
       const fetchedImages = [];
 
-      // Fetch images for each nftId in nftIdList
-      for (let i = 0; i < nftIdList.length; i++) {
-        const key = await Storage.get('nft-founders-pass/images/' + nftIdList[i] + '.png');
-        fetchedImages.push(key);
+      // Fetch images using IPFS links from the nftMetadata array
+      for (let i = 0; i < jsonObj.nftMetadata.length; i++) {
+        const ipfsLink = jsonObj.nftMetadata[i].ipfs;
+        fetchedImages.push(ipfsLink);
       }
 
       setLoadedImages(new Array(fetchedImages.length).fill(false));
@@ -174,4 +159,5 @@ export function NFTImages({ accountNfts, onClickImage }) {
 
   return html;
 }
+
 
