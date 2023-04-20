@@ -75,18 +75,18 @@ function Play() {
   return (
    <> 
    <Navigation />
-   <section id="Play " className="info_sec ">
+   <section id="Play " className="background_play ">
    <div className="nft-container ">
    {!regex.test(accountId) &&
    <>
-    <div className="row">
+    {/* <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
           <Hashpack onConnect={handleHashpackConnect} />
         </div>
-    </div>
-    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet-fail">
+    </div> */}
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet">
       <Fade duration={5000}>
-      <h1 className="h1_heading set_font">Connect Wallet In Order To Play</h1>
+      <h1 className="h1_heading set_font">Coming soon...</h1>
       </Fade>
     </div>
   </>
@@ -123,7 +123,7 @@ function Play() {
     {
     regex.test(accountId) && nfts.length === 0 &&
     <>
-      <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center wallet-fail">
+      <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center wallet">
         <Fade duration={5000}>
         <h1 className="h1_heading set_font">You don't have the required Barbarian Inc NFT's to play</h1>
         </Fade>
