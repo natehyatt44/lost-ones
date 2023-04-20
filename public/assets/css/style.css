@@ -84,7 +84,7 @@ html, body{
      background-image: url('../images/background/background_game2.png') !important;
      backdrop-filter: blur(40px) !important;
      position: relative !important;
-     height: 90vh; /* added this line */
+     height: 100vh; /* added this line */
      width: 100%; /* added this line */
      background-size: cover; /* added this line */
      background-position: center; /* added this line */
@@ -629,7 +629,7 @@ html, body{
      display: flex;
      justify-content: center;
      align-items: center;
-     height: 60vh;
+     height: 50vh;
      color: #fff;
    }
 

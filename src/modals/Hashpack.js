@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {
@@ -9,13 +9,19 @@ import {
 } from '../components/ConnectWallet';
 import { barbIncNFTTokens } from '../constants/Constants'
 
-function Hashpack(props) {
+function Hashpack({ onConnect, showModal, onClose }) {
   const [show, setShow] = useState(false);
   const [accountId, setAccountId] = useState('');
   const [nfts, setNfts] = useState([]);
 
-  // Close the modal
-  const handleClose = () => setShow(false);
+  useEffect(() => {
+    setShow(showModal);
+  }, [showModal]);
+
+  const handleClose = () => {
+    setShow(false);
+    onClose();
+  };
 
   // Connect to HashPack extension and fetch account data
   const connectHashPackExtension = async () => {
@@ -24,7 +30,7 @@ function Hashpack(props) {
     setAccountId(accountId);
     const nfts = await AccountNFTs(accountId.toString(), barbIncNFTTokens);
     setNfts(nfts);
-    props.onConnect(accountId, nfts);
+    onConnect(accountId, nfts);
   };
 
   // Copy pairing string and fetch account data
@@ -35,23 +41,12 @@ function Hashpack(props) {
     setAccountId(accountId);
     const nfts = await AccountNFTs(accountId.toString(), barbIncNFTTokens);
     setNfts(nfts);
-    props.onConnect(accountId, nfts);
+    onConnect(accountId, nfts);
   };
 
   return (
     <>
-      <Button
-        variant="primary"
-        size="lg"
-        onClick={() => setShow(true)}
-        className="connect-wallet-btn"
-      >
-        Connect Wallet
-      </Button>
-
-      {show && (
         <Modal
-          {...props}
           show={show}
           onHide={handleClose}
           keyboard={false}
@@ -75,7 +70,7 @@ function Hashpack(props) {
             </Button>
           </Modal.Footer>
         </Modal>
-      )}
+      
     </>
   );
 }

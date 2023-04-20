@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation';
 import Hashpack from '../modals/Hashpack';
 import { NFTImages } from '../components/ConnectWallet';
 import { Storage } from 'aws-amplify';
+import { Dropdown } from 'react-bootstrap';
 const { Slide, Fade } = require("react-awesome-reveal");
 
 const regex = /^0\.0\..*/;
@@ -19,7 +20,9 @@ async function uploadCsv(textData, fileName) {
 function Play() {
   const [accountId, setAccountId] = useState('')
   const [nfts, setNfts] = useState([])
+  const [nftAmt, setNftAmt] = useState([])
   const [showBarbarians, setShowBarbarians] = useState(false);
+  const [show, setShow] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
 
@@ -51,6 +54,9 @@ function Play() {
   const handleHashpackConnect = (accountId, nfts) => {
     setAccountId(accountId);
     setNfts(nfts);
+    const jsonObj = JSON.parse(nfts);
+    setNftAmt(jsonObj.nftMetadata.length);
+
     if (regex.test(accountId)){
       const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
       uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Connect|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
@@ -63,6 +69,13 @@ function Play() {
     }
   };
 
+  const handleExit = () => {
+    window.location.href = '/';
+  };
+
+  const handleShow = () => setShow(true);
+  const handleModalClose = () => {setShow(false);};
+
   const checkRaceExists = (race) => {
     const jsonObj = JSON.parse(nfts);
     const { nftMetadata } = jsonObj;
@@ -74,24 +87,40 @@ function Play() {
 
   return (
    <> 
-   <Navigation />
    <section id="Play " className="background_play ">
+   
    <div className="nft-container ">
+    <div className="row">
+      <div className="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-center nft-item">
+        <Fade duration={15000} top>
+        <Dropdown>
+          <Dropdown.Toggle variant="primary" size="lg" id="dropdown-basic" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a', color: '#fff' }}>
+            Menu
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }}>
+            <Dropdown.Item onClick={handleShow} style={{ color: '#fff' }}>Connect Hashpack</Dropdown.Item>
+            <Dropdown.Item onClick={handleExit} style={{ color: '#fff' }}>Exit</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        </Fade>
+      </div>
+      </div>
    {!regex.test(accountId) &&
    <>
-    {/* <div className="row">
+    <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
-          <Hashpack onConnect={handleHashpackConnect} />
+          <Hashpack onConnect={handleHashpackConnect} showModal={show} onClose={handleModalClose} />
         </div>
-    </div> */}
+    </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet">
       <Fade duration={5000}>
-      <h1 className="h1_heading set_font">Coming soon...</h1>
+      <h1 className="h1_heading set_font">Connect Your Wallet In Order To Play</h1>
       </Fade>
     </div>
   </>
   }
-    {regex.test(accountId) && nfts.length > 0 &&( 
+    {regex.test(accountId) && nftAmt > 0 &&( 
       <>
         <Slide direction='right' duration={1500}>
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
@@ -121,7 +150,7 @@ function Play() {
       </>
     )}
     {
-    regex.test(accountId) && nfts.length === 0 &&
+    regex.test(accountId) && nftAmt === 0 &&
     <>
       <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center wallet">
         <Fade duration={5000}>
