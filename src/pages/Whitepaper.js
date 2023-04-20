@@ -41,7 +41,7 @@ function Whitepaper() {
                   <p className="para_p">
                   Here at BarbarianInc, we are fostering an attitude of “If you build it, they will come”. Every mint we hold will have 20% (post launchpad fees, of course) placed into a company treasury to help fund all company-related needs and sub-contract work, and to build up the underlying valuation of BarbarianInc as a whole. We also plan on approaching VCs for funding once we have proven ourselves through the successful launch of the “Hbarbarians” Community Founders Passes and our ARG “The Lost Ones”. Are we hinging a lot on the hope that our future VC funding round is a success? Yes. It is best, to be honest about this and not try to play games. However, we genuinely believe that we can and will receive said funding as long as we do our jobs in delivering what we have promised with the CFPs and ARG.
                   <br/><br/><br/>
-                  </p>
+                   {/*</p>
                   <h1 className="h1_head_sml set_font"> Meet The Team </h1> 
                   <p className="para_p">
                   <br/>Alixon Viloria aka <a href="https://twitter.com/alixonjviloria">@alixonjviloria</a> <br/>
@@ -52,7 +52,8 @@ function Whitepaper() {
                   Lives for soccer, football, rock climbing, and snowboarding. He has nearly 15 years of data engineering/cloud architect experience primarily at startups. Dipped his toes into web3 dev, and fell in love with developing against the hedera network. Although newer to the NFT scene, he is really enjoying the space and the community aspect it has to offer. Most importantly, he has been in $hbar since 57 cents and hasn’t lost a single ounce of belief. kek <br/><br/>
                   <br/>Justin Bratt aka <a href="https://twitter.com/jmjustinmyers">@jmjustinmyers</a> <br/>
                   Founder / CEO <br/>
-                  A passionate crypto enthusiast since January 2018, Justin is not afraid to dream and test the boundaries of what is possible. A strong work ethic, coupled with manifestation is his go-to combination. Bet against him at your own risk.
+                  A passionate crypto enthusiast since January 2018, Justin is not afraid to dream and test the boundaries of what is possible. A strong work ethic, coupled with manifestation is his go-to combination. Bet against him at your own risk. 
+                  */}
                </p>
             </div>
          </div>

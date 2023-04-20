@@ -20,7 +20,6 @@ function Home() {
                        \n"The Lost Ones"
                        \n\nWelcome to the club.
                          `;
-  const text = TypeWriter(companyText);
 
   return (
    <> 
@@ -34,26 +33,27 @@ function Home() {
         <img onLoad={handleImageLoad} src="assets/images/banner/home_banner_mobile.png" alt="bannerimg"></img>
       </div>
     </div>
-    
+    <Fade duration={10000}>
     <section id="About " className="info_sec ">
       <div className={`about-container ${!loading ? 'loaded' : 'hide'}`}>
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 about-item">
                 <br/>
                 <pre className="para_p">
-                  {text}
+                  {companyText}
                 </pre>
             </div>
           </div> 
       </div>
     </section>
-    <Fade duration={25000}>
+    </Fade>
     <section id="Team " className="info_sec ">
       <div className={`team-container ${!loading ? 'loaded' : 'hide'}`}>
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
                 <h1 className="h1_heading set_font"> The Team </h1>
                 <br/>
+                <Slide direction="left" duration={2000}>
                 <div className="row">
                   <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center p-0 team-item">
                       <a href="https://twitter.com/jmjustinmyers"><img src="assets/images/team/jman1.png" alt="teamimg"></img></a>
@@ -71,8 +71,10 @@ function Home() {
                       <p>Developer</p>
                   </div>
                 </div>
+                </Slide>
                 <div className="row">
                 <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
+                  <Slide direction="right" duration={2000}>
                   <div className="row">
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                         <a href="https://twitter.com/RadioactiveHABD"><img src="assets/images/team/sasan.png" alt="teamimg"></img></a>
@@ -91,21 +93,21 @@ function Home() {
                         <title>Supernal</title>
                     </div>    
                   </div>
+                  </Slide>
                   <br/>
-                  <Slide direction="left" duration={2000}>
+                  <Bounce>
                   <div className="row">
                     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-item">
                       <MailingListAdd/>
                     </div>
                   </div>
-                  </Slide>
+                  </Bounce>
                 </div>
               </div>
             </div>
           </div>
       </div>
     </section>
-    </Fade> 
     <Fade duration={10000}>
   <section id="Roadmap " className="info_sec ">
       <div className={`roadmap-container ${!loading ? 'loaded' : 'hide'}`}>

@@ -71,6 +71,24 @@ html, body{
      backdrop-filter: blur(40px) !important;
      position: relative !important;
  }
+ .background_game {
+  background-image: url('../images/background/background_game1.png') !important;
+  backdrop-filter: blur(40px) !important;
+  position: relative !important;
+  height: 100vh; /* added this line */
+  width: 100%; /* added this line */
+  background-size: cover; /* added this line */
+  background-position: center; /* added this line */
+}
+.background_play {
+     background-image: url('../images/background/background_game2.png') !important;
+     backdrop-filter: blur(40px) !important;
+     position: relative !important;
+     height: 90vh; /* added this line */
+     width: 100%; /* added this line */
+     background-size: cover; /* added this line */
+     background-position: center; /* added this line */
+   }
  .traitbackground_sec {
      background-image: url('../images/background/background_trait.png') !important;
      backdrop-filter: blur(40px) !important;
@@ -607,11 +625,11 @@ html, body{
 
    /* Play */
 
-   .wallet-fail {
+   .wallet {
      display: flex;
      justify-content: center;
      align-items: center;
-     height: 80vh;
+     height: 60vh;
      color: #fff;
    }
 
@@ -645,58 +663,88 @@ html, body{
      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 2px 2px rgba(0, 0, 0, 0.15);
    }
    
-   .futuristic-btn:hover {
-     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 4px 4px rgba(0, 0, 0, 0.15);
-     transform: translateY(-2px);
-   }
-   
-   .futuristic-btn:focus {
-     outline: none;
-     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 4px 4px rgba(0, 0, 0, 0.15);
-   }
+.futuristic-btn:hover {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 4px 4px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
 
-   .story-container {
-     font-family: 'Poppins';
-     font-style: normal;
-     font-weight: 275;
-     font-size: 20px;
-     line-height: 30px;
-     color: #FFFFFF;
-   }
-   
-   .story-container .para_text {
-     display: block;
-   }
-   
-   .banner-desktop-item,
-     .banner-mobile-item,
-     .roadmap-desktop-item,
-     .roadmap-mobile-item {
-     opacity: 0; /* hide the image initially */
-     transition: opacity 5s ease-in-out; /* add a transition effect */
-     }
+.futuristic-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 4px 4px rgba(0, 0, 0, 0.15);
+}
 
-     .banner-desktop-item.loaded,
-     .banner-mobile-item.loaded,
-     .roadmap-desktop-item.loaded,
-     .roadmap-mobile-item.loaded {
-     opacity: 1; /* show the image when it's loaded */
-     }
+.story-container {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 275;
+  font-size: 20px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
 
-     .hide {
-          display: none;
-        }
+.story-container .para_text {
+  display: block;
+}
 
-        .connect-wallet-btn {
-          background-color: #4d4d4d;
-          color: #fff;
-          border: solid #4d4d4d;
-          box-shadow: none;
-          font-size: 16px;
-          padding: 12px 20px;
-        }
-        
-        .connect-wallet-btn:hover {
-          background-color: #222;
-        }
-        
+.banner-desktop-item,
+  .banner-mobile-item,
+  .roadmap-desktop-item,
+  .roadmap-mobile-item {
+  opacity: 0; /* hide the image initially */
+  transition: opacity 5s ease-in-out; /* add a transition effect */
+  }
+
+  .banner-desktop-item.loaded,
+  .banner-mobile-item.loaded,
+  .roadmap-desktop-item.loaded,
+  .roadmap-mobile-item.loaded {
+  opacity: 1; /* show the image when it's loaded */
+  }
+
+.hide {
+  display: none;
+}
+
+.connect-wallet-btn {
+  background-color: #4d4d4d;
+  color: #fff;
+  border: solid #4d4d4d;
+  box-shadow: none;
+  font-size: 16px;
+  padding: 12px 20px;
+}
+
+.connect-wallet-btn:hover {
+  background-color: #222;
+}
+
+.story-container{width: 80%}
+
+/* GAME */
+.dropdown-toggle {
+  background-color: #1a1a1a !important;
+  border-color: #1a1a1a !important;
+  color: #fff !important;
+  opacity: 0.9;
+}
+
+.dropdown-toggle:hover {
+  background-color: #3c3c3c !important;
+  border-color: #3c3c3c !important;
+}
+
+.dropdown-menu {
+  background-color: #1a1a1a !important;
+  border-color: #1a1a1a !important;
+  opacity: 0.9; 
+}
+
+.dropdown-item {
+  color: #fff !important;
+}
+
+.dropdown-item:hover {
+  background-color: #3c3c3c !important;
+  color: #fff !important;
+}
+
