@@ -5,6 +5,8 @@ import Hashpack from '../modals/Hashpack';
 import { NFTImages } from '../components/ConnectWallet';
 import { Storage } from 'aws-amplify';
 import { Dropdown } from 'react-bootstrap';
+import AccountCode from '../components/AccountCode';
+
 const { Slide, Fade } = require("react-awesome-reveal");
 
 const regex = /^0\.0\..*/;
@@ -24,6 +26,7 @@ function Play() {
   const [showBarbarians, setShowBarbarians] = useState(false);
   const [show, setShow] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
 
   function handleRaceButtonClick() {
@@ -75,6 +78,9 @@ function Play() {
 
   const handleShow = () => setShow(true);
   const handleModalClose = () => {setShow(false);};
+  const handleTogglePopup = () => {
+    setShowPopup(!showPopup);
+  };
 
   const checkRaceExists = (race) => {
     const jsonObj = JSON.parse(nfts);
@@ -92,18 +98,17 @@ function Play() {
    <div className="nft-container ">
     <div className="row">
       <div className="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-center nft-item">
-        <Fade duration={15000} top>
         <Dropdown>
           <Dropdown.Toggle variant="primary" size="lg" id="dropdown-basic" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a', color: '#fff' }}>
             Menu
           </Dropdown.Toggle>
-
           <Dropdown.Menu style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }}>
+            <Dropdown.Item onClick={handleTogglePopup} style={{ color: '#fff' }}>Use Account Code</Dropdown.Item>
             <Dropdown.Item onClick={handleShow} style={{ color: '#fff' }}>Connect Hashpack</Dropdown.Item>
             <Dropdown.Item onClick={handleExit} style={{ color: '#fff' }}>Exit</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        </Fade>
+        <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} />
       </div>
       </div>
    {!regex.test(accountId) &&
@@ -115,7 +120,7 @@ function Play() {
     </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet">
       <Fade duration={5000}>
-      <h1 className="h1_heading set_font">Connect Your Wallet In Order To Play</h1>
+        <h1 className="h1_heading set_font">Use Account Code<br/>Or<br/>Connect Wallet In Order To Play</h1>
       </Fade>
     </div>
   </>
