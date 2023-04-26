@@ -32,9 +32,9 @@ function Litepaper() {
                <br/><br/>
                1) All “Hbarbarians” Community Founders Passes will be playable as the Mortals race in the upcoming ARG (Alternate Reality Game).
                <br/><br/>
-               2) All holders will receive a free Digital Collectables airdrop from a collection curated by our very own in-house artist @alixonjviloria.
+               2) All holders will receive a free Digital Collectibles airdrop from a collection curated by our very own in-house artist @alixonjviloria.
                <br/><br/>
-               3) One whitelist will be granted for each of the 5 ARG Digital Collectables collections that are to be dropped in the future. There is zero obligation to use these, they are there simply if you want or need them.
+               3) One whitelist will be granted for each of the 5 ARG Digital Collectibles collections that are to be dropped in the future. There is zero obligation to use these, they are there simply if you want or need them.
                <br/><br/>
                4) One “Hbarbarian” Community Founders Pass holder will be deemed an instant winner of the ARG, guaranteeing that the individual who possesses it will receive his or her share of the prize pool at the end of the game.
                <br/><br/>
@@ -48,17 +48,17 @@ function Litepaper() {
                and real-life events. The goal of an ARG is to create a sense of immersion, and to allow players to experience a story in a unique and interactive way. 
                <br/><br/>
                ARGs can be played by a large number of people simultaneously, and they often involve elements of mystery, adventure, and suspense. In this text-based format, 
-               the team will commence the development of the Digital Collectables-powered ARG for the community, entitled "The Lost Ones."
+               the team will commence the development of the Digital Collectibles-powered ARG for the community, entitled "The Lost Ones."
                For those without an “Hbarbarian” Community Founders Pass, access to “The Lost Ones” storyline and ARG will be granted to the individual through an 
-               initial public mint of the character Digital Collectables.
+               initial public mint of the character Digital Collectibles.
                <br/><br/>
-               If the right type of Digital Collectables from the character collection has been acquired by an individual, 
+               If the right type of Digital Collectibles from the character collection has been acquired by an individual, 
                then this will provide an opportunity for them to complete the specific storyline associated with it. Determining which of these character 
-               Digital Collectables will provide the possibility to participate will be based on word games, hints, and other scavenger hunt-style activities hosted by the team.
+               Digital Collectibles will provide the possibility to participate will be based on word games, hints, and other scavenger hunt-style activities hosted by the team.
                This will be the first among many inquiries that players must answer to beat the game.
                <br/><br/>
                Ultimately, the main twist on ARG gameplay is that it will be up to the participants to hunt down and hold within the same wallet, the right
-               combination of Digital Collectables from each collection dropped in association with “The Lost Ones”. Without the perfect lineage (combination) of Digital Collectables held in their wallet,
+               combination of Digital Collectibles from each collection dropped in association with “The Lost Ones”. Without the perfect lineage (combination) of Digital Collectibles held in their wallet,
                their text-based adventure will not be complete. Many participants will be motivated to try to discover the true, fully completed ending to the 
                storyline by the potential of winning large prizes denoted in $HBAR. Rewards will be funded through 15% of all profits from all 5 mints associated with
                “The Lost Ones” being placed in a prize pool. This will genuinely motivate and potentially even reward those who chose to commit themselves to the game.
