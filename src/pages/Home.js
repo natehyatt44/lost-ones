@@ -15,7 +15,7 @@ function Home() {
     setLoading(false);
   }
 
-  const companyText = `A NFT company dedicated to integrity, transparency, and trust as we build out an ecosystem of interconnected Digital Art Collectibles for Hedera and the greater NFT ecosystem as a whole. 
+  const companyText = `A Digital Collectables Company dedicated to integrity, transparency, and trust as we build out an ecosystem of interconnected Digital Art Collectibles for Hedera and the greater ecosystem as a whole. 
                        \nA compelling storyline filled with lore and mystery, all while driving community engagement through an Alternate Reality Game entitled:
                        \n"The Lost Ones"
                        \n\nWelcome to the club.

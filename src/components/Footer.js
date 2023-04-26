@@ -12,7 +12,7 @@ function Footer() {
                     </a>
                 </div>
                 <div className="col-7 col-sm-8 col-md-8 col-lg-8 col-xl-8 text-center p-0 footer">
-                    <p className="para_p">© 2023 Barbarian Inc L.L.C. All Rights Reserved.</p>
+                    <p className="para_p">© 2023 HBARBARIANS LLC All Rights Reserved.</p>
                 </div>
                 <div className="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center p-0 footer">
                     <a href="https://twitter.com/barbarian_inc" target={{target:"_blank"}}>
