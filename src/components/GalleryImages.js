@@ -24,7 +24,7 @@ function GalleryImages() {
 
   // Function to fetch the images from AWS S3
   async function fetchImages() {
-    let imageKeys = await Storage.list('nft-founders-pass/images/', { level: 'public' });
+    let imageKeys = await Storage.list('NFTimages/', { level: 'public' });
 
     // Filter out images that do not have a size property (e.g. folders)
     let imageKeysUpdated = imageKeys.results.filter(item => item.size);
