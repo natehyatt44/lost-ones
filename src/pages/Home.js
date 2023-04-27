@@ -53,57 +53,29 @@ function Home() {
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
                 <h1 className="h1_heading set_font"> The Team </h1>
                 <br/>
-                <Slide direction="left" duration={2000}>
                 <div className="row">
-                  <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center p-0 team-item">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <a href="https://twitter.com/jmjustinmyers"><img src="assets/images/team/jman1.png" alt="teamimg"></img></a>
-                      <title>Jman</title>
-                      <p>CEO / Founder</p>
+                      <Slide direction="up" duration={2000}><title>Jman</title></Slide>
+                      <Slide direction="down" duration={2000}><p>CEO / Founder</p></Slide>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center p-0 team-item">
+       
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <a href="https://twitter.com/alixonjviloria"><img src="assets/images/team/alixon1.png" alt="teamimg"></img></a>
-                      <title>Alixon</title>
-                      <p>Artist & Creative Director</p>
+                      <Slide direction="up" duration={2000}><title>Alixon</title></Slide>
+                      <Slide direction="down" duration={2000}><p>Artist & Creative Director</p></Slide>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center p-0 team-item">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <a href="https://twitter.com/nbreezay_hbar"><img src="assets/images/team/nbreezay1.png" alt="teamimg"></img></a>
-                      <title>nbreezay</title>
-                      <p>Developer</p>
+                      <Slide direction="up" duration={2000}><title>nbreezay</title></Slide>
+                      <Slide direction="down" duration={2000}><p>Developer</p></Slide>
                   </div>
-                </div>
-                </Slide>
-                <div className="row">
-                <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
-                  <Slide direction="right" duration={2000}>
-                  <div className="row">
-                    <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                        <a href="https://twitter.com/RadioactiveHABD"><img src="assets/images/team/sasan.png" alt="teamimg"></img></a>
-                        <title>Sasan</title>
-                    </div>
-                    <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                        <a href="https://twitter.com/Bluekurtt"><img src="assets/images/team/blueboy.png" alt="teamimg"></img></a>
-                        <title>Blueboy</title>
-                    </div>
-                    <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                        <a href="https://twitter.com/BossinN47"><img src="assets/images/team/boss.png" alt="teamimg"></img></a>
-                        <title>'BossinN</title>
-                    </div>
-                    <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                         <a href="https://twitter.com/supernalartss"><img src="assets/images/team/supernal.png" alt="teamimg"></img></a>
-                        <title>Supernal</title>
-                    </div>    
-                  </div>
-                  </Slide>
-                  <br/>
-                  <Bounce>
-                  <div className="row">
-                    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-item">
-                      <MailingListAdd/>
-                    </div>
-                  </div>
-                  </Bounce>
+                        <Slide direction="up" duration={2000}><title>Supernal</title></Slide>
+                        <Slide direction="down" duration={2000}><p>Community Dev / Creative Writer</p></Slide>
+                    </div> 
                 </div>
-              </div>
             </div>
           </div>
       </div>
@@ -131,8 +103,17 @@ function Home() {
           <Banner.Text>{question.answers}</Banner.Text>
         </Banner.Entity>
       ))}
-    </Banner>
+    </Banner>  
   </section>
+  <br/>
+  <Slide direction="left" duration={1000}>
+    <div className="row">
+      <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0">
+        <MailingListAdd/>
+      </div>
+    </div>
+  </Slide> 
+  <br/>
   
   <section className={`footer ${!loading ? 'loaded' : 'hide'}`}>
   <Footer />

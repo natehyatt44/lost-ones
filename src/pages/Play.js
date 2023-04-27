@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Hashpack from '../modals/Hashpack';
-import { NFTImages } from '../components/ConnectWallet';
 import { Storage } from 'aws-amplify';
 import { Dropdown } from 'react-bootstrap';
 import AccountCode from '../components/AccountCode';
+import { NFTImages } from '../components/ConnectWallet';
 
 const { Slide, Fade } = require("react-awesome-reveal");
 
@@ -44,13 +44,7 @@ function Play() {
   function handleStartGame(index) {
     setSelectedImage(index)
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|SelectedNFT|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
-      .then(() => {
-        console.log('CSV file uploaded successfully!');
-      })
-      .catch((error) => {
-        console.error('Error uploading CSV file:', error);
-      });
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|SelectedNFT|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
     navigate('/game', {state:{selectedImage: index, accountId: accountId}});
   }
 
@@ -62,15 +56,22 @@ function Play() {
 
     if (regex.test(accountId)){
       const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Connect|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
-      .then(() => {
-        console.log('CSV file uploaded successfully!');
-      })
-      .catch((error) => {
-        console.error('Error uploading CSV file:', error);
-      });
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|ConnectHashpack|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
     }
   };
+
+  const handleAccountCodeSubmit = (accountId, nfts) => {
+    setAccountId(accountId);
+    setNfts(nfts);
+    const jsonObj = JSON.parse(nfts);
+    setNftAmt(jsonObj.nftMetadata.length);
+
+    if (regex.test(accountId)){
+      const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|AccountCode|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
+    }
+  }
+  
 
   const handleExit = () => {
     window.location.href = '/';
@@ -108,31 +109,36 @@ function Play() {
             <Dropdown.Item onClick={handleExit} style={{ color: '#fff' }}>Exit</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} />
       </div>
       </div>
-   {!regex.test(accountId) &&
+   {!regex.test(accountId) && 
    <>
     <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
           <Hashpack onConnect={handleHashpackConnect} showModal={show} onClose={handleModalClose} />
+          <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} onAccountCodeSubmit={handleAccountCodeSubmit} />
         </div>
     </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet">
       <Fade duration={5000}>
-        <h1 className="h1_heading set_font">Use Account Code<br/>Or<br/>Connect Wallet In Order To Play</h1>
+        <h1 className="h1_heading set_font">The Lost Ones</h1>
       </Fade>
     </div>
   </>
   }
     {regex.test(accountId) && nftAmt > 0 &&( 
       <>
-        <Slide direction='right' duration={1500}>
+        <Fade duration={3000}>
+          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
+            <h2 className="h1_head_xs set_font">Welcome #{accountId}</h2>
+          </div>
+        </Fade>
+        <Slide direction='right' duration={2500}>
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
             <h2 className="h1_head_m set_font">Select Race</h2>
           </div>
         </Slide>
-        <Slide direction='left' duration={1500}>
+        <Slide direction='left' duration={3500}>
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
             <button type="button" variant="dark" className="btn btn-primary active futuristic-btn" onClick={handleRaceButtonClick}>Mortal</button>
             <button type="button" className={`btn ${checkRaceExists("Leshan") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Leshan</button>
@@ -159,8 +165,10 @@ function Play() {
     <>
       <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center wallet">
         <Fade duration={5000}>
-        <h1 className="h1_heading set_font">You don't have the required Barbarian Inc NFT's to play</h1>
+        <h1 className="h1_heading set_font">You don't have the required NFT's to play</h1>
         </Fade>
+        <Hashpack onConnect={handleHashpackConnect} showModal={show} onClose={handleModalClose} />
+        <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} onAccountCodeSubmit={handleAccountCodeSubmit} />
       </div>
     </>
   }
