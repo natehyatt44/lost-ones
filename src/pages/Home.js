@@ -107,10 +107,12 @@ function Home() {
   </section>
   <br/>
   <Slide direction="left" duration={1000}>
+  <div className={`mail-container ${!loading ? 'loaded' : 'hide'}`}>
     <div className="row">
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0">
         <MailingListAdd/>
       </div>
+    </div>
     </div>
   </Slide> 
   <br/>
