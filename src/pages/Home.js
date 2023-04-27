@@ -18,7 +18,7 @@ function Home() {
   const companyText = `A Digital Collectibles Company dedicated to integrity, transparency, and trust as we build out an ecosystem of interconnected Digital Art Collectibles for Hedera and the greater ecosystem as a whole. 
                        \nA compelling storyline filled with lore and mystery, all while driving community engagement through an Alternate Reality Game entitled:
                        \n"The Lost Ones"
-                       \n\nWelcome to the club.
+                       \nWelcome to the club.
                          `;
 
   return (
