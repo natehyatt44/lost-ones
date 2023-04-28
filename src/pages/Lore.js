@@ -8,7 +8,7 @@ function Lore() {
    <> 
    
    <Navigation />
-    <section id="Lore " className="traitbackground_sec ">
+    <section id="Lore " className="info_sec ">
       <div className="lore-container">
           <Slide direction='up' duration={7000}>
           <div className="row">
