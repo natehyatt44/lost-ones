@@ -687,17 +687,13 @@ html, body{
 }
 
 .banner-desktop-item,
-  .banner-mobile-item,
-  .roadmap-desktop-item,
-  .roadmap-mobile-item {
+  .banner-mobile-item{
   opacity: 0; /* hide the image initially */
   transition: opacity 5s ease-in-out; /* add a transition effect */
   }
 
   .banner-desktop-item.loaded,
-  .banner-mobile-item.loaded,
-  .roadmap-desktop-item.loaded,
-  .roadmap-mobile-item.loaded {
+  .banner-mobile-item.loaded{
   opacity: 1; /* show the image when it's loaded */
   }
 
