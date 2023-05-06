@@ -11,7 +11,7 @@ export const TypeWriter = (originalText) => {
       if (currentIndex === originalText.length) {
         clearInterval(intervalId);
       }
-    }, 25);
+    }, 200);
 
     return () => {
       clearInterval(intervalId);

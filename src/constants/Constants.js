@@ -1,6 +1,4 @@
 /* 
-FoundersPassTokenId =  '0.0.3286550'
-Token2 = '0.0.3287486'
 Network Options: 
     mainnet
     testnet
@@ -10,8 +8,9 @@ mirrorNode Options:
 
 */
 
-const barbIncNFTTokens = ['0.0.2100901']
+const barbIncNFTTokens = ['0.0.2235264']
 const network = 'mainnet' 
 const mirrorNode = 'https://mainnet-public.mirrornode.hedera.com'
+const disallowedAccountIds = ['0.0.1067445']
 
-export { barbIncNFTTokens, network, mirrorNode }
+export { barbIncNFTTokens, network, mirrorNode, disallowedAccountIds }

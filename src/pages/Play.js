@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Hashpack from '../modals/Hashpack';
@@ -27,12 +27,13 @@ function Play() {
   const [show, setShow] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [players, setPlayers] = useState('');
   const navigate = useNavigate();
 
   function handleRaceButtonClick() {
     setShowBarbarians(true);
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|SelectedRace|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Select-Race|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
       .then(() => {
         console.log('CSV file uploaded successfully!');
       })
@@ -43,8 +44,9 @@ function Play() {
 
   function handleStartGame(index) {
     setSelectedImage(index)
+    console.log(index)
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|SelectedNFT|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Select-NFT|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
     navigate('/game', {state:{selectedImage: index, accountId: accountId}});
   }
 
@@ -56,7 +58,7 @@ function Play() {
 
     if (regex.test(accountId)){
       const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|ConnectHashpack|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Connect-Hashpack|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
     }
   };
 
@@ -68,7 +70,7 @@ function Play() {
 
     if (regex.test(accountId)){
       const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|AccountCode|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Use-AccountCode|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
     }
   }
   
@@ -84,13 +86,30 @@ function Play() {
   };
 
   const checkRaceExists = (race) => {
-    const jsonObj = JSON.parse(nfts);
-    const { nftMetadata } = jsonObj;
+    // const jsonObj = JSON.parse(nfts);
+    // const { nftMetadata } = jsonObj;
   
-    return nftMetadata.some(({ traits }) => {
-      return traits.some(({ trait_type, value }) => trait_type === "Race" && value === race);
-    });
+    // return nftMetadata.some(({ traits }) => {
+    //   return traits.some(({ trait_type, value }) => trait_type === "Race" && value === race);
+    // });
+
   };
+
+  async function fetchPlayers() {
+    try {
+      const signedUrl = await Storage.get("accountStatus/accounts.csv", { level: "public" });
+      const response = await fetch(signedUrl);
+      const textContent = await response.text();
+      setPlayers(textContent);
+      console.log(players)
+    } catch (error) {
+      console.error("Error fetching players:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchPlayers();
+  }, []);
 
   return (
    <> 
@@ -104,13 +123,14 @@ function Play() {
             Menu
           </Dropdown.Toggle>
           <Dropdown.Menu style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }}>
+            <Dropdown.Item onClick={() => window.location.href = 'https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/guide'} style={{ color: '#fff' }}>Guide</Dropdown.Item>
             <Dropdown.Item onClick={handleTogglePopup} style={{ color: '#fff' }}>Use Account Code</Dropdown.Item>
             <Dropdown.Item onClick={handleShow} style={{ color: '#fff' }}>Connect Hashpack</Dropdown.Item>
             <Dropdown.Item onClick={handleExit} style={{ color: '#fff' }}>Exit</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>
-      </div>
+    </div>
    {!regex.test(accountId) && 
    <>
     <div className="row">
@@ -119,10 +139,19 @@ function Play() {
           <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} onAccountCodeSubmit={handleAccountCodeSubmit} />
         </div>
     </div>
+    <div className="row">
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet">
-      <Fade duration={5000}>
+      <Fade duration={8000}>
         <h1 className="h1_heading set_font">The Lost Ones</h1>
       </Fade>
+    </div>
+    </div>
+    <div className="row">
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet">
+      <Fade duration={8000}>
+        <h3 className="h1_head_game set_font">Players</h3>
+      </Fade>
+    </div>
     </div>
   </>
   }
@@ -130,12 +159,12 @@ function Play() {
       <>
         <Fade duration={3000}>
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
-            <h2 className="h1_head_xs set_font">Welcome #{accountId}</h2>
+            <h3 className="h1_head_xs set_font">Welcome #{accountId}</h3>
           </div>
         </Fade>
         <Slide direction='right' duration={2500}>
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
-            <h2 className="h1_head_m set_font">Select Race</h2>
+            <h2 className="h1_head_game set_font">Select Race</h2>
           </div>
         </Slide>
         <Slide direction='left' duration={3500}>
@@ -151,7 +180,7 @@ function Play() {
         {showBarbarians && (
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
             <Slide direction='up' duration={1500}>
-              <h1 className="h1_head_m set_font">Select Character</h1>
+              <h1 className="h1_head_game set_font">Select Character</h1>
             </Slide>
             <div className="row">
               <NFTImages accountNfts={nfts} onClickImage={(index) => handleStartGame(index)}/>

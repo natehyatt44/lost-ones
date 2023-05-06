@@ -66,7 +66,7 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
           const ipfsMetadataResponse = await fetch(`${corsProxy}${ipfsGateway}${cidUse}`);
           const ipfsMetadata = await ipfsMetadataResponse.json();
           const ipfs = ipfsMetadata.image.replace('ipfs://', `${ipfsGateway}`);
-          nftMetadata.push({ tokenId: item.token_id, name: ipfsMetadata.name, ipfs: ipfs, traits: ipfsMetadata.attributes });
+          nftMetadata.push({ tokenId: item.token_id, edition: ipfsMetadata.edition, ipfs: ipfs, traits: ipfsMetadata.attributes[7] });
         }
       }
     }

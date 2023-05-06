@@ -35,11 +35,19 @@ html, body{
      text-transform: uppercase;
      text-decoration: underline;
 }
-.h1_head_xs{
+.h1_head_game{
      font-family: 'Poppins';
      font-weight: 600;
      font-size: 20px;
-     line-height: 40px;
+     line-height: 15px;
+     color: #fff;
+     text-transform: uppercase;
+}
+.h1_head_xs{
+     font-family: 'Poppins';
+     font-weight: 600;
+     font-size: 15px;
+     line-height: 20px;
      color: #fff;
      text-transform: uppercase;
 }
@@ -626,10 +634,8 @@ html, body{
    /* Play */
 
    .wallet {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     height: 50vh;
+     float: center;
+     margin: 10px auto;
      color: #fff;
    }
 
@@ -653,12 +659,12 @@ html, body{
      border: none;
      background: none;
      color: #fff;
-     font-size: 16px;
+     font-size: 12px;
      font-weight: bold;
      letter-spacing: 1px;
      text-transform: uppercase;
-     margin: 10px;
-     padding: 10px 30px;
+     margin: 8px;
+     padding: 8px 25px;
      transition: all 0.3s ease-in-out;
      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 2px 2px rgba(0, 0, 0, 0.15);
    }
