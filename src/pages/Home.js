@@ -27,10 +27,10 @@ function Home() {
    <Navigation />
    <div className="row">
       <div className={`col-0 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-desktop-item ${!loading && 'loaded'}`}>
-        <img onLoad={handleImageLoad} src="assets/images/banner/home_banner7.png" alt="bannerimg"></img>
+        <img onLoad={handleImageLoad} src="assets/images/banner/hbarb_banner_desktop.png" alt="bannerimg"></img>
       </div>
       <div className={`col-12 col-sm-12 banner-mobile-item ${!loading && 'loaded'}`}>
-        <img onLoad={handleImageLoad} src="assets/images/banner/home_banner_mobile.png" alt="bannerimg"></img>
+        <img onLoad={handleImageLoad} src="assets/images/banner/hbarb_banner_mobile.png" alt="bannerimg"></img>
       </div>
     </div>
     <Fade duration={10000}>
@@ -80,32 +80,7 @@ function Home() {
           </div>
       </div>
     </section>
-    <Fade duration={10000}>
-  <section id="Roadmap " className="info_sec ">
-      <div className={`roadmap-container ${!loading ? 'loaded' : 'hide'}`}>
-         <div className="row">
-            <div className={`col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 roadmap-desktop-item ${!loading && 'loaded'}`}>
-                     <img src="assets/images/banner/Roadmap-desktop.png" alt="roadmap"></img> 
-               </div>
-               <div className={`col-12 col-sm-12 col-md-12 col-lg-12 text-center p-0 roadmap-mobile-item ${!loading && 'loaded'}`}>
-                     <img src="assets/images/banner/Roadmap-mobile.png" alt="roadmap"></img> 
-               </div>
-         </div>
-      </div>
-   </section>
-   </Fade>
-  <section id="faq " className={`background_sec ${!loading ? 'loaded' : 'hide'}`}>
-   <Banner>
-    <Banner.Header><h1 className="h2_heading set_font"> Frequently Asked Questions </h1></Banner.Header>
-      {questions.map((question) => (
-        <Banner.Entity key={question.id}>
-          <Banner.Question>{question.question}</Banner.Question>
-          <Banner.Text>{question.answers}</Banner.Text>
-        </Banner.Entity>
-      ))}
-    </Banner>  
-  </section>
-  <br/>
+
   <Slide direction="left" duration={1000}>
   <div className={`mail-container ${!loading ? 'loaded' : 'hide'}`}>
     <div className="row">
@@ -116,7 +91,6 @@ function Home() {
     </div>
   </Slide> 
   <br/>
-  
   <section className={`footer ${!loading ? 'loaded' : 'hide'}`}>
   <Footer />
   </section>
