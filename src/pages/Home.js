@@ -27,10 +27,10 @@ function Home() {
    <Navigation />
    <div className="row">
       <div className={`col-0 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-desktop-item ${!loading && 'loaded'}`}>
-        <img onLoad={handleImageLoad} src="assets/images/banner/home_banner7.png" alt="bannerimg"></img>
+        <img onLoad={handleImageLoad} src="assets/images/banner/hbarb_banner_desktop.png" alt="bannerimg"></img>
       </div>
       <div className={`col-12 col-sm-12 banner-mobile-item ${!loading && 'loaded'}`}>
-        <img onLoad={handleImageLoad} src="assets/images/banner/home_banner_mobile.png" alt="bannerimg"></img>
+        <img onLoad={handleImageLoad} src="assets/images/banner/hbarb_banner_mobile.png" alt="bannerimg"></img>
       </div>
     </div>
     <Fade duration={10000}>
