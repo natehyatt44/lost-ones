@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navigation from '../components/Navigation';
 import Hashpack from '../modals/Hashpack';
 import { Storage } from 'aws-amplify';
 import { Dropdown } from 'react-bootstrap';
 import AccountCode from '../components/AccountCode';
 import { NFTImages } from '../components/ConnectWallet';
-
+import { s3accountActivity, s3accountStats } from '../constants/Constants';
 const { Slide, Fade } = require("react-awesome-reveal");
 
 const regex = /^0\.0\..*/;
@@ -28,12 +27,13 @@ function Play() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [players, setPlayers] = useState('');
+  const [playerElements, setPlayerElements] = useState([]);
   const navigate = useNavigate();
 
   function handleRaceButtonClick() {
     setShowBarbarians(true);
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Select-Race|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Select-Race|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
       .then(() => {
         console.log('CSV file uploaded successfully!');
       })
@@ -46,7 +46,7 @@ function Play() {
     setSelectedImage(index)
     console.log(index)
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Select-NFT|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Select-NFT|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
     navigate('/game', {state:{selectedImage: index, accountId: accountId}});
   }
 
@@ -58,7 +58,7 @@ function Play() {
 
     if (regex.test(accountId)){
       const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Connect-Hashpack|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Connect-Hashpack|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
     }
   };
 
@@ -70,7 +70,7 @@ function Play() {
 
     if (regex.test(accountId)){
       const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Use-AccountCode|${nfts}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Use-AccountCode|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
     }
   }
   
@@ -97,19 +97,52 @@ function Play() {
 
   async function fetchPlayers() {
     try {
-      const signedUrl = await Storage.get("accountStatus/accounts.csv", { level: "public" });
+      const signedUrl = await Storage.get(`${s3accountStats}/accounts.csv`, { level: "public" });
       const response = await fetch(signedUrl);
       const textContent = await response.text();
-      setPlayers(textContent);
-      console.log(players)
+  
+      const rows = textContent.trim().split("\n");
+      const header = rows.shift().split("|");
+      const players = rows.map((row) => {
+        const rowData = row.split("|");
+        const playerObj = {};
+        header.forEach((key, index) => {
+          playerObj[key] = rowData[index];
+        });
+        playerObj["date"] = new Date(playerObj["date"]);
+        return playerObj;
+      });
+  
+      players.sort((a, b) => b.date - a.date);
+      setPlayers(players);
     } catch (error) {
       console.error("Error fetching players:", error);
     }
   }
-
+  
   useEffect(() => {
     fetchPlayers();
   }, []);
+  
+  useEffect(() => {
+    if (players.length) {
+      const elements = players.map((player, index) => {
+        const formattedAccountId = player.accountId;
+        const formattedStatus = player.status;
+        const formattedRace = player.race;
+        return (
+          <li key={index} style={{listStyle: 'none'}}>
+            <div className="player-data">
+              <span>{formattedAccountId}</span>
+              <span>{formattedStatus}</span>
+              <span>{formattedRace}</span>
+            </div>
+          </li>
+        );
+      });
+      setPlayerElements(elements);
+    }
+  }, [players]);
 
   return (
    <> 
@@ -139,19 +172,31 @@ function Play() {
           <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} onAccountCodeSubmit={handleAccountCodeSubmit} />
         </div>
     </div>
-    <div className="row">
-    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet">
-      <Fade duration={8000}>
-        <h1 className="h1_heading set_font">The Lost Ones</h1>
-      </Fade>
-    </div>
-    </div>
-    <div className="row">
-    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet">
-      <Fade duration={8000}>
-        <h3 className="h1_head_game set_font">Players</h3>
-      </Fade>
-    </div>
+    <div className='player-container'>
+      <div className="row">
+      <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+        <Fade duration={8000}>
+          <h3 className="h1_heading set_font">The Lost Ones</h3>
+        
+        </Fade>
+      </div>
+      </div>
+      <div className="row">
+        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <Fade duration={10000}>
+            <ul
+              className="players-list"
+              style={{
+                width: "100%",
+                margin: "0 auto",
+                maxHeight: "600px",
+              }}
+            >
+              {playerElements}
+            </ul>
+          </Fade>
+        </div>
+      </div>
     </div>
   </>
   }
@@ -192,9 +237,10 @@ function Play() {
     {
     regex.test(accountId) && nftAmt === 0 &&
     <>
-      <div className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-12 text-center wallet">
+      <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet">
         <Fade duration={5000}>
-        <h1 className="h1_heading set_font">You don't have the required NFT's to play</h1>
+        <h1 className="h1_head_m set_font">You do not have the required NFT's</h1>
+        <h3 className="h1_head_xs set_font">Please navigate to the Guide for more Information</h3>
         </Fade>
         <Hashpack onConnect={handleHashpackConnect} showModal={show} onClose={handleModalClose} />
         <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} onAccountCodeSubmit={handleAccountCodeSubmit} />

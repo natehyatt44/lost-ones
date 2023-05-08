@@ -2,8 +2,8 @@ import React, {useState, useEffect } from 'react';
 import { Storage } from 'aws-amplify';
 import { Scrollbar } from 'react-scrollbars-custom';
 import { useLocation, useNavigate  } from 'react-router-dom';
-import { TypeWriter } from "../animations/TypeWriter";
 import { Dropdown, Button } from 'react-bootstrap';
+import { s3accountActivity, s3accountStats } from '../constants/Constants';
 const { Slide, Fade } = require("react-awesome-reveal");
 
 async function uploadCsv(textData, fileName) {
@@ -24,15 +24,21 @@ function Game(props) {
 
   async function updateAccountStatusCsv(accountId, updatedData) {
     try {
-      const filePath = 'accountStats/accounts.csv';
+      const filePath = `${s3accountStats}/accounts.csv`;
       let existingContent = '';
   
       try {
         const signedUrl = await Storage.get(filePath, { level: 'public' });
         const response = await fetch(signedUrl);
-        existingContent = await response.text();
+        if (response.status === 200) {
+          existingContent = await response.text();
+        } else {
+          console.log('File not found. Creating a new one.');
+          existingContent = 'accountId|status|race|date';
+        }
       } catch (error) {
         console.log('File not found. Creating a new one.');
+        existingContent = 'accountId|status|race|date';
       }
   
       const lines = existingContent.split('\n');
@@ -52,7 +58,6 @@ function Game(props) {
   
       // Upload the updated CSV file
       await uploadCsv(updatedCsvContent, filePath);
-      console.log('Account status CSV updated successfully!');
     } catch (error) {
       console.error('Error updating account status CSV:', error);
     }
@@ -60,19 +65,17 @@ function Game(props) {
   
   const handleFinishedChapter = () => {
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Complete-Chapter1|${selectedImage}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Complete-Chapter1|${selectedImage}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
       .then(() => {
         console.log('Chapter completion recorded in activity CSV.');
-        const updatedData = `${accountId}|Complete-Chapter1|${dateTimeString}`;
-        return updateAccountStatusCsv(accountId, dateTimeString, updatedData);
+        const updatedData = `${accountId}|Complete-Chapter1|Mortal|${dateTimeString}`;
+        console.log(updatedData)
+        return updateAccountStatusCsv(accountId, updatedData);
       })
       .then(() => {
         console.log('Account status CSV updated successfully!');
         navigate('/play');
       })
-      .catch((error) => {
-        console.error('Error handling finished chapter:', error);
-      });
   };  
 
   async function fetchStory() {
@@ -96,7 +99,7 @@ function Game(props) {
 
   const handleExitGame = () => {
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Exit|${selectedImage}|${dateTimeString}`, `accountActivity/activity-${accountId}-${dateTimeString}.csv`)
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Exit|${selectedImage}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
     window.location.href = '/';
   };
 
