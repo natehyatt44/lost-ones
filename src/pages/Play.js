@@ -103,7 +103,6 @@ function Play() {
   
       const rows = textContent.trim().split("\n");
       const header = rows.shift().split("|");
-      console.log("Header row:", header); // Log the header row for debugging purposes
   
       const players = rows.map((row) => {
         const rowData = row.split("|");
@@ -113,7 +112,7 @@ function Play() {
         });
   
         playerObj["date"] = new Date(playerObj["date"]); // Convert the date string to a Date object
-  
+        
         return playerObj;
       }).filter(player => {
         // Remove any objects with empty or invalid dates
@@ -126,7 +125,14 @@ function Play() {
       console.error("Error fetching players:", error);
     }
   }
+
+  function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so add 1
+    const day = String(date.getDate()).padStart(2, '0');
   
+    return `${year}-${month}-${day}`;
+  }
   
   useEffect(() => {
     fetchPlayers();
@@ -138,12 +144,14 @@ function Play() {
         const formattedAccountId = player.accountId;
         const formattedStatus = player.status;
         const formattedRace = player.race;
+        const formattedDate = formatDate(player.date);
         return (
           <li key={index} style={{listStyle: 'none'}}>
             <div className="player-data">
               <span>{formattedAccountId}</span>
               <span>{formattedStatus}</span>
               <span>{formattedRace}</span>
+              {/* <span>{formattedDate}</span> */}
             </div>
           </li>
         );

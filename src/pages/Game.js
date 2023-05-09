@@ -21,6 +21,16 @@ function Game(props) {
   const nfts = location.state.nfts;
   const selectedImage = location.state.selectedImage;
   const [text, setText] = useState('');
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = windowWidth < 768;
+  const scrollbarHeight = isMobile ? 370 : 540;
 
   async function updateAccountStatusCsv(accountId, updatedData) {
     try {
@@ -135,12 +145,12 @@ function Game(props) {
       </div>
     <Fade duration={10000} top>
     <div className="row">
-        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center story-container">
-          <Scrollbar style={{ height: 500 }}>
-            <p className="para_p">{story}</p>
-          </Scrollbar>
-        </div>
+      <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center story-container">
+        <Scrollbar style={{ height: scrollbarHeight, width: "85%", margin: "auto" , display: "block"}}>
+          <pre className="para_p">{story}</pre>
+        </Scrollbar>
       </div>
+    </div>
     </Fade>
     <Fade duration={10000} top>
         <div className="row">

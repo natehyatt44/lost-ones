@@ -728,10 +728,6 @@ html, body{
   color: #FFFFFF;
 }
 
-.story-container .para_text {
-  display: block;
-}
-
 .banner-desktop-item,
   .banner-mobile-item{
   opacity: 0; /* hide the image initially */
@@ -860,14 +856,19 @@ html, body{
    }
    
    .players-list {
-     max-height: 500px;
+     max-height: 400px; /* Default for mobile devices */
      overflow-y: auto;
      list-style: none;
      padding: .5%;
      margin: 0;
      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
    }
-   
+   @media (min-width: 768px) {
+     .players-list {
+       max-height: 600px;
+     }
+   }
+
    .player-data:last-child {
      border-bottom: none;
    }

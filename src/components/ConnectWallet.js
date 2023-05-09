@@ -4,6 +4,33 @@ import { Slide } from 'react-awesome-reveal';
 import fetch from 'node-fetch';
 import { network, mirrorNode } from '../constants/Constants';
 
+const fetchWithRetries = async (url, maxRetries = 3) => {
+  let retries = 0;
+  let response;
+
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  while (retries < maxRetries) {
+    try {
+      response = await fetch(url);
+      if (!response.ok) {
+        await delay(1000); // Wait for 3 seconds after the first retry
+        throw new Error('Fetch failed');
+      }
+      break;
+    } catch (error) {
+      retries++;
+      console.log(`Retrying fetch (${retries}/${maxRetries}):`, error.message);
+      if (retries === maxRetries) {
+        throw new Error('Max retries reached');
+      }
+      
+    }
+  }
+
+  return response;
+};
+
 let hashconnect = new HashConnect();
 
 let appMetadata = {
@@ -63,11 +90,11 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
         const cidUse = cid.replace('ipfs://', '');
 
         if (cidUse) {
-          const ipfsMetadataResponse = await fetch(`${corsProxy}${ipfsGateway}${cidUse}`);
+          const ipfsMetadataResponse = await fetchWithRetries(`${corsProxy}${ipfsGateway}${cidUse}`);
           const ipfsMetadata = await ipfsMetadataResponse.json();
           const ipfs = ipfsMetadata.image.replace('ipfs://', `${ipfsGateway}`);
           nftMetadata.push({ tokenId: item.token_id, edition: ipfsMetadata.edition, ipfs: ipfs, traits: ipfsMetadata.attributes[7] });
-        }
+        }        
       }
     }
   }

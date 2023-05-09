@@ -19,7 +19,6 @@ function DarkPopup({ showPopup, setShowPopup, onAccountCodeSubmit }) {
 
         const rows = textContent.trim().replace(/\r/g, '').split("\n");
         setAccountCodes(rows);
-        console.log(rows)
       } catch (error) {
         console.error("Error fetching account codes:", error);
       }
@@ -34,7 +33,6 @@ function DarkPopup({ showPopup, setShowPopup, onAccountCodeSubmit }) {
 
   const handleAccountCode = async () => {
     console.log('Account Code:', accountCode);
-    console.log(accountCodes)
     const matchingAccounts = accountCodes.filter((row) => {
       const [, code] = row.split('|');
       return code === accountCode;
