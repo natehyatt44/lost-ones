@@ -17,8 +17,9 @@ function DarkPopup({ showPopup, setShowPopup, onAccountCodeSubmit }) {
         const response = await fetch(signedUrl);
         const textContent = await response.text();
 
-        const rows = textContent.trim().split("\n");
+        const rows = textContent.trim().replace(/\r/g, '').split("\n");
         setAccountCodes(rows);
+        console.log(rows)
       } catch (error) {
         console.error("Error fetching account codes:", error);
       }
@@ -33,19 +34,20 @@ function DarkPopup({ showPopup, setShowPopup, onAccountCodeSubmit }) {
 
   const handleAccountCode = async () => {
     console.log('Account Code:', accountCode);
-    const matchingAccount = accountCodes.find((row) => {
+    console.log(accountCodes)
+    const matchingAccounts = accountCodes.filter((row) => {
       const [, code] = row.split('|');
       return code === accountCode;
     });
-
-    if (matchingAccount) {
-      const [accountId] = matchingAccount.split('|');
+  
+    if (matchingAccounts.length > 0) {
+      const [accountId] = matchingAccounts[0].split('|');
       setAccountId(accountId);
       console.log('Account Id:', accountId);
-
+  
       const nfts = await AccountNFTs(accountId.toString(), barbIncNFTTokens);
       setNfts(nfts);
-
+  
       onAccountCodeSubmit(accountId, nfts);
       setShowPopup(false);
     } else {
@@ -54,6 +56,7 @@ function DarkPopup({ showPopup, setShowPopup, onAccountCodeSubmit }) {
       setErrorMessage(errorMessage);
     }
   };
+  
   
   const handleClose = () => {
     setShowPopup(false);

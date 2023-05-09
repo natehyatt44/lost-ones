@@ -106,10 +106,10 @@ function Game(props) {
   return (
    <> 
    <section id="faq " className="background_game">
-    <Fade duration={10000} top>
+    <Fade duration={5000} top>
     <div className="row">
       <div className="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-center nft-item">
-        <Fade duration={15000} top>
+        <Fade duration={7000} top>
         <Dropdown>
           <Dropdown.Toggle variant="primary" size="lg" id="dropdown-basic" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a', color: '#fff' }}>
             Menu
@@ -122,7 +122,7 @@ function Game(props) {
         </Fade>
       </div>
       <div className="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-center nft-item">
-        <Slide direction='right' duration={15000}>
+        <Slide direction='right' duration={7000}>
           <img src={selectedImage} alt="selected-nft" style={{ borderRadius:"50%", width:"100%", height:"100%" }} /> 
         </Slide>
       </div>
@@ -130,19 +130,19 @@ function Game(props) {
    </Fade>
     <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center story-container">
-            <Fade duration={30000}><h1 className="h1_head_m set_font">{chapterHeader}</h1></Fade>
+            <Fade duration={10000}><h1 className="h1_head_m set_font">{chapterHeader}</h1></Fade>
         </div>
       </div>
-    <Fade duration={20000} top>
+    <Fade duration={10000} top>
     <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center story-container">
           <Scrollbar style={{ height: 500 }}>
-            <pre className="para_p">{story}</pre>
+            <p className="para_p">{story}</p>
           </Scrollbar>
         </div>
       </div>
     </Fade>
-    <Fade duration={50000} top>
+    <Fade duration={10000} top>
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
             <Button

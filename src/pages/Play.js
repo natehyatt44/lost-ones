@@ -103,22 +103,30 @@ function Play() {
   
       const rows = textContent.trim().split("\n");
       const header = rows.shift().split("|");
+      console.log("Header row:", header); // Log the header row for debugging purposes
+  
       const players = rows.map((row) => {
         const rowData = row.split("|");
         const playerObj = {};
         header.forEach((key, index) => {
           playerObj[key] = rowData[index];
         });
-        playerObj["date"] = new Date(playerObj["date"]);
-        return playerObj;
-      });
   
+        playerObj["date"] = new Date(playerObj["date"]); // Convert the date string to a Date object
+  
+        return playerObj;
+      }).filter(player => {
+        // Remove any objects with empty or invalid dates
+        return Object.keys(player).length > 0 && !isNaN(player.date.getTime());
+      });
+
       players.sort((a, b) => b.date - a.date);
       setPlayers(players);
     } catch (error) {
       console.error("Error fetching players:", error);
     }
   }
+  
   
   useEffect(() => {
     fetchPlayers();
@@ -183,17 +191,8 @@ function Play() {
       </div>
       <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-          <Fade duration={10000}>
-            <ul
-              className="players-list"
-              style={{
-                width: "100%",
-                margin: "0 auto",
-                maxHeight: "600px",
-              }}
-            >
-              {playerElements}
-            </ul>
+          <Fade duration={3000}>
+            <ul className="players-list">{playerElements}</ul>
           </Fade>
         </div>
       </div>
