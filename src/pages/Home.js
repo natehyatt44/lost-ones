@@ -79,7 +79,7 @@ function Home() {
             </div>
           </div>
       </div>
-    </section> 
+    
 
   <Slide direction="left" duration={1000}>
   <div className={`mail-container ${!loading ? 'loaded' : 'hide'}`}>
@@ -89,7 +89,9 @@ function Home() {
       </div>
     </div>
     </div>
+    <br/>
   </Slide> 
+  </section> 
   <section className={`footer ${!loading ? 'loaded' : 'hide'}`}>
   <Footer />
   </section>
