@@ -17,9 +17,6 @@ function Navigation() {
                         <a className="nav-link" href="/play">The Lost Ones</a>
                         </li> 
                         <li className="nav-item">
-                        <a className="nav-link" href="/lore">Lore</a>
-                        </li>
-                        <li className="nav-item">
                         <a className="nav-link" href="https://hbarbarians.gitbook.io/hbarbarians/">About</a>
                         </li>
                         <li className="nav-item">

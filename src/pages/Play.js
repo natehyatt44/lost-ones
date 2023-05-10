@@ -173,8 +173,10 @@ function Play() {
           </Dropdown.Toggle>
           <Dropdown.Menu style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }}>
             <Dropdown.Item onClick={() => window.location.href = 'https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/guide'} style={{ color: '#fff' }}>Guide</Dropdown.Item>
-            <Dropdown.Item onClick={handleTogglePopup} style={{ color: '#fff' }}>Use Account Code</Dropdown.Item>
-            <Dropdown.Item onClick={handleShow} style={{ color: '#fff' }}>Connect Hashpack</Dropdown.Item>
+            {/* <Dropdown.Item onClick={handleTogglePopup} style={{ color: '#fff' }}>Use Account Code</Dropdown.Item>
+            <Dropdown.Item onClick={handleShow} style={{ color: '#fff' }}>Connect Hashpack</Dropdown.Item> */}
+            <Dropdown.Item onClick={() => window.location.href = 'https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/prologue'} style={{ color: '#fff' }}>Prologue</Dropdown.Item>
+            <Dropdown.Item onClick={() => window.location.href = 'https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore'} style={{ color: '#fff' }}>Lore</Dropdown.Item>
             <Dropdown.Item onClick={handleExit} style={{ color: '#fff' }}>Exit</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
@@ -193,7 +195,7 @@ function Play() {
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
         <Fade duration={8000}>
           <h3 className="h1_heading set_font">The Lost Ones</h3>
-        
+          <h3 className="h1_head_m set_font">Coming Soon...</h3>
         </Fade>
       </div>
       </div>
