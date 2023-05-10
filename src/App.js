@@ -1,6 +1,5 @@
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
-import Lore from "./pages/Lore";
 import Play from "./pages/Play";
 import Game from "./pages/Game";
 import Roadmap from "./pages/Roadmap";
@@ -18,7 +17,6 @@ function App() {
     <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/gallery' element={<Gallery />} />
-        <Route exact path='/lore' element={<Lore />} />
         <Route exact path='/roadmap' element={<Roadmap />} />
         <Route exact path='/team' element={<Team />} />
         <Route exact path='/play' element={<Play />} />

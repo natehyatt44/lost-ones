@@ -1,6 +1,4 @@
 /* 
-FoundersPassTokenId =  '0.0.3286550'
-Token2 = '0.0.3287486'
 Network Options: 
     mainnet
     testnet
@@ -10,8 +8,19 @@ mirrorNode Options:
 
 */
 
-const barbIncNFTTokens = ['0.0.2100901']
+const test = 0
+
+const barbIncNFTTokens = ['0.0.2235264']
 const network = 'mainnet' 
 const mirrorNode = 'https://mainnet-public.mirrornode.hedera.com'
+const disallowedAccountIds = ['0.0.1067445']
+const s3accountStats = 'accountStats'
+const s3accountActivity = 'accountActivity'
 
-export { barbIncNFTTokens, network, mirrorNode }
+if (test === 1) {
+    s3accountStats = 'test/accountStats'
+    s3accountActivity = 'test/accountActivity'
+}
+
+
+export { barbIncNFTTokens, network, mirrorNode, disallowedAccountIds, s3accountStats, s3accountActivity }
