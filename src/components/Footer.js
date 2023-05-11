@@ -20,7 +20,7 @@ function Footer() {
                     </a>
                 </div>
                 <div className="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-left p-0 footer">
-                    <a href="https://discord.gg/BW2BJJKxxg" target={{target:"_blank"}}>
+                    <a href="https://discord.gg/aCucjcJtWM" target={{target:"_blank"}}>
                         <img className="footer_seicon" src="assets/images/icon/icon_discord.svg" alt="footerimg"/>
                     </a>
                 </div>
