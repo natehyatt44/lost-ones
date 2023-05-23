@@ -1,30 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import MailingListAdd from '../components/emailData';
 import Footer from '../components/Footer';
-import questions from "../mappings/faq.json";
-import Banner from "../components/FaqInfo";
-import { TypeWriter } from "../animations/TypeWriter";
-const { Slide, Fade, Bounce } = require("react-awesome-reveal");
-
+const { Slide, Fade } = require("react-awesome-reveal");
 
 function Home() {
   const [loading, setLoading] = useState(true);
-
+  
   const handleImageLoad = () => {
     setLoading(false);
   }
 
   const companyText = `A Digital Collectibles Company dedicated to integrity, transparency, and trust as we build out an ecosystem of interconnected Digital Art Collectibles for Hedera and the greater ecosystem as a whole. 
-                       \nA compelling storyline filled with lore and mystery, all while driving community engagement through an Alternate Reality Game entitled:
-                       \n"The Lost Ones"
+                       \nA compelling storyline filled with intrigue and mystery, with the intent to drive community engagement through a "choose your own adventure" game entitled "The Lost Ones".
                        \nWelcome to the club.
                          `;
 
   return (
    <> 
-   
    <Navigation />
+   
    <div className="row">
       <div className={`col-0 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-desktop-item ${!loading && 'loaded'}`}>
         <img onLoad={handleImageLoad} src="assets/images/banner/hbarb_banner_desktop.png" alt="bannerimg"></img>
@@ -33,9 +28,11 @@ function Home() {
         <img onLoad={handleImageLoad} src="assets/images/banner/hbarb_banner_mobile.png" alt="bannerimg"></img>
       </div>
     </div>
+    {!loading && (
+    <>
     <Fade duration={10000}>
     <section id="About " className="info_sec ">
-      <div className={`about-container ${!loading ? 'loaded' : 'hide'}`}>
+      <div className="about-container">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 about-item">
                 <br/>
@@ -48,7 +45,7 @@ function Home() {
     </section>
     </Fade>
      <section id="Team " className="info_sec ">
-      <div className={`team-container ${!loading ? 'loaded' : 'hide'}`}>
+      <div className="team-container">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
                 <h1 className="h1_heading set_font"> The Team </h1>
@@ -79,10 +76,8 @@ function Home() {
             </div>
           </div>
       </div>
-    
-
   <Slide direction="left" duration={1000}>
-  <div className={`mail-container ${!loading ? 'loaded' : 'hide'}`}>
+  <div className="mail-container">
     <div className="row">
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0">
         <MailingListAdd/>
@@ -92,9 +87,11 @@ function Home() {
     <br/>
   </Slide> 
   </section> 
-  <section className={`footer ${!loading ? 'loaded' : 'hide'}`}>
+  <section className="footer">
   <Footer />
   </section>
+  </>
+   )}
 	</>
   );
 }
