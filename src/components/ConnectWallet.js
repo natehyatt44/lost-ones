@@ -22,7 +22,7 @@ export const ConnectHashPack = async () => {
   return {initData}
 }
 
-export const ConnectHashPackExtension = async () => {
+export const HashPackExtension = async () => {
   let initData = await hashconnect.init(appMetadata, network, true)
 
   hashconnect.foundExtensionEvent.once((walletMetadata) => {

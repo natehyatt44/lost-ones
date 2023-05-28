@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {
   ConnectHashPack,
-  ConnectHashPackExtension,
+  HashPackExtension,
   AccountNFTs,
   PairHashPack,
 } from '../components/ConnectWallet';
@@ -25,7 +25,7 @@ function Hashpack({ onConnect, showModal, onClose }) {
 
   // Connect to HashPack extension and fetch account data
   const connectHashPackExtension = async () => {
-    await ConnectHashPackExtension();
+    const hashpackdata = await HashPackExtension();
     const accountId = await PairHashPack();
     setAccountId(accountId);
     const nfts = await AccountNFTs(accountId.toString(), barbIncNFTTokens);
@@ -38,6 +38,7 @@ function Hashpack({ onConnect, showModal, onClose }) {
     const hashpackdata = await ConnectHashPack();
     navigator.clipboard.writeText(hashpackdata.initData.pairingString);
     const accountId = await PairHashPack();
+    console.log(hashpackdata)
     setAccountId(accountId);
     const nfts = await AccountNFTs(accountId.toString(), barbIncNFTTokens);
     setNfts(nfts);

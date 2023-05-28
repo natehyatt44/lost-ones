@@ -82,20 +82,30 @@ html, body{
  .background_game {
   background-image: url('../images/background/background_game1.png') !important;
   backdrop-filter: blur(40px) !important;
-  position: relative !important;
-  height: 100vh; /* added this line */
-  width: 100%; /* added this line */
-  background-size: cover; /* added this line */
-  background-position: center; /* added this line */
+position: fixed !important; /* switch from relative to fixed */
+top: 0; /* make sure it starts at the top-left corner */
+left: 0;
+right: 0;
+bottom: 0;
+height: 100%; /* covers entire height */
+width: 100%; /* covers entire width */
+background-size: cover !important; /* ensure image covers the whole area */
+background-repeat: no-repeat !important; /* prevent image from repeating */
+background-position: center !important; /* center the image */
 }
 .background_play {
-     background-image: url('../images/background/background_game2.png') !important;
+     background-image: url('../images/3.png') !important;
      backdrop-filter: blur(40px) !important;
-     position: relative !important;
-     height: 100vh; /* added this line */
-     width: 100%; /* added this line */
-     background-size: cover; /* added this line */
-     background-position: center; /* added this line */
+     position: fixed !important; /* switch from relative to fixed */
+     top: 0; /* make sure it starts at the top-left corner */
+     left: 0;
+     right: 0;
+     bottom: 0;
+     height: 100%; /* covers entire height */
+     width: 100%; /* covers entire width */
+     background-size: cover !important; /* ensure image covers the whole area */
+     background-repeat: no-repeat !important; /* prevent image from repeating */
+     background-position: center !important; /* center the image */
    }
  .traitbackground_sec {
      background-image: url('../images/background/background_trait.png') !important;

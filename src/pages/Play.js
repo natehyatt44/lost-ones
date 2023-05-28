@@ -22,13 +22,27 @@ function Play() {
   const [accountId, setAccountId] = useState('')
   const [nfts, setNfts] = useState([])
   const [nftAmt, setNftAmt] = useState([])
+  const [showRaces, setShowRaces] = useState(false);
   const [showBarbarians, setShowBarbarians] = useState(false);
   const [show, setShow] = useState(false);
+  const [stats, setStats] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [players, setPlayers] = useState('');
   const [playerElements, setPlayerElements] = useState([]);
   const navigate = useNavigate();
+
+  function handleChapterButtonClick() {
+    setShowRaces(true);
+    const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Select-Chapter|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
+      .then(() => {
+        console.log('CSV file uploaded successfully!');
+      })
+      .catch((error) => {
+        console.error('Error uploading CSV file:', error);
+      });
+  }
 
   function handleRaceButtonClick() {
     setShowBarbarians(true);
@@ -52,9 +66,14 @@ function Play() {
 
   const handleHashpackConnect = (accountId, nfts) => {
     setAccountId(accountId);
+    window.localStorage.setItem('accountId', accountId);
+
     setNfts(nfts);
+    window.localStorage.setItem('nfts', nfts);
+
     const jsonObj = JSON.parse(nfts);
     setNftAmt(jsonObj.nftMetadata.length);
+    window.localStorage.setItem('nftAmt', jsonObj.nftMetadata.length);
 
     if (regex.test(accountId)){
       const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
@@ -79,11 +98,25 @@ function Play() {
     window.location.href = '/';
   };
 
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    if (accountId) {
+      console.log(accountId)
+      setStats(false);
+    } else {
+      setShow(true);
+    }
+  }
+  const handleStats = () => setStats(true);
   const handleModalClose = () => {setShow(false);};
   const handleTogglePopup = () => {
     setShowPopup(!showPopup);
   };
+  const disconnectHashpack = () => {
+    setAccountId(null);
+    // You might also want to remove the accountId from local storage
+    window.localStorage.removeItem('accountId');
+    setStats(true);
+  }
 
   const checkRaceExists = (race) => {
     // const jsonObj = JSON.parse(nfts);
@@ -135,7 +168,20 @@ function Play() {
   }
   
   useEffect(() => {
-    fetchPlayers();
+    const storedAccountId = window.localStorage.getItem('accountId');
+    const storedNfts = window.localStorage.getItem('nfts');
+    const storedNftAmt = window.localStorage.getItem('nftAmt');
+
+    if (storedAccountId) {
+      setAccountId(storedAccountId);
+      setNfts(storedNfts)
+      setNftAmt(storedNftAmt)
+      console.log(accountId)
+      console.log(storedNfts)
+      console.log(storedNftAmt)
+    }
+    fetchPlayers()
+
   }, []);
   
   useEffect(() => {
@@ -163,7 +209,6 @@ function Play() {
   return (
    <> 
    <section id="Play " className="background_play ">
-   
    <div className="nft-container ">
     <div className="row">
       <div className="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-center nft-item">
@@ -172,9 +217,17 @@ function Play() {
             Menu
           </Dropdown.Toggle>
           <Dropdown.Menu style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }}>
+            <Dropdown.Item onClick={handleShow} style={{ color: '#fff' }}>
+              {accountId ? "Play" : "Connect Hashpack"}
+            </Dropdown.Item>  
+            {accountId && (
+              <Dropdown.Item onClick={disconnectHashpack} style={{ color: '#fff' }}>
+                Disconnect Hashpack
+              </Dropdown.Item>
+            )}
+            {/* <Dropdown.Item onClick={handleTogglePopup} style={{ color: '#fff' }}>Use Account Code</Dropdown.Item> */}
+            <Dropdown.Item onClick={handleStats} style={{ color: '#fff' }}>Stats</Dropdown.Item>
             <Dropdown.Item onClick={() => window.location.href = 'https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/guide'} style={{ color: '#fff' }}>Guide</Dropdown.Item>
-            {/* <Dropdown.Item onClick={handleTogglePopup} style={{ color: '#fff' }}>Use Account Code</Dropdown.Item>
-            <Dropdown.Item onClick={handleShow} style={{ color: '#fff' }}>Connect Hashpack</Dropdown.Item> */}
             <Dropdown.Item onClick={() => window.location.href = 'https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/prologue'} style={{ color: '#fff' }}>Prologue</Dropdown.Item>
             <Dropdown.Item onClick={() => window.location.href = 'https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore'} style={{ color: '#fff' }}>Lore</Dropdown.Item>
             <Dropdown.Item onClick={handleExit} style={{ color: '#fff' }}>Exit</Dropdown.Item>
@@ -182,7 +235,7 @@ function Play() {
         </Dropdown>
       </div>
     </div>
-   {!regex.test(accountId) && 
+   {stats === true && 
    <>
     <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
@@ -195,7 +248,6 @@ function Play() {
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
         <Fade duration={8000}>
           <h3 className="h1_heading set_font">The Lost Ones</h3>
-          <h3 className="h1_head_m set_font">Coming Soon...</h3>
         </Fade>
       </div>
       </div>
@@ -209,22 +261,36 @@ function Play() {
     </div>
   </>
   }
-    {regex.test(accountId) && nftAmt > 0 &&( 
+    {regex.test(accountId) && nftAmt > 0 && stats === false &&( 
       <>
         <Fade duration={3000}>
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
             <h3 className="h1_head_xs set_font">Welcome #{accountId}</h3>
           </div>
         </Fade>
-        <Slide direction='right' duration={2500}>
+        <Fade duration={8000}>
+          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
+            <h2 className="h1_head_game set_font">Select Chapter</h2>
+          </div>
+          </Fade>
+        <Slide direction='left' duration={3500}>
+          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
+            <button type="button" variant="dark" className="btn btn-primary active futuristic-btn" onClick={handleChapterButtonClick}>Chapter 1</button>
+            <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 2</button>
+            <button type="button" className={`btn ${checkRaceExists("Elven") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 3</button>
+            <button type="button" className={`btn ${checkRaceExists("ArchAngel") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 4</button>
+          </div>
+        </Slide>
+        {/* {showRaces && ( */}
+        <Fade duration={10000}>
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
             <h2 className="h1_head_game set_font">Select Race</h2>
           </div>
-        </Slide>
-        <Slide direction='left' duration={3500}>
+          </Fade>
+        <Slide direction='right' duration={3500}>
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
             <button type="button" variant="dark" className="btn btn-primary active futuristic-btn" onClick={handleRaceButtonClick}>Mortal</button>
-            <button type="button" className={`btn ${checkRaceExists("Leshan") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Leshan</button>
+            <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Gaian</button>
             <button type="button" className={`btn ${checkRaceExists("Elven") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Elven</button>
             <button type="button" className={`btn ${checkRaceExists("ArchAngel") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>ArchAngel</button>
             <button type="button" className={`btn ${checkRaceExists("Specter") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Specter</button>
@@ -232,7 +298,7 @@ function Play() {
           </div>
         </Slide>
         {showBarbarians && (
-          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
+          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: '500px', overflowY: 'auto' }}>
             <Slide direction='up' duration={1500}>
               <h1 className="h1_head_game set_font">Select Character</h1>
             </Slide>
@@ -240,11 +306,11 @@ function Play() {
               <NFTImages accountNfts={nfts} onClickImage={(index) => handleStartGame(index)}/>
             </div>
           </div>
-        )}
+       )} 
       </>
     )}
     {
-    regex.test(accountId) && nftAmt === 0 &&
+    regex.test(accountId) && nftAmt === 0 && stats === false &&
     <>
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center wallet">
         <Fade duration={5000}>
@@ -252,12 +318,12 @@ function Play() {
         <h3 className="h1_head_xs set_font">Please navigate to the Guide for more Information</h3>
         </Fade>
         <Hashpack onConnect={handleHashpackConnect} showModal={show} onClose={handleModalClose} />
-        <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} onAccountCodeSubmit={handleAccountCodeSubmit} />
+        {/* <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} onAccountCodeSubmit={handleAccountCodeSubmit} /> */}
       </div>
     </>
   }
     </div>
-  </section>
+    </section>
 	</>
   );
 };
