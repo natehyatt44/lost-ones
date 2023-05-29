@@ -65,7 +65,7 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
             <div className="player-data">
               <span>{formattedAccountId}</span>
               <span>{formattedStatus}</span>
-              <span>{formattedRace}</span>
+              <span>{formattedDate}</span>
             </div>
           </li>
         );

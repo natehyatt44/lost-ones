@@ -108,8 +108,6 @@ function Game(props) {
   const story = text;
 
   const handleExitGame = () => {
-    const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Exit|${selectedImage}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
     window.location.href = '/';
   };
 
@@ -145,9 +143,9 @@ function Game(props) {
       </div>
     <Fade duration={10000} top>
     <div className="row">
-      <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center story-container">
-        <Scrollbar style={{ height: scrollbarHeight, width: "85%", margin: "auto" , display: "block", backgroundColor: "#000"}}>
-          <pre className="para_p">{story}</pre>
+      <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left story-container">
+        <Scrollbar style={{ height: scrollbarHeight, width: "85%", margin: "auto" , display: "block", backgroundColor: "rgba(0, 0, 0, 0.8)" }}>
+          <pre className="para_p" style={{ width: "95%", height: "95%", margin: "auto" }}>{story}</pre>
         </Scrollbar>
       </div>
     </div>
