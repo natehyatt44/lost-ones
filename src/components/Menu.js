@@ -26,7 +26,7 @@ const Menu = ({ handleShow, accountId, disconnectHashpack, handleStats, handleEx
           Disconnect Hashpack
         </Dropdown.Item>
       )}
-      <Dropdown.Item onClick={handleStats} style={{ color: '#fff' }}>Stats</Dropdown.Item>
+      <Dropdown.Item onClick={handleStats} style={{ color: '#fff' }}>Leaderboard</Dropdown.Item>
       <Dropdown.Item onClick={() => window.location.href = 'https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/guide'} style={{ color: '#fff' }}>Guide</Dropdown.Item>
       <Dropdown.Item onClick={() => window.location.href = 'https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/prologue'} style={{ color: '#fff' }}>Prologue</Dropdown.Item>
       <Dropdown.Item onClick={() => window.location.href = 'https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore'} style={{ color: '#fff' }}>Lore</Dropdown.Item>

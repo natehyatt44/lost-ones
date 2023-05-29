@@ -75,10 +75,10 @@ function Game(props) {
   
   const handleFinishedChapter = () => {
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Complete-Chapter1|${selectedImage}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Chapter 1 Completed|${selectedImage}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
       .then(() => {
         console.log('Chapter completion recorded in activity CSV.');
-        const updatedData = `${accountId}|Complete-Chapter1|Mortal|${dateTimeString}`;
+        const updatedData = `${accountId}|Chapter 1 Completed|Mortal|${dateTimeString}`;
         console.log(updatedData)
         return updateAccountStatusCsv(accountId, updatedData);
       })
@@ -146,7 +146,7 @@ function Game(props) {
     <Fade duration={10000} top>
     <div className="row">
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center story-container">
-        <Scrollbar style={{ height: scrollbarHeight, width: "85%", margin: "auto" , display: "block"}}>
+        <Scrollbar style={{ height: scrollbarHeight, width: "85%", margin: "auto" , display: "block", backgroundColor: "#000"}}>
           <pre className="para_p">{story}</pre>
         </Scrollbar>
       </div>
