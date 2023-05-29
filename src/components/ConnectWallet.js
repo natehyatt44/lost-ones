@@ -1,6 +1,6 @@
 import { HashConnect } from "hashconnect";
 import React, {useEffect, useState} from 'react';
-import { Slide, Fade } from 'react-awesome-reveal';
+import { Fade } from 'react-awesome-reveal';
 import fetch from 'node-fetch';
 import { Storage } from 'aws-amplify'
 import { network, mirrorNode } from '../constants/Constants';

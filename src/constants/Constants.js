@@ -1,3 +1,4 @@
+import { Storage } from 'aws-amplify';
 /* 
 Network Options: 
     mainnet
@@ -22,5 +23,13 @@ if (test === 1) {
     s3accountActivity = 'test/accountActivity'
 }
 
+async function uploadCsv(textData, fileName) {
+    const csvBlob = new Blob([textData], { type: 'text/csv' });
+    await Storage.put(fileName, csvBlob, {
+      contentType: 'text/csv'
+    });
+    console.log('File uploaded successfully!');
+  }
 
-export { barbIncNFTTokens, network, mirrorNode, disallowedAccountIds, s3accountStats, s3accountActivity }
+
+export { barbIncNFTTokens, network, mirrorNode, disallowedAccountIds, s3accountStats, s3accountActivity, uploadCsv }

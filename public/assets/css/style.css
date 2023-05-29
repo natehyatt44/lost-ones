@@ -80,7 +80,7 @@ html, body{
      position: relative !important;
  }
  .background_game {
-  background-image: url('../images/background/background_game1.png') !important;
+  background-image: url('../images/background/2.png') !important;
   backdrop-filter: blur(40px) !important;
 position: fixed !important; /* switch from relative to fixed */
 top: 0; /* make sure it starts at the top-left corner */
@@ -93,8 +93,22 @@ background-size: cover !important; /* ensure image covers the whole area */
 background-repeat: no-repeat !important; /* prevent image from repeating */
 background-position: center !important; /* center the image */
 }
-.background_play {
-     background-image: url('../images/3.png') !important;
+.background_play_stats {
+     background-image: url('../images/background/3.png') !important;
+     backdrop-filter: blur(40px) !important;
+     position: fixed !important; /* switch from relative to fixed */
+     top: 0; /* make sure it starts at the top-left corner */
+     left: 0;
+     right: 0;
+     bottom: 0;
+     height: 100%; /* covers entire height */
+     width: 100%; /* covers entire width */
+     background-size: cover !important; /* ensure image covers the whole area */
+     background-repeat: no-repeat !important; /* prevent image from repeating */
+     background-position: center !important; /* center the image */
+   }
+.background_play_options {
+     background-image: url('../images/background/4.png') !important;
      backdrop-filter: blur(40px) !important;
      position: fixed !important; /* switch from relative to fixed */
      top: 0; /* make sure it starts at the top-left corner */

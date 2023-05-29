@@ -38,7 +38,6 @@ function Hashpack({ onConnect, showModal, onClose }) {
     const hashpackdata = await ConnectHashPack();
     navigator.clipboard.writeText(hashpackdata.initData.pairingString);
     const accountId = await PairHashPack();
-    console.log(hashpackdata)
     setAccountId(accountId);
     const nfts = await AccountNFTs(accountId.toString(), barbIncNFTTokens);
     setNfts(nfts);
