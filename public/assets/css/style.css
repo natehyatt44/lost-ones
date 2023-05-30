@@ -173,11 +173,6 @@ background-position: center !important; /* center the image */
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
@@ -190,11 +185,6 @@ background-position: center !important; /* center the image */
 .roadmap-mobile-item img{
      display: none;
 }
-.player-data {
-     display: flex;
-     justify-content: center;
-     gap: 5rem;
-     }
 }
 
 @media screen and (max-width: 1780px) and (min-width: 1441px) {
@@ -204,11 +194,6 @@ background-position: center !important; /* center the image */
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media only screen and (min-width: 1781px) {
@@ -218,11 +203,6 @@ background-position: center !important; /* center the image */
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media screen and (max-width: 1320px) and (min-width: 991px) {
@@ -243,11 +223,6 @@ background-position: center !important; /* center the image */
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media screen and (max-width: 1499px) and (min-width: 1200px) {
@@ -257,11 +232,6 @@ background-position: center !important; /* center the image */
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
@@ -274,11 +244,6 @@ background-position: center !important; /* center the image */
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media only screen and (max-width: 767px) {
@@ -414,11 +379,6 @@ background-position: center !important; /* center the image */
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-     display: flex;
-     justify-content: center;
-     gap: 5rem;
-     }
 }
  @media only screen and (max-width: 767px) {
      .cont_tabs{
@@ -538,13 +498,7 @@ background-position: center !important; /* center the image */
      .roadmap-desktop-item img{
           display:none;
       }
-     .player-data {
-     display: flex;
-     justify-content: center;
-     gap: 1rem;
-     }
-        
-       
+             
 }
  .navs_hyd{
      display: none;
@@ -903,5 +857,23 @@ background-position: center !important; /* center the image */
    
    .player-data span {
      font-family: 'Arial', sans-serif;
+     width: 25%;
+     text-align: center;
+   }
+
+   .player-data {
+     display: flex;
+     justify-content: space-between;
+     width: 100%;
+   }
+   
+   .player-data span {
+     flex-basis: 25%;
+     text-align: center;
+   }
+
+   .player-data-inactive {
+     color: grey;
+     /* other styles... */
    }
    

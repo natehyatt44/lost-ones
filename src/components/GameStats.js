@@ -60,11 +60,13 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
         const formattedStatus = player.status;
         const formattedRace = player.race;
         const formattedDate = formatDate(player.date);
+        const playerIsActive = player.isActive === '1' || player.isActive === 1 || player.isActive === true;
         return (
           <li key={index} style={{listStyle: 'none'}}>
-            <div className="player-data">
+            <div className={playerIsActive ? "player-data" : "player-data player-data-inactive"}>
               <span>{formattedAccountId}</span>
               <span>{formattedStatus}</span>
+              <span>{formattedRace}</span>
               <span>{formattedDate}</span>
             </div>
           </li>
@@ -73,6 +75,17 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
       setPlayerElements(elements);
     }
   }, [players]);
+
+  const headers = (
+    <li style={{listStyle: 'none'}}>
+      <div className="player-data">
+        <span>Wallet ID</span>
+        <span>Achievement</span>
+        <span>Race</span>
+        <span>Date</span>
+      </div>
+    </li>
+  );
 
   return (
     <>
@@ -93,7 +106,10 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
             <Fade duration={3000}>
-              <ul className="players-list">{playerElements}</ul>
+              <ul className="players-list">
+                {headers}<br/>
+                {playerElements}
+              </ul>
             </Fade>
           </div>
         </div>

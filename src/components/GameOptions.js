@@ -40,7 +40,7 @@ function GameOptions({accountId, nfts, navigate}) {
       console.log(index)
       const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
       uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Start-Game|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
-      navigate('/game', {state:{selectedImage: index, accountId: accountId}});
+      navigate('/game', {state:{selectedImage: index, accountId: accountId, selectedChapter: selectedChapter, selectedRace: selectedRace}});
     }
 
 
