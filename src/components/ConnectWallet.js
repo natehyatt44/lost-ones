@@ -50,7 +50,7 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
   const response = await fetch(`${url}${path}`);
   const nfts = await response.json();
 
-  const signedUrl = await Storage.get("nft-collection-cfp/json/nfts.json", { level: "public" });
+  const signedUrl = await Storage.get("nft-collection-cfp/data-map/argNfts.json", { level: "public" });
   const nftResponse = await fetch(signedUrl);
   const nftJsonResponse = await nftResponse.json(); // Change this line to parse the fetched data
 
@@ -62,7 +62,7 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
           nftMetadata.push({
             tokenId: item.token_id,
             edition: nftInfo.edition,
-            traits: nftInfo.traits,
+            race: nftInfo.race,
           });
         }
       }
@@ -74,6 +74,7 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
   }
 
   console.log({ tokenIds, nftMetadata });
+  
   return JSON.stringify({ tokenIds, nftMetadata });
 };
 
