@@ -130,11 +130,6 @@ function Play() {
           />
         </div>
       </div>
-        <Fade duration={3000}>
-          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
-            <h3 className="h1_head_xs set_font">Welcome #{accountId}</h3>
-          </div>
-        </Fade>
         <GameOptions
           accountId={accountId}
           nfts={nfts}

@@ -93,7 +93,7 @@ export function NFTImages({ accountNfts, onClickImage }) {
       } else {
         clearInterval(intervalId);
       }
-    }, 500);
+    }, 120);
 
     return () => clearInterval(intervalId);
   }, [loadedImages]);
@@ -128,7 +128,7 @@ export function NFTImages({ accountNfts, onClickImage }) {
       key={index}
       onClick={() => handleClickImage(image)}
       onMouseEnter={(e) => {
-        e.target.style.filter = "brightness(120%)";
+        e.target.style.filter = "brightness(130%)";
       }}
       onMouseLeave={(e) => {
         e.target.style.filter = "brightness(100%)";

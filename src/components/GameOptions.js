@@ -48,6 +48,11 @@ function GameOptions({accountId, nfts, navigate}) {
       <>
          {!selectedChapter && !selectedRace && (
           <>
+          <Fade duration={3000}>
+          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
+            <h3 className="h1_head_xs set_font">Welcome #{accountId}</h3>
+          </div>
+        </Fade>
           <Fade duration={5000}>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
               <h2 className="h1_head_game set_font">Select Chapter</h2>

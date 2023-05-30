@@ -59,7 +59,7 @@ function GalleryImages() {
       } else {
         clearInterval(intervalId);
       }
-    }, 500);
+    }, 200);
 
     // Clean up the interval on unmount
     return () => clearInterval(intervalId);
