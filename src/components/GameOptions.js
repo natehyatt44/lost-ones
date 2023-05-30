@@ -60,7 +60,8 @@ function GameOptions({accountId, nfts, navigate}) {
             </Fade>
           <Slide direction='left' duration={1500}>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
-              <button type="button" variant="dark" className="btn btn-primary active futuristic-btn" onClick={() => handleChapterButtonClick("Chapter 1")}>Chapter 1</button>
+              <button type="button" variant="dark" className="btn btn-primary active futuristic-btn" onClick={() => handleChapterButtonClick("Chapter 1-1")}>Chapter 1-1</button>
+              <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 1-2</button>
               <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 2</button>
               <button type="button" className={`btn ${checkRaceExists("Elven") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 3</button>
               <button type="button" className={`btn ${checkRaceExists("ArchAngel") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 4</button>
@@ -79,10 +80,10 @@ function GameOptions({accountId, nfts, navigate}) {
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
               <button type="button" variant="dark" className="btn btn-primary active futuristic-btn" onClick={() => handleRaceButtonClick("Mortal")}>Mortal</button>
               <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Gaian</button>
-              <button type="button" className={`btn ${checkRaceExists("Elven") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Elven</button>
+              <button type="button" className={`btn ${checkRaceExists("Runekin") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Runekin</button>
+              <button type="button" className={`btn ${checkRaceExists("Soulweaver") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Soulweaver</button>
+              <button type="button" className={`btn ${checkRaceExists("Zephyr") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Zephyr</button>
               <button type="button" className={`btn ${checkRaceExists("ArchAngel") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>ArchAngel</button>
-              <button type="button" className={`btn ${checkRaceExists("Specter") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Specter</button>
-              <button type="button" className={`btn ${checkRaceExists("Avem") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Avem</button>
             </div>
           </Slide>
           </>
