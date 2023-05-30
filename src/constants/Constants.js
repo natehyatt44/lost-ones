@@ -9,14 +9,14 @@ mirrorNode Options:
 
 */
 
-const test = 0
+const test = 1
 
 const barbIncNFTTokens = ['0.0.2235264']
 const network = 'mainnet' 
 const mirrorNode = 'https://mainnet-public.mirrornode.hedera.com'
 const disallowedAccountIds = ['0.0.1067445']
-const s3accountStats = 'accountStats'
-const s3accountActivity = 'accountActivity'
+let s3accountStats = 'accountStats'
+let s3accountActivity = 'accountActivity'
 
 if (test === 1) {
     s3accountStats = 'test/accountStats'
