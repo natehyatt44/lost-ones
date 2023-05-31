@@ -11,6 +11,7 @@ function GameOptions({accountId, nfts, navigate}) {
 
   function handleChapterButtonClick(chapter) {
     setSelectedChapter(chapter);
+    setShowCharacters(true);
   }
 
   const checkRaceExists = (race) => {
@@ -25,7 +26,6 @@ function GameOptions({accountId, nfts, navigate}) {
 
   function handleRaceButtonClick(race) {
     setSelectedRace(race);
-    setShowCharacters(true);
   }
 
   function resetSelection() {
@@ -52,25 +52,7 @@ function GameOptions({accountId, nfts, navigate}) {
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
             <h3 className="h1_head_xs set_font">Welcome #{accountId}</h3>
           </div>
-        </Fade>
-          <Fade duration={5000}>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
-              <h2 className="h1_head_game set_font">Select Chapter</h2>
-            </div>
-            </Fade>
-          <Slide direction='left' duration={1500}>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
-              <button type="button" variant="dark" className="btn btn-primary active futuristic-btn" onClick={() => handleChapterButtonClick("Chapter 1-1")}>Chapter 1-1</button>
-              <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 1-2</button>
-              <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 2</button>
-              <button type="button" className={`btn ${checkRaceExists("Elven") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 3</button>
-              <button type="button" className={`btn ${checkRaceExists("ArchAngel") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 4</button>
-            </div>
-          </Slide>
-          </>
-         )}
-          {selectedChapter && !selectedRace && (
-            <>
+          </Fade>
           <Fade duration={5000}>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
               <h2 className="h1_head_game set_font">Select Race</h2>
@@ -87,24 +69,53 @@ function GameOptions({accountId, nfts, navigate}) {
             </div>
           </Slide>
           </>
-          )}
-          {showCharacters && (
+         )}
+          {!selectedChapter && selectedRace && (
             <>
+          <Fade duration={5000}>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
+              <h2 className="h1_head_game set_font">Select Chapter</h2>
+            </div>
+            
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
-            <button type="button" className="btn btn-secondary disabled futuristic-btn">
-              Chapter: {selectedChapter}
-            </button>
             <button type="button" className="btn btn-secondary disabled futuristic-btn">
               Race: {selectedRace}
             </button>
             <button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetSelection()}>
-              Reset 
-            </button>
-          </div>
+                Reset 
+              </button>
+            </div>
+            </Fade>
+          <Slide direction='left' duration={1500}>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
+              <button type="button" variant="dark" className="btn btn-primary active futuristic-btn" onClick={() => handleChapterButtonClick("Chapter 1-1")}>Chapter 1-1</button>
+              <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 1-2</button>
+              <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 2</button>
+              <button type="button" className={`btn ${checkRaceExists("Elven") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 3</button>
+              <button type="button" className={`btn ${checkRaceExists("ArchAngel") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 4</button>
+            </div>
+          </Slide>
+          </>
+          )}
+          {showCharacters && (
+            <>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
+              <Fade duration={5000}>
+                <h2 className="h1_head_game set_font">Select Character</h2>
+              </Fade>
+              </div>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
+              <button type="button" className="btn btn-secondary disabled futuristic-btn">
+                Race: {selectedRace}
+              </button>
+              <button type="button" className="btn btn-secondary disabled futuristic-btn">
+                Chapter: {selectedChapter}
+              </button>
+              <button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetSelection()}>
+                Reset 
+              </button>
+            </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: '600px', overflowY: 'auto' }}>
-              <Slide direction='down' duration={1500}>
-                <h1 className="h1_head_game set_font">Select Character</h1>
-              </Slide>
               <div className="row">
                 <NFTImages accountNfts={nfts} onClickImage={(index) => handleStartGame(index)}/>
               </div>

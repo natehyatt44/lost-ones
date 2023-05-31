@@ -145,9 +145,9 @@ function Game(props) {
         </Dropdown>
         </Fade>
       </div>
-      <div className="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-center nft-item">
-        <Slide direction='right' duration={7000}>
-          <img src={selectedImage} alt="selected-nft" style={{ borderRadius:"50%", width:"100%", height:"100%" }} /> 
+      <div className="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-left nft-item">
+        <Slide direction='right' duration={3000}>
+          <img src={selectedImage} alt="selected-nft" style={{ borderRadius:"50%", width:"70%", height:"70%" }} /> 
         </Slide>
       </div>
     </div>
@@ -178,7 +178,7 @@ function Game(props) {
                 marginTop: "15px",
               }}
             >
-              Complete Chapter
+              Complete {selectedChapter}
             </Button>
           </div>
         </div>
