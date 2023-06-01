@@ -86,10 +86,6 @@ function GameOptions({accountId, nfts, navigate}) {
           {!selectedChapter && selectedRace && (
             <>
           <Fade duration={5000}>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list-clicked">
-            {/* <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Race: {selectedRace}</button> */}
-            <button type="button" className="btn btn-primary active futuristic-btn-clicked" onClick={() => resetRace()}>Back</button>
-            </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
               <h2 className="h1_head_game set_font">Select Chapter</h2>
             </div>
@@ -101,6 +97,7 @@ function GameOptions({accountId, nfts, navigate}) {
               <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 2</button>
               <button type="button" className={`btn ${checkRaceExists("Elven") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 3</button>
               <button type="button" className={`btn ${checkRaceExists("ArchAngel") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 4</button>
+              <button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetRace()}>Back</button>
             </div>
           </Slide>
           </>
@@ -110,7 +107,7 @@ function GameOptions({accountId, nfts, navigate}) {
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list-clicked">
               {/* <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Race: {selectedRace}</button>
               <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Chapter: {selectedChapter}</button> */}
-              <button type="button" className="btn btn-primary active futuristic-btn-clicked" onClick={() => resetChapter()}>Back</button>
+              <button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetChapter()}>Back</button>
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
               <Fade duration={5000}>

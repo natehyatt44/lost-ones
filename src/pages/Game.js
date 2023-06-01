@@ -147,7 +147,7 @@ function Game(props) {
       </div>
       <div className="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-left nft-item">
         <Slide direction='right' duration={3000}>
-          <img src={selectedImage} alt="selected-nft" style={{ borderRadius:"50%", width:"70%", height:"70%" }} /> 
+          <img src={selectedImage} alt="selected-nft" style={{ borderRadius:"50%", width:"90%", height:"90%" }} /> 
         </Slide>
       </div>
     </div>
