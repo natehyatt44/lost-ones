@@ -62,7 +62,7 @@ function Hashpack({ onConnect, showModal, onClose }) {
             />
           </Modal.Body>
           <Modal.Footer className="hashpack-modal-footer">
-            <Button variant="dark" onClick={connectHashPackExtension}>
+            <Button variant="dark" className="desktop-only" onClick={connectHashPackExtension}>
               Connect HashPack Extension
             </Button>
             <Button variant="dark" onClick={copyPairingString}>

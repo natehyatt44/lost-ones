@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { NFTImages } from '../components/ConnectWallet';
 import { s3accountActivity, uploadCsv } from '../constants/Constants';
 const { Slide, Fade } = require("react-awesome-reveal");
@@ -8,6 +8,16 @@ function GameOptions({accountId, nfts, navigate}) {
   const [showCharacters, setShowCharacters] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState(null);
   const [selectedRace, setSelectedRace] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = windowWidth < 768;
+  const scrollbarHeight = isMobile ? 450 : 600;
 
   function handleChapterButtonClick(chapter) {
     setSelectedChapter(chapter);
@@ -28,9 +38,12 @@ function GameOptions({accountId, nfts, navigate}) {
     setSelectedRace(race);
   }
 
-  function resetSelection() {
-    setSelectedChapter(null);
+  function resetRace() {
     setSelectedRace(null);
+  }
+
+  function resetChapter() {
+    setSelectedChapter(null);
     setShowCharacters(false);
   }
 
@@ -73,17 +86,12 @@ function GameOptions({accountId, nfts, navigate}) {
           {!selectedChapter && selectedRace && (
             <>
           <Fade duration={5000}>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list-clicked">
+            {/* <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Race: {selectedRace}</button> */}
+            <button type="button" className="btn btn-primary active futuristic-btn-clicked" onClick={() => resetRace()}>Back</button>
+            </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
               <h2 className="h1_head_game set_font">Select Chapter</h2>
-            </div>
-            
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
-            <button type="button" className="btn btn-secondary disabled futuristic-btn">
-              Race: {selectedRace}
-            </button>
-            <button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetSelection()}>
-                Reset 
-              </button>
             </div>
             </Fade>
           <Slide direction='left' duration={1500}>
@@ -99,23 +107,17 @@ function GameOptions({accountId, nfts, navigate}) {
           )}
           {showCharacters && (
             <>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list-clicked">
+              {/* <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Race: {selectedRace}</button>
+              <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Chapter: {selectedChapter}</button> */}
+              <button type="button" className="btn btn-primary active futuristic-btn-clicked" onClick={() => resetChapter()}>Back</button>
+            </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
               <Fade duration={5000}>
                 <h2 className="h1_head_game set_font">Select Character</h2>
               </Fade>
-              </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
-              <button type="button" className="btn btn-secondary disabled futuristic-btn">
-                Race: {selectedRace}
-              </button>
-              <button type="button" className="btn btn-secondary disabled futuristic-btn">
-                Chapter: {selectedChapter}
-              </button>
-              <button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetSelection()}>
-                Reset 
-              </button>
             </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: '600px', overflowY: 'auto' }}>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
               <div className="row">
                 <NFTImages accountNfts={nfts} onClickImage={(index) => handleStartGame(index)}/>
               </div>

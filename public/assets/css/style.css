@@ -286,6 +286,10 @@ background-position: center !important; /* center the image */
     .navbar-footer .logo_s{
         width: 60%;
     }
+     .desktop-only {
+         display: none;
+     }
+
 }
 
 /* tabs */
@@ -673,7 +677,43 @@ background-position: center !important; /* center the image */
     width: 80%;
  }
 
- .futuristic-btn {
+ .btn-list-clicked {
+     /* display: flex;
+     flex-wrap: wrap; Allow buttons to go to the next row if needed */
+     justify-content: center;
+     align-items: center;
+     width: 30%;
+     max-width: 70%; /* Limit width to 70% */
+     margin: auto; /* Center .btn-list */
+   }
+
+   .futuristic-btn-clicked {
+     border: none;
+     background: none;
+     color: #fff;
+     font-size: 9px;
+     font-weight: bold;
+     letter-spacing: 1px;
+     text-transform: uppercase;
+     margin: 4px;
+     padding: 4px 15px;
+     transition: all 0.3s ease-in-out;
+     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 2px 2px rgba(0, 0, 0, 0.15);
+     text-align: center; 
+     flex: 1 1 auto; /* Flex sizing to ensure button width adjusts for smaller screens */
+   }
+
+ .btn-list {
+     display: flex;
+     flex-wrap: wrap; /* Allow buttons to go to the next row if needed */
+     justify-content: space-between;
+     align-items: center;
+     width: 100%;
+     max-width: 70%; /* Limit width to 70% */
+     margin: auto; /* Center .btn-list */
+   }
+   
+   .futuristic-btn {
      border: none;
      background: none;
      color: #fff;
@@ -685,7 +725,11 @@ background-position: center !important; /* center the image */
      padding: 8px 25px;
      transition: all 0.3s ease-in-out;
      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 2px 2px rgba(0, 0, 0, 0.15);
+     text-align: center; 
+     flex: 1 1 auto; /* Flex sizing to ensure button width adjusts for smaller screens */
    }
+   
+   
    
 .futuristic-btn:hover {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 4px 4px rgba(0, 0, 0, 0.15);
