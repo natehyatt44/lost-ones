@@ -289,6 +289,9 @@ background-position: center !important; /* center the image */
      .desktop-only {
          display: none;
      }
+     .nft-item {
+          margin-bottom: 0px; /* Adjust as needed */
+        }
 
 }
 
@@ -420,6 +423,12 @@ background-position: center !important; /* center the image */
     .hd_m, .navs_hyd{
          display: block !important;
     }
+    .nft-item {
+     margin-bottom: 0px; /* Adjust as needed */
+   }
+   .story-container {
+     margin-top: 0px; /* Adjust as needed */
+   }
 }
 
 @media (max-width: 768px) {

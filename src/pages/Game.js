@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState, useEffect, useCallback  } from 'react';
 import { Storage } from 'aws-amplify';
 import { Scrollbar } from 'react-scrollbars-custom';
 import { useLocation, useNavigate  } from 'react-router-dom';
@@ -23,12 +23,20 @@ function Game(props) {
   const selectedChapter = location.state.selectedChapter;
   const selectedRace = location.state.selectedRace;
   const [text, setText] = useState('');
+  const [isCompleteVisible, setIsCompleteVisible] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleScroll = useCallback((values) => {
+    const { scrollTop, scrollHeight, clientHeight } = values;
+    if (Math.ceil(scrollTop) >= scrollHeight - clientHeight) {
+      setIsCompleteVisible(true);
+    }
   }, []);
 
   const isMobile = windowWidth < 768;
@@ -121,7 +129,7 @@ function Game(props) {
 
 
   const chapterHeader = selectedChapter;
-  const story = text;
+  const story = `${text}\n\n`;
 
   const handleExitGame = () => {
     window.location.href = '/';
@@ -147,7 +155,12 @@ function Game(props) {
       </div>
       <div className="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-left nft-item">
         <Slide direction='right' duration={3000}>
-          <img src={selectedImage} alt="selected-nft" style={{ borderRadius:"50%", width:"100%", height:"100%" }} /> 
+          <img src={selectedImage} alt="selected-nft"  style={{ 
+                                                                borderRadius:"50%", 
+                                                                width: isMobile ? "100%" : "100%", 
+                                                                height: isMobile ? "80%" : "100%" 
+                                                              }}  /> \
+
         </Slide>
       </div>
     </div>
@@ -157,32 +170,31 @@ function Game(props) {
             <Fade duration={10000}><h1 className="h1_head_m set_font">{chapterHeader}</h1></Fade>
         </div>
       </div>
-    <Fade duration={10000} top>
+      <Fade duration={10000} top>
     <div className="row">
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left story-container">
-        <Scrollbar style={{ height: scrollbarHeight, width: "85%", margin: "auto" , display: "block", backgroundColor: "rgba(0, 0, 0, 0.8)" }}>
-          <pre className="para_p" style={{ width: "95%", height: "95%", margin: "auto" }}>{story}</pre>
-        </Scrollbar>
+      <Scrollbar style={{ height: scrollbarHeight, width: "85%", margin: "auto" , display: "block", backgroundColor: "rgba(0, 0, 0, 0.8)" }} onScroll={handleScroll}>
+        <pre className="para_p" style={{ width: "95%", height: "95%", margin: "auto" }}>{story}</pre>
+      </Scrollbar>
       </div>
     </div>
     </Fade>
-    <Fade duration={10000} top>
-        <div className="row">
-          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-            <Button
-              onClick={handleFinishedChapter}
-              style={{
-                backgroundColor: "#1a1a1a",
-                borderColor: "#1a1a1a",
-                color: "#fff",
-                marginTop: "15px",
-              }}
-            >
-              Complete {selectedChapter}
-            </Button>
-          </div>
+    {isCompleteVisible && 
+      <div className="row">
+        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+          <Button
+            onClick={handleFinishedChapter}
+            style={{
+              backgroundColor: "#1a1a1a",
+              borderColor: "#1a1a1a",
+              color: "#fff",
+              marginTop: "15px",
+            }}
+          >
+            Complete {selectedChapter}
+          </Button>
         </div>
-    </Fade>
+      </div>}
   </section>
 	</>
   );
