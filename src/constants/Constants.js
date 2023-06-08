@@ -9,7 +9,7 @@ mirrorNode Options:
 
 */
 
-const test = 1
+const test = 0
 
 const barbIncNFTTokens = ['0.0.2235264']
 const network = 'mainnet' 
