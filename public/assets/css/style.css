@@ -80,22 +80,46 @@ html, body{
      position: relative !important;
  }
  .background_game {
-  background-image: url('../images/background/background_game1.png') !important;
+  background-image: url('../images/background/2.png') !important;
   backdrop-filter: blur(40px) !important;
-  position: relative !important;
-  height: 100vh; /* added this line */
-  width: 100%; /* added this line */
-  background-size: cover; /* added this line */
-  background-position: center; /* added this line */
+position: fixed !important; /* switch from relative to fixed */
+top: 0; /* make sure it starts at the top-left corner */
+left: 0;
+right: 0;
+bottom: 0;
+height: 100%; /* covers entire height */
+width: 100%; /* covers entire width */
+background-size: cover !important; /* ensure image covers the whole area */
+background-repeat: no-repeat !important; /* prevent image from repeating */
+background-position: center !important; /* center the image */
 }
-.background_play {
-     background-image: url('../images/background/background_game2.png') !important;
+.background_play_stats {
+     background-image: url('../images/background/3.png') !important;
      backdrop-filter: blur(40px) !important;
-     position: relative !important;
-     height: 100vh; /* added this line */
-     width: 100%; /* added this line */
-     background-size: cover; /* added this line */
-     background-position: center; /* added this line */
+     position: fixed !important; /* switch from relative to fixed */
+     top: 0; /* make sure it starts at the top-left corner */
+     left: 0;
+     right: 0;
+     bottom: 0;
+     height: 100%; /* covers entire height */
+     width: 100%; /* covers entire width */
+     background-size: cover !important; /* ensure image covers the whole area */
+     background-repeat: no-repeat !important; /* prevent image from repeating */
+     background-position: center !important; /* center the image */
+   }
+.background_play_options {
+     background-image: url('../images/background/4.png') !important;
+     backdrop-filter: blur(40px) !important;
+     position: fixed !important; /* switch from relative to fixed */
+     top: 0; /* make sure it starts at the top-left corner */
+     left: 0;
+     right: 0;
+     bottom: 0;
+     height: 100%; /* covers entire height */
+     width: 100%; /* covers entire width */
+     background-size: cover !important; /* ensure image covers the whole area */
+     background-repeat: no-repeat !important; /* prevent image from repeating */
+     background-position: center !important; /* center the image */
    }
  .traitbackground_sec {
      background-image: url('../images/background/background_trait.png') !important;
@@ -149,11 +173,6 @@ html, body{
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media screen and (max-width: 1440px) and (min-width: 1025px) {
@@ -166,11 +185,6 @@ html, body{
 .roadmap-mobile-item img{
      display: none;
 }
-.player-data {
-     display: flex;
-     justify-content: center;
-     gap: 5rem;
-     }
 }
 
 @media screen and (max-width: 1780px) and (min-width: 1441px) {
@@ -180,11 +194,6 @@ html, body{
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media only screen and (min-width: 1781px) {
@@ -194,11 +203,6 @@ html, body{
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media screen and (max-width: 1320px) and (min-width: 991px) {
@@ -219,11 +223,6 @@ html, body{
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media screen and (max-width: 1499px) and (min-width: 1200px) {
@@ -233,11 +232,6 @@ html, body{
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
@@ -250,11 +244,6 @@ html, body{
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-          display: flex;
-          justify-content: center;
-          gap: 5rem;
-          }
 }
 
 @media only screen and (max-width: 767px) {
@@ -297,6 +286,13 @@ html, body{
     .navbar-footer .logo_s{
         width: 60%;
     }
+     .desktop-only {
+         display: none;
+     }
+     .nft-item {
+          margin-bottom: 0px; /* Adjust as needed */
+        }
+
 }
 
 /* tabs */
@@ -390,11 +386,6 @@ html, body{
      .roadmap-mobile-item img{
           display: none;
      }
-     .player-data {
-     display: flex;
-     justify-content: center;
-     gap: 5rem;
-     }
 }
  @media only screen and (max-width: 767px) {
      .cont_tabs{
@@ -432,6 +423,12 @@ html, body{
     .hd_m, .navs_hyd{
          display: block !important;
     }
+    .nft-item {
+     margin-bottom: 0px; /* Adjust as needed */
+   }
+   .story-container {
+     margin-top: 0px; /* Adjust as needed */
+   }
 }
 
 @media (max-width: 768px) {
@@ -514,13 +511,7 @@ html, body{
      .roadmap-desktop-item img{
           display:none;
       }
-     .player-data {
-     display: flex;
-     justify-content: center;
-     gap: 1rem;
-     }
-        
-       
+             
 }
  .navs_hyd{
      display: none;
@@ -686,16 +677,29 @@ html, body{
    }
 
    .nft-item{
-     float: center;
-     margin: 10px;
-     margin-bottom: 25px;
+     display: flex;
+     justify-content: center; /* align horizontal */
+     /* align-items: center; align vertical */
+     margin-bottom: 10px;
+     margin-top: 10px;
+    
  }
  
  .nft-item img{
-    width: 80%;
+    width: 75%;
  }
 
- .futuristic-btn {
+ .btn-list {
+     display: flex;
+     flex-wrap: wrap; /* Allow buttons to go to the next row if needed */
+     justify-content: space-between;
+     align-items: center;
+     width: 100%;
+     max-width: 70%; /* Limit width to 70% */
+     margin: auto; /* Center .btn-list */
+   }
+   
+   .futuristic-btn {
      border: none;
      background: none;
      color: #fff;
@@ -707,7 +711,11 @@ html, body{
      padding: 8px 25px;
      transition: all 0.3s ease-in-out;
      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 2px 2px rgba(0, 0, 0, 0.15);
+     text-align: center; 
+     flex: 1 1 auto; /* Flex sizing to ensure button width adjusts for smaller screens */
    }
+   
+   
    
 .futuristic-btn:hover {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 0 2px #fff, 0 4px 4px rgba(0, 0, 0, 0.15);
@@ -879,5 +887,23 @@ html, body{
    
    .player-data span {
      font-family: 'Arial', sans-serif;
+     width: 25%;
+     text-align: center;
+   }
+
+   .player-data {
+     display: flex;
+     justify-content: space-between;
+     width: 100%;
+   }
+   
+   .player-data span {
+     flex-basis: 25%;
+     text-align: center;
+   }
+
+   .player-data-inactive {
+     color: grey;
+     /* other styles... */
    }
    

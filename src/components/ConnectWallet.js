@@ -1,6 +1,6 @@
 import { HashConnect } from "hashconnect";
 import React, {useEffect, useState} from 'react';
-import { Slide, Fade } from 'react-awesome-reveal';
+import { Fade } from 'react-awesome-reveal';
 import fetch from 'node-fetch';
 import { Storage } from 'aws-amplify'
 import { network, mirrorNode } from '../constants/Constants';
@@ -22,7 +22,7 @@ export const ConnectHashPack = async () => {
   return {initData}
 }
 
-export const ConnectHashPackExtension = async () => {
+export const HashPackExtension = async () => {
   let initData = await hashconnect.init(appMetadata, network, true)
 
   hashconnect.foundExtensionEvent.once((walletMetadata) => {
@@ -50,7 +50,7 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
   const response = await fetch(`${url}${path}`);
   const nfts = await response.json();
 
-  const signedUrl = await Storage.get("nft-collection-cfp/json/nfts.json", { level: "public" });
+  const signedUrl = await Storage.get("nft-collection-cfp/data-map/argNfts.json", { level: "public" });
   const nftResponse = await fetch(signedUrl);
   const nftJsonResponse = await nftResponse.json(); // Change this line to parse the fetched data
 
@@ -62,7 +62,7 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
           nftMetadata.push({
             tokenId: item.token_id,
             edition: nftInfo.edition,
-            traits: nftInfo.traits,
+            race: nftInfo.race,
           });
         }
       }
@@ -74,6 +74,7 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
   }
 
   console.log({ tokenIds, nftMetadata });
+  
   return JSON.stringify({ tokenIds, nftMetadata });
 };
 
@@ -92,7 +93,7 @@ export function NFTImages({ accountNfts, onClickImage }) {
       } else {
         clearInterval(intervalId);
       }
-    }, 500);
+    }, 120);
 
     return () => clearInterval(intervalId);
   }, [loadedImages]);
@@ -127,7 +128,7 @@ export function NFTImages({ accountNfts, onClickImage }) {
       key={index}
       onClick={() => handleClickImage(image)}
       onMouseEnter={(e) => {
-        e.target.style.filter = "brightness(120%)";
+        e.target.style.filter = "brightness(130%)";
       }}
       onMouseLeave={(e) => {
         e.target.style.filter = "brightness(100%)";
