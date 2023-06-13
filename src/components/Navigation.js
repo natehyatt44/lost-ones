@@ -33,7 +33,7 @@ function Navigation() {
                     <a href="https://discord.gg/aCucjcJtWM" target={{target:"_blank"}}>
                         <img className="seicon" src="assets/images/icon/icon_discord.svg" alt="navimg"/>
                     </a>
-                    <a href="https://nftier.tech/mint/hbarbarians-founder-pass" target={{target:"_blank"}}>
+                    <a href="https://nftier.tech/mint/hbarbarians-founder-pass-drop-2" target={{target:"_blank"}}>
                         <img className="seicon" src="assets/images/nfttiers.logo.svg" alt="navimg"/>
                     </a>
                     </span>
