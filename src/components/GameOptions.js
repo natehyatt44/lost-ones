@@ -1,14 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import { NFTImages } from '../components/ConnectWallet';
 import { s3accountActivity, uploadCsv } from '../constants/Constants';
+import { CheckAccount } from '../components/GameChecks';
 const { Slide, Fade } = require("react-awesome-reveal");
 
 function GameOptions({accountId, nfts, navigate}) {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [showCharacters, setShowCharacters] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState(null);
   const [selectedRace, setSelectedRace] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [accessibleChapters, setAccessibleChapters] = useState([]);
+  const [heldRaces, setHeldRaces] = useState([]);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -19,24 +23,37 @@ function GameOptions({accountId, nfts, navigate}) {
   const isMobile = windowWidth < 768;
   const scrollbarHeight = isMobile ? 450 : 600;
 
+  useEffect(() => {
+    const fetchGameChecks = async () => {
+      const gameChecks = await CheckAccount(accountId, nfts);
+      setAccessibleChapters(gameChecks.accessibleChapters);
+      setHeldRaces(gameChecks.heldRaces);
+    };
+
+    fetchGameChecks();
+  }, [accountId, nfts]);
+
+  const checkRaceExists = (race) => {
+    return heldRaces.includes(race);
+  };
+
+  const checkChapterExists = (chapter) => {
+    return accessibleChapters.includes(chapter);
+  };
+
+  function handleCharacterSelect(index) {
+    setSelectedCharacter(index);
+  }
+
   function handleChapterButtonClick(chapter) {
     setSelectedChapter(chapter);
     setShowCharacters(true);
   }
 
-  const checkRaceExists = (race) => {
-    // const jsonObj = JSON.parse(nfts);
-    // const { nftMetadata } = jsonObj;
-  
-    // return nftMetadata.some(({ traits }) => {
-    //   return traits.some(({ trait_type, value }) => trait_type === "Race" && value === race);
-    // });
-    return false
-  };
-
   function handleRaceButtonClick(race) {
     setSelectedRace(race);
   }
+  
 
   function resetRace() {
     setSelectedRace(null);
@@ -73,7 +90,7 @@ function GameOptions({accountId, nfts, navigate}) {
             </Fade>
           <Slide direction='right' duration={1500}>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
-              <button type="button" variant="dark" className="btn btn-primary active futuristic-btn" onClick={() => handleRaceButtonClick("Mortal")}>Mortal</button>
+              <button type="button" variant="dark" className="btn btn-primary futuristic-btn" onClick={() => handleRaceButtonClick("Mortal")}>Mortal</button>
               <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Gaian</button>
               <button type="button" className={`btn ${checkRaceExists("Runekin") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Runekin</button>
               <button type="button" className={`btn ${checkRaceExists("Soulweaver") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Soulweaver</button>
@@ -90,16 +107,47 @@ function GameOptions({accountId, nfts, navigate}) {
               <h2 className="h1_head_game set_font">Select Chapter</h2>
             </div>
             </Fade>
-          <Slide direction='left' duration={1500}>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
-              <button type="button" variant="dark" className="btn btn-primary active futuristic-btn" onClick={() => handleChapterButtonClick("Chapter 1-1")}>Chapter 1-1</button>
-              <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 1-2</button>
-              <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 2</button>
-              <button type="button" className={`btn ${checkRaceExists("Elven") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 3</button>
-              <button type="button" className={`btn ${checkRaceExists("ArchAngel") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Chapter 4</button>
-              <button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetRace()}>Back</button>
-            </div>
-          </Slide>
+            <Slide direction='left' duration={1500}>
+              <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
+                <button type="button" variant="dark" className="btn btn-primary futuristic-btn" onClick={() => handleChapterButtonClick("Chapter 1-1")}>Chapter 1-1</button>
+                <button 
+                  type="button" 
+                  className={`btn ${checkChapterExists("Chapter 1-2") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
+                  {...(checkChapterExists("Chapter 1-2") && { onClick: () => handleChapterButtonClick("Chapter 1-2")})}
+                >
+                  Chapter 1-2
+                </button>
+                <button 
+                  type="button" 
+                  className={`btn ${checkChapterExists("Chapter 2") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
+                  {...(checkChapterExists("Chapter 2") && { onClick: () => handleChapterButtonClick("Chapter 2")})}
+                >
+                  Chapter 2
+                </button>
+                <button 
+                  type="button" 
+                  className={`btn ${checkChapterExists("Chapter 3") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
+                  {...(checkChapterExists("Chapter 3") && { onClick: () => handleChapterButtonClick("Chapter 3")})}
+                >
+                  Chapter 3
+                </button>
+                <button 
+                  type="button" 
+                  className={`btn ${checkChapterExists("Chapter 4") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
+                  {...(checkChapterExists("Chapter 4") && { onClick: () => handleChapterButtonClick("Chapter 4")})}
+                >
+                  Chapter 4
+                </button>
+                <button 
+                  type="button" 
+                  className={`btn ${checkChapterExists("Chapter 5") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
+                  {...(checkChapterExists("Chapter 5") && { onClick: () => handleChapterButtonClick("Chapter 5")})}
+                >
+                  Chapter 5
+                </button>
+                <button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetRace()}>Back</button>
+              </div>
+            </Slide>
           </>
           )}
           {showCharacters && (
