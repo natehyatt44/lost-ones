@@ -57,6 +57,7 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
   if (nfts.nfts.length > 0) {
     for (const item of nfts.nfts) {
       if (tokenIds.includes(item.token_id)) {
+        console.log(item)
         const nftInfo = nftJsonResponse.find((metadata) => metadata.serial_number === item.serial_number);
         if (nftInfo) {
           nftMetadata.push({
@@ -72,9 +73,8 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
   if (nfts.links && nfts.links.next) {
     return await AccountNFTs(accountId, tokenIds, nftMetadata, nfts.links.next);
   }
-
-  console.log({ tokenIds, nftMetadata });
   
+  console.log(nftMetadata)
   return JSON.stringify({ tokenIds, nftMetadata });
 };
 

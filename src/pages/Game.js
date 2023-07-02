@@ -114,7 +114,13 @@ function Game(props) {
 
   async function fetchStory() {
     try {
-      const signedUrl = await Storage.get(`chapters/${selectedChapter}.txt`, { level: "public" });
+      let signedUrl = ''
+      if (selectedChapter === 'Chapter 1-1' || selectedChapter === 'Chapter 1-2' || selectedChapter === 'Chapter 5'){
+        signedUrl = await Storage.get(`chapters/universal/${selectedChapter}.txt`, { level: "public" });
+      }
+      else {
+        signedUrl = await Storage.get(`chapters/${selectedRace}/${selectedChapter}.txt`, { level: "public" });
+      }
       const response = await fetch(signedUrl);
       const textContent = await response.text();
       setText(textContent);

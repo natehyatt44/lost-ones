@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Hashpack from '../modals/Hashpack';
 import GameOptions from '../components/GameOptions';
+import {AccountNFTs} from '../components/ConnectWallet';
+import { barbIncNFTTokens } from '../constants/Constants'
 import AccountCode from '../components/AccountCode';
 import { useNavigate } from 'react-router-dom';
 import GameStats from '../components/GameStats';
@@ -21,13 +23,9 @@ function Play() {
 
   useEffect(() => {
     const storedAccountId = window.localStorage.getItem('accountId');
-    const storedNfts = window.localStorage.getItem('nfts');
-    const storedNftAmt = window.localStorage.getItem('nftAmt');
 
     if (storedAccountId) {
       setAccountId(storedAccountId);
-      setNfts(storedNfts)
-      setNftAmt(storedNftAmt)
     }
   }, []);
 
@@ -36,11 +34,9 @@ function Play() {
     window.localStorage.setItem('accountId', accountId);
 
     setNfts(nfts);
-    window.localStorage.setItem('nfts', nfts);
 
     const jsonObj = JSON.parse(nfts);
     setNftAmt(jsonObj.nftMetadata.length);
-    window.localStorage.setItem('nftAmt', jsonObj.nftMetadata.length);
 
     if (regex.test(accountId)){
       const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
@@ -67,12 +63,18 @@ function Play() {
   };
 
   const handleShow = () => {
-    if (accountId) {
-      setStats(false);
-    } else {
-      setShow(true);
-    }
+    setShow(true);
   }
+  const handlePlay = async () => {
+    setStats(false)
+    const nfts = await AccountNFTs(accountId.toString(), barbIncNFTTokens);
+    setNfts(nfts);
+
+    const jsonObj = JSON.parse(nfts);
+    setNftAmt(jsonObj.nftMetadata.length);
+}
+
+
   const handleStats = () => setStats(true);
   const handleModalClose = () => {setShow(false);};
   const handleTogglePopup = () => {
@@ -96,6 +98,7 @@ function Play() {
       <div className="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-center nft-item">
       <Menu 
           handleShow={handleShow} 
+          handlePlay={handlePlay}
           accountId={accountId} 
           disconnectHashpack={disconnectHashpack} 
           handleStats={handleStats} 
@@ -123,6 +126,7 @@ function Play() {
         <div className="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-center nft-item">
         <Menu 
             handleShow={handleShow} 
+            handlePlay={handlePlay}
             accountId={accountId} 
             disconnectHashpack={disconnectHashpack} 
             handleStats={handleStats} 
@@ -148,6 +152,7 @@ function Play() {
         <div className="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-center nft-item">
         <Menu 
             handleShow={handleShow} 
+            handlePlay={handlePlay}
             accountId={accountId} 
             disconnectHashpack={disconnectHashpack} 
             handleStats={handleStats} 
