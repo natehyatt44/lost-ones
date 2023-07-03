@@ -50,14 +50,13 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
   const response = await fetch(`${url}${path}`);
   const nfts = await response.json();
 
-  const signedUrl = await Storage.get("nft-collection-cfp/data-map/argNfts.json", { level: "public" });
+  const signedUrl = await Storage.get("nft-collections/ARGdatamap.json", { level: "public" });
   const nftResponse = await fetch(signedUrl);
   const nftJsonResponse = await nftResponse.json(); // Change this line to parse the fetched data
 
   if (nfts.nfts.length > 0) {
     for (const item of nfts.nfts) {
       if (tokenIds.includes(item.token_id)) {
-        console.log(item)
         const nftInfo = nftJsonResponse.find((metadata) => metadata.serial_number === item.serial_number);
         if (nftInfo) {
           nftMetadata.push({
@@ -74,7 +73,6 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
     return await AccountNFTs(accountId, tokenIds, nftMetadata, nfts.links.next);
   }
   
-  console.log(nftMetadata)
   return JSON.stringify({ tokenIds, nftMetadata });
 };
 
@@ -82,6 +80,25 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
 export function NFTImages({ accountNfts, onClickImage }) {
   const [images, setImages] = useState([]);
   const [loadedImages, setLoadedImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      const jsonObj = JSON.parse(accountNfts);
+      const fetchedImages = await Promise.all(
+        jsonObj.nftMetadata.map(async (meta) => {
+          const imageResponse = await Storage.get(
+            `nft-collections/${meta.race}/images/${meta.edition}.png`,
+            { level: 'public' }
+          );
+          return imageResponse;
+        })
+      );
+      setLoadedImages(new Array(fetchedImages.length).fill(false));
+      setImages(fetchedImages);
+    };
+    fetchImages();
+  }, [accountNfts]);
+  
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -94,39 +111,14 @@ export function NFTImages({ accountNfts, onClickImage }) {
         clearInterval(intervalId);
       }
     }, 120);
-
     return () => clearInterval(intervalId);
   }, [loadedImages]);
 
-  useEffect(() => {
-    const jsonObj = JSON.parse(accountNfts);
-
-    async function fetchImages() {
-      const fetchedImages = [];
-
-      // Fetch images using the edition numbers from the nftMetadata array
-      for (let i = 0; i < jsonObj.nftMetadata.length; i++) {
-        const editionNumber = jsonObj.nftMetadata[i].edition;
-        const imageResponse = await Storage.get(`nft-collection-cfp/images/${editionNumber}.png`, { level: 'public' });
-        fetchedImages.push(imageResponse);
-      }
-
-      setLoadedImages(new Array(fetchedImages.length).fill(false));
-      setImages(fetchedImages);
-    }
-
-    fetchImages();
-  }, [accountNfts]);
-
-  const handleClickImage = (index) => {
-    onClickImage(index);
-  };
-
-  const html = images.map((image, index) => (
+  return images.map((image, index) => (
     <div
       className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 text-center mx-auto"
       key={index}
-      onClick={() => handleClickImage(image)}
+      onClick={() => onClickImage(index)}
       onMouseEnter={(e) => {
         e.target.style.filter = "brightness(130%)";
       }}
@@ -149,9 +141,8 @@ export function NFTImages({ accountNfts, onClickImage }) {
       </div>
     </div>
   ));
-
-  return html;
 }
+
 
 
 

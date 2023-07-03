@@ -31,29 +31,28 @@ export const CheckAccount = async (accountId, nfts ={}) => {
     }
   }
 
-  // Process each filtered row
-  for (const row of filteredRows) {
-    const [id, action, race, nft, datetime] = row.split("|");
+  // // Process each filtered row
+  // for (const row of filteredRows) {
+  //   const [id, action, race, nft, datetime] = row.split("|");
 
-    // If a chapter was completed
-    if (action.includes('Completed')) {
-      const completedChapter = action.replace(' Completed', '');
+  //   // If a chapter was completed
+  //   if (action.includes('Completed')) {
+  //     const completedChapter = action.replace(' Completed', '');
 
-      // If chapter is not the last in the list, add the next chapter to accessible chapters
-      const chapterIndex = chapters.indexOf(completedChapter);
-      if (chapterIndex !== -1 && chapterIndex < chapters.length - 1) {
-        const nextChapter = chapters[chapterIndex + 1];
-        const nextChapterRace = nextChapter === 'Chapter 1-2' ? 'Mortal' : races[chapterIndex-1];
+  //     // If chapter is not the last in the list, add the next chapter to accessible chapters
+  //     const chapterIndex = chapters.indexOf(completedChapter);
+  //     if (chapterIndex !== -1 && chapterIndex < chapters.length - 1) {
+  //       const nextChapter = chapters[chapterIndex + 1];
+  //       const nextChapterRace = nextChapter === 'Chapter 1-2' ? 'Mortal' : races[chapterIndex-1];
         
-        // Add the next chapter to accessible chapters only if player holds the required race
-        if (heldRaces.includes(nextChapterRace) && !accessibleChapters.includes(nextChapter)) {
-          accessibleChapters.push(nextChapter);
-        }
-      }
-    }
-  }
+  //       // Add the next chapter to accessible chapters only if player holds the required race
+  //       if (heldRaces.includes(nextChapterRace) && !accessibleChapters.includes(nextChapter)) {
+  //         accessibleChapters.push(nextChapter);
+  //       }
+  //     }
+  //   }
+  // }
   
-  console.log(accessibleChapters)
   console.log(heldRaces)
   return { accessibleChapters, heldRaces };
 }

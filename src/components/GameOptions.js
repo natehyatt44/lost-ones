@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import { NFTImages } from '../components/ConnectWallet';
+import React, { useState, useEffect } from 'react';
+import { RaceSelectionStage, CharacterSelectionStage, ChapterSelectionStage } from '../components/GameSelections';
 import { s3accountActivity, uploadCsv } from '../constants/Constants';
 import { CheckAccount } from '../components/GameChecks';
-const { Slide, Fade } = require("react-awesome-reveal");
 
-function GameOptions({accountId, nfts, navigate}) {
+function GameOptions({ accountId, nfts, navigate }) {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showRaces, setShowRaces] = useState(true);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [showCharacters, setShowCharacters] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState(null);
@@ -14,6 +14,7 @@ function GameOptions({accountId, nfts, navigate}) {
   const [accessibleChapters, setAccessibleChapters] = useState([]);
   const [heldRaces, setHeldRaces] = useState([]);
 
+  // Track window size for responsiveness
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
@@ -23,6 +24,7 @@ function GameOptions({accountId, nfts, navigate}) {
   const isMobile = windowWidth < 768;
   const scrollbarHeight = isMobile ? 450 : 600;
 
+  // Check account to get accessible chapters and held races
   useEffect(() => {
     const fetchGameChecks = async () => {
       const gameChecks = await CheckAccount(accountId, nfts);
@@ -33,145 +35,72 @@ function GameOptions({accountId, nfts, navigate}) {
     fetchGameChecks();
   }, [accountId, nfts]);
 
-  const checkRaceExists = (race) => {
-    return heldRaces.includes(race);
-  };
+  // Check if race or chapter exists for user
+  const checkRaceExists = (race) => heldRaces.includes(race);
+  const checkChapterExists = (chapter) => accessibleChapters.includes(chapter);
 
-  const checkChapterExists = (chapter) => {
-    return accessibleChapters.includes(chapter);
-  };
-
-  function handleCharacterSelect(index) {
-    setSelectedCharacter(index);
-  }
-
-  function handleChapterButtonClick(chapter) {
-    setSelectedChapter(chapter);
-    setShowCharacters(true);
-  }
-
-  function handleRaceButtonClick(race) {
+  // Selection handlers
+  const handleCharacterSelect = (index) => setSelectedCharacter(index);
+  const handleRaceButtonClick = (race) => {
     setSelectedRace(race);
-  }
-  
-
-  function resetRace() {
-    setSelectedRace(null);
-  }
-
-  function resetChapter() {
-    setSelectedChapter(null);
+    setShowRaces(false);
+    setShowCharacters(true);
+  };
+  const handleChapterButtonClick = (chapter) => {
+    setSelectedChapter(chapter);
     setShowCharacters(false);
-  }
+  };
+  
+  // Reset handlers
+  const resetRace = () => {
+    setSelectedRace(null);
+    setShowRaces(true);
+  };
+  const resetChapter = () => {
+    setSelectedChapter(null);
+    setShowCharacters(true);
+  };
+  
+  // Start game handler
+  const handleStartGame = (index) => {
+    setSelectedImage(index);
+    const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Start-Game|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
+    navigate('/game', { state: { selectedImage: index, accountId: accountId, selectedChapter: selectedChapter, selectedRace: selectedRace } });
+  };
 
+  // Returning JSX according to different game stages (race selection, character selection, chapter selection)
+  return (
+    <>
+      {/* Race Selection Stage */}
+      {showRaces && !showCharacters && (
+        <RaceSelectionStage 
+          accountId={accountId}
+          checkRaceExists={checkRaceExists}
+          handleRaceButtonClick={handleRaceButtonClick}
+        />
+      )}
 
-  function handleStartGame(index) {
-      setSelectedImage(index)
-      console.log(index)
-      const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Start-Game|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
-      navigate('/game', {state:{selectedImage: index, accountId: accountId, selectedChapter: selectedChapter, selectedRace: selectedRace}});
-    }
+      {/* Character Selection Stage */}
+      {!showRaces && showCharacters && !selectedChapter && (
+        <CharacterSelectionStage 
+          nfts={nfts}
+          handleStartGame={handleStartGame}
+          resetRace={resetRace}
+          scrollbarHeight={scrollbarHeight}
+        />
+      )}
 
-
-    return (
-      <>
-         {!selectedChapter && !selectedRace && (
-          <>
-          <Fade duration={3000}>
-          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
-            <h3 className="h1_head_xs set_font">Welcome #{accountId}</h3>
-          </div>
-          </Fade>
-          <Fade duration={5000}>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
-              <h2 className="h1_head_game set_font">Select Race</h2>
-            </div>
-            </Fade>
-          <Slide direction='right' duration={1500}>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
-              <button type="button" variant="dark" className="btn btn-primary futuristic-btn" onClick={() => handleRaceButtonClick("Mortal")}>Mortal</button>
-              <button type="button" className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Gaian</button>
-              <button type="button" className={`btn ${checkRaceExists("Runekin") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Runekin</button>
-              <button type="button" className={`btn ${checkRaceExists("Soulweaver") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Soulweaver</button>
-              <button type="button" className={`btn ${checkRaceExists("Zephyr") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>Zephyr</button>
-              <button type="button" className={`btn ${checkRaceExists("ArchAngel") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}>ArchAngel</button>
-            </div>
-          </Slide>
-          </>
-         )}
-          {!selectedChapter && selectedRace && (
-            <>
-          <Fade duration={5000}>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
-              <h2 className="h1_head_game set_font">Select Chapter</h2>
-            </div>
-            </Fade>
-            <Slide direction='left' duration={1500}>
-              <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
-                <button type="button" variant="dark" className="btn btn-primary futuristic-btn" onClick={() => handleChapterButtonClick("Chapter 1-1")}>Chapter 1-1</button>
-                <button 
-                  type="button" 
-                  className={`btn ${checkChapterExists("Chapter 1-2") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
-                  {...(checkChapterExists("Chapter 1-2") && { onClick: () => handleChapterButtonClick("Chapter 1-2")})}
-                >
-                  Chapter 1-2
-                </button>
-                <button 
-                  type="button" 
-                  className={`btn ${checkChapterExists("Chapter 2") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
-                  {...(checkChapterExists("Chapter 2") && { onClick: () => handleChapterButtonClick("Chapter 2")})}
-                >
-                  Chapter 2
-                </button>
-                <button 
-                  type="button" 
-                  className={`btn ${checkChapterExists("Chapter 3") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
-                  {...(checkChapterExists("Chapter 3") && { onClick: () => handleChapterButtonClick("Chapter 3")})}
-                >
-                  Chapter 3
-                </button>
-                <button 
-                  type="button" 
-                  className={`btn ${checkChapterExists("Chapter 4") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
-                  {...(checkChapterExists("Chapter 4") && { onClick: () => handleChapterButtonClick("Chapter 4")})}
-                >
-                  Chapter 4
-                </button>
-                <button 
-                  type="button" 
-                  className={`btn ${checkChapterExists("Chapter 5") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
-                  {...(checkChapterExists("Chapter 5") && { onClick: () => handleChapterButtonClick("Chapter 5")})}
-                >
-                  Chapter 5
-                </button>
-                <button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetRace()}>Back</button>
-              </div>
-            </Slide>
-          </>
-          )}
-          {showCharacters && (
-            <>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list-clicked">
-              {/* <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Race: {selectedRace}</button>
-              <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Chapter: {selectedChapter}</button> */}
-              <button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetChapter()}>Back</button>
-            </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
-              <Fade duration={5000}>
-                <h2 className="h1_head_game set_font">Select Character</h2>
-              </Fade>
-            </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
-              <div className="row">
-                <NFTImages accountNfts={nfts} onClickImage={(index) => handleStartGame(index)}/>
-              </div>
-            </div>
-            </>
-          )}
-      </>
-    );
-  }
+      {/* Chapter Selection Stage */}
+      {selectedCharacter !== null && (
+        <ChapterSelectionStage 
+          checkChapterExists={checkChapterExists}
+          handleChapterButtonClick={handleChapterButtonClick}
+          resetChapter={resetChapter}
+        />
+      )}
+    </>
+  );
+}
 
 export default GameOptions;
-
