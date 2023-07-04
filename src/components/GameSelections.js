@@ -18,10 +18,9 @@ export const RaceSelectionStage = ({ accountId, checkRaceExists, handleRaceButto
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
           <button 
             type="button" 
-            variant="dark" 
-            className="btn btn-primary futuristic-btn" 
-            disabled={!checkRaceExists("Mortal")} 
-            onClick={() => handleRaceButtonClick("Mortal")}>Mortal</button>
+            className={`btn ${checkRaceExists("Mortal") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
+            disabled={!checkRaceExists("Mortal")}
+            onClick={() => checkRaceExists("Mortal") && handleRaceButtonClick("Mortal")}>Mortal</button>
           <button 
             type="button" 
             className={`btn ${checkRaceExists("Gaian") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
@@ -52,12 +51,12 @@ export const RaceSelectionStage = ({ accountId, checkRaceExists, handleRaceButto
   </>
 );
 
-export const CharacterSelectionStage = ({ nfts, handleStartGame, resetRace, scrollbarHeight }) => (
+export const CharacterSelectionStage = ({ nfts, resetRace, handleCharacterSelect, scrollbarHeight }) => (
   <>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list-clicked">
       {/* <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Race: {selectedRace}</button>
       <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Chapter: {selectedChapter}</button> */}
-      <button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetRace()}>Back</button>
+      <button type="button" className="btn btn-primary futuristic-btn" onClick={() => resetRace()}>Back</button>
     </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
       <Fade duration={5000}>
@@ -66,60 +65,59 @@ export const CharacterSelectionStage = ({ nfts, handleStartGame, resetRace, scro
     </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
       <div className="row">
-        <NFTImages accountNfts={nfts} onClickImage={(index) => handleStartGame(index)}/>
+        <NFTImages accountNfts={nfts} onClickImage={(index) => handleCharacterSelect(index)}/>
       </div>
     </div>  
   </>
 );
 
-export const ChapterSelectionStage = ({ checkChapterExists, handleChapterButtonClick, resetChapter }) => (
+export const ChapterSelectionStage = ({ handleChapterButtonClick, resetRace, accessibleChapters }) => (
   <>
     <Fade duration={5000}>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list-clicked">
+      {/* <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Race: {selectedRace}</button>
+      <button type="button" className="btn btn-secondary disabled futuristic-btn-clicked">Chapter: {selectedChapter}</button> */}
+      <button type="button" className="btn btn-primary futuristic-btn" onClick={() => resetRace()}>Back</button>
+    </div>
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
         <h2 className="h1_head_game set_font">Select Chapter</h2>
       </div>
       </Fade>
       <Slide direction='left' duration={1500}>
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
-          <button type="button" variant="dark" className="btn btn-primary futuristic-btn" onClick={() => handleChapterButtonClick("Chapter 1-1")}>Chapter 1-1</button>
           <button 
             type="button" 
-            className={`btn ${checkChapterExists("Chapter 1-2") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
-            {...(checkChapterExists("Chapter 1-2") && { onClick: () => handleChapterButtonClick("Chapter 1-2")})}
-          >
-            Chapter 1-2
-          </button>
+            className={`btn ${accessibleChapters.includes("Chapter 1-1") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
+            disabled={!accessibleChapters.includes("Chapter 1-1")}
+            onClick={() => accessibleChapters.includes("Chapter 1-1") && handleChapterButtonClick("Chapter 1-1")}>Chapter 1-1</button>
           <button 
             type="button" 
-            className={`btn ${checkChapterExists("Chapter 2") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
-            {...(checkChapterExists("Chapter 2") && { onClick: () => handleChapterButtonClick("Chapter 2")})}
-          >
-            Chapter 2
-          </button>
+            className={`btn ${accessibleChapters.includes("Chapter 1-2") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
+            disabled={!accessibleChapters.includes("Chapter 1-2")}
+            onClick={() => accessibleChapters.includes("Chapter 1-2") && handleChapterButtonClick("Chapter 1-2")}>Chapter 1-2</button>
           <button 
             type="button" 
-            className={`btn ${checkChapterExists("Chapter 3") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
-            {...(checkChapterExists("Chapter 3") && { onClick: () => handleChapterButtonClick("Chapter 3")})}
-          >
-            Chapter 3
-          </button>
+            className={`btn ${accessibleChapters.includes("Chapter 2") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
+            disabled={!accessibleChapters.includes("Chapter 2")}
+            onClick={() => accessibleChapters.includes("Chapter 2") && handleChapterButtonClick("Chapter 2")}>Chapter 2</button>
           <button 
             type="button" 
-            className={`btn ${checkChapterExists("Chapter 4") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
-            {...(checkChapterExists("Chapter 4") && { onClick: () => handleChapterButtonClick("Chapter 4")})}
-          >
-            Chapter 4
-          </button>
+            className={`btn ${accessibleChapters.includes("Chapter 3") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
+            disabled={!accessibleChapters.includes("Chapter 3")}
+            onClick={() => accessibleChapters.includes("Chapter 3") && handleChapterButtonClick("Chapter 3")}>Chapter 3</button>
           <button 
             type="button" 
-            className={`btn ${checkChapterExists("Chapter 5") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`} 
-            {...(checkChapterExists("Chapter 5") && { onClick: () => handleChapterButtonClick("Chapter 5")})}
-          >
-            Chapter 5
-          </button>
-          {/*<button type="button" className="btn btn-primary active futuristic-btn" onClick={() => resetRace()}>Back</button> */}
+            className={`btn ${accessibleChapters.includes("Chapter 4") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
+            disabled={!accessibleChapters.includes("Chapter 4")}
+            onClick={() => accessibleChapters.includes("Chapter 4") && handleChapterButtonClick("Chapter 4")}>Chapter 4</button>
+          <button 
+            type="button" 
+            className={`btn ${accessibleChapters.includes("Chapter 5") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
+            disabled={!accessibleChapters.includes("Chapter 5")}
+            onClick={() => accessibleChapters.includes("Chapter 5") && handleChapterButtonClick("Chapter 5")}>Chapter 5</button>
         </div>
       </Slide>
   </>
 );
+
 

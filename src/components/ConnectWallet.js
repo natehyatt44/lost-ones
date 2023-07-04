@@ -83,9 +83,9 @@ export function NFTImages({ accountNfts, onClickImage }) {
 
   useEffect(() => {
     const fetchImages = async () => {
-      const jsonObj = JSON.parse(accountNfts);
+      
       const fetchedImages = await Promise.all(
-        jsonObj.nftMetadata.map(async (meta) => {
+        accountNfts.map(async (meta) => {
           const imageResponse = await Storage.get(
             `nft-collections/${meta.race}/images/${meta.edition}.png`,
             { level: 'public' }
@@ -98,6 +98,7 @@ export function NFTImages({ accountNfts, onClickImage }) {
     };
     fetchImages();
   }, [accountNfts]);
+  
   
 
   useEffect(() => {
@@ -114,11 +115,15 @@ export function NFTImages({ accountNfts, onClickImage }) {
     return () => clearInterval(intervalId);
   }, [loadedImages]);
 
+  const handleClickImage = (index) => {
+    onClickImage(index);
+  };
+
   return images.map((image, index) => (
     <div
       className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 text-center mx-auto"
       key={index}
-      onClick={() => onClickImage(index)}
+      onClick={() => handleClickImage(image)}
       onMouseEnter={(e) => {
         e.target.style.filter = "brightness(130%)";
       }}

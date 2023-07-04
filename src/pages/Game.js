@@ -18,7 +18,6 @@ function Game(props) {
   const location = useLocation();
   const navigate = useNavigate (); // Add this line to use the 'history' object for navigation
   const accountId = location.state.accountId;
-  const nfts = location.state.nfts;
   const selectedImage = location.state.selectedImage;
   const selectedChapter = location.state.selectedChapter;
   const selectedRace = location.state.selectedRace;
