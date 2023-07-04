@@ -63,6 +63,7 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
             tokenId: item.token_id,
             edition: nftInfo.edition,
             race: nftInfo.race,
+            playable: nftInfo.playable
           });
         }
       }
@@ -119,33 +120,41 @@ export function NFTImages({ accountNfts, onClickImage }) {
     onClickImage(index);
   };
 
-  return images.map((image, index) => (
-    <div
-      className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 text-center mx-auto"
-      key={index}
-      onClick={() => handleClickImage(image)}
-      onMouseEnter={(e) => {
+  // In NFTImages function
+// In NFTImages function
+return images.map((image, index) => (
+  <div
+    className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 text-center mx-auto"
+    key={index}
+    onClick={accountNfts[index].playable === 1 ? () => handleClickImage(image) : null}  // Use index to access corresponding NFT data
+    onMouseEnter={(e) => {
+      if(accountNfts[index].playable === 1) {
         e.target.style.filter = "brightness(130%)";
-      }}
-      onMouseLeave={(e) => {
+      }
+    }}
+    onMouseLeave={(e) => {
+      if(accountNfts[index].playable === 1) {
         e.target.style.filter = "brightness(100%)";
-      }}
-    >
-      <div className="nft-item">
-        {loadedImages[index] ? (
-          <Fade delay={500}>
-            <img
-              src={image}
-              alt="nftimg"
-              style={{ borderRadius: "50%" }}
-            />
-          </Fade>
-        ) : (
-          <div className="loading-animation"></div>
-        )}
-      </div>
+      }
+    }}
+  >
+    <div className="nft-item">
+      {loadedImages[index] ? (
+        <Fade delay={500}>
+          <img
+            src={image}
+            alt="nftimg"
+            style={{ borderRadius: "50%", filter: accountNfts[index].playable === 1 ? "brightness(100%)" : "brightness(20%)" }}
+          />
+        </Fade>
+      ) : (
+        <div className="loading-animation"></div>
+      )}
     </div>
-  ));
+  </div>
+));
+
+
 }
 
 

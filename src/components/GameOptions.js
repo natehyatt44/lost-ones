@@ -53,6 +53,7 @@ function GameOptions({ accountId, nfts, navigate }) {
     let raceFilteredNfts = []
 
     const nftsObject = JSON.parse(nfts);
+    console.log(nftsObject)
     for (const nft of nftsObject.nftMetadata) {
       if (nft.race === race) {
         raceFilteredNfts.push(nft);
