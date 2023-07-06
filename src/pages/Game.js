@@ -18,9 +18,13 @@ function Game(props) {
   const location = useLocation();
   const navigate = useNavigate (); // Add this line to use the 'history' object for navigation
   const accountId = location.state.accountId;
-  const selectedImage = location.state.selectedImage;
-  const selectedChapter = location.state.selectedChapter;
   const selectedRace = location.state.selectedRace;
+  const selectedCharacter = location.state.selectedCharacter;
+  const selectedChapter = location.state.selectedChapter;
+  const selectedTool = location.state.selectedTool;
+
+  const chapterPass = location.state.chapterPass;
+  
   const [text, setText] = useState('');
   const [isCompleteVisible, setIsCompleteVisible] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -118,7 +122,12 @@ function Game(props) {
         signedUrl = await Storage.get(`chapters/universal/${selectedChapter}.txt`, { level: "public" });
       }
       else {
-        signedUrl = await Storage.get(`chapters/${selectedRace}/${selectedChapter}.txt`, { level: "public" });
+        if (chapterPass === 1){
+          signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/Pass.txt`, { level: "public" });
+        }
+        else {
+          signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/Fail.txt`, { level: "public" });
+        }
       }
       const response = await fetch(signedUrl);
       const textContent = await response.text();
@@ -158,14 +167,18 @@ function Game(props) {
         </Dropdown>
         </Fade>
       </div>
-      <div className="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-left nft-item">
+      <div className="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-2 text-left nft-item">
         <Slide direction='right' duration={3000}>
-          <img src={selectedImage} alt="selected-nft"  style={{ 
+          <img src={selectedCharacter} alt="selected-nft"  style={{ 
                                                                 borderRadius:"50%", 
                                                                 width: isMobile ? "100%" : "100%", 
                                                                 height: isMobile ? "80%" : "100%" 
                                                               }}  /> \
-
+          <img src={selectedTool} alt="selected-nft"  style={{ 
+                                                                borderRadius:"50%", 
+                                                                width: isMobile ? "100%" : "100%", 
+                                                                height: isMobile ? "80%" : "100%" 
+                                                              }}  /> \
         </Slide>
       </div>
     </div>

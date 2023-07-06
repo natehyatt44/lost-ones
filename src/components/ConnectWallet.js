@@ -63,7 +63,9 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
             tokenId: item.token_id,
             edition: nftInfo.edition,
             race: nftInfo.race,
-            playable: nftInfo.playable
+            playable: nftInfo.playable,
+            type: nftInfo.type,
+            forRace: nftInfo.forRace
           });
         }
       }
@@ -87,8 +89,14 @@ export function NFTImages({ accountNfts, onClickImage }) {
       
       const fetchedImages = await Promise.all(
         accountNfts.map(async (meta) => {
+          let folder = ''
+          if(meta.type === "Tool"){folder = "Tools"}
+          else{folder = meta.race}
+
+          console.log(folder)
+
           const imageResponse = await Storage.get(
-            `nft-collections/${meta.race}/images/${meta.edition}.png`,
+            `nft-collections/${folder}/images/${meta.edition}.png`,
             { level: 'public' }
           );
           return imageResponse;
@@ -112,21 +120,20 @@ export function NFTImages({ accountNfts, onClickImage }) {
       } else {
         clearInterval(intervalId);
       }
-    }, 120);
+    }, 250);
     return () => clearInterval(intervalId);
   }, [loadedImages]);
 
-  const handleClickImage = (index) => {
-    onClickImage(index);
+  const handleClickImage = (nft, imageUrl) => {
+    onClickImage(nft, imageUrl);
   };
-
   // In NFTImages function
 // In NFTImages function
 return images.map((image, index) => (
   <div
     className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 text-center mx-auto"
     key={index}
-    onClick={accountNfts[index].playable === 1 ? () => handleClickImage(image) : null}  // Use index to access corresponding NFT data
+    onClick={accountNfts[index].playable === 1 ? () => handleClickImage(accountNfts[index], image) : null}  // Use index to access corresponding NFT data
     onMouseEnter={(e) => {
       if(accountNfts[index].playable === 1) {
         e.target.style.filter = "brightness(130%)";

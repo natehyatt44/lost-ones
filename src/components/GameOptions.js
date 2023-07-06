@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { RaceSelectionStage, CharacterSelectionStage, ChapterSelectionStage } from '../components/GameSelections';
+import { RaceSelectionStage, 
+         CharacterSelectionStage, 
+         ChapterSelectionStage,
+         ToolSelectionStage } from '../components/GameSelections';
 import { s3accountActivity, uploadCsv } from '../constants/Constants';
 import { CheckRace, CheckChapter } from '../components/GameChecks';
 
@@ -9,10 +12,13 @@ function GameOptions({ accountId, nfts, navigate }) {
     showRaces: true,
     showCharacters: false,
     showChapter: false,
-    selectedImage: null,
+    showTools: false,
+    selectedCharacter: null,
+    selectedTool: null,
     selectedRace: null,
     selectedRaceNfts: [],
     selectedChapter: null,
+    selectedToolNfts: [],
     windowWidth: window.innerWidth,
     accessibleChapters: [],
     heldRaces: [],
@@ -69,23 +75,67 @@ function GameOptions({ accountId, nfts, navigate }) {
     }));
   };
 
-  const handleCharacterSelect = async (index) => {
+  const handleCharacterSelect = async (nft, imageUrl) => {
     const accessibleChapters = await CheckChapter(accountId, gameState.selectedRace);
-    console.log(index)
+
     setGameState(prevState => ({ ...prevState, 
       showRaces: false,
       showCharacters: false,
       showChapter: true,
-      selectedImage: index,
+      selectedCharacter: imageUrl,
       accessibleChapters: accessibleChapters
      }));
   }
 
-  // Start game handler
+  // handle Chapter Button Click
   const handleChapterButtonClick = (chapter) => {
+    if (chapter === "Chapter 1-1" || chapter === "Chapter 1-2")
+    {
+      const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
+      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Start-Game|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`);
+      navigate('/game', { state: { selectedCharacter: gameState.selectedCharacter, accountId: accountId, selectedChapter: chapter, selectedRace: gameState.selectedRace } });
+    }
+    if (chapter === "Chapter 2")
+    {
+      let tools = []
+
+      const nftsObject = JSON.parse(nfts);
+      for (const nft of nftsObject.nftMetadata) {
+        if (nft.type === "Tool") {
+          tools.push(nft);
+        }
+      }
+      console.log(tools)
+      setGameState(prevState => ({
+        ...prevState,
+        showRaces: false,
+        showCharacters: false,
+        showChapter: false,
+        showTools: true,
+        selectedChapter: chapter,
+        selectedToolNfts: tools
+      }));
+    }
+  };
+
+  const handleToolButtonClick = async (nft, imageUrl) => {
+    setGameState(prevState => ({
+      ...prevState,
+      selectedTool: imageUrl
+    }));
+
+    let chapterPass = 0
+    if (nft.forRace === gameState.selectedRace) {chapterPass = 1}
+    console.log(nft.forRace, gameState.selectedRace)
+
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
     uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Start-Game|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`);
-    navigate('/game', { state: { selectedImage: gameState.selectedImage, accountId: accountId, selectedChapter: chapter, selectedRace: gameState.selectedRace } });
+    navigate('/game', { state: { selectedCharacter: gameState.selectedCharacter, 
+                                 accountId: accountId, 
+                                 selectedChapter: gameState.selectedChapter, 
+                                 selectedRace: gameState.selectedRace, 
+                                 selectedTool: imageUrl,
+                                 chapterPass: chapterPass } });
   };
 
   // Reset handlers
@@ -96,12 +146,13 @@ function GameOptions({ accountId, nfts, navigate }) {
       showCharacters: null,
       showRaces: true,
       showChapter: null,
+      showTools: null,
       selectedRaceNfts: [],
+      selectedToolNfts: [],
     }));
   };
 
   
-
   // Returning JSX according to different game stages (race selection, character selection, chapter selection)
   return (
     <>
@@ -130,6 +181,16 @@ function GameOptions({ accountId, nfts, navigate }) {
           accessibleChapters={gameState.accessibleChapters}
           handleChapterButtonClick={handleChapterButtonClick}
           resetRace={resetRace}
+        />
+      )}
+
+      {/* Tool Selection Stage */}
+      {!gameState.showRaces && !gameState.showCharacters && !gameState.showChapter && gameState.showTools && (
+        <ToolSelectionStage 
+          nfts={gameState.selectedToolNfts}
+          handleToolButtonClick={handleToolButtonClick}
+          resetRace={resetRace}
+          scrollbarHeight={scrollbarHeight}
         />
       )}
     </>

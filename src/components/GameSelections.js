@@ -65,7 +65,7 @@ export const CharacterSelectionStage = ({ nfts, resetRace, handleCharacterSelect
     </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
       <div className="row">
-        <NFTImages accountNfts={nfts} onClickImage={(index) => handleCharacterSelect(index)}/>
+        <NFTImages accountNfts={nfts} onClickImage={handleCharacterSelect}/>
       </div>
     </div>  
   </>
@@ -85,39 +85,37 @@ export const ChapterSelectionStage = ({ handleChapterButtonClick, resetRace, acc
       </Fade>
       <Slide direction='left' duration={1500}>
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list">
-          <button 
-            type="button" 
-            className={`btn ${accessibleChapters.includes("Chapter 1-1") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
-            disabled={!accessibleChapters.includes("Chapter 1-1")}
-            onClick={() => accessibleChapters.includes("Chapter 1-1") && handleChapterButtonClick("Chapter 1-1")}>Chapter 1-1</button>
-          <button 
-            type="button" 
-            className={`btn ${accessibleChapters.includes("Chapter 1-2") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
-            disabled={!accessibleChapters.includes("Chapter 1-2")}
-            onClick={() => accessibleChapters.includes("Chapter 1-2") && handleChapterButtonClick("Chapter 1-2")}>Chapter 1-2</button>
-          <button 
-            type="button" 
-            className={`btn ${accessibleChapters.includes("Chapter 2") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
-            disabled={!accessibleChapters.includes("Chapter 2")}
-            onClick={() => accessibleChapters.includes("Chapter 2") && handleChapterButtonClick("Chapter 2")}>Chapter 2</button>
-          <button 
-            type="button" 
-            className={`btn ${accessibleChapters.includes("Chapter 3") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
-            disabled={!accessibleChapters.includes("Chapter 3")}
-            onClick={() => accessibleChapters.includes("Chapter 3") && handleChapterButtonClick("Chapter 3")}>Chapter 3</button>
-          <button 
-            type="button" 
-            className={`btn ${accessibleChapters.includes("Chapter 4") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
-            disabled={!accessibleChapters.includes("Chapter 4")}
-            onClick={() => accessibleChapters.includes("Chapter 4") && handleChapterButtonClick("Chapter 4")}>Chapter 4</button>
-          <button 
-            type="button" 
-            className={`btn ${accessibleChapters.includes("Chapter 5") ? "btn-primary" : "btn-secondary disabled"} futuristic-btn`}
-            disabled={!accessibleChapters.includes("Chapter 5")}
-            onClick={() => accessibleChapters.includes("Chapter 5") && handleChapterButtonClick("Chapter 5")}>Chapter 5</button>
+          {accessibleChapters.map((chapterObj, index) => (
+            <button 
+              key={index} // add this line
+              type="button" 
+              className={`btn ${chapterObj.status === 'Complete' ? "btn-success" : chapterObj.status === 'Open' ? "btn-primary" : "btn-secondary"} futuristic-btn`}
+              disabled={chapterObj.status === 'Locked'}
+              onClick={() => chapterObj.status !== 'Locked' && handleChapterButtonClick(chapterObj.chapter)}>{chapterObj.chapter}
+            </button>
+          ))}
         </div>
       </Slide>
+
+
   </>
 );
 
+export const ToolSelectionStage = ({ nfts, resetRace, handleToolButtonClick, scrollbarHeight }) => (
+  <>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list-clicked">
+      <button type="button" className="btn btn-primary futuristic-btn" onClick={() => resetRace()}>Back</button>
+    </div>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
+      <Fade duration={5000}>
+        <h2 className="h1_head_game set_font">Select Tool</h2>
+      </Fade>
+    </div>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
+      <div className="row">
+        <NFTImages accountNfts={nfts} onClickImage={handleToolButtonClick}/>
+      </div>
+    </div>  
+  </>
+);
 

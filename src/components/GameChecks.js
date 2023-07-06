@@ -9,6 +9,7 @@ export const CheckRace = async (accountId, nfts ={}) => {
   
   // Get the user's held races from their NFTs
   for (const nft of nftsObject.nftMetadata) {
+    // If the race isn't already included and the "type" field doesn't exist
     if (!heldRaces.includes(nft.race)) {
       heldRaces.push(nft.race);
     }
@@ -16,6 +17,7 @@ export const CheckRace = async (accountId, nfts ={}) => {
 
   return { heldRaces };
 }
+
 
 export const CheckChapter = async (accountId, race) => {
   const signedUrl = await Storage.get(`${s3accountStats}/accounts.csv`, { level: "public" });
@@ -33,7 +35,10 @@ export const CheckChapter = async (accountId, race) => {
 
   const chapters = ['Chapter 1-1', 'Chapter 1-2', 'Chapter 2', 'Chapter 3', 'Chapter 4', 'Chapter 5'];
 
-  let accessibleChapters = ['Chapter 1-1']; // Start with universal chapter
+  let accessibleChapters = chapters.map(chapter => ({
+    chapter,
+    status: chapter === 'Chapter 1-1' ? 'Open' : 'Locked', // "Chapter 1-1" is always open.
+  }));
 
   // Process each filtered row
   for (const row of filteredRows) {
@@ -43,24 +48,29 @@ export const CheckChapter = async (accountId, race) => {
     if (action.includes('Completed')) {
       const completedChapter = action.replace(' Completed', '');
 
-      // If chapter is not the last in the list, add the next chapter to accessible chapters
+      // If chapter is not the last in the list, update the status of the next chapter to accessible chapters
       const chapterIndex = chapters.indexOf(completedChapter);
       if (chapterIndex !== -1 && chapterIndex < chapters.length - 1) {
-        const nextChapter = chapters[chapterIndex + 1];
+        const nextChapterIndex = chapterIndex + 1;
+        const nextChapter = chapters[nextChapterIndex];
 
         // Check race condition for non-universal chapters
         if ((['Chapter 2', 'Chapter 3', 'Chapter 4'].includes(nextChapter) && race === raceInRow) || 
             ['Chapter 1-1', 'Chapter 1-2', 'Chapter 5'].includes(nextChapter)) {
-          if (!accessibleChapters.includes(nextChapter)) {
-            accessibleChapters.push(nextChapter);
+          
+          // Mark completed chapter as 'Complete' and open the next chapter.
+          accessibleChapters[chapterIndex].status = 'Complete';
+          if (accessibleChapters[nextChapterIndex].status === 'Locked') {
+            accessibleChapters[nextChapterIndex].status = 'Open';
           }
         }
       }
     }
   }
-  
+
   return accessibleChapters;
 }
+
 
 
 
