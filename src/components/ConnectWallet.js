@@ -84,16 +84,19 @@ export function NFTImages({ accountNfts, onClickImage }) {
   const [images, setImages] = useState([]);
   const [loadedImages, setLoadedImages] = useState([]);
 
+  let typeFolderMap = {
+    "Tool": "Tool",
+    "Weapon": "Weapon",
+    "Companion": "Companion",
+    "Landscape": "Landscape"
+  };
+
   useEffect(() => {
     const fetchImages = async () => {
       
       const fetchedImages = await Promise.all(
         accountNfts.map(async (meta) => {
-          let folder = ''
-          if(meta.type === "Tool"){folder = "Tools"}
-          else{folder = meta.race}
-
-          console.log(folder)
+          let folder = typeFolderMap[meta.type] || meta.race;
 
           const imageResponse = await Storage.get(
             `nft-collections/${folder}/images/${meta.edition}.png`,

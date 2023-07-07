@@ -37,9 +37,9 @@ function Game(props) {
 
   const handleScroll = useCallback((values) => {
     const { scrollTop, scrollHeight, clientHeight } = values;
-    if (Math.ceil(scrollTop) >= scrollHeight - clientHeight) {
-      setIsCompleteVisible(true);
-    }
+    const isAtBottom = Math.ceil(scrollTop) + clientHeight >= scrollHeight;
+    const isScrollbarNecessary = scrollHeight > clientHeight;
+    setIsCompleteVisible(isAtBottom || !isScrollbarNecessary);
   }, []);
 
   const isMobile = windowWidth < 768;
@@ -125,6 +125,9 @@ function Game(props) {
         if (chapterPass === 1){
           signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/Pass.txt`, { level: "public" });
         }
+        else if (chapterPass === 2){
+          signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/Pass2.txt`, { level: "public" });
+        }
         else {
           signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/Fail.txt`, { level: "public" });
         }
@@ -132,6 +135,7 @@ function Game(props) {
       const response = await fetch(signedUrl);
       const textContent = await response.text();
       setText(textContent);
+
     } catch (error) {
       console.error("Error fetching story:", error);
     }
