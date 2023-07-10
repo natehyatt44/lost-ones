@@ -11,7 +11,7 @@ mirrorNode Options:
 
 const test = 1
 
-const barbIncNFTTokens = ['0.0.2235264', '0.0.2018575', '0.0.2990140', '0.0.2361150']
+const barbIncNFTTokens = ['0.0.2235264', '0.0.2018575', '0.0.2990140', '0.0.2361150', '0.0.1106034']
 const network = 'mainnet' 
 const mirrorNode = 'https://mainnet-public.mirrornode.hedera.com'
 const disallowedAccountIds = ['0.0.1067445']

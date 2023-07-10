@@ -2,26 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { RaceSelectionStage, 
          CharacterSelectionStage, 
          ChapterSelectionStage,
-         ToolSelectionStage } from '../components/GameSelections';
+         ToolSelectionStage,
+         WeaponSelectionStage,
+         CompanionSelectionStage,
+         LandscapeSelectionStage } from '../components/GameSelections';
 import { s3accountActivity, uploadCsv } from '../constants/Constants';
 import { CheckRace, CheckChapter } from '../components/GameChecks';
 
 function GameOptions({ accountId, nfts, navigate }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [gameState, setGameState] = useState({
+    accessibleChapters: [],
+    heldRaces: [],
     showRaces: true,
     showCharacters: false,
     showChapter: false,
     showTools: false,
-    selectedCharacter: null,
-    selectedTool: null,
+    showWeapons: false,
+    showCompanions: false,
+    showLandscapes: false,
     selectedRace: null,
-    selectedRaceNfts: [],
+    selectedCharacter: null,
     selectedChapter: null,
+    selectedTool: null,
+    selectedWeapon: null,
+    selectedCompanion: null,
+    selectedLandscape: null,
+    selectedRaceNfts: [],
     selectedToolNfts: [],
+    selectedWeaponNfts: [],
+    selectedCompanionNfts: [],
+    selectedLandscapeNfts: [],
     windowWidth: window.innerWidth,
-    accessibleChapters: [],
-    heldRaces: [],
   });
 
   // Track window size for responsiveness
@@ -59,7 +71,7 @@ function GameOptions({ accountId, nfts, navigate }) {
     let raceFilteredNfts = []
 
     const nftsObject = JSON.parse(nfts);
-    console.log(nftsObject)
+
     for (const nft of nftsObject.nftMetadata) {
       if (nft.race === race) {
         raceFilteredNfts.push(nft);
@@ -100,6 +112,7 @@ function GameOptions({ accountId, nfts, navigate }) {
       let tools = []
 
       const nftsObject = JSON.parse(nfts);
+      console.log(nftsObject)
       for (const nft of nftsObject.nftMetadata) {
         if (nft.type === "Tool") {
           tools.push(nft);
@@ -116,6 +129,76 @@ function GameOptions({ accountId, nfts, navigate }) {
         selectedToolNfts: tools
       }));
     }
+    if (chapter === "Chapter 3")
+    {
+      let weapons = []
+
+      const nftsObject = JSON.parse(nfts);
+      console.log(nftsObject)
+      for (const nft of nftsObject.nftMetadata) {
+        if (nft.type === "Weapon") {
+          weapons.push(nft);
+        }
+      }
+      console.log(weapons)
+      setGameState(prevState => ({
+        ...prevState,
+        showRaces: false,
+        showCharacters: false,
+        showChapter: false,
+        showTools: false,
+        showWeapons: true,
+        selectedChapter: chapter,
+        selectedWeaponNfts: weapons
+      }));
+    }
+    if (chapter === "Chapter 4")
+    {
+      let companions = []
+
+      const nftsObject = JSON.parse(nfts);
+      for (const nft of nftsObject.nftMetadata) {
+        if (nft.type === "Companion") {
+          companions.push(nft);
+        }
+      }
+
+      setGameState(prevState => ({
+        ...prevState,
+        showRaces: false,
+        showCharacters: false,
+        showChapter: false,
+        showTools: false,
+        showWeapons: false,
+        showCompanions: true,
+        selectedChapter: chapter,
+        selectedCompanionNfts: companions
+      }));
+    }
+    if (chapter === "Chapter 5")
+    {
+      let landscapes = []
+
+      const nftsObject = JSON.parse(nfts);
+      for (const nft of nftsObject.nftMetadata) {
+        if (nft.type === "Landscape") {
+          landscapes.push(nft);
+        }
+      }
+
+      setGameState(prevState => ({
+        ...prevState,
+        showRaces: false,
+        showCharacters: false,
+        showChapter: false,
+        showTools: false,
+        showWeapons: false,
+        showCompanions: false,
+        showLandscapes: true,
+        selectedChapter: chapter,
+        selectedLandscapeNfts: landscapes
+      }));
+    }
   };
 
   const handleToolButtonClick = async (nft, imageUrl) => {
@@ -130,11 +213,77 @@ function GameOptions({ accountId, nfts, navigate }) {
 
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
     uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Start-Game|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`);
-    navigate('/game', { state: { selectedCharacter: gameState.selectedCharacter, 
-                                 accountId: accountId, 
-                                 selectedChapter: gameState.selectedChapter, 
+    navigate('/game', { state: {  accountId: accountId, 
+                                  selectedRace: gameState.selectedRace, 
+                                  selectedCharacter: gameState.selectedCharacter, 
+                                  selectedChapter: gameState.selectedChapter, 
+                                  selectedTool: imageUrl,
+                                  chapterPass: chapterPass } });
+  };
+
+  const handleWeaponButtonClick = async (nft, imageUrl) => {
+    setGameState(prevState => ({
+      ...prevState,
+      selectedWeapon: imageUrl
+    }));
+
+    let chapterPass = 0
+    if (nft.forRace === gameState.selectedRace) {chapterPass = 1}
+    console.log(nft.forRace, gameState.selectedRace)
+
+    const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Start-Game|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`);
+    navigate('/game', { state: { accountId: accountId, 
                                  selectedRace: gameState.selectedRace, 
-                                 selectedTool: imageUrl,
+                                 selectedCharacter: gameState.selectedCharacter, 
+                                 selectedChapter: gameState.selectedChapter, 
+                                 selectedTool: gameState.selectedTool,
+                                 selectedWeapon: imageUrl,
+                                 chapterPass: chapterPass } });
+  };
+
+  const handleCompanionButtonClick = async (nft, imageUrl) => {
+    setGameState(prevState => ({
+      ...prevState,
+      selectedCompanion: imageUrl
+    }));
+
+    let chapterPass = 0
+    if (nft.forRace === gameState.selectedRace) {chapterPass = 1}
+    console.log(nft.forRace, gameState.selectedRace)
+
+    const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Start-Game|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`);
+    navigate('/game', { state: { accountId: accountId, 
+                                 selectedRace: gameState.selectedRace, 
+                                 selectedCharacter: gameState.selectedCharacter, 
+                                 selectedChapter: gameState.selectedChapter, 
+                                 selectedTool: gameState.selectedTool,
+                                 selectedWeapon: gameState.selectedWeapon,
+                                 selectedCompanion: imageUrl,
+                                 chapterPass: chapterPass } });
+  };
+
+  const handleLandscapeButtonClick = async (nft, imageUrl) => {
+    setGameState(prevState => ({
+      ...prevState,
+      selectedLandscape: imageUrl
+    }));
+
+    let chapterPass = 0
+    if (nft.forRace === gameState.selectedRace) {chapterPass = 1}
+    console.log(nft.forRace, gameState.selectedRace)
+
+    const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Start-Game|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`);
+    navigate('/game', { state: { accountId: accountId, 
+                                 selectedRace: gameState.selectedRace, 
+                                 selectedCharacter: gameState.selectedCharacter, 
+                                 selectedChapter: gameState.selectedChapter, 
+                                 selectedTool: gameState.selectedTool,
+                                 selectedWeapon: gameState.selectedWeapon,
+                                 selectedCompanion: gameState.selectedCompanion,
+                                 selectedLandscape: gameState.selectedLandscape,
                                  chapterPass: chapterPass } });
   };
 
@@ -142,13 +291,25 @@ function GameOptions({ accountId, nfts, navigate }) {
   const resetRace = () => {
     setGameState(prevState => ({
       ...prevState,
-      selectedRace: null,
-      showCharacters: null,
       showRaces: true,
-      showChapter: null,
-      showTools: null,
+      showCharacters: false,
+      showChapter: false,
+      showTools: false,
+      showWeapons: false,
+      showCompanions: false,
+      showLandscapes: false,
+      selectedRace: null,
+      selectedCharacter: null,
+      selectedChapter: null,
+      selectedTool: null,
+      selectedWeapon: null,
+      selectedCompanion: null,
+      selectedLandscape: null,
       selectedRaceNfts: [],
       selectedToolNfts: [],
+      selectedWeaponNfts: [],
+      selectedCompanionNfts: [],
+      selectedLandscapeNfts: [],
     }));
   };
 
@@ -189,6 +350,36 @@ function GameOptions({ accountId, nfts, navigate }) {
         <ToolSelectionStage 
           nfts={gameState.selectedToolNfts}
           handleToolButtonClick={handleToolButtonClick}
+          resetRace={resetRace}
+          scrollbarHeight={scrollbarHeight}
+        />
+      )}
+
+      {/* Weapon Selection Stage */}
+      {!gameState.showRaces && !gameState.showCharacters && !gameState.showChapter && !gameState.showTools && gameState.showWeapons && (
+        <WeaponSelectionStage 
+          nfts={gameState.selectedWeaponNfts}
+          handleWeaponButtonClick={handleWeaponButtonClick}
+          resetRace={resetRace}
+          scrollbarHeight={scrollbarHeight}
+        />
+      )}
+
+      {/* Companion Selection Stage */}
+      {!gameState.showRaces && !gameState.showCharacters && !gameState.showChapter && !gameState.showTools && !gameState.showWeapons && gameState.showCompanions && (
+        <CompanionSelectionStage 
+          nfts={gameState.selectedCompanionNfts}
+          handleCompanionButtonClick={handleCompanionButtonClick}
+          resetRace={resetRace}
+          scrollbarHeight={scrollbarHeight}
+        />
+      )}
+
+      {/* Landscape Selection Stage */}
+      {!gameState.showRaces && !gameState.showCharacters && !gameState.showChapter && !gameState.showTools && !gameState.showWeapons && !gameState.showCompanions && gameState.showLandscapes && (
+        <LandscapeSelectionStage 
+          nfts={gameState.selectedLandscapeNfts}
+          handleLandscapeButtonClick={handleLandscapeButtonClick}
           resetRace={resetRace}
           scrollbarHeight={scrollbarHeight}
         />

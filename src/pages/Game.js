@@ -21,12 +21,10 @@ function Game(props) {
   const selectedRace = location.state.selectedRace;
   const selectedCharacter = location.state.selectedCharacter;
   const selectedChapter = location.state.selectedChapter;
-  const selectedTool = location.state.selectedTool;
 
   const chapterPass = location.state.chapterPass;
   
   const [text, setText] = useState('');
-  const [isCompleteVisible, setIsCompleteVisible] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -35,12 +33,6 @@ function Game(props) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleScroll = useCallback((values) => {
-    const { scrollTop, scrollHeight, clientHeight } = values;
-    const isAtBottom = Math.ceil(scrollTop) + clientHeight >= scrollHeight;
-    const isScrollbarNecessary = scrollHeight > clientHeight;
-    setIsCompleteVisible(isAtBottom || !isScrollbarNecessary);
-  }, []);
 
   const isMobile = windowWidth < 768;
   const scrollbarHeight = isMobile ? 370 : 540;
@@ -99,6 +91,11 @@ function Game(props) {
       console.error('Error updating account status CSV:', error);
     }
   }  
+
+  const handleFailedChapter = () => {
+    props.setPlayKey(Date.now());  // Update the Play component's key
+    navigate('/play');
+  };
   
   const handleFinishedChapter = () => {
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
@@ -111,6 +108,7 @@ function Game(props) {
       })
       .then(() => {
         console.log('Account status CSV updated successfully!');
+        props.setPlayKey(Date.now());  // Update the Play component's key
         navigate('/play');
       })
   };  
@@ -171,18 +169,13 @@ function Game(props) {
         </Dropdown>
         </Fade>
       </div>
-      <div className="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-2 text-left nft-item">
+      <div className="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-left nft-item">
         <Slide direction='right' duration={3000}>
           <img src={selectedCharacter} alt="selected-nft"  style={{ 
                                                                 borderRadius:"50%", 
                                                                 width: isMobile ? "100%" : "100%", 
                                                                 height: isMobile ? "80%" : "100%" 
-                                                              }}  /> \
-          <img src={selectedTool} alt="selected-nft"  style={{ 
-                                                                borderRadius:"50%", 
-                                                                width: isMobile ? "100%" : "100%", 
-                                                                height: isMobile ? "80%" : "100%" 
-                                                              }}  /> \
+                                                              }}  /> 
         </Slide>
       </div>
     </div>
@@ -195,28 +188,29 @@ function Game(props) {
       <Fade duration={10000} top>
     <div className="row">
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left story-container">
-      <Scrollbar style={{ height: scrollbarHeight, width: "85%", margin: "auto" , display: "block", backgroundColor: "rgba(0, 0, 0, 0.8)" }} onScroll={handleScroll}>
+      <Scrollbar style={{ height: scrollbarHeight, width: "85%", margin: "auto" , display: "block", backgroundColor: "rgba(0, 0, 0, 0.8)" }}>
         <pre className="para_p" style={{ width: "95%", height: "95%", margin: "auto" }}>{story}</pre>
       </Scrollbar>
       </div>
     </div>
     </Fade>
-    {isCompleteVisible && 
-      <div className="row">
-        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-          <Button
-            onClick={handleFinishedChapter}
-            style={{
-              backgroundColor: "#1a1a1a",
-              borderColor: "#1a1a1a",
-              color: "#fff",
-              marginTop: "15px",
-            }}
-          >
-            Complete {selectedChapter}
-          </Button>
+    <Fade duration={30000}>
+        <div className="row">
+          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+            <Button
+              onClick={chapterPass === 0 ? handleFailedChapter : handleFinishedChapter}
+              style={{
+                backgroundColor: "#1a1a1a",
+                borderColor: "#1a1a1a",
+                color: "#fff",
+                marginTop: "15px",
+              }}
+            >
+              {chapterPass === 0 ? `Failed ${selectedChapter}` : `Complete ${selectedChapter}`}
+            </Button>
+          </div>
         </div>
-      </div>}
+      </Fade>
   </section>
 	</>
   );

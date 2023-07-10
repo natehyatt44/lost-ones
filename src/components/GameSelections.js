@@ -119,3 +119,57 @@ export const ToolSelectionStage = ({ nfts, resetRace, handleToolButtonClick, scr
   </>
 );
 
+export const WeaponSelectionStage = ({ nfts, resetRace, handleWeaponButtonClick, scrollbarHeight }) => (
+  <>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list-clicked">
+      <button type="button" className="btn btn-primary futuristic-btn" onClick={() => resetRace()}>Back</button>
+    </div>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
+      <Fade duration={5000}>
+        <h2 className="h1_head_game set_font">Select Weapon</h2>
+      </Fade>
+    </div>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
+      <div className="row">
+        <NFTImages accountNfts={nfts} onClickImage={handleWeaponButtonClick}/>
+      </div>
+    </div>  
+  </>
+);
+
+export const CompanionSelectionStage = ({ nfts, resetRace, handleCompanionButtonClick, scrollbarHeight }) => (
+  <>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list-clicked">
+      <button type="button" className="btn btn-primary futuristic-btn" onClick={() => resetRace()}>Back</button>
+    </div>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
+      <Fade duration={5000}>
+        <h2 className="h1_head_game set_font">Select Companion</h2>
+      </Fade>
+    </div>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
+      <div className="row">
+        <NFTImages accountNfts={nfts} onClickImage={handleCompanionButtonClick}/>
+      </div>
+    </div>  
+  </>
+);
+
+export const LandscapeSelectionStage = ({ nfts, resetRace, handleLandscapeButtonClick, scrollbarHeight }) => (
+  <>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center btn-list-clicked">
+      <button type="button" className="btn btn-primary futuristic-btn" onClick={() => resetRace()}>Back</button>
+    </div>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item">
+      <Fade duration={5000}>
+        <h2 className="h1_head_game set_font">Select Landscape</h2>
+      </Fade>
+    </div>
+    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
+      <div className="row">
+        <NFTImages accountNfts={nfts} onClickImage={handleLandscapeButtonClick}/>
+      </div>
+    </div>  
+  </>
+);
+
