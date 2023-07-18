@@ -194,7 +194,7 @@ function Game(props) {
       </div>
     </div>
     </Fade>
-    <Fade duration={30000}>
+    <Fade duration={20000}>
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
             <Button

@@ -33,6 +33,7 @@ export const CheckChapter = async (accountId, race) => {
   });
 
   const chapters = ['Chapter 1-1', 'Chapter 1-2', 'Chapter 2', 'Chapter 3', 'Chapter 4', 'Chapter 5'];
+  const availableChapters = ['Chapter 1-1', 'Chapter 1-2']
 
   let accessibleChapters = chapters.map(chapter => ({
     chapter,
@@ -66,6 +67,13 @@ export const CheckChapter = async (accountId, race) => {
       }
     }
   }
+
+  // Set chapters not in availableChapters list as 'Locked'
+  accessibleChapters.forEach(chapterObj => {
+    if (!availableChapters.includes(chapterObj.chapter)) {
+      chapterObj.status = 'Locked';
+    }
+  });
   
   return accessibleChapters;  
 }
