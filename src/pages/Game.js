@@ -18,12 +18,13 @@ function Game(props) {
   const location = useLocation();
   const navigate = useNavigate (); // Add this line to use the 'history' object for navigation
   const accountId = location.state.accountId;
-  const nfts = location.state.nfts;
-  const selectedImage = location.state.selectedImage;
-  const selectedChapter = location.state.selectedChapter;
   const selectedRace = location.state.selectedRace;
+  const selectedCharacter = location.state.selectedCharacter;
+  const selectedChapter = location.state.selectedChapter;
+
+  const chapterPass = location.state.chapterPass;
+  
   const [text, setText] = useState('');
-  const [isCompleteVisible, setIsCompleteVisible] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -32,12 +33,6 @@ function Game(props) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleScroll = useCallback((values) => {
-    const { scrollTop, scrollHeight, clientHeight } = values;
-    if (Math.ceil(scrollTop) >= scrollHeight - clientHeight) {
-      setIsCompleteVisible(true);
-    }
-  }, []);
 
   const isMobile = windowWidth < 768;
   const scrollbarHeight = isMobile ? 370 : 540;
@@ -96,6 +91,11 @@ function Game(props) {
       console.error('Error updating account status CSV:', error);
     }
   }  
+
+  const handleFailedChapter = () => {
+    props.setPlayKey(Date.now());  // Update the Play component's key
+    navigate('/play');
+  };
   
   const handleFinishedChapter = () => {
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
@@ -108,16 +108,32 @@ function Game(props) {
       })
       .then(() => {
         console.log('Account status CSV updated successfully!');
+        props.setPlayKey(Date.now());  // Update the Play component's key
         navigate('/play');
       })
   };  
 
   async function fetchStory() {
     try {
-      const signedUrl = await Storage.get(`chapters/${selectedChapter}.txt`, { level: "public" });
+      let signedUrl = ''
+      if (selectedChapter === 'Chapter 1-1' || selectedChapter === 'Chapter 1-2' || selectedChapter === 'Chapter 5'){
+        signedUrl = await Storage.get(`chapters/universal/${selectedChapter}.txt`, { level: "public" });
+      }
+      else {
+        if (chapterPass === 1){
+          signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/Pass.txt`, { level: "public" });
+        }
+        else if (chapterPass === 2){
+          signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/Pass2.txt`, { level: "public" });
+        }
+        else {
+          signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/Fail.txt`, { level: "public" });
+        }
+      }
       const response = await fetch(signedUrl);
       const textContent = await response.text();
       setText(textContent);
+
     } catch (error) {
       console.error("Error fetching story:", error);
     }
@@ -155,12 +171,11 @@ function Game(props) {
       </div>
       <div className="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-left nft-item">
         <Slide direction='right' duration={3000}>
-          <img src={selectedImage} alt="selected-nft"  style={{ 
+          <img src={selectedCharacter} alt="selected-nft"  style={{ 
                                                                 borderRadius:"50%", 
                                                                 width: isMobile ? "100%" : "100%", 
                                                                 height: isMobile ? "80%" : "100%" 
-                                                              }}  /> \
-
+                                                              }}  /> 
         </Slide>
       </div>
     </div>
@@ -173,28 +188,29 @@ function Game(props) {
       <Fade duration={10000} top>
     <div className="row">
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left story-container">
-      <Scrollbar style={{ height: scrollbarHeight, width: "85%", margin: "auto" , display: "block", backgroundColor: "rgba(0, 0, 0, 0.8)" }} onScroll={handleScroll}>
+      <Scrollbar style={{ height: scrollbarHeight, width: "85%", margin: "auto" , display: "block", backgroundColor: "rgba(0, 0, 0, 0.8)" }}>
         <pre className="para_p" style={{ width: "95%", height: "95%", margin: "auto" }}>{story}</pre>
       </Scrollbar>
       </div>
     </div>
     </Fade>
-    {isCompleteVisible && 
-      <div className="row">
-        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-          <Button
-            onClick={handleFinishedChapter}
-            style={{
-              backgroundColor: "#1a1a1a",
-              borderColor: "#1a1a1a",
-              color: "#fff",
-              marginTop: "15px",
-            }}
-          >
-            Complete {selectedChapter}
-          </Button>
+    <Fade duration={20000}>
+        <div className="row">
+          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+            <Button
+              onClick={chapterPass === 0 ? handleFailedChapter : handleFinishedChapter}
+              style={{
+                backgroundColor: "#1a1a1a",
+                borderColor: "#1a1a1a",
+                color: "#fff",
+                marginTop: "15px",
+              }}
+            >
+              {chapterPass === 0 ? `Failed ${selectedChapter}` : `Complete ${selectedChapter}`}
+            </Button>
+          </div>
         </div>
-      </div>}
+      </Fade>
   </section>
 	</>
   );

@@ -714,6 +714,12 @@ background-position: center !important; /* center the image */
      text-align: center; 
      flex: 1 1 auto; /* Flex sizing to ensure button width adjusts for smaller screens */
    }
+
+   .btn-success {
+     background-color: green;
+     border-color: green;
+ }
+ 
    
    
    

@@ -50,19 +50,23 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
   const response = await fetch(`${url}${path}`);
   const nfts = await response.json();
 
-  const signedUrl = await Storage.get("nft-collection-cfp/data-map/argNfts.json", { level: "public" });
+  const signedUrl = await Storage.get("nft-collections/ARGdatamap.json", { level: "public" });
   const nftResponse = await fetch(signedUrl);
   const nftJsonResponse = await nftResponse.json(); // Change this line to parse the fetched data
 
   if (nfts.nfts.length > 0) {
     for (const item of nfts.nfts) {
       if (tokenIds.includes(item.token_id)) {
-        const nftInfo = nftJsonResponse.find((metadata) => metadata.serial_number === item.serial_number);
+        const nftInfo = nftJsonResponse.find((metadata) => metadata.serial_number === item.serial_number && metadata.tokenId === item.token_id);
+
         if (nftInfo) {
           nftMetadata.push({
             tokenId: item.token_id,
             edition: nftInfo.edition,
             race: nftInfo.race,
+            playable: nftInfo.playable,
+            type: nftInfo.type,
+            forRace: nftInfo.forRace
           });
         }
       }
@@ -73,8 +77,6 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
     return await AccountNFTs(accountId, tokenIds, nftMetadata, nfts.links.next);
   }
 
-  console.log({ tokenIds, nftMetadata });
-  
   return JSON.stringify({ tokenIds, nftMetadata });
 };
 
@@ -82,6 +84,35 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
 export function NFTImages({ accountNfts, onClickImage }) {
   const [images, setImages] = useState([]);
   const [loadedImages, setLoadedImages] = useState([]);
+
+  let typeFolderMap = {
+    "Tool": "Tool",
+    "Weapon": "Weapon",
+    "Companion": "Companion",
+    "Landscape": "Landscape"
+  };
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      
+      const fetchedImages = await Promise.all(
+        accountNfts.map(async (meta) => {
+          let folder = typeFolderMap[meta.type] || meta.race;
+
+          const imageResponse = await Storage.get(
+            `nft-collections/${folder}/images/${meta.edition}.png`,
+            { level: 'public' }
+          );
+          return imageResponse;
+        })
+      );
+      setLoadedImages(new Array(fetchedImages.length).fill(false));
+      setImages(fetchedImages);
+    };
+    fetchImages();
+  }, [accountNfts]);
+  
+  
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -93,65 +124,50 @@ export function NFTImages({ accountNfts, onClickImage }) {
       } else {
         clearInterval(intervalId);
       }
-    }, 120);
-
+    }, 250);
     return () => clearInterval(intervalId);
   }, [loadedImages]);
 
-  useEffect(() => {
-    const jsonObj = JSON.parse(accountNfts);
-
-    async function fetchImages() {
-      const fetchedImages = [];
-
-      // Fetch images using the edition numbers from the nftMetadata array
-      for (let i = 0; i < jsonObj.nftMetadata.length; i++) {
-        const editionNumber = jsonObj.nftMetadata[i].edition;
-        const imageResponse = await Storage.get(`nft-collection-cfp/images/${editionNumber}.png`, { level: 'public' });
-        fetchedImages.push(imageResponse);
-      }
-
-      setLoadedImages(new Array(fetchedImages.length).fill(false));
-      setImages(fetchedImages);
-    }
-
-    fetchImages();
-  }, [accountNfts]);
-
-  const handleClickImage = (index) => {
-    onClickImage(index);
+  const handleClickImage = (nft, imageUrl) => {
+    onClickImage(nft, imageUrl);
   };
-
-  const html = images.map((image, index) => (
-    <div
-      className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 text-center mx-auto"
-      key={index}
-      onClick={() => handleClickImage(image)}
-      onMouseEnter={(e) => {
+  // In NFTImages function
+// In NFTImages function
+return images.map((image, index) => (
+  <div
+    className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 text-center mx-auto"
+    key={index}
+    onClick={accountNfts[index].playable === 1 ? () => handleClickImage(accountNfts[index], image) : null}  // Use index to access corresponding NFT data
+    onMouseEnter={(e) => {
+      if(accountNfts[index].playable === 1) {
         e.target.style.filter = "brightness(130%)";
-      }}
-      onMouseLeave={(e) => {
+      }
+    }}
+    onMouseLeave={(e) => {
+      if(accountNfts[index].playable === 1) {
         e.target.style.filter = "brightness(100%)";
-      }}
-    >
-      <div className="nft-item">
-        {loadedImages[index] ? (
-          <Fade delay={500}>
-            <img
-              src={image}
-              alt="nftimg"
-              style={{ borderRadius: "50%" }}
-            />
-          </Fade>
-        ) : (
-          <div className="loading-animation"></div>
-        )}
-      </div>
+      }
+    }}
+  >
+    <div className="nft-item">
+      {loadedImages[index] ? (
+        <Fade delay={500}>
+          <img
+            src={image}
+            alt="nftimg"
+            style={{ borderRadius: "50%", filter: accountNfts[index].playable === 1 ? "brightness(100%)" : "brightness(20%)" }}
+          />
+        </Fade>
+      ) : (
+        <div className="loading-animation"></div>
+      )}
     </div>
-  ));
+  </div>
+));
 
-  return html;
+
 }
+
 
 
 

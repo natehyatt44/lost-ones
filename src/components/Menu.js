@@ -12,13 +12,13 @@ import { Dropdown } from 'react-bootstrap';
  * @param {Function} props.handleStats Function to handle stats
  * @param {Function} props.handleExit Function to handle exit
  */
-const Menu = ({ handleShow, accountId, disconnectHashpack, handleStats, handleExit }) => (
+const Menu = ({ handleShow, handlePlay, accountId, disconnectHashpack, handleStats, handleExit }) => (
   <Dropdown>
     <Dropdown.Toggle variant="primary" size="lg" id="dropdown-basic" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a', color: '#fff' }}>
       Menu
     </Dropdown.Toggle>
     <Dropdown.Menu style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }}>
-      <Dropdown.Item onClick={handleShow} style={{ color: '#fff' }}>
+      <Dropdown.Item onClick={accountId ? handlePlay : handleShow} style={{ color: '#fff' }}>
         {accountId ? "Play" : "Connect Hashpack"}
       </Dropdown.Item>  
       {accountId && (

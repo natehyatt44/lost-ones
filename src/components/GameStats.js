@@ -67,7 +67,7 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
               <span>{formattedAccountId}</span>
               <span>{formattedStatus}</span>
               <span>{formattedRace}</span>
-              <span>{formattedDate}</span>
+              {/* <span>{formattedDate}</span> */}
             </div>
           </li>
         );
@@ -82,7 +82,7 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
         <span>Wallet ID</span>
         <span>Achievement</span>
         <span>Race</span>
-        <span>Date</span>
+        {/* <span>Date</span> */}
       </div>
     </li>
   );
