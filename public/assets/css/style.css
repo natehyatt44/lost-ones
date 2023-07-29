@@ -605,7 +605,18 @@ background-position: center !important; /* center the image */
      padding-left: 10%;
      padding-right: 10%;
   }
+  
 .about-item {
+     float: center;
+     width: 80%;
+}
+.lore-container{
+     float: center;
+     width: 100%;
+     padding-left: 10%;
+     padding-right: 10%;
+  }
+  .lore-item {
      float: center;
      width: 80%;
 }

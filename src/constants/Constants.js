@@ -11,9 +11,10 @@ mirrorNode Options:
 
 const test = 1
 
-let barbIncNFTTokens = ['0.0.2235264']
+
 const network = 'mainnet' 
 const mirrorNode = 'https://mainnet-public.mirrornode.hedera.com'
+let barbIncNFTTokens = ['0.0.2235264']
 let s3accountStats = 'accountStats'
 let s3accountActivity = 'accountActivity'
 

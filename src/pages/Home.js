@@ -44,6 +44,33 @@ function Home() {
       </div>
     </section>
     </Fade>
+    <section id="Lore " className="info_sec ">
+      <div className="lore-container">
+          <div className="row">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+              <h1 className="h1_heading set_font"> Collection Lore </h1>
+              <br/>
+              <p className="para_p"> Mortals </p>
+              <Slide direction="left" duration={2000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/mortals"><img src="assets/images/banner/Mortals-Cover.png" alt="teamimg"></img></a></Slide>
+            </div>
+          </div> 
+          <div className="row">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+              <br/>
+              <p className="para_p"> Gaians </p>
+              <Slide direction="right" duration={2000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians"><img src="assets/images/banner/Gaians-Cover.png" alt="teamimg"></img></a></Slide>
+            </div>
+          </div> 
+          <div className="row">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+              <br/>
+              <p className="para_p"> Runekin </p>
+              <Slide direction="left" duration={2000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/runekin"><img src="assets/images/banner/Runekin-Cover.png" alt="teamimg"></img></a></Slide>
+              <br/>
+            </div>
+          </div> 
+      </div>
+    </section>
      <section id="Team " className="info_sec ">
       <div className="team-container">
           <div className="row">
@@ -53,24 +80,23 @@ function Home() {
                 <div className="row">
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <a href="https://twitter.com/jmjustinmyers"><img src="assets/images/team/jman1.png" alt="teamimg"></img></a>
-                      <Slide direction="up" duration={2000}><title>Jman</title></Slide>
-                      <Slide direction="down" duration={2000}><p>CEO / Founder</p></Slide>
+                      <title>Jman</title>
+                      <p>CEO / Founder</p>
                   </div>
-       
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <a href="https://twitter.com/alixonjviloria"><img src="assets/images/team/alixon1.png" alt="teamimg"></img></a>
-                      <Slide direction="up" duration={2000}><title>Alixon</title></Slide>
-                      <Slide direction="down" duration={2000}><p>Artist & Creative Director</p></Slide>
+                      <title>Alixon</title>
+                      <p>Artist & Creative Director</p>
                   </div>
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                       <a href="https://twitter.com/nbreezay_hbar"><img src="assets/images/team/nbreezay1.png" alt="teamimg"></img></a>
-                      <Slide direction="up" duration={2000}><title>nbreezay</title></Slide>
-                      <Slide direction="down" duration={2000}><p>Developer</p></Slide>
+                      <title>nbreezay</title>
+                      <p>Developer</p>
                   </div>
                   <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
                         <a href="https://twitter.com/supernalartss"><img src="assets/images/team/supernal.png" alt="teamimg"></img></a>
-                        <Slide direction="up" duration={2000}><title>Supernal</title></Slide>
-                        <Slide direction="down" duration={2000}><p>Community Dev / Creative Writer</p></Slide>
+                        <title>Supernal</title>
+                        <p>Community Dev / Creative Writer</p>
                     </div> 
                 </div>
             </div>
