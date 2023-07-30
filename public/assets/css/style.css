@@ -945,6 +945,17 @@ background-position: center !important; /* center the image */
      text-align: center;
      width: 100%;
    }
+   .player-headers {
+     display: flex;
+     justify-content: space-between;
+     width: 100%;
+ }
+ 
+ .player-headers span {
+     font-family: 'Arial', sans-serif;
+     flex-basis: 50%;
+     text-align: center;
+ }
    
    .pop-out {
      background-color: rgba(0, 0, 0, 0.5); /* black, semi-transparent */

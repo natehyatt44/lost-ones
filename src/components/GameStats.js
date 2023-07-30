@@ -102,15 +102,6 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
 
     return points;
   }
-
-  const mainHeaders = (
-    <li style={{listStyle: 'none'}}>
-      <div className="player-data">
-        <span>Wallet ID</span>
-        <span>Chapter Points</span>
-      </div>
-    </li>
-  );
   
   useEffect(() => {
     if (playerAccounts.length) {
@@ -165,10 +156,13 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
         <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pop-out">
             <Fade duration={3000}>
-              <ul className="players-list">
-                {mainHeaders}<br/>
+            <div className="player-headers">
+                <span>Wallet ID</span>
+                <span>Chapter Points</span>
+            </div>
+            <ul className="players-list">
                 {playerElements}
-              </ul>
+            </ul>
             </Fade>
           </div>
         </div>
