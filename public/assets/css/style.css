@@ -912,10 +912,11 @@ background-position: center !important; /* center the image */
      display: flex;
      justify-content: space-between;
      width: 100%;
+     cursor: pointer;
    }
    
    .player-data span {
-     flex-basis: 25%;
+     flex-basis: 50%;
      text-align: center;
    }
 
@@ -923,4 +924,33 @@ background-position: center !important; /* center the image */
      color: grey;
      /* other styles... */
    }
+   .player-data {
+     cursor: pointer;
+   }
+   
+   .player-detail-row {
+     display: flex;
+     justify-content: space-between;
+     text-align:center;
+   }
+
+   .player-detail-row span{
+     flex-basis: 50%;
+     text-align: center;
+   }
+   
+   .player-details {
+     display: flex;
+     flex-direction: column;
+     text-align: center;
+     width: 100%;
+   }
+   
+   .pop-out {
+     background-color: rgba(0, 0, 0, 0.5); /* black, semi-transparent */
+     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19), 0px 6px 6px rgba(0, 0, 0, 0.23); /* optional, for a pop-out effect */
+     border-radius: 15px; /* optional, for rounded corners */
+     padding: 20px;
+   }
+   
    

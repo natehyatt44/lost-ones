@@ -7,19 +7,23 @@ import AccountCode from '../components/AccountCode';
 import { s3accountStats } from '../constants/Constants';
 
 function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, setShowPopup, handleAccountCodeSubmit }) {
-  const [players, setPlayers] = useState('');
+  const [playerAccounts, setPlayerAccounts] = useState([]);
   const [playerElements, setPlayerElements] = useState([]);
+  const [viewingPlayerId, setViewingPlayerId] = useState(null);
 
+  // Function to format the date
   function formatDate(date) {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so add 1
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
   
     return `${year}-${month}-${day}`;
   }
   
+  // Function to fetch player data and process it
   async function fetchPlayers() {
     try {
+      // Fetch data from AWS S3 storage
       const signedUrl = await Storage.get(`${s3accountStats}/accounts.csv`, { level: "public" });
       const response = await fetch(signedUrl);
       const textContent = await response.text();
@@ -27,6 +31,7 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
       const rows = textContent.trim().split("\n");
       const header = rows.shift().split("|");
   
+      // Map rows to player objects
       const players = rows.map((row) => {
         const rowData = row.split("|");
         const playerObj = {};
@@ -35,15 +40,38 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
         });
   
         playerObj["date"] = new Date(playerObj["date"]); // Convert the date string to a Date object
-        
+
+        playerObj["chapterPoints"] = calculateChapterPoints(playerObj); // Calculate chapter points.
+
         return playerObj;
-      }).filter(player => {
-        // Remove any objects with empty or invalid dates
-        return Object.keys(player).length > 0 && !isNaN(player.date.getTime());
       });
 
-      players.sort((a, b) => b.date - a.date);
-      setPlayers(players);
+      // Aggregate players at account level.
+      const playerAccounts = players.reduce((acc, player) => {
+        const index = acc.findIndex(accPlayer => accPlayer.accountId === player.accountId);
+        if (index > -1) {
+          // Only add chapter points if the chapter hasn't been completed before
+          if (!acc[index].completedChapters.includes(player.status)) {
+            acc[index].chapterPoints += calculateChapterPoints(player);
+            acc[index].completedChapters.push(player.status);
+          }
+          acc[index].playerDetails.push(player);
+        } else {
+          acc.push({ 
+            accountId: player.accountId, 
+            chapterPoints: calculateChapterPoints(player),
+            completedChapters: [player.status], 
+            playerDetails: [player] 
+          });
+        }
+
+        return acc;
+      }, []);
+
+      // Sort player accounts by chapter points.
+      playerAccounts.sort((a, b) => b.chapterPoints - a.chapterPoints);
+
+      setPlayerAccounts(playerAccounts);
     } catch (error) {
       console.error("Error fetching players:", error);
     }
@@ -52,41 +80,72 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
   useEffect(() => {
     fetchPlayers()
   }, []);
+
+  // Function to calculate chapter points
+  function calculateChapterPoints(player) {
+    let points = 0;
+    if (player.status === 'Chapter 1-1 Completed' || player.status === 'Chapter 1-2 Completed') {
+      points = points + 1;
+    }
+    if (player.status === 'Chapter 2 Completed') {
+      points = points + 2;
+    }
+    if (player.status === 'Chapter 3 Completed') {
+      points = points + 3;
+    }
+    if (player.status === 'Chapter 4 Completed') {
+      points = points + 4;
+    }
+    if (player.status === 'Chapter 5 Completed') {
+      points = points + 5;
+    }
+
+    return points;
+  }
+
+  const mainHeaders = (
+    <li style={{listStyle: 'none'}}>
+      <div className="player-data">
+        <span>Wallet ID</span>
+        <span>Chapter Points</span>
+      </div>
+    </li>
+  );
   
   useEffect(() => {
-    if (players.length) {
-      const elements = players.map((player, index) => {
-        const formattedAccountId = player.accountId;
-        const formattedStatus = player.status;
-        const formattedRace = player.race;
-        const formattedDate = formatDate(player.date);
-        const playerIsActive = player.isActive === '1' || player.isActive === 1 || player.isActive === true;
+    if (playerAccounts.length) {
+      const elements = playerAccounts.map((playerAccount, index) => {
         return (
-          <li key={index} style={{listStyle: 'none'}}>
-            <div className={playerIsActive ? "player-data" : "player-data player-data-inactive"}>
-              <span>{formattedAccountId}</span>
-              <span>{formattedStatus}</span>
-              <span>{formattedRace}</span>
-              {/* <span>{formattedDate}</span> */}
+          <div key={index}>
+            <div 
+              className="player-data" 
+              onClick={() => viewingPlayerId === playerAccount.accountId ? setViewingPlayerId(null) : setViewingPlayerId(playerAccount.accountId)}
+            >
+              <span>{playerAccount.accountId}</span>
+              <span>{playerAccount.chapterPoints}</span>
             </div>
-          </li>
+            {/* Conditionally render the additional details if this player is being viewed. */}
+            {viewingPlayerId === playerAccount.accountId && (
+              <div className="player-details"> <br/>
+                {playerAccount.playerDetails.map((playerDetail, detailIndex) => (
+
+                  <div key={detailIndex} className="player-detail-row">
+                    <span>{playerDetail.race}</span>
+                    <span>{playerDetail.status}</span>
+                  </div>
+                ))}
+                <br/>
+              </div> 
+            )}
+          </div>
         );
       });
       setPlayerElements(elements);
     }
-  }, [players]);
+  }, [playerAccounts, viewingPlayerId]);
+  
 
-  const headers = (
-    <li style={{listStyle: 'none'}}>
-      <div className="player-data">
-        <span>Wallet ID</span>
-        <span>Achievement</span>
-        <span>Race</span>
-        {/* <span>Date</span> */}
-      </div>
-    </li>
-  );
-
+  // Return the complete component
   return (
     <>
       <div className="row">
@@ -104,10 +163,10 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
         </div>
         </div>
         <div className="row">
-          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pop-out">
             <Fade duration={3000}>
               <ul className="players-list">
-                {headers}<br/>
+                {mainHeaders}<br/>
                 {playerElements}
               </ul>
             </Fade>
