@@ -11,16 +11,17 @@ mirrorNode Options:
 
 const test = 0
 
-const barbIncNFTTokens = ['0.0.2235264']
-//const barbIncNFTTokens = ['0.0.2235264', '0.0.2018575', '0.0.2990140', '0.0.2361150', '0.0.1106034']
+
 const network = 'mainnet' 
 const mirrorNode = 'https://mainnet-public.mirrornode.hedera.com'
+let barbIncNFTTokens = ['0.0.2235264']
 let s3accountStats = 'accountStats'
 let s3accountActivity = 'accountActivity'
 
 if (test === 1) {
     s3accountStats = 'test/accountStats'
     s3accountActivity = 'test/accountActivity'
+    barbIncNFTTokens = ['0.0.2235264', '0.0.2018575', '0.0.2990140', '0.0.2361150', '0.0.1106034']
 }
 
 async function uploadCsv(textData, fileName) {

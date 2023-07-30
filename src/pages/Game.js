@@ -35,7 +35,7 @@ function Game(props) {
 
 
   const isMobile = windowWidth < 768;
-  const scrollbarHeight = isMobile ? 370 : 540;
+  const scrollbarHeight = isMobile ? 430 : 600;
 
   async function updateAccountStatusCsv(updatedData) {
     try {
@@ -109,7 +109,7 @@ function Game(props) {
       .then(() => {
         console.log('Account status CSV updated successfully!');
         props.setPlayKey(Date.now());  // Update the Play component's key
-        navigate('/play');
+        navigate('/play');  // Navigate to /play
       })
   };  
 
@@ -147,39 +147,10 @@ function Game(props) {
   const chapterHeader = selectedChapter;
   const story = `${text}\n\n`;
 
-  const handleExitGame = () => {
-    window.location.href = '/';
-  };
-
   return (
    <> 
    <section id="faq " className="background_game">
-    <Fade duration={5000} top>
-    <div className="row">
-      <div className="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-center nft-item">
-        <Fade duration={7000} top>
-        <Dropdown>
-          <Dropdown.Toggle variant="primary" size="lg" id="dropdown-basic" style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a', color: '#fff' }}>
-            Menu
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu style={{ backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' }}>
-            <Dropdown.Item onClick={handleExitGame} style={{ color: '#fff' }}>Exit Game</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        </Fade>
-      </div>
-      <div className="col-5 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-left nft-item">
-        <Slide direction='right' duration={3000}>
-          <img src={selectedCharacter} alt="selected-nft"  style={{ 
-                                                                borderRadius:"50%", 
-                                                                width: isMobile ? "100%" : "100%", 
-                                                                height: isMobile ? "80%" : "100%" 
-                                                              }}  /> 
-        </Slide>
-      </div>
-    </div>
-   </Fade>
+    <br/><br/>
     <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center story-container">
             <Fade duration={10000}><h1 className="h1_head_m set_font">{chapterHeader}</h1></Fade>
