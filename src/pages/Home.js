@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import MailingListAdd from '../components/emailData';
 import Footer from '../components/Footer';
-const { Slide, Fade } = require("react-awesome-reveal");
+const { Slide, Fade, JackInTheBox } = require("react-awesome-reveal");
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ function Home() {
     </div>
     {!loading && (
     <>
-    <Fade duration={10000}>
+    <Fade duration={5000}>
     <section id="About " className="info_sec ">
       <div className="about-container">
           <div className="row">
@@ -50,22 +50,43 @@ function Home() {
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
               <h1 className="h1_heading set_font"> Collection Lore </h1>
               <br/>
-              <p className="para_p"> Mortals </p>
-              <Slide direction="left" duration={2000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/mortals"><img src="assets/images/banner/Mortals-Cover.png" alt="teamimg"></img></a></Slide>
+              <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/mortals"><p className="para_p"> Mortals </p></a>
+              <Slide direction="left" duration={1000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/mortals"><img src="assets/images/banner/Mortals-Cover.png" alt="teamimg"></img></a></Slide>
             </div>
           </div> 
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
               <br/>
-              <p className="para_p"> Gaians </p>
-              <Slide direction="right" duration={2000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians"><img src="assets/images/banner/Gaians-Cover.png" alt="teamimg"></img></a></Slide>
+              <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians"><p className="para_p"> Gaians </p></a>
+              <Slide direction="right" duration={1000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians"><img src="assets/images/banner/Gaians-Cover.png" alt="teamimg"></img></a></Slide>
             </div>
           </div> 
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
               <br/>
-              <p className="para_p"> Runekin </p>
-              <Slide direction="left" duration={2000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/runekin"><img src="assets/images/banner/Runekin-Cover.png" alt="teamimg"></img></a></Slide>
+              <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/runekin"><p className="para_p"> Runekin </p></a>
+              <Slide direction="left" duration={1000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/runekin"><img src="assets/images/banner/Runekin-Cover.png" alt="teamimg"></img></a></Slide>
+              <br/>
+            </div>
+          </div> 
+          <div className="row">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+              <br/>
+              <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/soulweavers"><p className="para_p"> Soulweavers </p></a>
+              <br/>
+            </div>
+          </div> 
+          <div className="row">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+              <br/>
+              <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/zephyr"><p className="para_p"> Zephyr </p></a>
+              <br/>
+            </div>
+          </div> 
+          <div className="row">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 lore-item">
+              <br/>
+              <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/archangels"><p className="para_p"> Archangels </p></a>
               <br/>
             </div>
           </div> 
@@ -102,7 +123,7 @@ function Home() {
             </div>
           </div>
       </div>
-  <Slide direction="left" duration={1000}>
+  <Fade duration={3000}>
   <div className="mail-container">
     <div className="row">
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0">
@@ -111,7 +132,7 @@ function Home() {
     </div>
     </div>
     <br/>
-  </Slide> 
+  </Fade> 
   </section> 
   <section className="footer">
   <Footer />
