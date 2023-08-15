@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Storage } from 'aws-amplify';
-import { barbIncNFTTokens } from '../constants/Constants';
+import { barbInkNFTTokens } from '../constants/Constants';
 import { AccountNFTs } from '../components/ConnectWallet';
 
 function DarkPopup({ showPopup, setShowPopup, onAccountCodeSubmit }) {
@@ -43,7 +43,7 @@ function DarkPopup({ showPopup, setShowPopup, onAccountCodeSubmit }) {
       setAccountId(accountId);
       console.log('Account Id:', accountId);
   
-      const nfts = await AccountNFTs(accountId.toString(), barbIncNFTTokens);
+      const nfts = await AccountNFTs(accountId.toString(), barbInkNFTTokens);
       setNfts(nfts);
   
       onAccountCodeSubmit(accountId, nfts);

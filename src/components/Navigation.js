@@ -27,7 +27,7 @@ function Navigation() {
                         </li>
                     </ul>
                     <span className="navbar-text" >
-                    <a href="https://twitter.com/barbarian_inc" target={{target:"_blank"}}>
+                    <a href="https://twitter.com/barbarian_ink" target={{target:"_blank"}}>
                         <img className="seicon" src="assets/images/icon/icon_twitter.svg" alt="navimg"/>
                     </a>
                     <a href="https://discord.gg/aCucjcJtWM" target={{target:"_blank"}}>
