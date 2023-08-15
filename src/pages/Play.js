@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Hashpack from '../modals/Hashpack';
 import GameOptions from '../components/GameOptions';
 import {AccountNFTs} from '../components/ConnectWallet';
-import { barbIncNFTTokens } from '../constants/Constants'
+import { barbInkNFTTokens } from '../constants/Constants'
 import AccountCode from '../components/AccountCode';
 import { useNavigate } from 'react-router-dom';
 import GameStats from '../components/GameStats';
@@ -67,7 +67,7 @@ function Play() {
   }
   const handlePlay = async () => {
     setStats(false)
-    const nfts = await AccountNFTs(accountId.toString(), barbIncNFTTokens);
+    const nfts = await AccountNFTs(accountId.toString(), barbInkNFTTokens);
     setNfts(nfts);
 
     const jsonObj = JSON.parse(nfts);

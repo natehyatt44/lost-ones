@@ -8,10 +8,10 @@ import { network, mirrorNode } from '../constants/Constants';
 let hashconnect = new HashConnect();
 
 let appMetadata = {
-  name: "BarbarianInc",
+  name: "BarbarianInk",
   description: "Lost Ones Alternate Reality Game",
-  icon: "https://barbarianinc.club/assets/images/barbarianinc_logo.png",
-  url: "https://barbarianinc.club/"
+  icon: "https://barbarianink.club/assets/images/barbarianinc_logo.png",
+  url: "https://barbarianink.club/"
 }
 
 hashconnect.disconnect(hashconnect.hcData.topic)

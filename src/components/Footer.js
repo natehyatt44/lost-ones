@@ -15,7 +15,7 @@ function Footer() {
                     <p className="para_p">© 2023 HBARBARIANS LLC All Rights Reserved.</p>
                 </div>
                 <div className="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-center p-0 footer">
-                    <a href="https://twitter.com/barbarian_inc" target={{target:"_blank"}}>
+                    <a href="https://twitter.com/barbarian_ink" target={{target:"_blank"}}>
                         <img className="footer_seicon" src="assets/images/icon/icon_twitter.svg" alt="footerimg"/>
                     </a>
                 </div>

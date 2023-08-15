@@ -1,4 +1,4 @@
-# Barbarian Inc Website 
+# Barbarian Ink Website 
 Created using the React App, more info below
 
 # Getting Started with Create React App
