@@ -3,7 +3,6 @@ import Hashpack from '../modals/Hashpack';
 import GameOptions from '../components/GameOptions';
 import {AccountNFTs} from '../components/ConnectWallet';
 import { barbInkNFTTokens } from '../constants/Constants'
-import AccountCode from '../components/AccountCode';
 import { useNavigate } from 'react-router-dom';
 import GameStats from '../components/GameStats';
 import { s3accountActivity, uploadCsv } from '../constants/Constants';
@@ -19,6 +18,7 @@ function Play() {
   const [show, setShow] = useState(false);
   const [stats, setStats] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
+  const [selectedRace, setSelectedRace] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +28,10 @@ function Play() {
       setAccountId(storedAccountId);
     }
   }, []);
+
+  if (selectedRace) {
+    console.log(`Selected race is: ${selectedRace}`);
+  }
 
   const handleHashpackConnect = (accountId, nfts) => {
     setAccountId(accountId);
@@ -45,18 +49,6 @@ function Play() {
       setShow(false)
     }
   };
-
-  const handleAccountCodeSubmit = (accountId, nfts) => {
-    setAccountId(accountId);
-    setNfts(nfts);
-    const jsonObj = JSON.parse(nfts);
-    setNftAmt(jsonObj.nftMetadata.length);
-
-    if (regex.test(accountId)){
-      const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-      uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|Use-AccountCode|${nfts}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
-    }
-  }
   
   const handleExit = () => {
     window.location.href = '/';
@@ -112,7 +104,6 @@ function Play() {
       handleModalClose={handleModalClose} 
       showPopup={showPopup} 
       setShowPopup={setShowPopup} 
-      handleAccountCodeSubmit={handleAccountCodeSubmit} 
     />
     </div>
     </section>
@@ -120,7 +111,7 @@ function Play() {
   }
     {regex.test(accountId) && nftAmt > 0 && stats === false &&( 
       <>
-      <section id="Play " className="background_play_options ">
+      <section id="Play " className={`background_play_options background_play_${selectedRace}`}>
       <div className="nft-container ">
       <div className="row">
         <div className="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-1 text-center nft-item">
@@ -138,6 +129,7 @@ function Play() {
           accountId={accountId}
           nfts={nfts}
           navigate={navigate}
+          onRaceSelect={setSelectedRace}
         />
          </div>
     </section>
@@ -166,7 +158,6 @@ function Play() {
         <h3 className="h1_head_xs set_font">Please navigate to the Guide for more Information</h3>
         </Fade>
         <Hashpack onConnect={handleHashpackConnect} showModal={show} onClose={handleModalClose} />
-        {/* <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} onAccountCodeSubmit={handleAccountCodeSubmit} /> */}
       </div>
       </div>
     </section>

@@ -79,20 +79,6 @@ html, body{
      backdrop-filter: blur(40px) !important;
      position: relative !important;
  }
- .background_game {
-  background-image: url('../images/background/2.png') !important;
-  backdrop-filter: blur(40px) !important;
-position: fixed !important; /* switch from relative to fixed */
-top: 0; /* make sure it starts at the top-left corner */
-left: 0;
-right: 0;
-bottom: 0;
-height: 100%; /* covers entire height */
-width: 100%; /* covers entire width */
-background-size: cover !important; /* ensure image covers the whole area */
-background-repeat: no-repeat !important; /* prevent image from repeating */
-background-position: center !important; /* center the image */
-}
 .background_play_stats {
      background-image: url('../images/background/3.png') !important;
      backdrop-filter: blur(40px) !important;
@@ -108,7 +94,7 @@ background-position: center !important; /* center the image */
      background-position: center !important; /* center the image */
    }
 .background_play_options {
-     background-image: url('../images/background/4.png') !important;
+     background-image: url('../images/background/2.png') !important;
      backdrop-filter: blur(40px) !important;
      position: fixed !important; /* switch from relative to fixed */
      top: 0; /* make sure it starts at the top-left corner */
@@ -120,6 +106,24 @@ background-position: center !important; /* center the image */
      background-size: cover !important; /* ensure image covers the whole area */
      background-repeat: no-repeat !important; /* prevent image from repeating */
      background-position: center !important; /* center the image */
+   }
+   .background_play_Mortal {
+     background-image: url('../images/background/2.png') !important;
+   }
+   .background_play_Gaian {
+     background-image: url('../images/background/4.png') !important;
+   }
+   .background_play_Runekin {
+     background-image: url('../images/background/6.png') !important;
+   }
+   .background_play_Soulweaver {
+     background-image: url('../images/background/4.png') !important;
+   }
+   .background_play_Zephyr {
+     background-image: url('../images/background/4.png') !important;
+   }
+   .background_play_ArchAngel {
+     background-image: url('../images/background/4.png') !important;
    }
  .traitbackground_sec {
      background-image: url('../images/background/background_trait.png') !important;

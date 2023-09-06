@@ -9,7 +9,7 @@ import { RaceSelectionStage,
 import { s3accountActivity, uploadCsv } from '../constants/Constants';
 import { CheckRace, CheckChapter } from '../components/GameChecks';
 
-function GameOptions({ accountId, nfts, navigate }) {
+function GameOptions({ accountId, nfts, navigate, onRaceSelect }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [gameState, setGameState] = useState({
     accessibleChapters: [],
@@ -77,6 +77,8 @@ function GameOptions({ accountId, nfts, navigate }) {
         raceFilteredNfts.push(nft);
       }
     }
+
+    onRaceSelect(race);
 
     setGameState(prevState => ({
       ...prevState,
