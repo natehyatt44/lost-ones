@@ -99,10 +99,15 @@ function Game(props) {
   
   const handleFinishedChapter = () => {
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
-    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|${selectedChapter} Completed|${selectedRace}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
+    let race = ''
+    if (selectedChapter === 'Chapter 1-1' || selectedChapter === 'Chapter 1-2' || selectedChapter === 'Chapter 5'){
+      race = 'Universal'
+    }
+    else {race = selectedRace}
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|${selectedChapter} Completed|${race}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
       .then(() => {
         console.log('Chapter completion recorded in activity CSV.');
-        const updatedData = `${accountId}|${selectedChapter} Completed|${selectedRace}|1|${dateTimeString}`;
+        const updatedData = `${accountId}|${selectedChapter} Completed|${race}|1|${dateTimeString}`;
         console.log(updatedData)
         return updateAccountStatusCsv(updatedData);
       })
@@ -149,7 +154,7 @@ function Game(props) {
 
   return (
    <> 
-   <section id="faq " className="background_game">
+   <section id="faq " className={`background_play_options background_play_${selectedRace}`}>
     <br/><br/>
     <div className="row">
         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center story-container">
