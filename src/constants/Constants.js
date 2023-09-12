@@ -9,7 +9,7 @@ mirrorNode Options:
 
 */
 
-const test = 1
+const test = 0
 
 
 const network = 'mainnet' 
