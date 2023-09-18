@@ -969,4 +969,10 @@ html, body{
      padding: 20px;
    }
    
-   
+   .video-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 60vh; /* Adjust as needed */
+ }
+

@@ -28,10 +28,20 @@ function Home() {
         <img onLoad={handleImageLoad} src="assets/images/banner/hbarb_banner_mobile.png" alt="bannerimg"></img>
       </div>
     </div>
+
+    {/* <div className="video-container">
+    <video width="50%" autoPlay muted onEnded={(e) => e.target.pause()} controls>
+        <source src="assets/images/barbinkvid.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+    </div> */}
+
+    
+
     {!loading && (
     <>
     <Fade duration={5000}>
-    <section id="About " className="info_sec ">
+    <section id="About " className={`info_sec ${!loading && 'loaded'}`}>
       <div className="about-container">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 about-item">
@@ -44,7 +54,7 @@ function Home() {
       </div>
     </section>
     </Fade>
-    <section id="Lore" className="info_sec">
+    <section id="Lore" className={`info_sec ${!loading && 'loaded'}`}>
         <div className="lore-container">
             <div className="row">
                 <div className="col-12 col-md-12 text-center p-0 lore-item">
@@ -91,33 +101,8 @@ function Home() {
             </div>
         </div>
     </section>
-    {/* <section id="" className="info_sec">
-        <div className="lore-container">
-            <div className="row">
-                <div className="col-12 col-md-12 text-center p-0 lore-item">
-                    <h1 className="h1_heading set_font"> Collections </h1>
-                    <br />
-                </div>
-                <div className="col-12 col-md-4 text-center p-0 lore-item">
-                    <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/mortals"><p className="para_p"> Hbarbarian Community Founders Passes </p></a>
-                    <Slide direction="left" duration={1000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/mortals"><img src="assets/images/banner/Mortals-Cover.png" alt="teamimg"></img></a></Slide>
-                    <br />
-                </div>
-                <div className="col-12 col-md-4 text-center p-0 lore-item">
-                    <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians"><p className="para_p"> The Lost Ones </p></a>
-                    <Slide direction="right" duration={1000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians"><img src="assets/images/banner/Gaians-Cover.png" alt="teamimg"></img></a></Slide>
-                    <br />
-                </div>
-                <div className="col-12 col-md-4 text-center p-0 lore-item">
-                    <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians"><p className="para_p"> Alixon Art  </p></a>
-                    <Slide direction="right" duration={1000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians"><img src="assets/images/banner/Gaians-Cover.png" alt="teamimg"></img></a></Slide>
-                    <br />
-                </div>
-            </div>
-        </div>
-    </section> */}
 
-     <section id="Team " className="info_sec ">
+     <section id="Team " className={`info_sec ${!loading && 'loaded'}`}>
       <div className="team-container">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 team-header">
@@ -149,7 +134,7 @@ function Home() {
           </div>
       </div>
   <Fade duration={3000}>
-  <div className="mail-container">
+  <div className={`mail-container ${!loading && 'loaded'}`}>
     <div className="row">
       <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0">
         <MailingListAdd/>
@@ -159,7 +144,7 @@ function Home() {
     <br/>
   </Fade> 
   </section> 
-  <section className="footer">
+  <section className={`footer ${!loading && 'loaded'}`}>
   <Footer />
   </section>
   </>
