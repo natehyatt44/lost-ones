@@ -80,7 +80,7 @@ html, body{
      position: relative !important;
  }
 .background_play_stats {
-     background-image: url('../images/background/3.png') !important;
+     background-image: url('../images/background/leaderboard.png') !important;
      backdrop-filter: blur(40px) !important;
      position: fixed !important; /* switch from relative to fixed */
      top: 0; /* make sure it starts at the top-left corner */
@@ -94,7 +94,7 @@ html, body{
      background-position: center !important; /* center the image */
    }
 .background_play_options {
-     background-image: url('../images/background/2.png') !important;
+     background-image: url('../images/background/leaderboard.png') !important;
      backdrop-filter: blur(40px) !important;
      position: fixed !important; /* switch from relative to fixed */
      top: 0; /* make sure it starts at the top-left corner */
@@ -108,13 +108,13 @@ html, body{
      background-position: center !important; /* center the image */
    }
    .background_play_Mortal {
-     background-image: url('../images/background/2.png') !important;
+     background-image: url('../images/background/mortals1.png') !important;
    }
    .background_play_Gaian {
      background-image: url('../images/background/gaian.png') !important;
    }
    .background_play_Runekin {
-     background-image: url('../images/background/runekin.png') !important;
+     background-image: url('../images/background/runekin2.png') !important;
    }
    .background_play_Soulweaver {
      background-image: url('../images/background/4.png') !important;
@@ -580,6 +580,7 @@ html, body{
   }
  .lore-item img{
      max-width: 100%;
+     padding: 1%
  }
 .lore-item {
      float: center;
@@ -968,4 +969,10 @@ html, body{
      padding: 20px;
    }
    
-   
+   .video-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 60vh; /* Adjust as needed */
+ }
+
