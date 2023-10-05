@@ -20,9 +20,6 @@ function Navigation() {
                         <a className="nav-link" href="https://hbarbarians.gitbook.io/hbarbarians/">About</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="/roadmap">Roadmap</a>
-                        </li>
-                        <li className="nav-item">
                         <a className="nav-link" href="/gallery">Gallery</a>
                         </li>
                     </ul>
