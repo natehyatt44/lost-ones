@@ -62,43 +62,80 @@ function Home() {
                     <br />
                 </div>
                 {/* Mortals */}
-                <div className="col-12 col-md-6 text-center p-0 lore-item">
-                    <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/mortals"><p className="para_p"> Mortals </p></a>
-                    <Slide direction="left" duration={1000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/mortals"><img src="assets/images/banner/Mortals-Cover.png" alt="teamimg"></img></a></Slide>
-                    <br />
+                <div className="col-12 col-md-4 text-center p-0 lore-item">
+                  <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/mortals">
+                      <p className="para_p">Mortals</p>
+                  </a>
+                  <Slide direction="left" duration={1000}>
+                      <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/mortals">
+                          <img src="assets/images/home/mortal.png" alt="teamimg" className="round-image"></img>
+                      </a>
+                  </Slide>
+                  <br />
                 </div>
                 {/* Gaians */}
-                <div className="col-12 col-md-6 text-center p-0 lore-item">
-                    <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians"><p className="para_p"> Gaians </p></a>
-                    <Slide direction="right" duration={1000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians"><img src="assets/images/banner/Gaians-Cover.png" alt="teamimg"></img></a></Slide>
-                    <br />
+                <div className="col-12 col-md-4 text-center p-0 lore-item">
+                  <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians">
+                      <p className="para_p">Gaians</p>
+                  </a>
+                  <Slide direction="right" duration={1000}>
+                      <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians">
+                          <img src="assets/images/home/gaian.png" alt="teamimg" className="round-image"></img>
+                      </a>
+                  </Slide>
+                  <br />
                 </div>
-            </div>
-            <div className="row">
                 {/* Runekin */}
-                <div className="col-12 col-md-6 text-center p-0 lore-item">
-                    <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/runekin"><p className="para_p"> Runekin </p></a>
-                    <Slide direction="left" duration={1000}><a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/runekin"><img src="assets/images/banner/Runekin-Cover.png" alt="teamimg"></img></a></Slide>
-                    <br />
+                <div className="col-12 col-md-4 text-center p-0 lore-item">
+                  <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/runekin">
+                      <p className="para_p">Runekin</p>
+                  </a>
+                  <Slide direction="left" duration={1000}>
+                      <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/runekin">
+                          <img src="assets/images/home/runekin.png" alt="teamimg" className="round-image"></img>
+                      </a>
+                  </Slide>
+                  <br />
                 </div>
+                <div className="row">
                 {/* Soulweavers */}
-                <div className="col-12 col-md-6 text-center p-0 lore-item">
-                    <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/soulweavers"><p className="para_p"> Soulweavers </p></a>
-                    <br />
-                </div>
-            </div>
-            <div className="row">
+                <div className="col-12 col-md-4 text-center p-0 lore-item">
+                  <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/soulweavers">
+                      <p className="para_p">Soulweavers</p>
+                  </a>
+                  <Slide direction="right" duration={1000}>
+                      <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/soulweavers">
+                          <img src="assets/images/home/soulweaver.png" alt="teamimg" className="round-image"></img>
+                      </a>
+                  </Slide>
+                  <br />
+              </div>
                 {/* Zephyr */}
-                <div className="col-12 col-md-6 text-center p-0 lore-item">
-                    <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/zephyr"><p className="para_p"> Zephyr </p></a>
-                    <br />
+                <div className="col-12 col-md-4 text-center p-0 lore-item">
+                  <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/zephyr">
+                      <p className="para_p">Zephyr</p>
+                  </a>
+                  <Slide direction="left" duration={1000}>
+                      <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/zephyr">
+                          <img src="assets/images/home/zephyr.png" alt="teamimg" className="round-image"></img>
+                      </a>
+                  </Slide>
+                  <br />
                 </div>
                 {/* Archangels */}
-                <div className="col-12 col-md-6 text-center p-0 lore-item">
-                    <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/archangels"><p className="para_p"> Archangels </p></a>
-                    <br />
+                <div className="col-12 col-md-4 text-center p-0 lore-item">
+                  <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/archangels">
+                      <p className="para_p">Archangels</p>
+                  </a>
+                  <Slide direction="right" duration={1000}>
+                      <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/archangels">
+                          <img src="assets/images/home/archangel.png" alt="teamimg" className="round-image"></img>
+                      </a>
+                  </Slide>
+                  <br />
                 </div>
             </div>
+        </div>
         </div>
     </section>
 

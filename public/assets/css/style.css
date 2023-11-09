@@ -976,3 +976,8 @@ html, body{
      height: 60vh; /* Adjust as needed */
  }
 
+ .round-image {
+     width: 50%;
+     border-radius: 50%;
+     display: inline-block; /* To ensure the width is respected */
+ }
