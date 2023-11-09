@@ -146,22 +146,17 @@ function Home() {
                 <h1 className="h1_heading set_font"> The Team </h1>
                 <br/>
                 <div className="row">
-                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                  <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center p-0 team-item">
                       <a href="https://twitter.com/jmjustinmyers"><img src="assets/images/team/jman1.png" alt="teamimg"></img></a>
                       <title>Jman</title>
                       <p>CEO / Founder</p>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
-                      <a href="https://twitter.com/alixonjviloria"><img src="assets/images/team/alixon1.png" alt="teamimg"></img></a>
-                      <title>Alixon</title>
-                      <p>Artist & Creative Director</p>
-                  </div>
-                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                  <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center p-0 team-item">
                       <a href="https://twitter.com/nbreezay_hbar"><img src="assets/images/team/nbreezay1.png" alt="teamimg"></img></a>
                       <title>nbreezay</title>
                       <p>Developer</p>
                   </div>
-                  <div className="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 text-center p-0 team-item">
+                  <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center p-0 team-item">
                         <a href="https://twitter.com/supernalartss"><img src="assets/images/team/supernal.png" alt="teamimg"></img></a>
                         <title>Supernal</title>
                         <p>Community Dev / Creative Writer</p>
