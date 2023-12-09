@@ -62,7 +62,7 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
         if (nftInfo) {
           nftMetadata.push({
             tokenId: item.token_id,
-            edition: nftInfo.edition,
+            serial_number: item.serial_number,
             race: nftInfo.race,
             playable: nftInfo.playable,
             type: nftInfo.type,
@@ -100,7 +100,7 @@ export function NFTImages({ accountNfts, onClickImage }) {
           let folder = typeFolderMap[meta.type] || meta.race;
 
           const imageResponse = await Storage.get(
-            `nft-collections/${folder}/images/${meta.edition}.png`,
+            `nft-collections/${folder}/images/${meta.serial_number}.webp`,
             { level: 'public' }
           );
           return imageResponse;
@@ -124,7 +124,7 @@ export function NFTImages({ accountNfts, onClickImage }) {
       } else {
         clearInterval(intervalId);
       }
-    }, 250);
+    }, 350);
     return () => clearInterval(intervalId);
   }, [loadedImages]);
 
@@ -132,38 +132,39 @@ export function NFTImages({ accountNfts, onClickImage }) {
     onClickImage(nft, imageUrl);
   };
   // In NFTImages function
-// In NFTImages function
-return images.map((image, index) => (
-  <div
-    className="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 text-center mx-auto"
-    key={index}
-    onClick={accountNfts[index].playable === 1 ? () => handleClickImage(accountNfts[index], image) : null}  // Use index to access corresponding NFT data
-    onMouseEnter={(e) => {
-      if(accountNfts[index].playable === 1) {
-        e.target.style.filter = "brightness(130%)";
-      }
-    }}
-    onMouseLeave={(e) => {
-      if(accountNfts[index].playable === 1) {
-        e.target.style.filter = "brightness(100%)";
-      }
-    }}
-  >
-    <div className="nft-item">
-      {loadedImages[index] ? (
-        <Fade delay={500}>
-          <img
-            src={image}
-            alt="nftimg"
-            style={{ borderRadius: "50%", filter: accountNfts[index].playable === 1 ? "brightness(100%)" : "brightness(20%)" }}
-          />
-        </Fade>
-      ) : (
-        <div className="loading-animation"></div>
-      )}
+  return images.map((image, index) => (
+    <div
+      className="col-6 col-md-6 col-lg-3 col-xl-2 text-center mx-auto" // Adjusted classes for consistent sizing
+      key={index}
+      onClick={accountNfts[index].playable === 1 ? () => handleClickImage(accountNfts[index], image) : null}  // Use index to access corresponding NFT data
+      onMouseEnter={(e) => {
+        if(accountNfts[index].playable === 1) {
+          e.target.style.filter = "brightness(130%)";
+        }
+      }}
+      onMouseLeave={(e) => {
+        if(accountNfts[index].playable === 1) {
+          e.target.style.filter = "brightness(100%)";
+        }
+      }}
+    >
+      <div className="nft-item">
+        {loadedImages[index] ? (
+          <Fade delay={500}>
+            <img
+              src={image}
+              alt="nftimg"
+              style={{ width: '100%', height: 'auto', borderRadius: "50%", filter: accountNfts[index].playable === 1 ? "brightness(100%)" : "brightness(20%)" }} // Ensure image scales with div
+            />
+          </Fade>
+        ) : (
+          <div className="loading-animation"></div>
+        )}
+      </div>
     </div>
-  </div>
-));
+  ));
+  
+  
 
 
 }

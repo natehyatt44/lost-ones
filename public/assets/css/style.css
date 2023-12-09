@@ -163,6 +163,12 @@ html, body{
      color: #FFFFFF;
      white-space: pre-wrap;
 }
+.nft-grid-item {
+     width: calc(20% - 10px); /* Adjust this value as needed */
+     margin: 5px; /* Adjust margin as needed */
+   }
+
+   
 
 /* Phones */
 
