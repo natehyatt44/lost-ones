@@ -21,7 +21,7 @@ let s3accountActivity = 'accountActivity'
 if (test === 1) {
     s3accountStats = 'test/accountStats'
     s3accountActivity = 'test/accountActivity'
-    barbInkNFTTokens = ['0.0.2235264', '0.0.3721853', '0.0.2361150', '0.0.2990140', '0.0.2018575']
+    barbInkNFTTokens = ['0.0.2235264', '0.0.3721853', '0.0.3878997', '0.0.2992327', '0.0.2371643']
 }
 
 async function uploadCsv(textData, fileName) {

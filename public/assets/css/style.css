@@ -117,13 +117,13 @@ html, body{
      background-image: url('../images/background/runekin2.png') !important;
    }
    .background_play_Soulweaver {
-     background-image: url('../images/background/4.png') !important;
+     background-image: url('../images/background/soulweaver3.png') !important;
    }
    .background_play_Zephyr {
-     background-image: url('../images/background/4.png') !important;
+     background-image: url('../images/background/zephyr.png') !important;
    }
    .background_play_ArchAngel {
-     background-image: url('../images/background/4.png') !important;
+     background-image: url('../images/background/archangel.png') !important;
    }
  .traitbackground_sec {
      background-image: url('../images/background/background_trait.png') !important;
@@ -163,6 +163,12 @@ html, body{
      color: #FFFFFF;
      white-space: pre-wrap;
 }
+.nft-grid-item {
+     width: calc(20% - 10px); /* Adjust this value as needed */
+     margin: 5px; /* Adjust margin as needed */
+   }
+
+   
 
 /* Phones */
 
