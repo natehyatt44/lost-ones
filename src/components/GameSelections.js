@@ -64,7 +64,7 @@ export const CharacterSelectionStage = ({ nfts, resetRace, handleCharacterSelect
       </Fade>
     </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
-      <div className="row">
+      <div className="row nft-container">
         <NFTImages accountNfts={nfts} onClickImage={handleCharacterSelect}/>
       </div>
     </div>  

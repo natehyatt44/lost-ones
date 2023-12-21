@@ -694,22 +694,25 @@ html, body{
 
    .nft-container {
      float: center;
-     width: 100%;
+     width: 90%;
      margin: 10px auto;
    }
 
    .nft-item{
      display: flex;
      justify-content: center; /* align horizontal */
-     /* align-items: center; align vertical */
+     align-items: center; /* align vertical */
      margin-bottom: 10px;
      margin-top: 10px;
     
  }
  
- .nft-item img{
-    width: 75%;
- }
+ .nft-item img {
+     width: 100%; /* Image takes full width of the container */
+     height: auto;
+     object-fit: cover; /* Adjusts the image size to cover the container while maintaining aspect ratio */
+     border-radius: 50%;
+   }
 
  .btn-list {
      display: flex;
