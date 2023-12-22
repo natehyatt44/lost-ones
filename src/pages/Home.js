@@ -15,10 +15,10 @@ function Home() {
       <Fade duration={5000}>
       <div className="row">
         <div className="col-0 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-desktop-item">
-          <img src="assets/images/banner/hbarb_banner_desktop.webp" alt="bannerimg" />
+          <img src="https://lost-ones-upload32737-staging.s3.amazonaws.com/public/siteimages/hbarb_banner_desktop.webp" alt="bannerimg" />
         </div>
         <div className="col-12 col-sm-12 banner-mobile-item">
-          <img src="assets/images/banner/hbarb_banner_mobile.webp" alt="bannerimg" />
+          <img src="https://lost-ones-upload32737-staging.s3.amazonaws.com/public/siteimages/hbarb_banner_mobile.webp" alt="bannerimg" />
         </div>
       </div>
       </Fade>
@@ -49,7 +49,7 @@ function Home() {
                   </a>
                   <Slide direction="left" duration={1000}>
                       <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/mortals">
-                          <img src="assets/images/home/mortal.webp" alt="teamimg" className="round-image"></img>
+                          <img src="https://lost-ones-upload32737-staging.s3.amazonaws.com/public/siteimages/mortal.webp" alt="teamimg" className="round-image"></img>
                       </a>
                   </Slide>
                   <br />
@@ -61,7 +61,7 @@ function Home() {
                   </a>
                   <Slide direction="right" duration={1000}>
                       <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/gaians">
-                          <img src="assets/images/home/gaian.webp" alt="teamimg" className="round-image"></img>
+                          <img src="https://lost-ones-upload32737-staging.s3.amazonaws.com/public/siteimages/gaian.webp" alt="teamimg" className="round-image"></img>
                       </a>
                   </Slide>
                   <br />
@@ -73,7 +73,7 @@ function Home() {
                   </a>
                   <Slide direction="left" duration={1000}>
                       <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/runekin">
-                          <img src="assets/images/home/runekin.webp" alt="teamimg" className="round-image"></img>
+                          <img src="https://lost-ones-upload32737-staging.s3.amazonaws.com/public/siteimages/runekin.webp" alt="teamimg" className="round-image"></img>
                       </a>
                   </Slide>
                   <br />
@@ -86,7 +86,7 @@ function Home() {
                   </a>
                   <Slide direction="right" duration={1000}>
                       <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/soulweavers">
-                          <img src="assets/images/home/soulweaver.webp" alt="teamimg" className="round-image"></img>
+                          <img src="https://lost-ones-upload32737-staging.s3.amazonaws.com/public/siteimages/soulweaver.webp" alt="teamimg" className="round-image"></img>
                       </a>
                   </Slide>
                   <br />
@@ -98,7 +98,7 @@ function Home() {
                   </a>
                   <Slide direction="left" duration={1000}>
                       <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/zephyr">
-                          <img src="assets/images/home/zephyr.webp" alt="teamimg" className="round-image"></img>
+                          <img src="https://lost-ones-upload32737-staging.s3.amazonaws.com/public/siteimages/zephyr.webp" alt="teamimg" className="round-image"></img>
                       </a>
                   </Slide>
                   <br />
@@ -110,7 +110,7 @@ function Home() {
                   </a>
                   <Slide direction="right" duration={1000}>
                       <a href="https://hbarbarians.gitbook.io/hbarbarians/the-lost-ones/lore/archangels">
-                          <img src="assets/images/home/archangel.webp" alt="teamimg" className="round-image"></img>
+                          <img src="https://lost-ones-upload32737-staging.s3.amazonaws.com/public/siteimages/archangel.webp" alt="teamimg" className="round-image"></img>
                       </a>
                   </Slide>
                   <br />
