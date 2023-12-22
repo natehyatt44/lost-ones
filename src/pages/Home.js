@@ -12,7 +12,7 @@ function Home() {
   return (
     <> 
       <Navigation />
-      
+      <Fade duration={5000}>
       <div className="row">
         <div className="col-0 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 banner-desktop-item">
           <img src="assets/images/banner/hbarb_banner_desktop.webp" alt="bannerimg" />
@@ -21,6 +21,7 @@ function Home() {
           <img src="assets/images/banner/hbarb_banner_mobile.webp" alt="bannerimg" />
         </div>
       </div>
+      </Fade>
 
       <Fade duration={5000}>
         <section id="About" className="info_sec">

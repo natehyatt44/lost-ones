@@ -3,7 +3,6 @@ import { Fade } from 'react-awesome-reveal';
 import { Storage } from 'aws-amplify';
 import Hashpack from '../modals/Hashpack';
 import AccountCode from '../components/AccountCode';
-
 import { s3accountStats } from '../constants/Constants';
 
 function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, setShowPopup, handleAccountCodeSubmit }) {
@@ -19,19 +18,54 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
   
     return `${year}-${month}-${day}`;
   }
+
+  // Function to calculate chapter points
+  function calculateChapterPoints(playerDetails) {
+    if (!Array.isArray(playerDetails)) {
+      if (typeof playerDetails === 'object') {
+        playerDetails = [playerDetails];
+      } else {
+        console.error("calculateChapterPoints: playerDetails is not an array", playerDetails);
+        return 0;
+      }
+    }
+    let points = 0;
+    const completedChapters = new Set();
   
+    playerDetails.forEach(player => {
+      if (player.status === 'Chapter 1-1 Completed' || player.status === 'Chapter 1-2 Completed') {
+        completedChapters.add(player.status);
+      } else if (['Chapter 2 Completed', 'Chapter 3 Completed', 'Chapter 4 Completed'].includes(player.status)) {
+        const raceChapterKey = `${player.race}-${player.status}`;
+        completedChapters.add(raceChapterKey);
+      }
+    });
+  
+    completedChapters.forEach(chapter => {
+      if (chapter.includes('Chapter 1')) {
+        points += 1;
+      } else if (chapter.includes('Chapter 2')) {
+        points += 2;
+      } else if (chapter.includes('Chapter 3')) {
+        points += 3;
+      } else if (chapter.includes('Chapter 4')) {
+        points += 4;
+      }
+    });
+  
+    return points;
+  }
+
   // Function to fetch player data and process it
   async function fetchPlayers() {
     try {
-      // Fetch data from AWS S3 storage
       const signedUrl = await Storage.get(`${s3accountStats}/accounts.csv`, { level: "public" });
       const response = await fetch(signedUrl);
       const textContent = await response.text();
   
       const rows = textContent.trim().split("\n");
       const header = rows.shift().split("|");
-  
-      // Map rows to player objects
+
       const players = rows.map((row) => {
         const rowData = row.split("|");
         const playerObj = {};
@@ -39,37 +73,39 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
           playerObj[key] = rowData[index];
         });
   
-        playerObj["date"] = new Date(playerObj["date"]); // Convert the date string to a Date object
-
-        playerObj["chapterPoints"] = calculateChapterPoints(playerObj); // Calculate chapter points.
+        playerObj["date"] = new Date(playerObj["date"]);
 
         return playerObj;
       });
 
-      // Aggregate players at account level.
       const playerAccounts = players.reduce((acc, player) => {
         const index = acc.findIndex(accPlayer => accPlayer.accountId === player.accountId);
         if (index > -1) {
-          // Only add chapter points if the chapter hasn't been completed before
-          if (!acc[index].completedChapters.includes(player.status)) {
-            acc[index].chapterPoints += calculateChapterPoints(player);
-            acc[index].completedChapters.push(player.status);
-          }
           acc[index].playerDetails.push(player);
+          acc[index].chapterPoints = calculateChapterPoints(acc[index].playerDetails);
         } else {
           acc.push({ 
             accountId: player.accountId, 
-            chapterPoints: calculateChapterPoints(player),
+            chapterPoints: calculateChapterPoints([player]),
             completedChapters: [player.status], 
-            playerDetails: [player] 
+            playerDetails: [player]
           });
         }
-
         return acc;
       }, []);
 
-      // Sort player accounts by chapter points.
-      playerAccounts.sort((a, b) => b.chapterPoints - a.chapterPoints);
+      // Sort player accounts by chapter points, then by min date
+      playerAccounts.sort((a, b) => {
+        // First, compare by chapter points
+        if (b.chapterPoints !== a.chapterPoints) {
+          return b.chapterPoints - a.chapterPoints;
+        }
+
+        // If chapter points are equal, compare by the earliest date
+        const minDateA = Math.min(...a.playerDetails.map(p => p.date));
+        const minDateB = Math.min(...b.playerDetails.map(p => p.date));
+        return minDateA - minDateB;
+      });
 
       setPlayerAccounts(playerAccounts);
     } catch (error) {
@@ -78,91 +114,64 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
   }
 
   useEffect(() => {
-    fetchPlayers()
+    fetchPlayers();
   }, []);
 
-  // Function to calculate chapter points
-  function calculateChapterPoints(player) {
-    let points = 0;
-    if (player.status === 'Chapter 1-1 Completed' || player.status === 'Chapter 1-2 Completed') {
-      points = points + 1;
-    }
-    if (player.status === 'Chapter 2 Completed') {
-      points = points + 2;
-    }
-    if (player.status === 'Chapter 3 Completed') {
-      points = points + 3;
-    }
-    if (player.status === 'Chapter 4 Completed') {
-      points = points + 4;
-    }
-    if (player.status === 'Chapter 5 Completed') {
-      points = points + 5;
-    }
-
-    return points;
-  }
-  
   useEffect(() => {
     if (playerAccounts.length) {
-      const elements = playerAccounts.map((playerAccount, index) => {
-        return (
-          <div key={index}>
-            <div 
-              className="player-data" 
-              onClick={() => viewingPlayerId === playerAccount.accountId ? setViewingPlayerId(null) : setViewingPlayerId(playerAccount.accountId)}
-            >
-              <span>{playerAccount.accountId}</span>
-              <span>{playerAccount.chapterPoints}</span>
-            </div>
-            {/* Conditionally render the additional details if this player is being viewed. */}
-            {viewingPlayerId === playerAccount.accountId && (
-              <div className="player-details"> <br/>
-                {playerAccount.playerDetails.map((playerDetail, detailIndex) => (
-
-                  <div key={detailIndex} className="player-detail-row">
-                    <span>{playerDetail.race}</span>
-                    <span>{playerDetail.status}</span>
-                  </div>
-                ))}
-                <br/>
-              </div> 
-            )}
+      const elements = playerAccounts.map((playerAccount, index) => (
+        <div key={index}>
+          <div 
+            className="player-data" 
+            onClick={() => setViewingPlayerId(viewingPlayerId === playerAccount.accountId ? null : playerAccount.accountId)}
+          >
+            <span>{playerAccount.accountId}</span>
+            <span>{playerAccount.chapterPoints}</span>
           </div>
-        );
-      });
+          {viewingPlayerId === playerAccount.accountId && (
+            <div className="player-details">
+              <br />
+              {playerAccount.playerDetails.map((playerDetail, detailIndex) => (
+                <div key={detailIndex} className="player-detail-row">
+                  <span>{playerDetail.race}</span>
+                  <span>{playerDetail.status}</span>
+                </div>
+              ))}
+              <br />
+            </div> 
+          )}
+        </div>
+      ));
       setPlayerElements(elements);
     }
   }, [playerAccounts, viewingPlayerId]);
-  
 
-  // Return the complete component
   return (
     <>
       <div className="row">
-          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
-            <Hashpack onConnect={handleHashpackConnect} showModal={show} onClose={handleModalClose} />
-            <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} onAccountCodeSubmit={handleAccountCodeSubmit} />
-          </div>
+        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0 prologue-item">
+          <Hashpack onConnect={handleHashpackConnect} showModal={show} onClose={handleModalClose} />
+          <AccountCode showPopup={showPopup} setShowPopup={setShowPopup} onAccountCodeSubmit={handleAccountCodeSubmit} />
+        </div>
       </div>
       <div className='player-container'>
         <div className="row">
-        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-          <Fade duration={8000}>
-            <h3 className="h1_heading set_font">The Lost Ones</h3>
-          </Fade>
-        </div>
+          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+            <Fade duration={8000}>
+              <h3 className="h1_heading set_font">The Lost Ones</h3>
+            </Fade>
+          </div>
         </div>
         <div className="row">
-        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pop-out">
+          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pop-out">
             <Fade duration={3000}>
-            <div className="player-headers">
+              <div className="player-headers">
                 <span>Wallet ID</span>
                 <span>Chapter Points</span>
-            </div>
-            <ul className="players-list">
+              </div>
+              <ul className="players-list">
                 {playerElements}
-            </ul>
+              </ul>
             </Fade>
           </div>
         </div>

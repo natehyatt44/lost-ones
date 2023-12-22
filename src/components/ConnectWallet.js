@@ -124,7 +124,7 @@ export function NFTImages({ accountNfts, onClickImage }) {
       } else {
         clearInterval(intervalId);
       }
-    }, 350);
+    }, 150);
     return () => clearInterval(intervalId);
   }, [loadedImages]);
 
