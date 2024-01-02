@@ -693,7 +693,6 @@ html, body{
    /* Play */
 
    .nft-container {
-     float: center; /* Note: 'float: center;' is not valid in CSS. You might want to use 'margin: auto;' for center alignment. */
      width: 90%;
      margin: 10px auto;
    }
@@ -712,7 +711,7 @@ html, body{
      align-items: center; /* align vertical */
      margin-bottom: 10px;
      margin-top: 10px;
-    
+     overflow-y: auto;
  }
  
  .nft-item img {
