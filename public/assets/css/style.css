@@ -693,23 +693,34 @@ html, body{
    /* Play */
 
    .nft-container {
-     float: center;
-     width: 100%;
+     float: center; /* Note: 'float: center;' is not valid in CSS. You might want to use 'margin: auto;' for center alignment. */
+     width: 90%;
      margin: 10px auto;
    }
+   
+   /* Media query for mobile devices */
+   @media screen and (max-width: 768px) {
+     .nft-container {
+       width: 98%;
+     }
+   }
+   
 
    .nft-item{
      display: flex;
      justify-content: center; /* align horizontal */
-     /* align-items: center; align vertical */
+     align-items: center; /* align vertical */
      margin-bottom: 10px;
      margin-top: 10px;
     
  }
  
- .nft-item img{
-    width: 75%;
- }
+ .nft-item img {
+     width: 100%; /* Image takes full width of the container */
+     height: auto;
+     object-fit: cover; /* Adjusts the image size to cover the container while maintaining aspect ratio */
+     border-radius: 50%;
+   }
 
  .btn-list {
      display: flex;
@@ -764,20 +775,6 @@ html, body{
   color: #FFFFFF;
 }
 
-.banner-desktop-item,
-  .banner-mobile-item{
-  opacity: 0; /* hide the image initially */
-  transition: opacity 5s ease-in-out; /* add a transition effect */
-  }
-
-  .banner-desktop-item.loaded,
-  .banner-mobile-item.loaded{
-  opacity: 1; /* show the image when it's loaded */
-  }
-
-.hide {
-  display: none;
-}
 
 .connect-wallet-btn {
   background-color: #4d4d4d;

@@ -117,13 +117,13 @@ html, body{
      background-image: url('../images/background/runekin2.png') !important;
    }
    .background_play_Soulweaver {
-     background-image: url('../images/background/4.png') !important;
+     background-image: url('../images/background/soulweaver3.png') !important;
    }
    .background_play_Zephyr {
-     background-image: url('../images/background/4.png') !important;
+     background-image: url('../images/background/zephyr.png') !important;
    }
    .background_play_ArchAngel {
-     background-image: url('../images/background/4.png') !important;
+     background-image: url('../images/background/archangel.png') !important;
    }
  .traitbackground_sec {
      background-image: url('../images/background/background_trait.png') !important;
@@ -163,6 +163,12 @@ html, body{
      color: #FFFFFF;
      white-space: pre-wrap;
 }
+.nft-grid-item {
+     width: calc(20% - 10px); /* Adjust this value as needed */
+     margin: 5px; /* Adjust margin as needed */
+   }
+
+   
 
 /* Phones */
 
@@ -687,23 +693,33 @@ html, body{
    /* Play */
 
    .nft-container {
-     float: center;
-     width: 100%;
+     width: 90%;
      margin: 10px auto;
    }
+   
+   /* Media query for mobile devices */
+   @media screen and (max-width: 768px) {
+     .nft-container {
+       width: 98%;
+     }
+   }
+   
 
    .nft-item{
      display: flex;
      justify-content: center; /* align horizontal */
-     /* align-items: center; align vertical */
+     align-items: center; /* align vertical */
      margin-bottom: 10px;
      margin-top: 10px;
-    
+     overflow-y: auto;
  }
  
- .nft-item img{
-    width: 75%;
- }
+ .nft-item img {
+     width: 100%; /* Image takes full width of the container */
+     height: auto;
+     object-fit: cover; /* Adjusts the image size to cover the container while maintaining aspect ratio */
+     border-radius: 50%;
+   }
 
  .btn-list {
      display: flex;
@@ -758,20 +774,6 @@ html, body{
   color: #FFFFFF;
 }
 
-.banner-desktop-item,
-  .banner-mobile-item{
-  opacity: 0; /* hide the image initially */
-  transition: opacity 5s ease-in-out; /* add a transition effect */
-  }
-
-  .banner-desktop-item.loaded,
-  .banner-mobile-item.loaded{
-  opacity: 1; /* show the image when it's loaded */
-  }
-
-.hide {
-  display: none;
-}
 
 .connect-wallet-btn {
   background-color: #4d4d4d;
@@ -976,3 +978,8 @@ html, body{
      height: 60vh; /* Adjust as needed */
  }
 
+ .round-image {
+     width: 50%;
+     border-radius: 50%;
+     display: inline-block; /* To ensure the width is respected */
+ }

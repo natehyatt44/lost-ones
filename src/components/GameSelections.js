@@ -64,7 +64,7 @@ export const CharacterSelectionStage = ({ nfts, resetRace, handleCharacterSelect
       </Fade>
     </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
-      <div className="row">
+      <div className="row nft-container">
         <NFTImages accountNfts={nfts} onClickImage={handleCharacterSelect}/>
       </div>
     </div>  
@@ -112,7 +112,7 @@ export const ToolSelectionStage = ({ nfts, resetRace, handleToolButtonClick, scr
       </Fade>
     </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
-      <div className="row">
+      <div className="row nft-container">
         <NFTImages accountNfts={nfts} onClickImage={handleToolButtonClick}/>
       </div>
     </div>  
@@ -130,7 +130,7 @@ export const WeaponSelectionStage = ({ nfts, resetRace, handleWeaponButtonClick,
       </Fade>
     </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
-      <div className="row">
+      <div className="row nft-container">
         <NFTImages accountNfts={nfts} onClickImage={handleWeaponButtonClick}/>
       </div>
     </div>  
@@ -148,7 +148,7 @@ export const CompanionSelectionStage = ({ nfts, resetRace, handleCompanionButton
       </Fade>
     </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
-      <div className="row">
+      <div className="row nft-container">
         <NFTImages accountNfts={nfts} onClickImage={handleCompanionButtonClick}/>
       </div>
     </div>  
@@ -166,7 +166,7 @@ export const LandscapeSelectionStage = ({ nfts, resetRace, handleLandscapeButton
       </Fade>
     </div>
     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center nft-item" style={{ maxHeight: scrollbarHeight, overflowY: 'auto' }}>
-      <div className="row">
+    <div className="row nft-container">
         <NFTImages accountNfts={nfts} onClickImage={handleLandscapeButtonClick}/>
       </div>
     </div>  

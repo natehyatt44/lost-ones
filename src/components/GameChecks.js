@@ -33,7 +33,7 @@ export const CheckChapter = async (accountId, race) => {
   });
 
   const chapters = ['Chapter 1-1', 'Chapter 1-2', 'Chapter 2', 'Chapter 3', 'Chapter 4', 'Chapter 5'];
-  const availableChapters = ['Chapter 1-1', 'Chapter 1-2']
+  const availableChapters = ['Chapter 1-1', 'Chapter 1-2', 'Chapter 2']
 
   let accessibleChapters = chapters.map(chapter => ({
     chapter,
