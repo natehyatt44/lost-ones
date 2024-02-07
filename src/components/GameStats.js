@@ -63,7 +63,6 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
       }
     });
   
-    console.log(points)
     return points;
   }
   
