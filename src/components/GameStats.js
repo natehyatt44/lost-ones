@@ -33,11 +33,16 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
     const completedChapters = new Set();
   
     playerDetails.forEach(player => {
-      if (player.status === 'Chapter 1-1 Completed' || player.status === 'Chapter 1-2 Completed') {
-        completedChapters.add(player.status);
-      } else if (['Chapter 2 Completed', 'Chapter 3 Completed', 'Chapter 4 Completed'].includes(player.status)) {
+      // For Chapter 2, 3, 4, and 5, use a unique key combining race and status to differentiate completions
+      if (player.status.includes('Chapter 2') || 
+          player.status.includes('Chapter 3') || 
+          player.status.includes('Chapter 4') || 
+          player.status.includes('Chapter 5')) {
         const raceChapterKey = `${player.race}-${player.status}`;
         completedChapters.add(raceChapterKey);
+      } else if (player.status.includes('Chapter 1')) {
+        // For Chapter 1, just add the status as unique completions are not tracked per race
+        completedChapters.add(player.status);
       }
     });
   
@@ -47,14 +52,24 @@ function GameStats({ handleHashpackConnect, show, handleModalClose, showPopup, s
       } else if (chapter.includes('Chapter 2')) {
         points += 2;
       } else if (chapter.includes('Chapter 3')) {
+        // Award 3 points for each unique sub-chapter of Chapter 3
         points += 3;
       } else if (chapter.includes('Chapter 4')) {
+        // Award 4 points for each unique sub-chapter of Chapter 4
         points += 4;
+      } else if (chapter.includes('Chapter 5')) {
+        // Assume Chapter 5 completions award points per race
+        points += 5;
       }
     });
   
+    console.log(points)
     return points;
   }
+  
+  
+  
+  
 
   // Function to fetch player data and process it
   async function fetchPlayers() {
