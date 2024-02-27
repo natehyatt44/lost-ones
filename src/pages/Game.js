@@ -19,10 +19,9 @@ function Game(props) {
   const navigate = useNavigate (); // Add this line to use the 'history' object for navigation
   const accountId = location.state.accountId;
   const selectedRace = location.state.selectedRace;
-  const selectedCharacter = location.state.selectedCharacter;
   const selectedChapter = location.state.selectedChapter;
-
   const chapterPass = location.state.chapterPass;
+  const path = location.state.path;
   
   const [text, setText] = useState('');
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -100,14 +99,14 @@ function Game(props) {
   const handleFinishedChapter = () => {
     const dateTimeString = new Date().toISOString().replace('T', ' ').slice(0, 19);
     let race = ''
-    if (selectedChapter === 'Chapter 1-1' || selectedChapter === 'Chapter 1-2' || selectedChapter === 'Chapter 5'){
+    if (selectedChapter === 'Chapter 1-1' || selectedChapter === 'Chapter 1-2'){
       race = 'Universal'
     }
     else {race = selectedRace}
-    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|${selectedChapter} Completed|${race}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
+    uploadCsv(`accountId|type|nfts|dateTime\n${accountId}|${selectedChapter}${path} Completed|${race}|${dateTimeString}`, `${s3accountActivity}/activity-${accountId}-${dateTimeString}.csv`)
       .then(() => {
         console.log('Chapter completion recorded in activity CSV.');
-        const updatedData = `${accountId}|${selectedChapter} Completed|${race}|1|${dateTimeString}`;
+        const updatedData = `${accountId}|${selectedChapter}${path} Completed|${race}|1|${dateTimeString}`;
         console.log(updatedData)
         return updateAccountStatusCsv(updatedData);
       })
@@ -121,15 +120,18 @@ function Game(props) {
   async function fetchStory() {
     try {
       let signedUrl = ''
-      if (selectedChapter === 'Chapter 1-1' || selectedChapter === 'Chapter 1-2' || selectedChapter === 'Chapter 5'){
+      if (selectedChapter === 'Chapter 1-1' || selectedChapter === 'Chapter 1-2'){
         signedUrl = await Storage.get(`chapters/universal/${selectedChapter}.txt`, { level: "public" });
       }
       else {
-        if (chapterPass === 1){
+        if ((selectedChapter === 'Chapter 2' || selectedChapter === 'Chapter 5') && chapterPass === 1) {
           signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/Pass.txt`, { level: "public" });
         }
-        else if (chapterPass === 2){
-          signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/Pass2.txt`, { level: "public" });
+        else if ((selectedChapter === 'Chapter 3' || selectedChapter === 'Chapter 4') && chapterPass === 1 && path === 'A'){
+          signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/PassA.txt`, { level: "public" });
+        }
+        else if ((selectedChapter === 'Chapter 3' || selectedChapter === 'Chapter 4') && chapterPass === 1 && path === 'B'){
+          signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/PassB.txt`, { level: "public" });
         }
         else {
           signedUrl = await Storage.get(`chapters/${selectedChapter}/${selectedRace}/Fail.txt`, { level: "public" });

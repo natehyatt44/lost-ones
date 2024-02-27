@@ -66,7 +66,8 @@ export const AccountNFTs = async (accountId, tokenIds = [], nftMetadata = [], ne
             race: nftInfo.race,
             playable: nftInfo.playable,
             type: nftInfo.type,
-            forRace: nftInfo.forRace
+            forRace: nftInfo.forRace,
+            path: nftInfo.path
           });
         }
       }

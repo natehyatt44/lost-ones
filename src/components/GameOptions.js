@@ -8,6 +8,8 @@ import { RaceSelectionStage,
          LandscapeSelectionStage } from '../components/GameSelections';
 import { s3accountActivity, uploadCsv } from '../constants/Constants';
 import { CheckRace, CheckChapter } from '../components/GameChecks';
+import { s3accountStats } from '../constants/Constants';
+import { Storage } from 'aws-amplify';
 
 function GameOptions({ accountId, nfts, navigate, onRaceSelect }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -230,6 +232,7 @@ function GameOptions({ accountId, nfts, navigate, onRaceSelect }) {
     }));
 
     let chapterPass = 0
+    let path = nft.path
     if (nft.forRace === gameState.selectedRace) {chapterPass = 1}
     console.log(nft.forRace, gameState.selectedRace)
 
@@ -239,9 +242,10 @@ function GameOptions({ accountId, nfts, navigate, onRaceSelect }) {
                                  selectedRace: gameState.selectedRace, 
                                  selectedCharacter: gameState.selectedCharacter, 
                                  selectedChapter: gameState.selectedChapter, 
-                                 selectedTool: gameState.selectedTool,
+                                 selectedTool: gameState.selectedTool,    
                                  selectedWeapon: imageUrl,
-                                 chapterPass: chapterPass } });
+                                 chapterPass: chapterPass,
+                                 path: path } });
   };
 
   const handleCompanionButtonClick = async (nft, imageUrl) => {
@@ -251,6 +255,55 @@ function GameOptions({ accountId, nfts, navigate, onRaceSelect }) {
     }));
 
     let chapterPass = 0
+    let path = nft.path
+    const signedUrl = await Storage.get(`${s3accountStats}/accounts.csv`, { level: "public" });
+    const response = await fetch(signedUrl);
+    const textContent = await response.text();
+
+    const rows = textContent.trim().split("\n");
+    const header = rows.shift().split("|");
+
+    // filter rows based on accountId
+    const filteredRows = rows.filter(row => {
+      const rowItems = row.split("|");
+      return rowItems[0] === accountId;
+    });
+
+    console.log(filteredRows)
+
+    const racePaths = {};
+
+    // Iterate over each row and extract relevant information
+    filteredRows.forEach(row => {
+        const [accountId, achievement, race, count, timestamp] = row.split('|');
+    
+        // Check if the achievement is part of Chapter 3A or 3B
+        if (achievement.includes('Chapter 3A') || achievement.includes('Chapter 3B')) {
+            const path = achievement.includes('Chapter 3A') ? 'A' : 'B';
+    
+            // If the race is already in the object, append the path if it's not already included
+            if (racePaths[race]) {
+                if (!racePaths[race].includes(path)) {
+                    racePaths[race].push(path);
+                }
+            } else {
+                // If the race is not in the object, add it with the current path
+                racePaths[race] = [path];
+            }
+        }
+    });
+    
+    // Log the result or return it from a function
+    console.log(racePaths);
+
+    // Condition 1: Check if the NFT is for the selected race
+    // Condition 2: Check if the racePaths object contains the selected race
+    // Condition 3: Check if the array of paths for the selected race contains the NFT's path
+    if (nft.forRace === gameState.selectedRace && 
+      racePaths[nft.forRace] && 
+      racePaths[nft.forRace].includes(nft.path)) {
+      chapterPass = 1; // Set chapterPass to 1 if all conditions are met
+    }
     if (nft.forRace === gameState.selectedRace) {chapterPass = 1}
     console.log(nft.forRace, gameState.selectedRace)
 
@@ -263,7 +316,8 @@ function GameOptions({ accountId, nfts, navigate, onRaceSelect }) {
                                  selectedTool: gameState.selectedTool,
                                  selectedWeapon: gameState.selectedWeapon,
                                  selectedCompanion: imageUrl,
-                                 chapterPass: chapterPass } });
+                                 chapterPass: chapterPass,
+                                 path: path } });
   };
 
   const handleLandscapeButtonClick = async (nft, imageUrl) => {
